@@ -1,0 +1,97 @@
+
+<h1>Verifiable Credentials JSON Schema Specification</h1>
+<pre class='metadata'>
+Title: Verifiable Credentials JSON Schema Specification
+Status: CG-DRAFT
+Prepare for TR: true
+
+TR: https://w3c-ccg.github.io/vc-json-schemas/
+CG-DRAFT: https://w3c-ccg.github.io/vc-json-schemas/
+
+Shortname: vcjsonschemaspec
+Level: 1
+
+!Editor: <a href="mailto:gabe.cohen@workday.com">Gabe Cohen</a> (<a href="https://credentials.workday.com/">Workday</a>)
+Editor: Orie Steele, w3cid 109171, [Transmute](https://www.transmute.industries/), orie@transmute.industries
+
+!Contributors: <a href="mailto:bjorn.hamel@workday.com">Bjorn Hamel</a> (<a href="https://credentials.workday.com/">Workday</a>)
+!Contributors: <a href="mailto:joe.genereux@workday.com">Joe Genereux</a> (<a href="https://credentials.workday.com/">Workday</a>)
+!Contributors: <a href="mailto:jonathan.reynolds@workday.com">Jonathan Reynolds</a> (<a href="https://credentials.workday.com/">Workday</a>)
+!Contributors: <a href="mailto:rory.martin@workday.com">Rory Martin</a> (<a href="https://credentials.workday.com/">Workday</a>)
+
+group: webauthn
+Issue Tracking: GitHub https://github.com/w3c-ccg/vc-json-schemas/issues
+!Tests: <a href="https://github.com/w3c-ccg/vc-json-schemas">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schemas">ongoing work</a>)
+
+Text Macro: FALSE <code>false</code>
+Text Macro: PII personally identifying information
+Text Macro: RP Relying Party
+Text Macro: RPS Relying Parties
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: TRUE <code>true</code>
+
+Ignored Vars: op, alg, type, algorithm
+
+Abstract: The [[VC_DATA_MODEL]] specifies the models used for Verifiable Credentials and
+  Verifiable Presentations, and explains the relationships between three parties:
+  <i>issuer</i>, <i>holder</i>, and <i>verifier</i>. A critical piece of infrastructure out of the
+  scope of those specifications is the <b>Credential Schema</b>. This specification provides
+  a mechanism to express a Credential Schema and the protocols for evolving the schema.
+
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Markup Shorthands: css off, markdown on
+</pre>
+
+<style type="text/css">
+body {
+    counter-reset: table;
+}
+/* For some reason, doing the counter-increment on the figcaption like Bikeshed does with figures does not seem to work here. */
+figure.table {
+    counter-increment: table;
+}
+figure.table figcaption {
+    counter-increment: none;
+}
+figure.table figcaption:not(.no-marker)::before {
+    content: "Table " counter(table) " ";
+}
+figure.table .overlarge {
+    max-width: 50em;
+}
+
+.figure-num-following::before {
+    counter-increment: figure;
+    content: counter(figure)
+}
+
+.figure-num-following::after {
+    counter-increment: figure -1;
+    content: ""
+}
+
+.table-ref-previous::before {
+    content: counter(table);
+}
+
+.table-ref-following::before {
+    counter-increment: table;
+    content: counter(table);
+}
+
+.table-ref-following::after {
+    counter-increment: table -1;
+    content: "";
+}
+</style>
+
+
+<pre class=biblio>
+{
+  "VC_DATA_MODEL": {
+    "href": "https://www.w3.org/TR/vc-data-model/",
+    "title": "Verifiable Credentials Data Model 1.0",
+    "publisher": "W3C"
+  }
+}
+</pre>
