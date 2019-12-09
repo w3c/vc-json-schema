@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 47da574d087224b1f2154c030537253784334f71" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="163a0ba33129b42f9078c5b37b9733dbd3776349" name="document-revision">
+  <meta content="c991c07879bbee83452a9539baa21ef01c60d2d0" name="document-revision">
 <style type="text/css">
 body {
     counter-reset: table;
@@ -245,6 +245,12 @@ pre .property::before, pre .property::after {
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
+    <li><a href="#sctn-terminology"><span class="secno">1</span> <span class="content">Terminology</span></a>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-here"><span class="secno"></span> <span class="content">Terms defined by this specification</span></a>
+     </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
@@ -252,10 +258,60 @@ pre .property::before, pre .property::after {
      </ol>
    </ol>
   </nav>
-  <main></main>
+  <main>
+   <h2 class="heading settled" data-level="1" id="sctn-terminology"><span class="secno">1. </span><span class="content">Terminology</span><a class="self-link" href="#sctn-terminology"></a></h2>
+   <dl>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="id">id<a class="self-link" href="#id"></a></dfn>
+    <dd data-md>
+     <p>A globally unique identifier to locate the schema on a distributed ledger. Each credential schema has its own unique identifier, and each version of a credential schema is required to have its own unique identifier. <br> <br> This identifier is a <a href="https://w3c-ccg.github.io/did-core/#generic-did-parameter-names">Generic DID Parameter Name</a> based upon the author of the schema. For example, if the author had a did like <code>did:work:abcdefghi</code> a possible schema ID the author created would have an identifier such as: <code>did:work:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</code></p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="type">type<a class="self-link" href="#type"></a></dfn>
+    <dd data-md>
+     <p>It is important in software systems for machines to understand the context of what a document is. In credential schemas this is declared in the type field. This field resolves to a JSON schema with details about the schema metadata that applies to the schema.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="modelversion">modelVersion<a class="self-link" href="#modelversion"></a></dfn>
+    <dd data-md>
+     <p>After a machine has parsed the type property it should know that the document it is reading is a credential schema. The next field is the version, which denotes what version of the schema metadata this is.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="name">name<a class="self-link" href="#name"></a></dfn>
+    <dd data-md>
+     <p>A human-readable name for the schema.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="author">author<a class="self-link" href="#author"></a></dfn>
+    <dd data-md>
+     <p>DID of the identity which authored the credential schema.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="authored">authored<a class="self-link" href="#authored"></a></dfn>
+    <dd data-md>
+     <p>RFC-3339 date on which the schema was created.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="schema">schema<a class="self-link" href="#schema"></a></dfn>
+    <dd data-md>
+     <p>This is where the Credential Schema data fields are defined</p>
+   </dl>
+<pre class="example" id="example-0d5cc84b"><a class="self-link" href="#example-0d5cc84b"></a>{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+        "emailAddress": {
+            "type": "string",
+            "format": "email"
+        }
+    },
+    "required": ["emailAddress"],
+    "additionalProperties": false
+}
+</pre>
+  </main>
 <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span></h2>
-  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span></h3>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <ul class="index">
+   <li><a href="#author">author</a><span>, in §1</span>
+   <li><a href="#authored">authored</a><span>, in §1</span>
+   <li><a href="#id">id</a><span>, in §1</span>
+   <li><a href="#modelversion">modelVersion</a><span>, in §1</span>
+   <li><a href="#name">name</a><span>, in §1</span>
+   <li><a href="#schema">schema</a><span>, in §1</span>
+   <li><a href="#type">type</a><span>, in §1</span>
+  </ul>
+  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-vc_data_model">[VC_DATA_MODEL]
    <dd><a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Data Model 1.0</a>. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>

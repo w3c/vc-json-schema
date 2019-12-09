@@ -86,6 +86,45 @@ figure.table .overlarge {
 </style>
 
 
+# Terminology # {#sctn-terminology}
+
+: <dfn>id</dfn>
+:: A globally unique identifier to locate the schema on a distributed ledger. Each credential schema has its own unique identifier, and each version of a credential schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Generic DID Parameter Name](https://w3c-ccg.github.io/did-core/#generic-did-parameter-names) based upon the author of the schema. For example, if the author had a did like `did:work:abcdefghi` a possible schema ID the author created would have an identifier such as: `did:work:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0`
+
+: <dfn>type</dfn>
+:: It is important in software systems for machines to understand the context of what a document is. In credential schemas this is declared in the type field. This field resolves to a JSON schema with details about the schema metadata that applies to the schema.
+
+: <dfn>modelVersion</dfn>
+:: After a machine has parsed the type property it should know that the document it is reading is a credential schema. The next field is the version, which denotes what version of the schema metadata this is.
+
+: <dfn>name</dfn>
+:: A human-readable name for the schema.
+
+: <dfn>author</dfn>
+:: DID of the identity which authored the credential schema.
+
+: <dfn>authored</dfn>
+:: RFC-3339 date on which the schema was created.
+
+: <dfn>schema</dfn>
+:: This is where the Credential Schema data fields are defined
+
+<pre class="example">
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+        "emailAddress": {
+            "type": "string",
+            "format": "email"
+        }
+    },
+    "required": ["emailAddress"],
+    "additionalProperties": false
+}
+</pre>
+
 <pre class=biblio>
 {
   "VC_DATA_MODEL": {

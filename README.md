@@ -1,6 +1,6 @@
 ## Building with Docker
 
-See [example](https://github.com/w3c/webauthn/tree/master/docker/bikeshed)
+See the [webauthn bikeshed docker setup](https://github.com/w3c/webauthn/tree/master/docker/bikeshed)
 
 #### Build the bikeshed docker image
 
