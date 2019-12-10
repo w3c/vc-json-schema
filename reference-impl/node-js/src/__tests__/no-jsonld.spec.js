@@ -1,5 +1,6 @@
 const jose = require("jose");
 const base64url = require("base64url");
+const stringify = require("json-stringify-deterministic");
 
 const { exampleUnsigned } = require("../__fixtures__");
 
@@ -24,7 +25,7 @@ describe("non-jsonld", () => {
       proofPurpose: "assertionMethod"
     };
     const flat = jose.JWS.sign.flattened(
-      payload,
+      stringify(payload),
       jose.JWK.asKey(privateKeyJwk),
       header
     );
@@ -58,7 +59,7 @@ describe("non-jsonld", () => {
           "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP",
         proofPurpose: "assertionMethod",
         jws:
-          "eyJhbGciOiJFZERTQSJ9..fTZ_g83Qda4PR4tzrg6jtG4BsjBVueuEN2A57_I5ID0uWcZJQmmK8E2MoMiRxpSbcGebqujC1BEUmFIOqXScBw"
+          "eyJhbGciOiJFZERTQSJ9..EXIU59Ik7ayisAqsey1jHE6Kc83aPsS3ygh3H0rLctvMWGSkrGZGwskk1wySPF8wd2_-EX59vSl5_M51MoWSBQ"
       }
     });
 
@@ -68,9 +69,7 @@ describe("non-jsonld", () => {
       encodedSignature
     ] = reconstructedPayload.proof.jws.split("..");
     delete reconstructedPayload.proof.jws;
-    const encodedPayload = base64url.encode(
-      JSON.stringify(reconstructedPayload)
-    );
+    const encodedPayload = base64url.encode(stringify(reconstructedPayload));
     const reconstructedJWS = `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
 
     const verified = jose.JWS.verify(

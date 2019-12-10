@@ -13,6 +13,9 @@
     "crypto-ld": "^3.7.0",
     "jest": "^24.9.0",
     "jose": "^1.16.2",
-    "jsonld-signatures": "^4.4.0"
+    "jsonld-signatures": "^4.5.0"
+  },
+  "dependencies": {
+    "json-stringify-deterministic": "^1.0.1"
   }
 }
