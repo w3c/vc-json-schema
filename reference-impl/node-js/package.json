@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "base64url": "^3.0.1",
     "crypto-ld": "^3.7.0",
     "jest": "^24.9.0",
+    "jose": "^1.16.2",
     "jsonld-signatures": "^4.4.0"
   }
 }
