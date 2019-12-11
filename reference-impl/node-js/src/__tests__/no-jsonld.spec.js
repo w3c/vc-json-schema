@@ -1,6 +1,6 @@
 const jose = require("jose");
 const base64url = require("base64url");
-const stringify = require("json-stringify-deterministic");
+JSON.canonicalize = require("canonicalize");
 
 const { exampleUnsigned } = require("../__fixtures__");
 
@@ -25,7 +25,7 @@ describe("non-jsonld", () => {
       proofPurpose: "assertionMethod"
     };
     const flat = jose.JWS.sign.flattened(
-      stringify(payload),
+      JSON.canonicalize(payload),
       jose.JWK.asKey(privateKeyJwk),
       header
     );
@@ -69,7 +69,9 @@ describe("non-jsonld", () => {
       encodedSignature
     ] = reconstructedPayload.proof.jws.split("..");
     delete reconstructedPayload.proof.jws;
-    const encodedPayload = base64url.encode(stringify(reconstructedPayload));
+    const encodedPayload = base64url.encode(
+      JSON.canonicalize(reconstructedPayload)
+    );
     const reconstructedJWS = `${encodedHeader}.${encodedPayload}.${encodedSignature}`;
 
     const verified = jose.JWS.verify(

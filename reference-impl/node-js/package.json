@@ -16,6 +16,6 @@
     "jsonld-signatures": "^4.5.0"
   },
   "dependencies": {
-    "json-stringify-deterministic": "^1.0.1"
+    "canonicalize": "^1.0.1"
   }
 }
