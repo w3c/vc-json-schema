@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 47da574d087224b1f2154c030537253784334f71" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="4363aaa9a6349f5ee181f033e076cddba0ece8b9" name="document-revision">
+  <meta content="df30b4d607dc5d3a5a2d2a6b4b1ba132f9598ade" name="document-revision">
 <style type="text/css">
 body {
     counter-reset: table;
@@ -2011,29 +2011,39 @@ Parts of this work may be from another specification document.  If so, those par
    <p>These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.</p>
    <h2 class="heading settled" data-level="8" id="examples"><span class="secno">8. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="8.1" id="vc_example"><span class="secno">8.1. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#vc_example"></a></h3>
-   <p>The following example shows a reference to a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> with the identifier <b></b> instide of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a>. The example is adopted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
-<pre class="example highlight" id="example-86676a18"><a class="self-link" href="#example-86676a18"></a><c- p>{</c->
+   <p>We define an Email schema as the basis for a credential.</p>
+<pre class="example highlight" id="example-dfd57c90①"><a class="self-link" href="#example-dfd57c90①"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+  <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
+  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
+  <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
+  <c- f>"author"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
+  <c- f>"authored"</c-><c- p>:</c-> <c- u>"2018-01-01T00:00:00+00:00"</c->
+<c- p>}</c->
+</pre>
+   <p>The example references a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> with thes <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①③">Credential Schema</a> identifier <b>did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a>. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
+<pre class="example highlight" id="example-fc85b7ff"><a class="self-link" href="#example-fc85b7ff"></a><c- p>{</c->
   <c- f>"@context"</c-><c- p>:</c-> <c- p>[</c->
     <c- u>"https://www.w3.org/2018/credentials/v1"</c-><c- p>,</c->
     <c- u>"https://www.w3.org/2018/credentials/examples/v1"</c->
   <c- p>],</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"http://example.edu/credentials/1872"</c-><c- p>,</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- p>[</c-><c- u>"VerifiableCredential"</c-><c- p>,</c-> <c- u>"ExampleCredential"</c-><c- p>],</c->
-  <c- f>"issuer"</c-><c- p>:</c-> <c- u>"https://example.edu/issuers/565049"</c-><c- p>,</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- p>[</c-><c- u>"VerifiableCredential"</c-><c- p>,</c-> <c- u>"EmailCredential"</c-><c- p>],</c->
+  <c- f>"issuer"</c-><c- p>:</c-> <c- u>"https://example.com/issuers/565049"</c-><c- p>,</c->
   <c- f>"issuanceDate"</c-><c- p>:</c-> <c- u>"2010-01-01T19:73:24Z"</c-><c- p>,</c->
   <c- f>"credentialSchema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:c276e12ec21ebfeb1f712ebc6f1;id=83644e73-f540-443c-a440-4d0252dc4f1c;version=1.0"</c-><c- p>,</c->
-    <c- f>"type"</c-><c- p>:</c-> <c- u>"ExampleSchemaValidator"</c->
+    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
+    <c- f>"type"</c-><c- p>:</c-> <c- u>"JsonSchemaValidator2018"</c->
   <c- p>},</c->
   <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:ebfeb1f712ebc6f1c276e12ec21"</c-><c- p>,</c->
-    <c- f>"exampleKey"</c-><c- p>:</c-> <c- u>"exampleValue"</c->
+    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
+    <c- f>"emailAddress"</c-><c- p>:</c-> <c- u>"first.last@example.com"</c->
     <c- p>}</c->
   <c- p>}</c->,
   <c- u>"proof"</c->: <c- p>{</c-> ... <c- p>}</c->
 }
 </pre>
-   <p>The ID of the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①③">Credential Schema</a> is visible in the <b>credentialSchema</b> section of the credential. The type of <b>ExampleSchemaValidator</b> refers to a <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.</p>
+   <p>The ID of the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①④">Credential Schema</a> is visible in the <b>credentialSchema</b> section of the credential, and describes the shape of the email schema. The type of <b>JsonSchemaValidator2018</b> refers to a <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.</p>
    <h2 class="heading settled" data-level="9" id="drawbacks"><span class="secno">9. </span><span class="content">Drawbacks</span><a class="self-link" href="#drawbacks"></a></h2>
    <p>Within a credentialing ecosystem, relying heavily upon [[JSON Schema]] makes data shapes for credentials consistent, and could enable an ecosystem with many similar schemas with slight changes (naming, capitalization). Without proper oversight or authoritative schemas to limit duplication or misuse, utilization of <a data-link-type="biblio" href="#biblio-json_schema">[JSON_SCHEMA]</a> could lead to a poor user experience. At a higher, platform level tooling can be provided to minimize confusion and promote reuse.</p>
    <p>Within the broader Credentialing Ecosystem, interoperability could be more difficult if the wider community adopts <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> without advocating for pairing with <a data-link-type="biblio" href="#biblio-json_schema">[JSON_SCHEMA]</a> based schemas or credentials. This issue can mainly be side-stepped with the metadata we include –– the <i>Credential Schema</i> –– since this model is flexible to change. A new <a data-link-type="dfn" href="#modelversion" id="ref-for-modelversion④">modelVersion</a> could be introduced that supports <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> and removes support for <a data-link-type="biblio" href="#biblio-json_schema">[JSON_SCHEMA]</a>. A drawback here is the requirement that all schemas have this piece of metadata, which itself is versioned and evolvable.</p>
@@ -2222,7 +2232,7 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-credential-schema⑧">5.2. Credential Schema Definition</a> <a href="#ref-for-credential-schema⑨">(2)</a>
     <li><a href="#ref-for-credential-schema①⓪">5.2.2. Schema</a>
     <li><a href="#ref-for-credential-schema①①">7. Extensibility</a>
-    <li><a href="#ref-for-credential-schema①②">8.1. Verifiable Credentials</a> <a href="#ref-for-credential-schema①③">(2)</a>
+    <li><a href="#ref-for-credential-schema①②">8.1. Verifiable Credentials</a> <a href="#ref-for-credential-schema①③">(2)</a> <a href="#ref-for-credential-schema①④">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="metadata">
