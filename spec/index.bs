@@ -557,7 +557,7 @@ We define an Email schema as the basis for a credential.
 }
 </pre>
 
-The example references a [=Credential Schema=] with thes [=Credential Schema=] identifier <b>did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
+The example references a [=Credential Schema=] with the [=Credential Schema=] identifier <b>did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
 
 <pre class="example" highlight="json">
 {
