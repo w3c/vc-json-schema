@@ -544,7 +544,20 @@ These are just a few examples that illustrate the flexibility of the proposed mo
 
 ## Verifiable Credentials ## {#vc_example}
 
-The following example shows a reference to a [=Credential Schema=] with the identifier <b></b> instide of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adopted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
+We define an Email schema as the basis for a credential.
+
+<pre class="example" highlight="json">
+{
+  "type": "https://credentials.workday.com/docs/credential-schema.json",
+  "modelVersion": "1.0",
+  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+  "name": "Email",
+  "author": "did:work:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00"
+}
+</pre>
+
+The example references a [=Credential Schema=] with thes [=Credential Schema=] identifier <b>did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
 
 <pre class="example" highlight="json">
 {
@@ -553,23 +566,23 @@ The following example shows a reference to a [=Credential Schema=] with the iden
     "https://www.w3.org/2018/credentials/examples/v1"
   ],
   "id": "http://example.edu/credentials/1872",
-  "type": ["VerifiableCredential", "ExampleCredential"],
-  "issuer": "https://example.edu/issuers/565049",
+  "type": ["VerifiableCredential", "EmailCredential"],
+  "issuer": "https://example.com/issuers/565049",
   "issuanceDate": "2010-01-01T19:73:24Z",
   "credentialSchema": {
-    "id": "did:example:c276e12ec21ebfeb1f712ebc6f1;id=83644e73-f540-443c-a440-4d0252dc4f1c;version=1.0",
-    "type": "ExampleSchemaValidator"
+    "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+    "type": "JsonSchemaValidator2018"
   },
   "credentialSubject": {
-    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-    "exampleKey": "exampleValue"
+    "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T",
+    "emailAddress": "first.last@example.com"
     }
   },
   "proof": { ... }
 }
 </pre>
 
-The ID of the [=Credential Schema=] is visible in the <b>credentialSchema</b> section of the credential. The type of <b>ExampleSchemaValidator</b> refers to a [[JSON-LD]] type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.
+The ID of the [=Credential Schema=] is visible in the <b>credentialSchema</b> section of the credential, and describes the shape of the email schema. The type of <b>JsonSchemaValidator2018</b> refers to a [[JSON-LD]] type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.
 
 # Drawbacks # {#drawbacks}
 
