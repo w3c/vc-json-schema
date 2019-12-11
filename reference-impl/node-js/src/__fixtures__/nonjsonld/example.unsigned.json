@@ -1,0 +1,22 @@
+{
+  "author": "did:work:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+  "modelVersion": "1.0",
+  "name": "EmailCredentialSchema",
+  "proof": {
+    "created": "2019-12-09T06:02:19Z",
+    "proofPurpose": "assertionMethod",
+    "type": "JoseNonLinkedDataSignature2020",
+    "verificationMethod": "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP"
+  },
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "description": "Email",
+    "properties": { "emailAddress": { "format": "email", "type": "string" } },
+    "required": ["emailAddress"],
+    "type": "object"
+  },
+  "type": "https://credentials.workday.com/docs/credential-schema.json"
+}

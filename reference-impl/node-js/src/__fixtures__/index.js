@@ -1,19 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
-const exampleUnsigned = require("./example.unsigned.json");
+const exampleEd25519Signature2018Unsigned = require("./jsonld/example.unsigned.json");
+const exampleEd25519Signature2018Signed = require("./jsonld/example.signed.json");
 
-const authenticateMeActionDoc = {
-  "@context": [
-    "https://w3id.org/did/v1",
-    "https://web-payments.org/contexts/security-v2.jsonld",
-    {
-      schema: "http://schema.org/",
-      action: "schema:action"
-    }
-  ],
-  action: "AuthenticateMe"
-};
+const exampleJoseNonLinkedDataSignature2020Unsigned = require("./nonjsonld/example.unsigned.json");
+const exampleJoseNonLinkedDataSignature2020Signed = require("./nonjsonld/example.signed.json");
 
 const didKeypair = {
   passphrase: null,
@@ -129,9 +121,11 @@ const documentLoader = url => {
 };
 
 module.exports = {
+  documentLoader,
   didKeypair,
   didKeyDoc,
-  exampleUnsigned,
-  authenticateMeActionDoc,
-  documentLoader
+  exampleEd25519Signature2018Unsigned,
+  exampleEd25519Signature2018Signed,
+  exampleJoseNonLinkedDataSignature2020Unsigned,
+  exampleJoseNonLinkedDataSignature2020Signed
 };
