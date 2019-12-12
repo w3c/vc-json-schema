@@ -1214,7 +1214,7 @@ Possible extra rowspan handling
 </style>
   <meta content="Bikeshed version 47da574d087224b1f2154c030537253784334f71" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="15d1743870c8e92c6d6b62d8fe0cfa8efbb23e03" name="document-revision">
+  <meta content="1ce1b1ac763f394d618f4165591652ca5353ff39" name="document-revision">
 <style type="text/css">
 body {
     counter-reset: table;
@@ -1620,8 +1620,8 @@ Parts of this work may be from another specification document.  If so, those par
     <dd data-md>
      <p>The data template for a credential. Refers to the entirety of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②">Credential Schema</a>, including both the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata">Metadata</a> and <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema">JSON Schema</a>. The term may refer to a document either with, or without a <a data-link-type="dfn" href="#proof" id="ref-for-proof">proof</a>.</p>
    </dl>
-<pre class="example highlight" id="example-dfd57c90"><a class="self-link" href="#example-dfd57c90"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-14f74e56"><a class="self-link" href="#example-14f74e56"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
   <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -1825,8 +1825,8 @@ Parts of this work may be from another specification document.  If so, those par
 <c- p>}</c->
 </pre>
    <p><b>Example</b></p>
-<pre class="example highlight" id="example-b370bc00"><a class="self-link" href="#example-b370bc00"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-8a8eb65c"><a class="self-link" href="#example-8a8eb65c"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
   <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"EmailCredentialSchema"</c-><c- p>,</c->
@@ -1898,8 +1898,8 @@ Parts of this work may be from another specification document.  If so, those par
    <p><b>REVISION</b> Updating this number tells the end user that this version may prevent interactions with parts of the schema. For verification if a holder presents a credential built from a schema of version 1.0 and the platform is looking for > 1.5, there are likely to be SOME fields incompatible with the expected credential.</p>
    <h3 class="heading settled" data-level="6.1" id="revision"><span class="secno">6.1. </span><span class="content">Revision</span><a class="self-link" href="#revision"></a></h3>
    <p>The addition or removal of an <b>optional</b> field is what constitutes a <b>REVISION</b>. Adding or removing an optional field does not break historical data in a schema and in the claims exchange protocol fields that are returned negative in the optional field can be ignored as they are optional by default.</p>
-<pre class="example highlight" id="example-cd8842f5"><a class="self-link" href="#example-cd8842f5"></a><c- p>{</c->
- <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-4e5b562f"><a class="self-link" href="#example-4e5b562f"></a><c- p>{</c->
+ <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
  <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
  <c- f>"name"</c-><c- p>:</c-> <c- u>"EmailCredentialSchema"</c-><c- p>,</c->
@@ -1921,8 +1921,8 @@ Parts of this work may be from another specification document.  If so, those par
 <c- p>}</c->
 </pre>
    <p>In this example we once again reference the email schema, but this time we add an optional field <i>backupEmailAddress</i>. Notice how this would not break the claims exchange because the field is optional.</p>
-<pre class="example highlight" id="example-09723484"><a class="self-link" href="#example-09723484"></a><c- p>{</c->
- <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-5a84050a"><a class="self-link" href="#example-5a84050a"></a><c- p>{</c->
+ <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
  <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
  <c- f>"name"</c-><c- p>:</c-> <c- u>"EmailCredentialSchema"</c-><c- p>,</c->
@@ -1950,8 +1950,8 @@ Parts of this work may be from another specification document.  If so, those par
    <h3 class="heading settled" data-level="6.2" id="model"><span class="secno">6.2. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h3>
    <p>When a schema breaks historical data we call it a model change. This is the major differentiating point between other schema versioning protocols which allow for some breaking changes because as we learned in the problem section, even breaking one area can lead to very difficult issues for verifiers through the credential exchange protocol. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is also important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change. Why? Because technically that introduces a breaking change and adds a required field.</p>
    <p>An example of this rule is when the <i>additionalProperties</i> field’s value changes. Changing <i>additionalProperties</i> from <i>false</i> to <i>true</i> OR from <i>true</i> to <i>false</i> constitutes a breaking change, necessitating a <b>MODEL</b> increment.</p>
-<pre class="example highlight" id="example-181dcf56"><a class="self-link" href="#example-181dcf56"></a><c- p>{</c->
- <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-3ed34db1"><a class="self-link" href="#example-3ed34db1"></a><c- p>{</c->
+ <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
  <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
  <c- f>"name"</c-><c- p>:</c-> <c- u>"EmailCredentialSchema"</c-><c- p>,</c->
@@ -1977,8 +1977,8 @@ Parts of this work may be from another specification document.  If so, those par
 <c- p>}</c->
 </pre>
    <p>This time our credentialing requirements for email have changed and email address is no longer enough information on a credential, and we need to attach a name for verification as well to our schema. This is a <i>required</i> field, so we know it is a <b>MODEL</b> change.</p>
-<pre class="example highlight" id="example-c1b7ade7"><a class="self-link" href="#example-c1b7ade7"></a><c- p>{</c->
- <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-ead3b51f"><a class="self-link" href="#example-ead3b51f"></a><c- p>{</c->
+ <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
  <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0"</c-><c- p>,</c->
  <c- f>"name"</c-><c- p>:</c-> <c- u>"EmailCredentialSchema"</c-><c- p>,</c->
@@ -2012,8 +2012,8 @@ Parts of this work may be from another specification document.  If so, those par
    <h2 class="heading settled" data-level="8" id="examples"><span class="secno">8. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="8.1" id="vc_example"><span class="secno">8.1. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#vc_example"></a></h3>
    <p>We define an Email schema as the basis for a credential.</p>
-<pre class="example highlight" id="example-dfd57c90①"><a class="self-link" href="#example-dfd57c90①"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://credentials.workday.com/docs/credential-schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-14f74e56①"><a class="self-link" href="#example-14f74e56①"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json"</c-><c- p>,</c->
   <c- f>"modelVersion"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->

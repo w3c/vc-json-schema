@@ -101,7 +101,7 @@ This specification provides a standardized way of creating [=Credential Schema=]
 
 <pre class="example" highlight="json">
 {
-  "type": "https://credentials.workday.com/docs/credential-schema.json",
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
   "modelVersion": "1.0",
   "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
@@ -326,7 +326,7 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
 <b>Example</b>
 <pre class="example" highlight="json">
 {
-  "type": "https://credentials.workday.com/docs/credential-schema.json",
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
   "modelVersion": "1.0",
   "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "EmailCredentialSchema",
@@ -415,7 +415,7 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
 
 <pre class="example" highlight="json">
 {
- "type": "https://credentials.workday.com/docs/credential-schema.json",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
  "modelVersion": "1.0",
  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
  "name": "EmailCredentialSchema",
@@ -441,7 +441,7 @@ In this example we once again reference the email schema, but this time we add a
 
 <pre class="example" highlight="json">
 {
- "type": "https://credentials.workday.com/docs/credential-schema.json",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
  "modelVersion": "1.0",
  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
  "name": "EmailCredentialSchema",
@@ -475,7 +475,7 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
 
 <pre class="example" highlight="json">
 {
- "type": "https://credentials.workday.com/docs/credential-schema.json",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
  "modelVersion": "1.0",
  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
  "name": "EmailCredentialSchema",
@@ -505,7 +505,7 @@ This time our credentialing requirements for email have changed and email addres
 
 <pre class="example" highlight="json">
 {
- "type": "https://credentials.workday.com/docs/credential-schema.json",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
  "modelVersion": "1.0",
  "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
  "name": "EmailCredentialSchema",
@@ -548,7 +548,7 @@ We define an Email schema as the basis for a credential.
 
 <pre class="example" highlight="json">
 {
-  "type": "https://credentials.workday.com/docs/credential-schema.json",
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
   "modelVersion": "1.0",
   "id": "did:work:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
