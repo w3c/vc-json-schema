@@ -1,9 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const exampleEd25519Signature2018Unsigned = require("./jsonld/example.unsigned.json");
-const exampleEd25519Signature2018Signed = require("./jsonld/example.signed.json");
-
 const exampleJoseNonLinkedDataSignature2020Unsigned = require("./nonjsonld/example.unsigned.json");
 const exampleJoseNonLinkedDataSignature2020Signed = require("./nonjsonld/example.signed.json");
 
@@ -124,8 +121,7 @@ module.exports = {
   documentLoader,
   didKeypair,
   didKeyDoc,
-  exampleEd25519Signature2018Unsigned,
-  exampleEd25519Signature2018Signed,
+
   exampleJoseNonLinkedDataSignature2020Unsigned,
   exampleJoseNonLinkedDataSignature2020Signed
 };

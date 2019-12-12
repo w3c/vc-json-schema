@@ -1,5 +1,5 @@
 {
-  "name": "reference-impl",
+  "name": "trade-certificates",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "base64url": "^3.0.1",
     "crypto-ld": "^3.7.0",
     "jest": "^24.9.0",
-    "jose": "^1.16.2",
-    "jsonld-signatures": "^4.5.0"
+    "jsonld": "^2.0.1",
+    "jsonld-signatures": "4.5.0",
+    "vc-js": "^0.2.0"
   },
   "dependencies": {
-    "canonicalize": "^1.0.1",
-    "jsonld": "^2.0.1"
+    "jsonschema": "^1.2.5"
   }
 }
