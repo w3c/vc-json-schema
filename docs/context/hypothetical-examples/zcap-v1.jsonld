@@ -1,0 +1,15 @@
+{
+    "@context":
+    {
+      "@version": 1.0,
+      "zcap": "https://w3c-ccg.github.io/zcap-ld/#terminology",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "action": "zcap:action",
+      "caveat": "zcap:caveat",
+      "capability": "zcap:capability", 
+      "parentCapability": {"@id": "zcap:parentCapability", "@type": "xsd:dateTime"},
+      "invoker": "zcap:invoker",
+      "capabilityDelegation": {"@id": "zcap:capabilityDelegation", "@type": "xsd:dateTime"},
+      "target": "zcap:target"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "@context":
+    {
+      "@version": 1.0,
+      "rev": "https://project.factom.com/contexts/review-v1#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "@type": "schema:AssessAction",
+      "agent": "schema:agent",
+      "object": "schema:object",
+      "result": "schema:result",
+      "startTime": {"@id": "schema:startTime", "@type": "xsd:dateTime"},
+      "endTime": {"@id": "schema:endTime", "@type": "xsd:dateTime"}
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "@context":
+  {
+	"@version": 1.0,
+	"csn": "https://project.factom.com/contexts/concession-v1#",
+	"xsd": "http://www.w3.org/2001/XMLSchema#",
+	"AdministrativeArea": "csn:AdministrativeArea",
+	"AggrementStatus": "csn:AggrementStatus", 
+	"AllocationDate": {"@id": "csn:AllocationDate", "@type": "xsd:dateTime"},
+	"AllocationStatus": "csn:AllocationStatus", 
+	"ConcessionName": "csn:ConcessionName", 
+	"ConcessionType": "csn:ConcessionType",
+	"Contractor": "csn:Contractor",
+	"CreationDate": {"@id": "csn:CreationDate", "@type": "xsd:dateTime"},
+	"Description": "csn:Description",
+	"EditingUser": "csn:EditingUser",
+	"FinalConventionDate": {"@id": "csn:FinalConventionDate", "@type": "xsd:dateTime"},
+	"ForestManagementCertification": "csn:ForestManagementCertification",
+	"ForestManagementCertificationAgency": "csn:ForestManagementCertificationAgency",
+	"ForestManagementCertificationArea": "csn:ForestManagementCertificationArea",
+	"GlobalID": "csn:GlobalID",
+	"LastEditionDate": {"@id": "csn:LastEditionDate", "@type": "xsd:dateTime"},
+	"LastEditor": "csn:LastEditor",
+	"LegalOriginCertificationAgency": "csn:LegalOriginCertificationAgency",
+	"LegalOriginCertificationDate": {"@id": "csn:LegalOriginCertificationDate", "@type": "xsd:dateTime"},
+	"LegalityCertification": "csn:LegalityCertification",
+	"ManagementCertificationDate": {"@id": "csn:ManagementCertificationDate", "@type": "xsd:dateTime"},
+	"ManagementPlanApprovalDate": {"@id": "csn:ManagementPlanApprovalDate", "@type": "xsd:dateTime"},
+	"ObjectID": "csn:ObjectID",
+	"PlanningStatus": "csn:PlanningStatus",
+	"ProvisionalConventionDate": {"@id": "csn:ProvisionalConventionDate", "@type": "xsd:dateTime"},
+	"TraceabilityCertification": "csn:TraceabilityCertification",
+	"TraceabilityCertificationDate": {"@id": "csn:TraceabilityCertificationDate", "@type": "xsd:dateTime"},
+	"VerificationOfOriginCertificationAgency": "csn:VerificationOfOriginCertificationAgency",
+  }
+}
+

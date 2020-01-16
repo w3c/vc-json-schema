@@ -1,0 +1,15 @@
+{
+    "@context":
+    {
+      "@version": 1.0,
+      "handoff": "https://project.factom.com/contexts/handoff-v1#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "@type": "schema:TransferAction",
+      "recipient": "schema:recipient",
+      "fromLocation": "schema:fromLocation",
+      "toLocation": "schema:toLocation",
+      "deliveryMethod": "schema:deliveryMethod",
+      "sender": "schema:sender"
+    }
+}

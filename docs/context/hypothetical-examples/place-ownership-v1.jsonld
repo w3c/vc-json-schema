@@ -1,0 +1,14 @@
+{
+    "@context":
+    {
+      "@version": 1.0,
+      "po": "https://project.factom.com/contexts/place-ownership-v1#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "@type": "schema:StructuredValue",
+      "acquiredFrom": "po:acquiredFrom",
+      "ownedFrom": {"@id": "po:ownedFrom", "@type": "xsd:dateTime"},
+      "ownedThrough": {"@id": "po:ownedThrough", "@type": "xsd:dateTime"},
+      "location": {"@id": "po:ownedLocation", "@type": "schema:Place"}
+    }
+}

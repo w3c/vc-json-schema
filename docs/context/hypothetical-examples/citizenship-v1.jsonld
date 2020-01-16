@@ -1,0 +1,18 @@
+{
+    "@context":
+    {
+      "@version": 1.0,
+      "czn": "https://digitalbazaar.github.io/citizenship-vocab/#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "birthCountry": "czn:action",
+      "birthDate": {"@id": "czn:birthDate", "@type": "xsd:dateTime"},
+      "familyName": "czn:familyName",
+      "gender": "czn:gender",
+      "givenName": "czn:givenName",
+      "image": "czn:image",
+      "lprCategory": "czn:lprCategory",
+      "lprNumber": "czn:lprNumber",
+      "mrzInformation": "czn:mrzInformation",
+      "residentSince": {"@id": "czn:residentSince", "@type": "xsd:dateTime"}
+    }
+}
