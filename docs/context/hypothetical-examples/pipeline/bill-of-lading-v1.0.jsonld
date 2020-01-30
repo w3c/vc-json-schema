@@ -1,0 +1,30 @@
+{
+  "@context":
+  {
+      "@version": 1.1,
+      "cp": "https://mavennet.com/crude-product-vocab/#",
+      "bol": "https://mavennet.com/bill-of-lading-vocab/#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "prm": "http://schema.org/ProductModel",
+      "org": "http://schema.org/Organization",
+      "geo": "http://schema.org/GeoCoordinates",
+      "shipperId": "org:identifier",
+      "address": "geo:address",
+      "latitude": "geo:latitude",
+      "longitude": "geo:longitude",
+      "consigneeId": "org:identifier",
+      "category": "prm:category",
+      "hsCode": "cp:hsCode",
+      "uom": "cp:uom",
+      "carrierId": "org:identifier",
+      "transportType": "bol:transportType",
+      "deliveryAddress": "geo:address",
+      "bolNumber": "bol:documentNumber",
+      "valuePerItem": "bol:valuePerItem",
+      "totalOrderValue": "bol:totalOrderValue",
+      "freightChargeTerms": "bol:freightChargeTerms",
+      "expectedDeliveryDate": "schema:date",
+      "comments": "schema:text"
+  }
+}
