@@ -2,8 +2,8 @@
   "@context":
   {
       "@version": 1.1,
-      "cp": "https://mavennet.com/contexts/crude-product-vocab/#",
-      "qp": "https://mavennet.com/contexts/crude-qp-in-bond-vocab/#",
+      "cp": "https://mavennet.com/contexts/crude-product-vocab#",
+      "qp": "https://mavennet.com/contexts/crude-qp-in-bond-vocab#",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "schema": "http://schema.org/",
       "prm": "http://schema.org/ProductModel",
