@@ -15,7 +15,7 @@
       "productionDate": "prm:productionDate",
       "predecessorOf": "prm:predecessorOf",
       "successorOf": "prm:successorOf",
-      "ownerId": "org:identifier",
+      "producerId": "org:identifier",
       "address": "geo:address",
       "latitude": "geo:latitude",
       "longitude": "geo:longitude",
@@ -83,6 +83,7 @@
       "isoButane": "cp:isoButane",
       "nButane": "cp:nButane",
       "hydrocarbonsHeavier": "cp:hydrocarbonsHeavier",
-      "unsaturatedHydrocarbons": "cp:unsaturatedHydrocarbons"
+      "unsaturatedHydrocarbons": "cp:unsaturatedHydrocarbons",
+      "certifiedCrudeProduct": "cp:certifiedCrudeProduct"
   }
 }

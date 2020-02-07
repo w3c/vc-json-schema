@@ -3,7 +3,10 @@
 - [Latest JSON-LD Context](./qp-in-bond-v1.0.jsonld)
 
 ### Terminology
-
+<h4 id="certifiedQPInBond"><a href="#certifiedQPInBond">certifiedQPInBond<v/a></h4>
+Certified QP in-bond. 
+<h4 id="productId"><a href="#productId">productId<v/a></h4>
+Product identifer. 
 <h4 id="entryNo"><a href="#entryNo">entryNo<v/a></h4>
 Entry number. 
 <h4 id="classOfEntry"><a href="#classOfEntry">classOfEntry<v/a></h4>

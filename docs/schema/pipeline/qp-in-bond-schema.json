@@ -1,0 +1,91 @@
+{
+  "@context": [
+    "https://w3id.org/did/v1",
+    "https://w3id.org/security/v2",
+    "https://w3c-ccg.github.io/vc-json-schemas/context/vc-json-schema-v0.0.jsonld"
+  ],
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/credential-schema.json",
+  "modelVersion": "1.0",
+  "id": "https://w3c-ccg.github.io/vc-json-schemas/schema/qp-in-bond-v1.0.jsonld",
+  "name": "QPInBondSchema",
+  "author": "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "QP in-bond information",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "certifiedQPInBond": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "entryNo": {
+            "type": "string"
+          },
+          "classOfEntry": {
+            "type": "string"
+          },
+          "cbpPortDirector": {
+            "type": "string"
+          },
+          "importedBy": {
+            "type": "string"
+          },
+          "transporterId": {
+            "type": "string"
+          },
+          "transportType": {
+            "type": "string"
+          },
+          "recipientId": {
+            "type": "string"
+          },
+          "deliveryAddress": {
+            "type": "string"
+          },
+          "deliveryLatitude": {
+            "type": "string"
+          },
+          "deliveryLongitude": {
+            "type": "string"
+          },
+          "valuePerItem": {
+            "type": "string"
+          },
+          "totalOrderValue": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productId",
+          "entryNo",
+          "classOfEntry",
+          "cbpPortDirector",
+          "importedBy",
+          "irsNumber",
+          "transporterId",
+          "recipientId",
+          "deliveryAddress",
+          "valuePerItem",
+          "totalOrderValue"
+        ]
+      }
+    },
+    "required": ["certifiedQPInBond"]
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "created": "2019-12-11T03:50:55Z",
+    "verificationMethod": "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..OhEuDcyZxZ0nVkpoc6ZwxslNcPFhOzgP-ec2KFIGi9BBOZOU3V1UT7m75k-B4_PWZU8V8hykLzWAYa-2YV_KCw"
+  }
+}

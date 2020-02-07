@@ -1,0 +1,284 @@
+{
+  "@context": [
+    "https://w3id.org/did/v1",
+    "https://w3id.org/security/v2",
+    "https://w3c-ccg.github.io/vc-json-schemas/context/vc-json-schema-v0.0.jsonld"
+  ],
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/credential-schema.json",
+  "modelVersion": "1.0",
+  "id": "https://w3c-ccg.github.io/vc-json-schemas/schema/crude-product-v1.0.json",
+  "name": "CrudeProductSchema",
+  "author": "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Crude product information",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "certifiedCrudeProduct": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "productionDate": {
+            "type": "string"
+          },
+          "predecessorOf": {
+            "type": "string"
+          },
+          "successorOf": {
+            "type": "string"
+          },
+          "producerId": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "physicalSpecs": {
+            "type": "object"
+          },
+          "uom": {
+            "type": "string"
+          },
+          "minimumQuantity": {
+            "type": "string"
+          },
+          "apiGravity": {
+            "type": "string"
+          },
+          "viscosityAt10C": {
+            "type": "string"
+          },
+          "viscosityAt20C": {
+            "type": "string"
+          },
+          "viscosityAt30C": {
+            "type": "string"
+          },
+          "viscosityAt40C": {
+            "type": "string"
+          },
+          "viscosityAt45C": {
+            "type": "string"
+          },
+          "pourPoint": {
+            "type": "string"
+          },
+          "vapourPressure": {
+            "type": "string"
+          },
+          "density": {
+            "type": "string"
+          },
+          "naphtha": {
+            "type": "string"
+          },
+          "distillateAt350To650F": {
+            "type": "string"
+          },
+          "gasOilAt650To980F": {
+            "type": "string"
+          },
+          "residAt980F": {
+            "type": "string"
+          },
+          "deemedButane": {
+            "type": "string"
+          },
+          "tan": {
+            "type": "string"
+          },
+          "ron": {
+            "type": "string"
+          },
+          "mon": {
+            "type": "string"
+          },
+          "boilingPoint": {
+            "type": "string"
+          },
+          "freezingPoint": {
+            "type": "string"
+          },
+          "criticalTemperature": {
+            "type": "string"
+          },
+          "criticalPressure": {
+            "type": "string"
+          },
+          "autoIgnitionTemperatureInAirAt1atm": {
+            "type": "string"
+          },
+          "solubilityInTrichloroethylene": {
+            "type": "string"
+          },
+          "penetrationAt25C100g5sec": {
+            "type": "string"
+          },
+          "softeningPoint": {
+            "type": "string"
+          },
+          "ductilityAt25C": {
+            "type": "string"
+          },
+          "olefin": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "odor": {
+            "type": "string"
+          },
+          "grossCalorificValueAt15C": {
+            "type": "string"
+          },
+          "netCalorificValueAt15C": {
+            "type": "string"
+          },
+          "airRequiredForCombustion": {
+            "type": "string"
+          },
+          "copperCorrosionAt38CFor1Hour": {
+            "type": "string"
+          },
+          "chemicalSpecs": {
+            "type": "object"
+          },
+          "microCarbonResidue": {
+            "type": "string"
+          },
+          "aromaticsTotalBTEX": {
+            "type": "string"
+          },
+          "sedimentAndWater": {
+            "type": "string"
+          },
+          "liquidPhaseH2S": {
+            "type": "string"
+          },
+          "mercury": {
+            "type": "string"
+          },
+          "oxygenates": {
+            "type": "string"
+          },
+          "filterableSolids": {
+            "type": "string"
+          },
+          "phosphorousVolatile": {
+            "type": "string"
+          },
+          "mediumChainTriglycerides": {
+            "type": "string"
+          },
+          "benzene": {
+            "type": "string"
+          },
+          "particulates": {
+            "type": "string"
+          },
+          "organicChlorides": {
+            "type": "string"
+          },
+          "nickel": {
+            "type": "string"
+          },
+          "vanadium": {
+            "type": "string"
+          },
+          "water": {
+            "type": "string"
+          },
+          "molecularWeight": {
+            "type": "string"
+          },
+          "sulphur": {
+            "type": "string"
+          },
+          "naphthenes": {
+            "type": "string"
+          },
+          "chloride": {
+            "type": "string"
+          },
+          "arsenic": {
+            "type": "string"
+          },
+          "lead": {
+            "type": "string"
+          },
+          "ethene": {
+            "type": "object"
+          },
+          "propane": {
+            "type": "string"
+          },
+          "isoButane": {
+            "type": "string"
+          },
+          "nButane": {
+            "type": "string"
+          },
+          "hydrocarbonsHeavier": {
+            "type": "string"
+          },
+          "unsaturatedHydrocarbons": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "identifier",
+          "name",
+          "productionDate",
+          "producerId",
+          "minimumQuantity",
+          "apiGravity",
+          "viscosityAt10C",
+          "viscosityAt20C",
+          "viscosityAt30C",
+          "viscosityAt40C",
+          "viscosityAt45C",
+          "pourPoint",
+          "vapourPressure",
+          "density",
+          "naphtha",
+          "sedimentAndWater",
+          "sulphur",
+          "address",
+          "latitude",
+          "longitude",
+          "hsCode"
+        ]
+      }
+    },
+    "required": ["certifiedCrudeProduct"]
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "created": "2019-12-11T03:50:55Z",
+    "verificationMethod": "did:key:z6MkfXT3gnptvkda3fmLVKHdJrm8gUnmx3faSd1iVeCAxYtP",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..OhEuDcyZxZ0nVkpoc6ZwxslNcPFhOzgP-ec2KFIGi9BBOZOU3V1UT7m75k-B4_PWZU8V8hykLzWAYa-2YV_KCw"
+  }
+}

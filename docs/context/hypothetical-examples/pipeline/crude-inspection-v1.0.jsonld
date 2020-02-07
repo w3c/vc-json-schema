@@ -9,10 +9,12 @@
       "org": "http://schema.org/Organization",
       "geo": "http://schema.org/GeoCoordinates",
       "identifier": "prm:identifier",
-      "manufacturerId": "org:identifier",
+      "producerId": "org:identifier",
+      "inspectorId": "org:identifier",
       "address": "geo:address",
       "latitude": "geo:latitude",
       "longitude": "geo:longitude",
+      "hsCode": "cp:hsCode",
       "physicalSpecs": "cp:physicalSpecs",
       "uom": "cp:uom",
       "minimumQuantity": "cp:minimumQuantity",
@@ -76,6 +78,7 @@
       "isoButane": "cp:isoButane",
       "nButane": "cp:nButane",
       "hydrocarbonsHeavier": "cp:hydrocarbonsHeavier",
-      "unsaturatedHydrocarbons": "cp:unsaturatedHydrocarbons"
+      "unsaturatedHydrocarbons": "cp:unsaturatedHydrocarbons",
+      "certifiedCrudeProduct": "cp:certifiedCrudeProduct"
   }
 }

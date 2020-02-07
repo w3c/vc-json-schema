@@ -3,6 +3,8 @@
 - [Latest JSON-LD Context](./crude-product-v1.0.jsonld)
 
 ### Terminology
+<h4 id="identifier"><a href="#identifier">identifier<v/a></h4>
+For crude producer, this represents a battery code. For transporter, it's a batch id.
 <h4 id="name"><a href="#name">name<v/a></h4>
 Product name. 
 <h4 id="description"><a href="#description">description<v/a></h4>
@@ -17,8 +19,8 @@ Production date.
 Predecessor of this product. 
 <h4 id="successorOf"><a href="#successorOf">successorOf<v/a></h4>
 Successor of this product. 
-<h4 id="ownerId"><a href="#ownerId">ownerId<v/a></h4>
-Owner or creator of this product. 
+<h4 id="producerId"><a href="#producerId">producerId<v/a></h4>
+Producer or creator of this product. This can be shipper in case of transporter.
 <h4 id="address"><a href="#address">address<v/a></h4>
 Address of the product available first time. 
 <h4 id="latitude"><a href="#latitude">latitude</a></h4>
@@ -157,4 +159,6 @@ Composition, n-Butane (%).
 Composition, Hydrocarbons and Heavier (%).
 <h4 id="unsaturatedHydrocarbons"><a href="#unsaturatedHydrocarbons">unsaturatedHydrocarbons</a></h4>
 Composition, Unsaturated Hydrocarbons (%).
+<h4 id="certifiedCrudeProduct"><a href="#certifiedCrudeProduct">certifiedCrudeProduct</a></h4>
+Crude product certified by the creator.
 
