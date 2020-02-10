@@ -1,0 +1,164 @@
+# Crude Product Context
+
+- [Latest JSON-LD Context](./crude-product-v1.0.jsonld)
+
+### Terminology
+<h4 id="identifier"><a href="#identifier">identifier<v/a></h4>
+For crude producer, this represents a battery code. For transporter, it's a batch id.
+<h4 id="name"><a href="#name">name<v/a></h4>
+Product name. 
+<h4 id="description"><a href="#description">description<v/a></h4>
+Product description. 
+<h4 id="category"><a href="#category">category<v/a></h4>
+Product category or type. 
+<h4 id="hsCode"><a href="#hsCode">hsCode<v/a></h4>
+HS Code. 
+<h4 id="productionDate"><a href="#productionDate">productionDate<v/a></h4>
+Production date. 
+<h4 id="predecessorOf"><a href="#predecessorOf">predecessorOf<v/a></h4>
+Predecessor of this product. 
+<h4 id="successorOf"><a href="#successorOf">successorOf<v/a></h4>
+Successor of this product. 
+<h4 id="producerId"><a href="#producerId">producerId<v/a></h4>
+Producer or creator of this product. This can be shipper in case of transporter.
+<h4 id="address"><a href="#address">address<v/a></h4>
+Address of the product available first time. 
+<h4 id="latitude"><a href="#latitude">latitude</a></h4>
+Latitude.
+<h4 id="longitude"><a href="#longitude">longitude</a></h4>
+Longitude.
+<h4 id="hsCode"><a href="#hsCode">hsCode<v/a></h4>
+HS Code. 
+<h4 id="physicalSpecs"><a href="#physicalSpecs">physicalSpecs<v/a></h4>
+Physical Specifications. 
+<h4 id="uom"><a href="#uom">uom</a></h4>
+Unit of Measurement.
+<h4 id="minimumQuantity"><a href="#minimumQuantity">minimumQuantity</a></h4>
+Minimum quantity.
+<h4 id="apiGravity"><a href="#apiGravity">apiGravity</a></h4>
+API Gravity.
+<h4 id="viscosityAt10C"><a href="#viscosityAt10C">viscosityAt10C</a></h4>
+Viscocity at 10C.
+<h4 id="viscosityAt20C"><a href="#viscosityAt20C">viscosityAt20C</a></h4>
+Viscocity at 20C.
+<h4 id="viscosityAt30C"><a href="#viscosityAt30C">viscosityAt30C</a></h4>
+Viscocity at 30C.
+<h4 id="viscosityAt40C"><a href="#viscosityAt40C">viscosityAt40C</a></h4>
+Viscocity at 40C.
+<h4 id="viscosityAt45C"><a href="#viscosityAt45C">viscosityAt45C</a></h4>
+Viscocity at 45C.
+<h4 id="pourPoint"><a href="#pourPoint">pourPoint</a></h4>
+Pour Point.
+<h4 id="vapourPressure"><a href="#vapourPressure">vapourPressure</a></h4>
+Vapour Pressure.
+<h4 id="density"><a href="#density">density</a></h4>
+Density.
+<h4 id="naphtha"><a href="#naphtha">naphtha</a></h4>
+Naphtha (IBP-350F).
+<h4 id="distillateAt350To650F"><a href="#distillateAt350To650F">distillateAt350To650F</a></h4>
+Distillate (350-650F).
+<h4 id="gasOilAt650To980F"><a href="#gasOilAt650To980F">gasOilAt650To980F</a></h4>
+Gas Oil (650-980F).
+<h4 id="residAt980F"><a href="#residAt980F">residAt980F</a></h4>
+Resid (+980F).
+<h4 id="deemedButane"><a href="#deemedButane">deemedButane</a></h4>
+Deemed Butane.
+<h4 id="tan"><a href="#tan">tan</a></h4>
+Total Acid Number (TAN).
+<h4 id="ron"><a href="#ron">ron</a></h4>
+Research Octane Number (RON).
+<h4 id="mon"><a href="#mon">mon</a></h4>
+Motor octane number (MON).
+<h4 id="boilingPointAt1atm"><a href="#boilingPointAt1atm">boilingPointAt1atm</a></h4>
+Boiling Point at 1 atm.
+<h4 id="freezingPoint"><a href="#freezingPoint">freezingPoint</a></h4>
+Freezing Point.
+<h4 id="criticalTemperature"><a href="#criticalTemperature">criticalTemperature</a></h4>
+Critical Temperature.
+<h4 id="criticalPressure"><a href="#criticalPressure">criticalPressure</a></h4>
+Critical Pressure.
+<h4 id="autoIgnitionTemperatureInAirAt1atm"><a href="#autoIgnitionTemperatureInAirAt1atm">autoIgnitionTemperatureInAirAt1atm</a></h4>
+Auto-Ignition temperature in air at 1 atm.
+<h4 id="flashPoint"><a href="#flashPoint">flashPoint</a></h4>
+Flash point.
+<h4 id="solubilityInTrichloroethylene"><a href="#solubilityInTrichloroethylene">solubilityInTrichloroethylene</a></h4>
+Solubility in Trichloroethylene (%).
+<h4 id="penetrationAt25C100g5sec"><a href="#penetrationAt25C100g5sec">penetrationAt25C100g5sec</a></h4>
+Penetration at 25 ° C,100 g,5 sec (mm).
+<h4 id="softeningPoint"><a href="#softeningPoint">softeningPoint</a></h4>
+Softening Point.
+<h4 id="ductilityAt25C"><a href="#ductilityAt25C">ductilityAt25C</a></h4>
+Ductility at 25°C, cm.
+<h4 id="olefin"><a href="#olefin">olefin</a></h4>
+Olefin.
+<h4 id="color"><a href="#color">color</a></h4>
+Color.
+<h4 id="odor"><a href="#odor">odor</a></h4>
+Odor.
+<h4 id="grossCalorificValueAt15C"><a href="#grossCalorificValueAt15C">grossCalorificValueAt15C</a></h4>
+Gross Calorific Value at 15°C.
+<h4 id="netCalorificValueAt15C"><a href="#netCalorificValueAt15C">netCalorificValueAt15C</a></h4>
+Net Calorific Value at 15°C (kcal/Kg).
+<h4 id="airRequiredForCombustion"><a href="#airRequiredForCombustion">airRequiredForCombustion</a></h4>
+Air required for combustion (m3/m3).
+<h4 id="copperCorrosionAt38CFor1Hour"><a href="#copperCorrosionAt38CFor1Hour">copperCorrosionAt38CFor1Hour</a></h4>
+Copper Corrosion @ 38°C, for 1 hour (Decimal Number).
+<h4 id="chemicalSpecs"><a href="#chemicalSpecs">chemicalSpecs</a></h4>
+Chemical Specifications.
+<h4 id="microCarbonResidue"><a href="#microCarbonResidue">microCarbonResidue</a></h4>
+Micro Carbon Residue (MCR) (%).
+<h4 id="aromaticsTotalBTEX"><a href="#aromaticsTotalBTEX">aromaticsTotalBTEX</a></h4>
+Aromatics, total (BTEX) (%).
+<h4 id="sedimentAndWater"><a href="#sedimentAndWater">sedimentAndWater</a></h4>
+Sediment and Water (% volume).
+<h4 id="liquidPhaseH2S"><a href="#liquidPhaseH2S">liquidPhaseH2S</a></h4>
+H2S (in liquid phase) (wppm).
+<h4 id="mercury"><a href="#mercury">mercury</a></h4>
+Mercury (wppm).
+<h4 id="oxygenates"><a href="#oxygenates">oxygenates</a></h4>
+Oxygenates (wppm).
+<h4 id="filterableSolids"><a href="#filterableSolids">filterableSolids</a></h4>
+Filterable Solids (ppm).
+<h4 id="phosphorousVolatile"><a href="#phosphorousVolatile">phosphorousVolatile</a></h4>
+Phosphorous Volatile (wppm).
+<h4 id="mediumChainTriglycerides"><a href="#mediumChainTriglycerides">mediumChainTriglycerides</a></h4>
+Medium-Chain Triglycerides (MCR) (%).
+<h4 id="benzene"><a href="#benzene">benzene</a></h4>
+Benzene (%).
+<h4 id="particulates"><a href="#particulates">particulates</a></h4>
+Particulates (ppm).
+<h4 id="organicChlorides"><a href="#organicChlorides">organicChlorides</a></h4>
+Organic Chlorides (wppm).
+<h4 id="nickel"><a href="#nickel">nickel</a></h4>
+Nickel (mg/L).
+<h4 id="vanadium"><a href="#vanadium">vanadium</a></h4>
+Vanadium (mg/L)
+<h4 id="water"><a href="#water">water</a></h4>
+Water content (%).
+<h4 id="molecularWeight"><a href="#molecularWeight">molecularWeight</a></h4>
+Molecular Weight (gm/mole).
+<h4 id="sulphur"><a href="#sulphur">sulphur</a></h4>
+Sulphur (%).
+<h4 id="naphthenes"><a href="#naphthenes">naphthenes</a></h4>
+Naphthenes (%).
+<h4 id="chloride"><a href="#chloride">chloride</a></h4>
+Chloride as Cl (wppm).
+<h4 id="arsenic"><a href="#arsenic">arsenic</a></h4>
+Arsenic (wppb).
+<h4 id="lead"><a href="#lead">lead</a></h4>
+Lead (wppb).
+<h4 id="ethene"><a href="#ethene">ethene</a></h4>
+Composition, Ethane (%).
+<h4 id="propane"><a href="#propane">propane</a></h4>
+Composition, Propane (%).
+<h4 id="isoButane"><a href="#isoButane">isoButane</a></h4>
+Composition, Iso-Butane (%).
+<h4 id="nButane"><a href="#nButane">nButane</a></h4>
+Composition, n-Butane (%).
+<h4 id="hydrocarbonsHeavier"><a href="#hydrocarbonsHeavier">hydrocarbonsHeavier</a></h4>
+Composition, Hydrocarbons and Heavier (%).
+<h4 id="unsaturatedHydrocarbons"><a href="#unsaturatedHydrocarbons">unsaturatedHydrocarbons</a></h4>
+Composition, Unsaturated Hydrocarbons (%).
+<h4 id="certifiedCrudeProduct"><a href="#certifiedCrudeProduct">certifiedCrudeProduct</a></h4>
+Crude product certified by the creator.
+
