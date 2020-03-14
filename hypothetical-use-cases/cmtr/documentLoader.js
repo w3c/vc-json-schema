@@ -13,18 +13,33 @@ const loadContext = relativePath => {
 
 const contexts = {
   "https://www.w3.org/2018/credentials/v1": loadContext(
-    "../../../docs/context/credentials-v1.jsonld"
+    "../../docs/context/credentials-v1.jsonld"
   ),
-  "https://w3c-ccg.github.io/vc-json-schemas/context/hypothetical-examples/trade-certificates-v0.0.jsonld": loadContext(
-    "../../../docs/context/hypothetical-examples/trade-certificates-v0.0.jsonld"
+  "https://w3c-ccg.github.io/vc-json-schemas/context/vc-json-schema-v0.0.jsonld": loadContext(
+    "../../docs/context/vc-json-schema-v0.0.jsonld"
   ),
-  "https://w3id.org/did/v1": loadContext("../../../docs/context/did-v1.jsonld"),
+  "https://w3id.org/did/v1": loadContext("../../docs/context/did-v1.jsonld"),
+  "https://w3id.org/did/v0.11": loadContext("../../docs/context/did-v0.11.jsonld"),
   "https://w3id.org/security/v1": loadContext(
-    "../../../docs/context/security-v1.jsonld"
+    "../../docs/context/security-v1.jsonld"
   ),
   "https://w3id.org/security/v2": loadContext(
-    "../../../docs/context/security-v2.jsonld"
-  )
+    "../../docs/context/security-v2.jsonld"
+  ),
+  "http://schema.org": loadContext(
+    "../../docs/context/schema.org.jsonld"
+  ),
+
+  
+
+  "https://w3c-ccg.github.io/vc-json-schemas/example/cmtr/v0.0/cmtr-v0.0.jsonld": loadContext(
+    "../../docs/example/cmtr/v0.0/cmtr-v0.0.jsonld"
+  ),
+  "https://w3c-ccg.github.io/vc-json-schemas/example/cmtr/v0.1/cmtr-v0.1.jsonld": loadContext(
+    "../../docs/example/cmtr/v0.1/cmtr-v0.1.jsonld"
+  ),
+
+  
 };
 
 const documentLoader = async url => {
@@ -48,11 +63,13 @@ const documentLoader = async url => {
     };
   }
 
-  try {
-    return jsonld.documentLoader(url);
-  } catch (e) {
-    console.error("No remote context support for " + url);
-  }
+  // try {
+  //   let data = await jsonld.documentLoader(url);
+  //   console.log(data.document)
+  //   return  data;
+  // } catch (e) {
+  //   console.error("No remote context support for " + url);
+  // }
 
   console.error("No custom context support for " + url);
   throw new Error("No custom context support for " + url);
