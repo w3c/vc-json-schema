@@ -94,7 +94,7 @@ This specification provides a standardized way of creating [=Credential Schema=]
 # Terminology # {#terminology}
 
 : <dfn>id</dfn>
-:: A globally unique identifier to locate the schema on a distributed ledger. Each credential schema has its own unique identifier, and each version of a credential schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Generic DID Parameter Name](https://w3c-ccg.github.io/did-core/#generic-did-parameter-names) based upon the author of the schema. For example, if the author had a did like <pre>did:work:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:work:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>
+:: A globally unique identifier to locate the schema on a distributed ledger. Each credential schema has its own unique identifier, and each version of a credential schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Generic DID Parameter Name](https://w3c.github.io/did-core/#did-syntax) based upon the author of the schema. For example, if the author had a did like <pre>did:work:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:work:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>
 
 : <dfn>Credential Schema</dfn>
 :: The data template for a credential. Refers to the entirety of a [=Credential Schema=], including both the [=Metadata=] and [=JSON Schema=]. The term may refer to a document either with, or without a [=proof=].
