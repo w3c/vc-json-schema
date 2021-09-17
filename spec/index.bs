@@ -11,7 +11,7 @@ ED: https://w3c-ccg.github.io/vc-json-schemas/
 Shortname: vcjsonschemaspec
 Level: 1
 
-Editor: Gabe Cohen, w3cid  gabe.cohen@hey.com
+Editor: Gabe Cohen, w3cid 116851, gabe.cohen@hey.com
 Editor: Orie Steele, w3cid 109171, [Transmute](https://www.transmute.industries/), orie@transmute.industries
 
 group: ccg
@@ -83,14 +83,14 @@ figure.table .overlarge {
 </style>
 
 # Introduction # {#intro}
-This specification provides a mechanism for the use of verifiable credentials in a highly scalable, secure, and verifiable way. A large part of the integrity of a verifiable credential is how to structure the credential so that all three parties —- issuer, holder, verifier -- may have a singular mechanism of trust into what they are using. We call that document a [=Credential Schema=].
+This specification provides a mechanism for the use of verifiable credentials in a highly scalable, secure, and verifiable way. A large part of the integrity of a verifiable credential is how to structure the credential so that all three parties — issuer, holder, verifier — may have a singular mechanism of trust into what they are using. We call that document a [=Credential Schema=].
 
-This specification provides a standardized way of creating [=Credential Schema=]s to be used in credentialing platforms, how to version them, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the `credentialSubject` and another for other credential properties.
+This specification provides a standardized way of creating [=Credential Schemas=] to be used in credentialing platforms, how to version them, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the `credentialSubject` and another for other credential properties.
 
 # Terminology # {#terminology}
 
 : <dfn>id</dfn>
-:: A locally unique identifier to locate the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier, and each version of a schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Uniform Resource Identifier](https://www.rfc-editor.org/rfc/rfc3986) that _may_ contain informatoin pertaining to the author and version of the schema. For example, if the author had a DID like <pre>did:key:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:key:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>.
+:: A locally unique identifier to locate the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier, and each version of a schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Uniform Resource Identifier](https://www.rfc-editor.org/rfc/rfc3986) that <i>may</i> contain informatoin pertaining to the author and version of the schema. For example, if the author had a DID like <pre>did:key:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:key:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>.
 
 : <dfn>Credential Schema</dfn>
 :: The data template for a credential. Refers to the entirety of a [=Credential Schema=], including both the [=Metadata=] and [=JSON Schema=]. The term may refer to a document either with, or without a [=proof=].
@@ -132,10 +132,7 @@ This specification provides a standardized way of creating [=Credential Schema=]
 :: It is important in software systems for machines to understand the context of what a document is. In credential schemas this is declared in the <b>type</b> field. This field resolves to a JSON schema with details about the <b>schema metadata</b> that applies to the schema. A piece of [=Metadata=].
 
 : <dfn>version</dfn>
-:: After a machine has parsed the type property it should know that the document it is reading is a [=Credential Schema=]. The next field is the version, which denotes what version of the <b>schema metadata</b> this is. A piece of [=Metadata=].
-
-: <dfn>schemaVersion</dfn>
-:: A version that applies to both the [=JSON Schema=] and [=Metadata=]. A piece of [=Metadata=].
+:: Denotes the revision of a given Credential Schema.
 
 : <dfn>name</dfn>
 :: A human-readable name for the schema. A piece of [=Metadata=].
@@ -177,9 +174,9 @@ The [[VC_DATA_MODEL]] specifies the models used for Verifiable Credentials and V
 
 # Formatting # {#formatting}
 
-The [[VC_DATA_MODEL]] provides its examples in the JSON Linked Data interchange format. The specification allows for other formats, such as standard JSON with JSON Schema but provides only limited examples. In the [credentialSchema section](https://www.w3.org/TR/vc-data-model/#data-schemas), <i>JSON-SCHEMA-2018</i> validation is explicitly called out. This specification does not use [[JSON-LD]]. If it becomes evident that it would be useful to include [[JSON-LD]] or another format that decision would be made in a revisal draft at a later date.
+The [[VC_DATA_MODEL]] provides examples in the JSON Linked Data interchange format. The specification allows for other formats, such as standard JSON with JSON Schema but provides limited examples. In the [credentialSchema section](https://www.w3.org/TR/vc-data-model/#data-schemas), <i>JSON-SCHEMA-2018</i> validation is noted explicitly. This specification does not use [[JSON-LD]]. If it becomes evident that it would be useful to include [[JSON-LD]] or another format that decision would be made in a revisal draft at a later date.
 
-The Verifiable Credentials data model relies heavily upon standard JSON with validation provided by [[JSON_SCHEMA]] Draft 7. The data model embeds [[JSON_SCHEMA]] documents inside a larger document that contains useful metadata about a given credential schema.
+The Verifiable Credentials data model relies heavily upon standard JSON with validation provided by [[JSON_SCHEMA]]. The data model embeds [[JSON_SCHEMA]] documents inside a larger document that contains useful metadata about a given credential schema.
 
 # Specification # {#specification}
 
@@ -193,27 +190,27 @@ A schema can be viewed from four perspectives: the author, issuer, verifier and 
 
 <b>Issuer:</b> Issuers utilize schemas to provide structure and meaning to the data they issue as verifiable credentials. By using schemas, issuers contribute to a credentialing ecosystem, and promote the use and adoption of data standards.
 
-<b>Verifier:</b> A verifier requesting data needs to do so with knowledge of the credential shapes. Credential Schemas allow a Verifier to ask for data knowing that an issuer has issued in an understood way and that a holder's wallet can find data matching that requested.
+<b>Verifier:</b> A verifier requesting data needs to do so with knowledge of the credential shapes. Credential Schemas allow a Verifier to request data knowing that an issuer has generated a Credential in a well-known format, and that a holder can accurately respond to such a request.
 
-<b>Holder:</b> Holders, or those who are the subject of credential issuance, can make sense of the data they own -- values -- by viewing it against a schema -- keys. When data is requested from them by referencing a [=Credential Schema=], this known structure allows the holder's wallet to return the data specifically requested by the verifier.
+<b>Holder:</b> Holders, or those who are the subject of credential issuance, can make sense of the data they own – values – by viewing it against a schema—keys. When data is requested from them by referencing a [=Credential Schema=], this known structure allows the holder to return the data specifically requested by the verifier.
 
 ### Guarantees ### {#guarantees}
 
 With adherance to the specification, the following guarantees can be made about a schema:
 
-- A schema is <i>versionable</i> and new versions can evolve it over time
-- A schema is available for any issuer to use and any verifier, or other platform member to <i>read</i>
-- A schema always guarantees the structure of a credential. The described structure can be used by the Verifier to understand what data the Holder holds. There is no requirement for the Verifier to validate sent data against the schema since this sent data may only be partial, for example in event of a proof request only requiring a single field from a credential with multiple fields defined in the schema.
+- A schema is <i>versionable</i> and new versions can evolve it over time.
+- A schema is available for any issuer to use and any verifier, or other platform member to <i>read</i>.
+- A schema always guarantees the structure of a credential. The described structure can be used by the Verifier to understand what data the Holder holds. There is no requirement for the Verifier to validate sent data against the schema since this sent data may only be partial, for example in event of a Presentation Request only requiring a singular field from a credential though there may be multiple fields defined in the schema.
 
 ### Storage ### {#storage}
 
-[=Credential Schema=]s are created and made available as immutable objects on a distributed ledger. Among other benefits, this makes tie-in easier with [[DID]] authors.
+[=Credential Schemas=] are created and made available as immutable objects on any number of storage mediums such as a distributed ledger, traditional database, or decentralized file storage. The same schema <i>may</i> be replicated across multiple file stores with the same identifier. Immutability is key to enable consistent sources of truth for credential issuance. Schemas can evolve by creating new versions.
 
 ### Versioning ### {#versioning}
 
-Schemas are versioned in two ways: [=version=] and [=schemaVersion=] properties. Versioning provides benefits for schema authors, issuers, and verifiers to make sense of their data.
+Schemas are versioned via a [=version=] property. The [=version=] denotes the revision of <i>this</i> specification the schema corresponds to.
 
-Authors and Issuers care about versioning to track advancements and changes over time both for formatting changes (e.g. supporting [[JSON_SCHEMA]] Draft 7 as opposed to Draft 6) as well as fields as a schema converges to its most currently usable form (e.g. adding a new required field). Holders care about versioning to know where and how their credential can be used. Similarly, Verifiers care about versioning to know which data, or model versions they should accept in their systems.
+Authors and Issuers care about versioning to track advancements and changes over time both for formatting changes (e.g. supporting [[JSON_SCHEMA]] [draft-bhutton-json-schema-00](https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00) as opposed to [Draft 7](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-01)) as well as fields as a schema converges to its most currently usable form (e.g. adding a new required field). Holders care about versioning to know where and how their credential can be used. Similarly, Verifiers care about versioning to know which data, or schema versions they should accept in their systems.
 
 ## Credential Schema Definition ## {#credential_schema_definition}
 
@@ -361,8 +358,6 @@ The properties, in order, before the JSON Schema document, embedded into the [=J
 
 1. [=id=]
 
-1. [=schemaVersion=]
-
 1. [=name=]
 
 1. [=author=]
@@ -391,11 +386,15 @@ This is where the [=Credential Schema=] data fields are defined as a valid [=JSO
 
 ### Proof ### {#credential_schema_definition_proof}
 
-Under construction.
+Any [=Credential Schema=] may be authenticated using [[Linked_Data_Proofs]].
+
+<pre class="note">
+  Example and more detail needed.
+</pre>
 
 # Versioning Guidelines # {#versioning_guidelines}
 
-This section applies to both [=schemaVersion=] and [=version=] properties of the metadata.
+This section applies to [=version=] properties of the metadata.
 
 Versioning is defined as <b>MODEL.REVISION</b> where <b>MODEL</b> is a breaking change and <b>REVISION</b> is non-breaking. The version is contained within the schema identifier.
 
@@ -582,15 +581,15 @@ The ID of the [=Credential Schema=] is visible in the <b>credentialSchema</b> se
 
 # Drawbacks # {#drawbacks}
 
-Within a credentialing ecosystem, relying heavily upon [[JSON Schema]] makes data shapes for credentials consistent, and could enable an ecosystem with many similar schemas with slight changes (naming, capitalization). Without proper oversight or authoritative schemas to limit duplication or misuse, utilization of [[JSON_SCHEMA]] could lead to a poor user experience. At a higher, platform level tooling can be provided to minimize confusion and promote reuse.
+Within a credentialing ecosystem, relying heavily upon [[JSON_SCHEMA]] makes data shapes for credentials consistent, and could enable an ecosystem with many similar schemas with slight changes (naming, capitalization). Without proper oversight or authoritative schemas to limit duplication or misuse, utilization of [[JSON_SCHEMA]] could lead to a poor user experience. At a higher, platform level tooling can be provided to minimize confusion and promote reuse.
 
 Within the broader Credentialing Ecosystem, interoperability could be more difficult if the wider community adopts [[JSON-LD]] without advocating for pairing with [[JSON_SCHEMA]] based schemas or credentials. This issue can mainly be side-stepped with the metadata we include –– the <i>Credential Schema</i> –– since this model is flexible to change. A new [=version=] could be introduced that supports [[JSON-LD]] and removes support for [[JSON_SCHEMA]]. A drawback here is the requirement that all schemas have this piece of metadata, which itself is versioned and evolvable.
 
-A flip side to drawbacks of the usage of [[JSON_SCHEMA]] is that there is a plethora of documentation, libraries, and usage of [[JSON Schema]] across programming languages and the web.
+A flip side to drawbacks of the usage of [[JSON_SCHEMA]] is that there is a plethora of documentation, libraries, and usage of [[JSON_SCHEMA]] across programming languages and the web.
 
 # Alternatives # {#alternatives}
 
-[[JSON-LD]] is the most prominent alternative, though it has been suggested that both [[JSON Schema]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem.
+[[JSON-LD]] is the most prominent alternative, though it has been suggested that both [[JSON_SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem.
 
 # Security & Privacy Considerations # {#security_and_privacy_considerations}
 
@@ -615,8 +614,8 @@ A goal of publishing this document is to promote others to adopt our schema phil
     "publisher": "IETF"
   },
   "JSON_SCHEMA": {
-    "href": "https://json-schema.org/",
-    "title": "JSON Schema Draft 7",
+    "href": "https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00",
+    "title": "JSON Schema Bhutton Draft 00",
     "publisher": "json-schema-org"
   },
   "DID": {
@@ -627,6 +626,11 @@ A goal of publishing this document is to promote others to adopt our schema phil
   "JSON-LD": {
     "href": "https://w3c.github.io/json-ld-syntax/",
     "title": "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
+    "publisher": "W3C"
+  },
+  "LINKED_DATA_PROOFS": {
+    "href": "https://w3c-ccg.github.io/ld-proofs/",
+    "title": "Linked Data Proofs 1.0",
     "publisher": "W3C"
   }
 }
