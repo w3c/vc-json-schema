@@ -106,7 +106,8 @@ Version and authorship <i>may</i> be useful to include in a schema identifier as
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
   "authored": "2021-01-01T00:00:00+00:00",
   "schema": {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "email-schema-1.0",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "description": "Email",
     "type": "object",
     "properties": {
@@ -162,7 +163,8 @@ Version and authorship <i>may</i> be useful to include in a schema identifier as
 
 <pre class="example" highlight="json">
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "email-schema-1.0",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "description": "Email",
     "type": "object",
     "properties": {
@@ -251,13 +253,19 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
 <b>JSON Schema</b>
 <pre highlight="json">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "credential-schema-2.0",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "description": "JSON Schema for W3C Verifiable Credential JSON Schema",
   "type": "object",
   "properties": {
     "type": {
       "type": "string"
     },
     "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "id": {
       "type": "string"
     },
     "name": {
@@ -272,6 +280,9 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
     "schema": {
       "type": "object",
       "properties": {
+        "$id": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         },
@@ -300,6 +311,7 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
         }
       },
       "required": [
+        "$id",
         "$schema",
         "description",
         "type",
@@ -309,41 +321,17 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
       ]
     },
     "proof": {
-      "type": "object",
-      "properties": {
-        "created": {
-          "type": "string"
-        },
-        "creator": {
-          "type": "string"
-        },
-        "nonce": {
-          "type": "string"
-        },
-        "signatureValue": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "created",
-        "creator",
-        "nonce",
-        "signatureValue",
-        "type"
-      ]
+      "type": "object"
     }
   },
   "required": [
     "type",
     "version",
+    "id",
     "name",
     "author",
     "authored",
-    "schema",
-    "proof"
+    "schema"
   ]
 }
 </pre>
@@ -382,7 +370,7 @@ This is where the [=Credential Schema=] data fields are defined as a valid [=JSO
 
 <pre class="example" highlight="json">
 {
- "$schema": "http://json-schema.org/draft-07/schema#",
+ "$schema": "https://json-schema.org/draft/2019-09/schema",
  "description": "Email",
  "type": "object",
  "properties": {
@@ -429,7 +417,8 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
-   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "email-schema-1.0",
+   "$schema": "https://json-schema.org/draft/2019-09/schema",
    "description": "Email",
    "type": "object",
    "properties": {
@@ -455,7 +444,8 @@ In this example we once again reference the email schema, but this time we add a
  "author": "did:example:abc123",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
-   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "email-schema-1.1",
+   "$schema": "https://json-schema.org/draft/2019-09/schema",
    "description": "Email",
    "type": "object",
    "properties": {
@@ -489,7 +479,8 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
-   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "email-schema-1.1",
+   "$schema": "https://json-schema.org/draft/2019-09/schema",
    "description": "Email",
    "type": "object",
    "properties": {
@@ -519,7 +510,8 @@ This time our credentialing requirements for our email schema have changed and w
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
-   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "email-schema-2.0",
+   "$schema": "https://json-schema.org/draft/2019-09/schema",
    "description": "Email",
    "type": "object",
    "properties": {
@@ -562,7 +554,8 @@ We define an Email schema as the basis for a credential.
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
   "authored": "2021-01-01T00:00:00+00:00",
   "schema": {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "email-schema-1.0",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "description": "Email",
     "type": "object",
     "properties": {
@@ -622,9 +615,9 @@ Privacy & security considerations mainly revolve around Personally Identifiable 
 
 # Interoperability # {#interoperability}
 
-The primary concern of this specification is to facilitate an ecosystem in which [=Verifiable Credential=]s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of our [Credential Schema Metadata](#metadata) interoperability with the current design is less of a concern.
+The primary concern of this specification is to facilitate an ecosystem in which [=Verifiable Credential=]s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of [Credential Schema Metadata](#metadata) interoperability with the current design is less of a concern.
 
-A goal of publishing this document is to promote others to adopt our schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.
+A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.
 
 <pre class="biblio">
 {
