@@ -90,7 +90,9 @@ This specification provides a standardized way of creating [=Credential Schemas=
 # Terminology # {#terminology}
 
 : <dfn>id</dfn>
-:: A locally unique identifier to locate the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier, and each version of a schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Uniform Resource Identifier](https://www.rfc-editor.org/rfc/rfc3986) that <i>may</i> contain informatoin pertaining to the author and version of the schema. For example, if the author had a DID like <pre>did:example:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:example:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>.
+:: A locally unique identifier to locate the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier, and each version of a schema is required to have its own unique identifier. <br/> <br/> This identifier is a [Uniform Resource Identifier](https://www.rfc-editor.org/rfc/rfc3986) that <i>may</i> contain information pertaining to the author and version of the schema. For example, if the author had a DID like <pre>did:example:abcdefghi</pre> a possible schema ID the author created would have an identifier such as: <pre>did:example:abcdefghi;id=17de181feb67447da4e78259d92d0240;version=1.0</pre>
+
+Version and authorship <i>may</i> be useful to include in a schema identifier as they provide crucial information about the schema without forcing a lookup. Resovling the schema, however, is the <i>recommended approach</i> to gaining an authoritative information about a schema and its metadata.
 
 : <dfn>Credential Schema</dfn>
 :: The data template for a credential. Refers to the entirety of a [=Credential Schema=], including both the [=Metadata=] and [=JSON Schema=]. The term may refer to a document either with, or without a [=proof=].
@@ -98,35 +100,44 @@ This specification provides a standardized way of creating [=Credential Schemas=
 <pre class="example" highlight="json">
 {
   "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
-  "version": "2.0",
+  "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
-  "authored": "2021-01-01T00:00:00+00:00"
+  "authored": "2021-01-01T00:00:00+00:00",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "emailAddress": {
+        "type": "string",
+        "format": "email"
+      }
+    },
+    "required": ["emailAddress"],
+    "additionalProperties": false
+  }
 }
 </pre>
+
 
 : <dfn>Metadata</dfn>
 :: Top-level information on a [=Credential Schema=]. Pieces of data wrapping the [=JSON Schema=] to provide further context about the schema.
 
 <pre class="example" highlight="json">
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Email",
-  "type": "object",
-  "properties": {
-    "emailAddress": {
-      "type": "string",
-      "format": "email"
-    }
-  },
-  "required": ["emailAddress"],
-  "additionalProperties": false
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+  "version": "1.0",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2021-01-01T00:00:00+00:00"
 }
 </pre>
 
 : <dfn>proof</dfn>
-:: A digital signature over the [=Credential Schema=] for the sake of claiming authorship. A piece of [=Metadata=].
+:: A digital signature over the [=Credential Schema=] for the sake of claiming authorship. A piece of [=Metadata=]. Most often done using [[Linked_Data_Proofs]].
 
 : <dfn>type</dfn>
 :: It is important in software systems for machines to understand the context of what a document is. In credential schemas this is declared in the <b>type</b> field. This field resolves to a JSON schema with details about the <b>schema metadata</b> that applies to the schema. A piece of [=Metadata=].
@@ -165,6 +176,9 @@ This specification provides a standardized way of creating [=Credential Schemas=
 }
 </pre>
 
+: <dfn>credential</dfn>
+:: [=Verifiable Credential=]
+
 : <dfn>Verifiable Credential</dfn>
 :: See [[VC_DATA_MODEL]]
 
@@ -198,7 +212,7 @@ A schema can be viewed from four perspectives: the author, issuer, verifier and 
 
 With adherance to the specification, the following guarantees can be made about a schema:
 
-- A schema is <i>versionable</i> and new versions can evolve it over time.
+- A schema is <i>versionable</i> and it can evolve via new versions over time.
 - A schema is available for any issuer to use and any verifier, or other platform member to <i>read</i>.
 - A schema always guarantees the structure of a credential. The described structure can be used by the Verifier to understand what data the Holder holds. There is no requirement for the Verifier to validate sent data against the schema since this sent data may only be partial, for example in event of a Presentation Request only requiring a singular field from a credential though there may be multiple fields defined in the schema.
 
@@ -208,9 +222,27 @@ With adherance to the specification, the following guarantees can be made about 
 
 ### Versioning ### {#versioning}
 
-Schemas are versioned via a [=version=] property. The [=version=] denotes the revision of <i>this</i> specification the schema corresponds to.
+Schemas are versioned via a [=version=] property. The [=version=] denotes the revision of a particular schema for a given storage medium. 
 
-Authors and Issuers care about versioning to track advancements and changes over time both for formatting changes (e.g. supporting [[JSON_SCHEMA]] [draft-bhutton-json-schema-00](https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00) as opposed to [Draft 7](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-01)) as well as fields as a schema converges to its most currently usable form (e.g. adding a new required field). Holders care about versioning to know where and how their credential can be used. Similarly, Verifiers care about versioning to know which data, or schema versions they should accept in their systems.
+Authors and Issuers care about versioning to track advancements and changes over time both for formatting changes (e.g. supporting [[JSON_SCHEMA]] [draft-bhutton-json-schema-00](https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00) as opposed to [Draft 7](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-01)) as well as field changes (e.g. adding a new required field) as a schema evolves to its latest form. Holders care about versioning to know where and how their credential can be used. Similarly, Verifiers care about versioning to know which data, or schema versions they should accept in their systems.
+
+Gudelines for versioning can be found in the [Versioning Guidelines section of this document](#versioning_guidelines).
+
+### Processing ### {#processing}
+
+There is wide support for JSON Schema processing and [[JSON_SCHEMA_IMPLMENTATIONS]] can be found in many programming languages.
+
+#### Acceptance #### {#processing_acceptance}
+
+A system may choose to accept schemas based on multiple different criteria: storage location, authorship, identifier, version, etc. 
+
+The language by which a schema, or set of schemas are accepted by Credentialing Systems is out of scope of this document. It is advisable that such a language is flexible to accomodate important criterion of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. [=proof=]).
+
+#### Validation #### {#processing_validation}
+
+What determines the validity of a Credential is up to the <i>verifier</i> for that given Credential. Validity could mean a a valid [=proof=], a valid [=proof=] and validation against a given [=schema=], or other set of conditions.
+
+Validation of a given Credential against its schema is to be performed according to the [[JSON_SCHEMA_VALIDATION]] specification.
 
 ## Credential Schema Definition ## {#credential_schema_definition}
 
@@ -316,38 +348,6 @@ This section provides the [[JSON_SCHEMA]] definition for [=Credential Schema=] a
 }
 </pre>
 
-<b>Example</b>
-<pre class="example" highlight="json">
-{
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
-  "version": "1.0",
-  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
-  "name": "EmailCredentialSchema",
-  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
-  "authored": "2018-01-01T00:00:00+00:00",
-  "schema": {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Email",
-    "type": "object",
-    "properties": {
-      "emailAddress": {
-        "type": "string",
-        "format": "email"
-      }
-    },
-    "required": ["emailAddress"],
-    "additionalProperties": false
-  },
-  "proof": {
-      "created": "2019-09-27T06:26:11Z",
-      "creator": "did:example:MDP8AsFhHzhwUvGNuYkX7T#key-1",
-      "nonce": "0efba23d-2987-4441-998e-23a9d9af79f0",
-      "signatureValue": "2A7ZF9f9TWMdtgn57Y6dP6RQGs52xg2QdjUESZUuf4J9BUnwwWFNL8vFshQAEQF6ZFBXjYLYNU4hzXNKc3R6y6re",
-      "type": "Ed25519VerificationKey2018"
-  }
-}
-</pre>
-
 ### Metadata ### {#credential_schema_definition_metadata}
 
 The properties, in order, before the JSON Schema document, embedded into the [=JSON Schema=] are as follows:
@@ -363,6 +363,18 @@ The properties, in order, before the JSON Schema document, embedded into the [=J
 1. [=author=]
 
 1. [=authored=]
+
+
+<pre class="example" highlight="json">
+{
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+  "version": "1.0",
+  "id": "06e126d1-fa44-4882-a243-1e326fbe21db",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2021-01-01T00:00:00+00:00"
+}
+</pre>
 
 ### Schema ### {#credential_schema_definition_schema}
 
@@ -398,22 +410,22 @@ This section applies to [=version=] properties of the metadata.
 
 Versioning is defined as <b>MODEL.REVISION</b> where <b>MODEL</b> is a breaking change and <b>REVISION</b> is non-breaking. The version is contained within the schema identifier.
 
-With schemas we are concerned with a new schema and backwards compatibility of existing data on an older schema.
+With schemas we are concerned with a new schema and backwards compatibility of existing data on an older [=schema=].
 
-<b>MODEL</b> Updating this number tells the end user that this version breaks the schema for ANY interaction with an older schema. For verification if a holder presents a credential built from a schema of version 1.0 and the platform is only looking for > 2.0, it is <i>not able</i> to parse ANY information.
+<b>MODEL</b> Updating this number tells the end user that this version breaks the schema for ANY interaction with an older [=schema=]. For processing, if a holder presents a [=credential=] built from a [=schema=] with version 1.0, and the platform is looking for version 2.0, it is <i>not able</i> to parse ANY information.
 
-<b>REVISION</b> Updating this number tells the end user that this version may prevent interactions with parts of the schema. For verification if a holder presents a credential built from a schema of version 1.0 and the platform is looking for > 1.5, there are likely to be SOME fields incompatible with the expected credential.
+<b>REVISION</b> Updating this number tells the end user that this version <i>may</i> prevent interactions with parts of the [=schema=]. For processing, if a holder presents a credential built from a schema with version 1.0 and the platform is looking for version 1.5, there are likely to be SOME fields incompatible with the expected [=credential=].
 
 ## Revision ## {#revision}
 
-The addition or removal of an <b>optional</b> field is what constitutes a <b>REVISION</b>. Adding or removing an optional field does not break historical data in a schema and in the claims exchange protocol fields that are returned negative in the optional field can be ignored as they are optional by default.
+The addition or removal of an <b>optional</b> field is what constitutes a <b>REVISION</b>. Adding or removing an optional field does not break historical data in a [=schema=], and in a claims exchange protocol, missing optional fields can be ignored.
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
  "version": "1.0",
  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
- "name": "EmailCredentialSchema",
+ "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
@@ -436,10 +448,10 @@ In this example we once again reference the email schema, but this time we add a
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
- "version": "1.0",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+ "version": "1.1",
  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
- "name": "EmailCredentialSchema",
+ "name": "Email",
  "author": "did:example:abc123",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
@@ -464,16 +476,16 @@ In this example we once again reference the email schema, but this time we add a
 
 ## Model ## {#model}
 
-When a schema breaks historical data we call it a model change. This is the major differentiating point between other schema versioning protocols which allow for some breaking changes because as we learned in the problem section, even breaking one area can lead to very difficult issues for verifiers through the credential exchange protocol. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is also important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change. Why? Because technically that introduces a breaking change and adds a required field.
+When a schema breaks backwards compatiblity it is considered a model change. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change as this introduces a breaking change, adding a required field.
 
 An example of this rule is when the <i>additionalProperties</i> field's value changes. Changing <i>additionalProperties</i> from <i>false</i> to <i>true</i> OR from <i>true</i> to <i>false</i> constitutes a breaking change, necessitating a <b>MODEL</b> increment.
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
- "version": "1.0",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+ "version": "1.1",
  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
- "name": "EmailCredentialSchema",
+ "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
@@ -496,14 +508,14 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
 }
 </pre>
 
-This time our credentialing requirements for email have changed and email address is no longer enough information on a credential, and we need to attach a name for verification as well to our schema. This is a <i>required</i> field, so we know it is a <b>MODEL</b> change.
+This time our credentialing requirements for our email schema have changed and we need to attach a `firstName` for verification. This is a <i>required</i> field, so we know it is a <b>MODEL</b> change.
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
- "version": "1.0",
+ "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+ "version": "2.0",
  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
- "name": "EmailCredentialSchema",
+ "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
  "schema": {
@@ -543,16 +555,29 @@ We define an Email schema as the basis for a credential.
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
   "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
-  "authored": "2018-01-01T00:00:00+00:00"
+  "authored": "2021-01-01T00:00:00+00:00",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "emailAddress": {
+        "type": "string",
+        "format": "email"
+      }
+    },
+    "required": ["emailAddress"],
+    "additionalProperties": false
+  }
 }
 </pre>
 
-The example references a [=Credential Schema=] with the [=Credential Schema=] identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
+The example references a [=Credential Schema=] with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC_DATA_MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
 
 <pre class="example" highlight="json">
 {
@@ -563,7 +588,7 @@ The example references a [=Credential Schema=] with the [=Credential Schema=] id
   "id": "http://example.edu/credentials/1872",
   "type": ["VerifiableCredential", "EmailCredential"],
   "issuer": "https://example.com/issuers/565049",
-  "issuanceDate": "2010-01-01T19:73:24Z",
+  "issuanceDate": "2021-01-01T00:00:00Z",
   "credentialSchema": {
     "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
     "type": "JsonSchemaValidator2018"
@@ -577,7 +602,7 @@ The example references a [=Credential Schema=] with the [=Credential Schema=] id
 }
 </pre>
 
-The ID of the [=Credential Schema=] is visible in the <b>credentialSchema</b> section of the credential, and describes the shape of the email schema. The type of <b>JsonSchemaValidator2018</b> refers to a [[JSON-LD]] type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.
+The ID of the [=Credential Schema=] is visible in the <b>credentialSchema</b> section of the credential, and provides information about the schema's author and version. The type of <b>JsonSchemaValidator2018</b> refers to a [[JSON-LD]] type providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.
 
 # Drawbacks # {#drawbacks}
 
@@ -589,7 +614,7 @@ A flip side to drawbacks of the usage of [[JSON_SCHEMA]] is that there is a plet
 
 # Alternatives # {#alternatives}
 
-[[JSON-LD]] is the most prominent alternative, though it has been suggested that both [[JSON_SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem.
+[[JSON-LD]] is the most prominent alternative, though it does not provide the same functionality in regards to strict data validation. It has been suggested that both [[JSON_SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoparability, and [[JSON_SCHEMA]] providing static validation.
 
 # Security & Privacy Considerations # {#security_and_privacy_considerations}
 
@@ -618,6 +643,11 @@ A goal of publishing this document is to promote others to adopt our schema phil
     "title": "JSON Schema Bhutton Draft 00",
     "publisher": "json-schema-org"
   },
+  "JSON_SCHEMA_VALIDATION": {
+    "href": "https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-00",
+    "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON draft-bhutton-json-schema-validation-00",
+    "publisher": "json-schema-org"
+  },
   "DID": {
     "href": "https://w3c.github.io/did-core/",
     "title": "Decentralized Identifiers (DIDs) v1.0",
@@ -632,6 +662,11 @@ A goal of publishing this document is to promote others to adopt our schema phil
     "href": "https://w3c-ccg.github.io/ld-proofs/",
     "title": "Linked Data Proofs 1.0",
     "publisher": "W3C"
+  },
+  "JSON_SCHEMA_IMPLMENTATIONS": {
+    "href": "https://json-schema.org/implementations.html",
+    "title": "JSON Schema Implementations",
+    "publisher": "json-schema-org"
   }
 }
 </pre>
