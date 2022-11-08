@@ -4,9 +4,9 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Verifiable Credentials JSON Schema Specification</title>
   <meta content="w3c/CG-DRAFT" name="w3c-status">
-  <meta content="Bikeshed version a210b7d86, updated Thu Sep 16 13:45:19 2021 -0700" name="generator">
+  <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="bd4230ca16de5afb5deb67870647630c44ce09b2" name="document-revision">
+  <meta content="2609ab52480774e4ff9ea9fe8dce8c40c67a0cdb" name="document-revision">
 <style type="text/css">
 body {
     counter-reset: table;
@@ -185,6 +185,16 @@ figcaption:not(.no-marker)::before {
 
 .dfn-paneled { cursor: pointer; }
 </style>
+<style>/* style-issues */
+
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -221,6 +231,14 @@ a.self-link:hover {
 }
 .heading > a.self-link {
     font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
 }
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
@@ -306,31 +324,34 @@ c-[vg] { color: #0077aa } /* Name.Variable.Global */
 c-[vi] { color: #0077aa } /* Name.Variable.Instance */
 c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
-  <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1>Verifiable Credentials JSON Schema Specification</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-09-21">21 September 2021</time></span></h2>
-   <div data-fill-with="spec-metadata">
-    <dl>
-     <dt>This version:
-     <dd><a class="u-url" href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
-     <dt>Latest published version:
-     <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
-     <dt>Issue Tracking:
-     <dd><a href="https://github.com/w3c-ccg/vc-json-schemas/issues">GitHub</a>
-     <dt class="editor">Editors:
-     <dd class="editor p-author h-card vcard" data-editor-id="116851"><a class="p-name fn u-email email" href="mailto:gabe.cohen@hey.com">Gabe Cohen</a>
-     <dd class="editor p-author h-card vcard" data-editor-id="109171"><a class="p-name fn u-email email" href="mailto:orie@transmute.industries">Orie Steele</a> (<span class="p-org org"><a href="https://www.transmute.industries/">Transmute</a></span>)
-     <dt>CG-DRAFT:
-     <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
-     <dt>Tests:
-     <dd><a href="https://github.com/w3c-ccg/vc-json-schemas">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schemas">ongoing work</a>)
-    </dl>
-   </div>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-11-07">7 November 2022</time></p>
+   <details open>
+    <summary>More details about this document</summary>
+    <div data-fill-with="spec-metadata">
+     <dl>
+      <dt>This version:
+      <dd><a class="u-url" href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dt>Latest published version:
+      <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dt>Feedback:
+      <dd><a href="https://github.com/w3c-ccg/vc-json-schemas/issues">GitHub</a>
+      <dt class="editor">Editors:
+      <dd class="editor p-author h-card vcard" data-editor-id="116851"><a class="p-name fn u-email email" href="mailto:[Block](mailto:gcohen@squareup.com)">Gabe Cohen</a>
+      <dd class="editor p-author h-card vcard" data-editor-id="109171"><a class="p-name fn u-email email" href="mailto:orie@transmute.industries">Orie Steele</a> (<span class="p-org org"><a href="https://www.transmute.industries/">Transmute</a></span>)
+      <dt>CG-DRAFT:
+      <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dt>Tests:
+      <dd><a href="https://github.com/w3c-ccg/vc-json-schemas">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schemas">ongoing work</a>)
+     </dl>
+    </div>
+   </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -828,7 +849,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- p>}</c->
 <c- p>}</c->
 </pre>
-   <p>The example references a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a>. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
+   <p>The example references a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a>. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
 <pre class="example highlight" id="example-b073de0b"><a class="self-link" href="#example-b073de0b"></a><c- p>{</c->
   <c- f>"@context"</c-><c- p>:</c-> <c- p>[</c->
     <c- u>"https://www.w3.org/2018/credentials/v1"</c-><c- p>,</c->
@@ -863,7 +884,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential②">Verifiable Credential</a>s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of <a href="#metadata" id="ref-for-metadata⑦">Credential Schema Metadata</a> interoperability with the current design is less of a concern.</p>
    <p>A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.</p>
   </main>
-<script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+<script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">

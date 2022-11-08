@@ -11,7 +11,7 @@ ED: https://w3c-ccg.github.io/vc-json-schemas/
 Shortname: vcjsonschemaspec
 Level: 1
 
-Editor: Gabe Cohen, w3cid 116851, gabe.cohen@hey.com
+Editor: Gabe Cohen, w3cid 116851, [Block](mailto:gcohen@squareup.com)
 Editor: Orie Steele, w3cid 109171, [Transmute](https://www.transmute.industries/), orie@transmute.industries
 
 group: ccg
