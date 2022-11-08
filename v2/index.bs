@@ -11,7 +11,7 @@ ED: https://w3c-ccg.github.io/vc-json-schemas/
 Shortname: vcjsonschemaspec
 Level: 1
 
-Editor: Gabe Cohen, w3cid 116851, gabe.cohen@hey.com
+Editor: [Gabe Cohen](https://linkedin.com/in/cohengabe), w3cid 116851, [Block](https://www.block.xyz)
 Editor: Orie Steele, w3cid 109171, [Transmute](https://www.transmute.industries/), orie@transmute.industries
 
 group: ccg
@@ -35,7 +35,7 @@ Boilerplate: omit conformance, omit feedback-header, omit abstract-header
 Markup Shorthands: css off, markdown on
 </pre>
 
-<style type="text/css">
+<style>
 body {
     counter-reset: table;
 }
