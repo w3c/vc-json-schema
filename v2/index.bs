@@ -142,7 +142,7 @@ The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and 
 {
   "type": "https://w3c-ccg.github.io/vc-json-schemas/",
   "version": "1.0",
-  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db",
   "name": "Email",
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
   "authored": "2021-01-01T00:00:00+00:00"
@@ -506,7 +506,7 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
 {
  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
  "version": "1.1",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
+ "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
  "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
@@ -537,7 +537,7 @@ This time our credentialing requirements for our email schema have changed and w
 {
  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
  "version": "2.0",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
+ "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
  "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
@@ -573,7 +573,7 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
 {
  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
  "version": "1.0",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+ "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
  "name": "Email",
  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
  "authored": "2018-01-01T00:00:00+00:00",
@@ -600,7 +600,7 @@ In this example we once again reference the email schema, but this time we add a
 {
  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
  "version": "1.1",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
+ "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
  "name": "Email",
  "author": "did:example:abc123",
  "authored": "2018-01-01T00:00:00+00:00",
@@ -631,6 +631,8 @@ By introducing a [=version=] field we allow the [=credential schema=] to become 
 
 These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.
 
+Note: Expand on this section or remove.
+
 # Examples # {#examples}
 
 ## Verifiable Credentials ## {#vc_example}
@@ -641,7 +643,7 @@ We define an Email schema as the basis for a credential.
 {
   "type": "https://w3c-ccg.github.io/vc-json-schemas/",
   "version": "1.0",
-  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
   "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
   "authored": "2021-01-01T00:00:00+00:00",
@@ -662,7 +664,7 @@ We define an Email schema as the basis for a credential.
 }
 </pre>
 
-The example references a [=Credential Schema=] with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T;id=06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC-DATA-MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
+The example references a [=Credential Schema=] with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the [[VC-DATA-MODEL]]. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.
 
 <pre class="example" highlight="json">
 {
@@ -699,17 +701,19 @@ A flip side to drawbacks of the usage of [[JSON-SCHEMA]] is that there is a plet
 
 # Usage with JSON-LD # {#alternatives}
 
-[[JSON-LD]] is the most prominent alternative, though it does not provide the same functionality in regards to strict data validation. It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoparability, and [[JSON-SCHEMA]] providing static validation.
+[[JSON-LD]] is widely used in the Verifiable Credentials Data Model ecosystem. Both [[JSON-LD]] and [[JSON-SCHEMA]] serve distinct use cases. [[JSON-LD]] is primarily useful for facilitating global semantic interoperability for terms in a credential and tie-in to an "open world data model."" [[JSON-SCHEMA]] on the other hand is most often useful for strict data validation, though it does not provide the same functionality in regards to strict data validation. 
 
-# Security & Privacy Considerations # {#security_and_privacy_considerations}
+It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoparability, and [[JSON-SCHEMA]] providing static validation. 
 
-Privacy & security considerations mainly revolve around Personally Identifiable Information (PII) leaks in schemas. Any field which a user could enter data is a potential area for personally identifiable information. When implementing systems that support the storage and querying of schemas relevant data privacy laws and regulations must be taken into account.
+Note: example of a credential using both JSON-LD and JSON Schema.
 
 # Interoperability # {#interoperability}
 
-The primary concern of this specification is to facilitate an ecosystem in which [=Verifiable Credential=]s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of [Credential Schema Metadata](#metadata) interoperability with the current design is less of a concern.
+The primary concern of this specification is to facilitate an ecosystem in which [=Verifiable Credentials=] can be issued and used. To be interoperable, additional schema types may need to be supported. Given the capability of versioning for [Credential Schema Metadata](#metadata) interoperability between Credential Schemas is mostly solved.
 
 A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.
+
+Note: Discussion on other types of interoperability and how this schema does or does not help.
 
 <pre class="biblio">
 {
