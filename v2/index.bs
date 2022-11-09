@@ -25,11 +25,16 @@ Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: TRUE <code>true</code>
 Ignored Vars: op, alg, type, algorithm
 
-Abstract: The [[VC_DATA_MODEL]] specifies the models used for Verifiable Credentials and
+Abstract: Among other things, the [[VC_DATA_MODEL]] specifies the models used for Verifiable Credentials,
   Verifiable Presentations, and explains the relationships between three parties:
-  <i>issuer</i>, <i>holder</i>, and <i>verifier</i>. A critical piece of infrastructure out of the
-  scope of those specifications is the <b>Credential Schema</b>. This specification provides
-  a mechanism to express a Credential Schema and the protocols for evolving the schema.
+  <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
+  throughout the [[VC_DATA_MODEL]] are the that of of verifiability, extensbility, and semantic 
+  interoperability. This specification provides a mechanism to make use of a Credential Schema in
+  [=Verifiable Credential=], leveraging the exisiting 
+  <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
+
+Status Text: This specification was published by the <a href="http://www.w3.org/community/credentials/">W3C Credentials Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under  the <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a> other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>. </br></br> If you wish to make comments regarding this document, please send them to <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a> (<a href="mailto:public-credentials-request@w3.org">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-credentials/">archives</a>).
+
 
 Boilerplate: omit conformance, omit feedback-header, omit abstract-header
 Markup Shorthands: css off, markdown on
@@ -83,7 +88,7 @@ figure.table .overlarge {
 </style>
 
 # Introduction # {#intro}
-This specification provides a mechanism for the use of verifiable credentials in a highly scalable, secure, and verifiable way. A large part of the integrity of a verifiable credential is how to structure the credential so that all three parties — issuer, holder, verifier — may have a singular mechanism of trust into what they are using. We call that document a [=Credential Schema=].
+This specification provides a mechanism for the use of [=JSON Schemas=] with [=Verifiable Credentials=]. A significant part of the integrity of a [=Verifiable Credential=] comes from the ability to structure its contents so that all three parties — issuer, holder, verifier — may have a consistent mechanism of trust in interpreting the data that they are provided with. We introducing a new data model for an object to facilitate backing Credentials with [=JSON Schemas=] that we call a [=Credential Schema=].
 
 This specification provides a standardized way of creating [=Credential Schemas=] to be used in credentialing platforms, how to version them, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the `credentialSubject` and another for other credential properties.
 

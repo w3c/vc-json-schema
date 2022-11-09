@@ -6,7 +6,7 @@
   <meta content="w3c/CG-DRAFT" name="w3c-status">
   <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="ae5c740ecf4783240dcfb9f60648c6d0b2e01621" name="document-revision">
+  <meta content="fb3499b84730c7605e9d0b2d390005be76455d11" name="document-revision">
 <style>
 body {
     counter-reset: table;
@@ -329,7 +329,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1>Verifiable Credentials JSON Schema Specification</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-11-07">7 November 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2022-11-08">8 November 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -356,15 +356,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>The <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a> specifies the models used for Verifiable Credentials and
+   <p>Among other things, the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a> specifies the models used for Verifiable Credentials,
 
-  Verifiable Presentations, and explains the relationships between three parties: <i>issuer</i>, <i>holder</i>, and <i>verifier</i>. A critical piece of infrastructure out of the
-  scope of those specifications is the <b>Credential Schema</b>. This specification provides
-  a mechanism to express a Credential Schema and the protocols for evolving the schema.</p>
+  Verifiable Presentations, and explains the relationships between three parties: <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
+  throughout the <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a> are the that of of verifiability, extensbility, and semantic 
+  interoperability. This specification provides a mechanism to make use of a Credential Schema in <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential">Verifiable Credential</a>, leveraging the exisiting <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
    <p></p>
+   <p>This specification was published by the <a href="https://www.w3.org/community/credentials/">W3C Credentials Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under  the <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a> other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>. <br><br> If you wish to make comments regarding this document, please send them to <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a> (<a href="mailto:public-credentials-request@w3.org">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-credentials/">archives</a>).</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
@@ -428,7 +429,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </nav>
   <main>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
-    This specification provides a mechanism for the use of verifiable credentials in a highly scalable, secure, and verifiable way. A large part of the integrity of a verifiable credential is how to structure the credential so that all three parties — issuer, holder, verifier — may have a singular mechanism of trust into what they are using. We call that document a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema">Credential Schema</a>. 
+    This specification provides a mechanism for the use of <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema">JSON Schemas</a> with <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①">Verifiable Credentials</a>. A significant part of the integrity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential②">Verifiable Credential</a> comes from the ability to structure its contents so that all three parties — issuer, holder, verifier — may have a consistent mechanism of trust in interpreting the data that they are provided with. We introducing a new data model for an object to facilitate backing Credentials with <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema①">JSON Schemas</a> that we call a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema">Credential Schema</a>. 
    <p>This specification provides a standardized way of creating <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①">Credential Schemas</a> to be used in credentialing platforms, how to version them, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the <code>credentialSubject</code> and another for other credential properties.</p>
    <h2 class="heading settled" data-level="2" id="terminology"><span class="secno">2. </span><span class="content">Terminology</span><a class="self-link" href="#terminology"></a></h2>
    <dl>
@@ -444,7 +445,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="credential-schema">Credential Schema</dfn>
     <dd data-md>
-     <p>The data template for a credential. Refers to the entirety of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②">Credential Schema</a>, including both the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata">Metadata</a> and <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema">JSON Schema</a>. The term may refer to a document either with, or without a <a data-link-type="dfn" href="#proof" id="ref-for-proof">proof</a>.</p>
+     <p>The data template for a credential. Refers to the entirety of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②">Credential Schema</a>, including both the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata">Metadata</a> and <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema②">JSON Schema</a>. The term may refer to a document either with, or without a <a data-link-type="dfn" href="#proof" id="ref-for-proof">proof</a>.</p>
    </dl>
 <pre class="example highlight" id="example-69fd0dec"><a class="self-link" href="#example-69fd0dec"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json"</c-><c- p>,</c->
@@ -472,7 +473,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="metadata">Metadata</dfn>
     <dd data-md>
-     <p>Top-level information on a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema③">Credential Schema</a>. Pieces of data wrapping the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema①">JSON Schema</a> to provide further context about the schema.</p>
+     <p>Top-level information on a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema③">Credential Schema</a>. Pieces of data wrapping the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema③">JSON Schema</a> to provide further context about the schema.</p>
    </dl>
 <pre class="example highlight" id="example-6cc939d8"><a class="self-link" href="#example-6cc939d8"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json"</c-><c- p>,</c->
@@ -527,7 +528,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="credential">credential</dfn>
     <dd data-md>
-     <p><a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential">Verifiable Credential</a></p>
+     <p><a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential③">Verifiable Credential</a></p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="verifiable-credential">Verifiable Credential</dfn>
     <dd data-md>
      <p>See <a data-link-type="biblio" href="#biblio-vc_data_model">[VC_DATA_MODEL]</a></p>
@@ -570,7 +571,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>What determines the validity of a Credential is up to the <i>verifier</i> for that given Credential. Validity could mean a a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof②">proof</a>, a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof③">proof</a> and validation against a given <a data-link-type="dfn" href="#schema" id="ref-for-schema①">schema</a>, or other set of conditions.</p>
    <p>Validation of a given Credential against its schema is to be performed according to the <a data-link-type="biblio" href="#biblio-json_schema_validation">[JSON_SCHEMA_VALIDATION]</a> specification.</p>
    <h3 class="heading settled" data-level="5.2" id="credential_schema_definition"><span class="secno">5.2. </span><span class="content">Credential Schema Definition</span><a class="self-link" href="#credential_schema_definition"></a></h3>
-   <p>This section provides the <a data-link-type="biblio" href="#biblio-json_schema">[JSON_SCHEMA]</a> definition for <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑦">Credential Schema</a> along with an example of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑧">Credential Schema</a> for an Email <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①">Verifiable Credential</a>.</p>
+   <p>This section provides the <a data-link-type="biblio" href="#biblio-json_schema">[JSON_SCHEMA]</a> definition for <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑦">Credential Schema</a> along with an example of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑧">Credential Schema</a> for an Email <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential④">Verifiable Credential</a>.</p>
    <p><b>JSON Schema</b></p>
 <pre class="highlight"><c- p>{</c->
   <c- f>"$id"</c-><c- p>:</c-> <c- u>"credential-schema-2.0"</c-><c- p>,</c->
@@ -656,7 +657,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <h4 class="heading settled" data-level="5.2.1" id="credential_schema_definition_metadata"><span class="secno">5.2.1. </span><span class="content">Metadata</span><a class="self-link" href="#credential_schema_definition_metadata"></a></h4>
-   <p>The properties, in order, before the JSON Schema document, embedded into the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema②">JSON Schema</a> are as follows:</p>
+   <p>The properties, in order, before the JSON Schema document, embedded into the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema④">JSON Schema</a> are as follows:</p>
    <ol>
     <li data-md>
      <p><a data-link-type="dfn" href="#type" id="ref-for-type">type</a></p>
@@ -681,7 +682,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <h4 class="heading settled" data-level="5.2.2" id="credential_schema_definition_schema"><span class="secno">5.2.2. </span><span class="content">Schema</span><a class="self-link" href="#credential_schema_definition_schema"></a></h4>
-   <p>This is where the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑨">Credential Schema</a> data fields are defined as a valid <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema③">JSON Schema</a> document.</p>
+   <p>This is where the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑨">Credential Schema</a> data fields are defined as a valid <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema⑤">JSON Schema</a> document.</p>
 <pre class="example highlight" id="example-5d68cd6d"><a class="self-link" href="#example-5d68cd6d"></a><c- p>{</c->
  <c- f>"$schema"</c-><c- p>:</c-> <c- u>"https://json-schema.org/draft/2019-09/schema"</c-><c- p>,</c->
  <c- f>"description"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -881,7 +882,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="heading settled" data-level="11" id="security_and_privacy_considerations"><span class="secno">11. </span><span class="content">Security &amp; Privacy Considerations</span><a class="self-link" href="#security_and_privacy_considerations"></a></h2>
    <p>Privacy &amp; security considerations mainly revolve around Personally Identifiable Information (PII) leaks in schemas. Any field which a user could enter data is a potential area for personally identifiable information. When implementing systems that support the storage and querying of schemas relevant data privacy laws and regulations must be taken into account.</p>
    <h2 class="heading settled" data-level="12" id="interoperability"><span class="secno">12. </span><span class="content">Interoperability</span><a class="self-link" href="#interoperability"></a></h2>
-   <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential②">Verifiable Credential</a>s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of <a href="#metadata" id="ref-for-metadata⑦">Credential Schema Metadata</a> interoperability with the current design is less of a concern.</p>
+   <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑤">Verifiable Credential</a>s can be issued and used. To be interoperable, additional schema types may need to be supported. Given the investment into a robust versioning strategy of <a href="#metadata" id="ref-for-metadata⑦">Credential Schema Metadata</a> interoperability with the current design is less of a concern.</p>
    <p>A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.</p>
   </main>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
@@ -994,9 +995,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="json-schema">
    <b><a href="#json-schema">#json-schema</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-json-schema">2. Terminology</a> <a href="#ref-for-json-schema①">(2)</a>
-    <li><a href="#ref-for-json-schema②">5.2.1. Metadata</a>
-    <li><a href="#ref-for-json-schema③">5.2.2. Schema</a>
+    <li><a href="#ref-for-json-schema">1. Introduction</a> <a href="#ref-for-json-schema①">(2)</a>
+    <li><a href="#ref-for-json-schema②">2. Terminology</a> <a href="#ref-for-json-schema③">(2)</a>
+    <li><a href="#ref-for-json-schema④">5.2.1. Metadata</a>
+    <li><a href="#ref-for-json-schema⑤">5.2.2. Schema</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="schema">
@@ -1018,9 +1020,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="verifiable-credential">
    <b><a href="#verifiable-credential">#verifiable-credential</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-verifiable-credential">2. Terminology</a>
-    <li><a href="#ref-for-verifiable-credential①">5.2. Credential Schema Definition</a>
-    <li><a href="#ref-for-verifiable-credential②">12. Interoperability</a>
+    <li><a href="#ref-for-verifiable-credential①">1. Introduction</a> <a href="#ref-for-verifiable-credential②">(2)</a>
+    <li><a href="#ref-for-verifiable-credential③">2. Terminology</a>
+    <li><a href="#ref-for-verifiable-credential④">5.2. Credential Schema Definition</a>
+    <li><a href="#ref-for-verifiable-credential⑤">12. Interoperability</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
