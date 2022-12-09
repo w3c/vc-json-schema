@@ -335,47 +335,7 @@ This section provides the [[JSON-SCHEMA]] definition for [=Credential Schema=] a
       "type": "string"
     },
     "schema": {
-      "type": "object",
-      "properties": {
-        "$id": {
-          "type": "string"
-        },
-        "$schema": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "object"
-        },
-        "required": {
-          "type": "array",
-          "items": [
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "additionalProperties": {
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "$id",
-        "$schema",
-        "description",
-        "type",
-        "properties",
-        "required",
-        "additionalProperties"
-      ]
+      "$ref": "https://json-schema.org/draft/2020-12/schema"
     },
     "proof": {
       "type": "object"
