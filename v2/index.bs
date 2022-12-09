@@ -307,6 +307,7 @@ Note: consider an options to have multiple Credential Schemas in a single creden
 
 This section provides the [[JSON-SCHEMA]] definition for [=Credential Schema=] along with an example of a [=Credential Schema=] for an Email [=Verifiable Credential=].
 
+The JSON Schema definition for a Credential Schema below makes use of [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/json-schema-core.html).
 <b>JSON Schema</b>
 <pre highlight="json">
 {
@@ -417,7 +418,7 @@ A [=Credential Schema=] <i>MUST</i> have a `schema` property. The `schema` prope
 
 <pre class="example" highlight="json">
 {
- "$schema": "https://json-schema.org/draft/2019-09/schema",
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
  "description": "Email",
  "type": "object",
  "properties": {
