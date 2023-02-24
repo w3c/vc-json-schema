@@ -6,7 +6,7 @@
   <meta content="w3c/CG-DRAFT" name="w3c-status">
   <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="44d5a5b050384db46b9afee71b4049e78a565575" name="document-revision">
+  <meta content="ecab1c34998ec0b09e79b57c93c2ed545d970cd5" name="document-revision">
 <style>
 body {
     counter-reset: table;
@@ -796,7 +796,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>There is wide support for JSON Schema processing and support for <a data-link-type="biblio" href="#biblio-json-schema-implmentations">[JSON-SCHEMA-IMPLMENTATIONS]</a> can be found in most programming languages.</p>
    <p>To process a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①⓪">Verifiable Credential</a> against a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑤">Credential Schema</a> one must first extract the schema from the <code>schema</code> property of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑥">Credential Schema</a> and next apply <a href="#processing_validation">validation</a>.</p>
    <h3 class="heading settled" data-level="6.1" id="processing_validation"><span class="secno">6.1. </span><span class="content">Validation</span><a class="self-link" href="#processing_validation"></a></h3>
-   <p>What determines the validity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①①">Verifiable Credential</a> is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof①">proof</a>, a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof②">proof</a> and validation against a given <a data-link-type="dfn" href="#schema" id="ref-for-schema①">schema</a>, a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof③">proof</a>, valid <i>credentialStatus</i>, trusted <i>issuer</i>, or any other set of conditions. The <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a>'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①②">Verifiable Credential</a> should be considered valid.</p>
+   <p>What determines the validity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①①">Verifiable Credential</a> is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof①">proof</a>, validation against a given <a data-link-type="dfn" href="#schema" id="ref-for-schema①">schema</a>, a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a>'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①②">Verifiable Credential</a> should be considered valid.</p>
    <p>Validation of a given Credential against its schema is to be performed according to the <a data-link-type="biblio" href="#biblio-json-schema-validation">[JSON-SCHEMA-VALIDATION]</a> specification.</p>
    <p>An example of the <code>credentialSchema</code> property is noted below, which specifies two properties:</p>
    <ul>
@@ -830,7 +830,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>It <i>RECOMMENDED</i> that implementers use at most one <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑧">Credential Schema</a> for each <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①③">Verifiable Credential</a>. This data model defines a mechanism to combine multiple <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema⑥">JSON Schemas</a> into a single <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑨">Credential Schema</a> in the <a href="#credential_schema_schema">schema section</a>.</p>
    <h3 class="heading settled" data-level="6.2" id="processing_acceptance"><span class="secno">6.2. </span><span class="content">Acceptance</span><a class="self-link" href="#processing_acceptance"></a></h3>
    <p>A party may choose to accept <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②⓪">Credential Schemas</a> based on multiple different criteria: storage location, authorship, identifier, version, etc.</p>
-   <p>The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. <a data-link-type="dfn" href="#proof" id="ref-for-proof④">proof</a>).</p>
+   <p>The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. <a data-link-type="dfn" href="#proof" id="ref-for-proof②">proof</a>).</p>
    <h2 class="heading settled" data-level="7" id="versioning_guidelines"><span class="secno">7. </span><span class="content">Versioning Guidelines</span><a class="self-link" href="#versioning_guidelines"></a></h2>
    <p class="issue" id="issue-9ff54d0d"><a class="self-link" href="#issue-9ff54d0d"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal.</p>
    <p>This section applies to <a data-link-type="dfn" href="#version" id="ref-for-version③">version</a> property of the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑦">metadata</a>.</p>
@@ -1154,8 +1154,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <b><a href="#proof">#proof</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-proof">2. Terminology</a>
-    <li><a href="#ref-for-proof①">6.1. Validation</a> <a href="#ref-for-proof②">(2)</a> <a href="#ref-for-proof③">(3)</a>
-    <li><a href="#ref-for-proof④">6.2. Acceptance</a>
+    <li><a href="#ref-for-proof①">6.1. Validation</a>
+    <li><a href="#ref-for-proof②">6.2. Acceptance</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="type">
