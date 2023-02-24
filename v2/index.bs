@@ -175,18 +175,25 @@ The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and 
 
 <pre class="example" highlight="json">
 {
-    "$id": "email-schema-1.0",
-    "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "description": "Email",
-    "type": "object",
-    "properties": {
+  "$id": "email-schema-1.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Email",
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
         "emailAddress": {
-            "type": "string",
-            "format": "email"
-        }
-    },
-    "required": ["emailAddress"],
-    "additionalProperties": false
+          "type": "string",
+          "format": "email"
+        },
+        "required": [
+          "emailAddress"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
 }
 </pre>
 
@@ -247,60 +254,6 @@ Credentials Schemas are versioned via a [=version=] property. The [=version=] de
 
 Gudelines for versioning can be found in the [Versioning Guidelines section of this document](#versioning_guidelines).
 
-## Processing ## {#processing}
-
-There is wide support for JSON Schema processing and [[JSON-SCHEMA-IMPLMENTATIONS]] can be found in many programming languages.
-
-To process a [=Verifiable Credential=] against a [=Credential Schema=] one must first identify which sections of credential the schema applies to, as specified in the `credentialSchema` property of the credential, and next apply [validation](#processing_validation).
-
-### Acceptance ### {#processing_acceptance}
-
-A party may choose to accept [=Credential Schemas=] based on multiple different criteria: storage location, authorship, identifier, version, etc. 
-
-The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. [=proof=]).
-
-### Validation ### {#processing_validation}
-
-What determines the validity of a [=Verifiable Credential=] is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid [=proof=], a valid [=proof=] and validation against a given [=schema=], a valid [=proof=], valid <i>credentialStatus</i>, trusted <i>issuer</i>, or any other set of conditions.
-
-Validation of a given Credential against its schema is to be performed according to the [[JSON-SCHEMA-VALIDATION]] specification.
-
-An example of the `credentialSchema` property is noted below, which specifies three properties:
-
-- <b>id</b>: a resolvable identifier for a specific [=Credential Schema=] 
-
-- <b>type</b>: [=CredentialSchema2022=]
-
-- <b>path</b>: A [[JSON-PATH]] value referencing the portion of the credential to validate using the referenced [=Credential Schema=].
-
-
-<pre class="example" highlight="json">
-{
-  "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "https://www.w3.org/2018/credentials/examples/v1"
-  ],
-  "id": "http://example.edu/credentials/3732",
-  "type": ["VerifiableCredential", "UniversityDegreeCredential"],
-  "issuer": "https://example.edu/issuers/14",
-  "issuanceDate": "2010-01-01T19:23:24Z",
-  "credentialSubject": {
-    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-    "degree": {
-      "type": "BachelorDegree",
-      "name": "Bachelor of Science and Arts"
-    }
-  },
-  "credentialSchema": {
-    "id": "https://example.org/examples/degree.json",
-    "type": "CredentialSchema2022"
-    "path": "$.credentialSubject"
-  }
-}
-</pre>
-
-Note: consider an options to have multiple Credential Schemas in a single credential.
-
 # Data Model # {#data_model}
 
 ## Credential Schema ## {#credential_schema}
@@ -308,6 +261,7 @@ Note: consider an options to have multiple Credential Schemas in a single creden
 This section provides the [[JSON-SCHEMA]] definition for [=Credential Schema=] along with an example of a [=Credential Schema=] for an Email [=Verifiable Credential=].
 
 The JSON Schema definition for a Credential Schema below makes use of [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/json-schema-core.html).
+
 <b>JSON Schema</b>
 <pre highlight="json">
 {
@@ -418,36 +372,181 @@ A [=Credential Schema=] <i>MUST</i> have a `schema` property. The `schema` prope
 
 <pre class="example" highlight="json">
 {
- "$schema": "https://json-schema.org/draft/2020-12/schema",
- "description": "Email",
- "type": "object",
- "properties": {
-   "emailAddress": {
-       "type": "string",
-       "format": "email"
-   }
- },
- "required": ["emailAddress"],
- "additionalProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Email",
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "emailAddress": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "emailAddress"
+      ]
+    }
+  }
 }
 </pre>
 
-Note: Add language on using different versions of JSON Schema specifications.
+Note: It is recommended that Credential Schemas avoid setting the `additionalProperties` value to `false`. Doing so could make credentials that utilize the `id` property in `credentialSubject` invalid. Alternatively, implementers could add an `id` property to each Credential Schema.
+
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.
+
+### Multiple Schemas ### {#credential_schema_schema_multiple}
+
+A common use case is to include multiple schemas to validate against a single [=Verifiable Credential=]. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the `credentialSubject`. Multiple schemas <i>MAY</i> be combined together using native constructs from the [[JSON-SCHEMA]] specification, utilizing properties such as `oneOf`, `anyOf`, or `allOf`.
+
+We provide an example of how to construct such a schema using the [[JSON-SCHEMA]] property `allOf` below, combining schemas for a Verifiable Credential, name, and email address:
+
+<pre class="example" highlight="json">
+{
+  "allOf": [
+    {
+      "$ref": "https://raw.githubusercontent.com/w3c/vc-data-model/main/schema/verifiable-credential/verifiable-credential-schema.json"
+    },
+    {
+      "$id": "name-schema",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "Name",
+      "type": "object",
+      "properties": {
+        "credentialSubject": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "additionalProperties": false
+              },
+              "required": [
+                "firstName",
+                "lastName"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "$id": "email-schema-1.0",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "Email",
+      "type": "object",
+      "properties": {
+        "credentialSubject": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "object",
+              "properties": {
+                "emailAddress": {
+                  "type": "string",
+                  "format": "email"
+                }
+              },
+              "required": ["emailAddress"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+</pre>
+
+The example above is used to validate every property in the following example [=Verifiable Credential=]:
+
+<pre class="example" highlight="json">
+{
+    "@context": ["https://www.w3.org/ns/credentials/v2"],
+    "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
+    "type": ["VerifiableCredential"],
+    "issuer": "did:example:1234",
+    "validFrom": "2023-01-01T05:05:05Z",
+    "credentialSubject": {
+        "firstName": "Alice",
+        "lastName": "Bobertson",
+        "emailAddress": "alice@bobertson.com"
+    },
+    "credentialSchema": {
+        "id": "multiple-credential-schema-test",
+        "type": "CredentialSchema2022"
+    },
+    "proof": { ... }
+}
+</pre>
+
+Notably, no special processing rules are defined by this specification outside of those already defined by [[JSON-SCHEMA]] itself.
 
 ## Proof ## {#credential_schema_proof}
 
 Any [=Credential Schema=] may be authenticated using [[DATA-INTEGRITY]] or [[JOSE]].
 
-### Data Integrity ### {#credential_schema_proof_data_integrity}
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should be packaged as a VC itself.
 
-Note: Example and more detail needed.
+# Processing # {#processing}
 
-### JOSE ### {#credential_schema_proof_jose}
+There is wide support for JSON Schema processing and support for [[JSON-SCHEMA-IMPLMENTATIONS]] can be found in most programming languages.
 
-Note: Example and more detail needed.
+To process a [=Verifiable Credential=] against a [=Credential Schema=] one must first extract the schema from the `schema` property of a [=Credential Schema=] and next apply [validation](#processing_validation).
 
+## Validation ## {#processing_validation}
+
+What determines the validity of a [=Verifiable Credential=] is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid [=proof=], validation against a given [=schema=], a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The [[VC-DATA-MODEL]]'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a [=Verifiable Credential=] should be considered valid.
+
+Validation of a given Credential against its schema is to be performed according to the [[JSON-SCHEMA-VALIDATION]] specification.
+
+An example of the `credentialSchema` property is noted below, which specifies two properties:
+
+- <b>id</b>: a resolvable identifier for a specific [=Credential Schema=] document
+
+- <b>type</b>: [=CredentialSchema2022=]
+
+<pre class="example" highlight="json">
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2018/credentials/examples/v1"
+  ],
+  "id": "http://example.edu/credentials/3732",
+  "type": ["VerifiableCredential", "UniversityDegreeCredential"],
+  "issuer": "https://example.edu/issuers/14",
+  "issuanceDate": "2010-01-01T19:23:24Z",
+  "credentialSubject": {
+    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+    "degree": {
+      "type": "BachelorDegree",
+      "name": "Bachelor of Science and Arts"
+    }
+  },
+  "credentialSchema": {
+    "id": "https://example.org/examples/degree.json",
+    "type": "CredentialSchema2022"
+  }
+}
+</pre>
+
+It <i>RECOMMENDED</i> that implementers use at most one [=Credential Schema=] for each [=Verifiable Credential=]. This data model defines a mechanism to combine multiple [=JSON Schemas=] into a single [=Credential Schema=] in the [schema section](#credential_schema_schema).
+
+## Acceptance ## {#processing_acceptance}
+
+A party may choose to accept [=Credential Schemas=] based on multiple different criteria: storage location, authorship, identifier, version, etc. 
+
+The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. [=proof=]).
 
 # Versioning Guidelines # {#versioning_guidelines}
+
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal.
 
 This section applies to [=version=] property of the [=metadata=].
 
@@ -465,30 +564,37 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/",
- "version": "1.1",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
- "name": "Email",
- "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
- "authored": "2018-01-01T00:00:00+00:00",
- "schema": {
-   "$id": "email-schema-1.1",
-   "$schema": "https://json-schema.org/draft/2020-12/schema",
-   "description": "Email",
-   "type": "object",
-   "properties": {
-    "emailAddress": {
-      "type": "string",
-      "format": "email"
-    },
-    "backupEmailAddress": {
-      "type": "string",
-      "format": "email"
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "version": "1.1",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$id": "email-schema-1.1",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          },
+          "backupEmailAddress": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "emailAddress"
+        ],
+        "additionalProperties": false
+      }
     }
-   },
-   "required": ["emailAddress"],
-   "additionalProperties": false
- }
+  }
 }
 </pre>
 
@@ -496,33 +602,41 @@ This time our credentialing requirements for our email schema have changed and w
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/",
- "version": "2.0",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
- "name": "Email",
- "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
- "authored": "2018-01-01T00:00:00+00:00",
- "schema": {
-   "$id": "email-schema-2.0",
-   "$schema": "https://json-schema.org/draft/2020-12/schema",
-   "description": "Email",
-   "type": "object",
-   "properties": {
-    "emailAddress": {
-      "type": "string",
-      "format": "email"
-    },
-    "firstName": {
-      "type": "string"
-    },
-    "backupEmailAddress": {
-      "type": "string",
-      "format": "email"
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "version": "2.0",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$id": "email-schema-2.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "backupEmailAddress": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "emailAddress",
+          "firstName"
+        ],
+        "additionalProperties": false
+      }
     }
-   },
-   "required": ["emailAddress", "firstName"],
-   "additionalProperties": false
- }
+  }
 }
 </pre>
 
@@ -532,26 +646,33 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/",
- "version": "1.0",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
- "name": "Email",
- "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
- "authored": "2018-01-01T00:00:00+00:00",
- "schema": {
-   "$id": "email-schema-1.0",
-   "$schema": "https://json-schema.org/draft/2020-12/schema",
-   "description": "Email",
-   "type": "object",
-   "properties": {
-      "emailAddress": {
-      "type": "string",
-      "format": "email"
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "version": "1.0",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$id": "email-schema-1.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "emailAddress"
+        ],
+        "additionalProperties": false
+      }
     }
-   },
-   "required": ["emailAddress"],
-   "additionalProperties": false
- }
+  }
 }
 </pre>
 
@@ -559,30 +680,37 @@ In this example we once again reference the email schema, but this time we add a
 
 <pre class="example" highlight="json">
 {
- "type": "https://w3c-ccg.github.io/vc-json-schemas/",
- "version": "1.1",
- "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
- "name": "Email",
- "author": "did:example:abc123",
- "authored": "2018-01-01T00:00:00+00:00",
- "schema": {
-   "$id": "email-schema-1.1",
-   "$schema": "https://json-schema.org/draft/2020-12/schema",
-   "description": "Email",
-   "type": "object",
-   "properties": {
-    "emailAddress": {
-      "type": "string",
-      "format": "email"
-    },
-    "backupEmailAddress": {
-      "type": "string",
-      "format": "email"
+  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "version": "1.1",
+  "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
+  "name": "Email",
+  "author": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+  "authored": "2018-01-01T00:00:00+00:00",
+  "schema": {
+    "$id": "email-schema-1.1",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Email",
+    "type": "object",
+    "properties": {
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          },
+          "backupEmailAddress": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "emailAddress"
+        ],
+        "additionalProperties": false
+      }
     }
-   },
-   "required": ["emailAddress"],
-   "additionalProperties": false
- }
+  }
 }
 </pre>
 
@@ -592,7 +720,7 @@ By introducing a [=version=] field we allow the [=credential schema=] to become 
 
 These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.
 
-Note: Expand on this section or remove.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove.
 
 # Examples # {#examples}
 
@@ -614,13 +742,20 @@ We define an Email schema as the basis for a credential.
     "description": "Email",
     "type": "object",
     "properties": {
-      "emailAddress": {
-        "type": "string",
-        "format": "email"
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "string",
+            "format": "email"
+          },
+          "required": [
+            "emailAddress"
+          ],
+          "additionalProperties": false
+        }
       }
-    },
-    "required": ["emailAddress"],
-    "additionalProperties": false
+    }
   }
 }
 </pre>
@@ -668,7 +803,7 @@ A flip side to drawbacks of the usage of [[JSON-SCHEMA]] is that there is a plet
 
 It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoparability, and [[JSON-SCHEMA]] providing static validation. 
 
-Note: example of a credential using both JSON-LD and JSON Schema.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.
 
 # Interoperability # {#interoperability}
 
@@ -676,7 +811,7 @@ The primary concern of this specification is to facilitate an ecosystem in which
 
 A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.
 
-Note: Discussion on other types of interoperability and how this schema does or does not help.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.
 
 <pre class="biblio">
 {
@@ -733,11 +868,6 @@ Note: Discussion on other types of interoperability and how this schema does or 
   "RFC8174": {
     "href": "https://www.rfc-editor.org/rfc/rfc8174",
     "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2017. Best Current Practice",
-    "publisher": "IETF"
-  },
-  "JSON-PATH": {
-    "href": "https://www.ietf.org/archive/id/draft-ietf-jsonpath-base-07.txt",
-    "title": "JSONPath: Query expressions for JSON",
     "publisher": "IETF"
   }
 }
