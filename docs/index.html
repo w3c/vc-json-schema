@@ -4,9 +4,9 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Verifiable Credentials JSON Schema Specification</title>
   <meta content="w3c/CG-DRAFT" name="w3c-status">
-  <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
+  <meta content="Bikeshed version d6f2d6445, updated Tue Jan 17 11:25:25 2023 -0800" name="generator">
   <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="ecab1c34998ec0b09e79b57c93c2ed545d970cd5" name="document-revision">
+  <meta content="7f83366f54804891ce71b363f16cbd1ec11cd32e" name="document-revision">
 <style>
 body {
     counter-reset: table;
@@ -329,7 +329,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1>Verifiable Credentials JSON Schema 2022</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-02-24">24 February 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-02-27">27 February 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -351,15 +351,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>Among other things, the <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a> specifies the models used for Verifiable Credentials,
+   <p>Among other things, the <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a> specifies the models used for Verifiable Credentials,
 
   Verifiable Presentations, and explains the relationships between three parties: <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
-  throughout the <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a> are the that of of verifiability, extensbility, and semantic 
+  throughout the <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a> are the that of of verifiability, extensbility, and semantic 
   interoperability. This specification provides a mechanism to make use of a Credential Schema in <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential">Verifiable Credential</a>, leveraging the exisiting <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
@@ -384,7 +384,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#verifiable_credentials_data_model"><span class="secno">4.1</span> <span class="content">Verifiable Credentials Data Model</span></a>
       <li><a href="#guarantees"><span class="secno">4.2</span> <span class="content">Guarantees</span></a>
       <li><a href="#storage"><span class="secno">4.3</span> <span class="content">Storage</span></a>
-      <li><a href="#versioning"><span class="secno">4.4</span> <span class="content">Versioning</span></a>
      </ol>
     <li>
      <a href="#data_model"><span class="secno">5</span> <span class="content">Data Model</span></a>
@@ -404,21 +403,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#processing_validation"><span class="secno">6.1</span> <span class="content">Validation</span></a>
       <li><a href="#processing_acceptance"><span class="secno">6.2</span> <span class="content">Acceptance</span></a>
      </ol>
+    <li><a href="#extensibility"><span class="secno">7</span> <span class="content">Extensibility</span></a>
     <li>
-     <a href="#versioning_guidelines"><span class="secno">7</span> <span class="content">Versioning Guidelines</span></a>
+     <a href="#examples"><span class="secno">8</span> <span class="content">Examples</span></a>
      <ol class="toc">
-      <li><a href="#model"><span class="secno">7.1</span> <span class="content">Model</span></a>
-      <li><a href="#revision"><span class="secno">7.2</span> <span class="content">Revision</span></a>
+      <li><a href="#vc_example"><span class="secno">8.1</span> <span class="content">Verifiable Credentials</span></a>
      </ol>
-    <li><a href="#extensibility"><span class="secno">8</span> <span class="content">Extensibility</span></a>
-    <li>
-     <a href="#examples"><span class="secno">9</span> <span class="content">Examples</span></a>
-     <ol class="toc">
-      <li><a href="#vc_example"><span class="secno">9.1</span> <span class="content">Verifiable Credentials</span></a>
-     </ol>
-    <li><a href="#drawbacks"><span class="secno">10</span> <span class="content">Drawbacks</span></a>
-    <li><a href="#alternatives"><span class="secno">11</span> <span class="content">Usage with JSON-LD</span></a>
-    <li><a href="#interoperability"><span class="secno">12</span> <span class="content">Interoperability</span></a>
+    <li><a href="#drawbacks"><span class="secno">9</span> <span class="content">Drawbacks</span></a>
+    <li><a href="#alternatives"><span class="secno">10</span> <span class="content">Usage with JSON-LD</span></a>
+    <li><a href="#interoperability"><span class="secno">11</span> <span class="content">Interoperability</span></a>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -435,15 +428,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <main>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
     This specification provides a mechanism for the use of <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema">JSON Schemas</a> with <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①">Verifiable Credentials</a>. A significant part of the integrity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential②">Verifiable Credential</a> comes from the ability to structure its contents so that all three parties — issuer, holder, verifier — may have a consistent mechanism of trust in interpreting the data that they are provided with. We introducing a new data model for an object to facilitate backing Credentials with <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema①">JSON Schemas</a> that we call a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema">Credential Schema</a>. 
-   <p>This specification provides a standardized way of creating <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①">Credential Schemas</a> to be used in credentialing platforms, how to version them, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the <code>credentialSubject</code> and another for other credential properties.</p>
+   <p>This specification provides a standardized way of creating <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①">Credential Schemas</a> to be used in credentialing platforms, and how to read them. Credential Schemas may apply to any portion of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential, e.g. a schema for the <code>credentialSubject</code> and another for other credential properties.</p>
    <h3 class="heading settled" data-level="1.1" id="conformance"><span class="secno">1.1. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h3>
    <p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p>
-   <p>The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and <i>SHOULD</i> in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> <a data-link-type="biblio" href="#biblio-rfc8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
+   <p>The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and <i>SHOULD</i> in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/info/bcp14">BCP 14</a> <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current Practice">[RFC2119]</a> <a data-link-type="biblio" href="#biblio-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2017. Best Current Practice">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
    <h2 class="heading settled" data-level="2" id="terminology"><span class="secno">2. </span><span class="content">Terminology</span><a class="self-link" href="#terminology"></a></h2>
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="id">id</dfn>
     <dd data-md>
-     <p>A locally unique identifier to address the schema.</p>
+     <p>A locally unique identifier to address the schema. The identifier MAY include suffix that represent the version of the schema. When it is included, it is RECOMMENDED that version follow <a data-link-type="biblio" href="#biblio-schema-ver" title="SchemaVer Documentation">[SCHEMA-VER]</a>.</p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="credential-schema">credential schema</dfn>
     <dd data-md>
      <p>The data template for a credential. Refers to the entirety of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②">Credential Schema</a>, including both <a data-link-type="dfn" href="#metadata" id="ref-for-metadata">Metadata</a> and <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema②">JSON Schema</a> properties. The term may refer to a document either with, or without a <a data-link-type="dfn" href="#proof" id="ref-for-proof">proof</a>.</p>
@@ -451,10 +444,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <dd data-md>
      <p>The type of the <code>credentialSchema</code> property to be used when utilizing this specification.</p>
    </dl>
-<pre class="example highlight" id="example-e7eea52d"><a class="self-link" href="#example-e7eea52d"></a><c- p>{</c->
+<pre class="example highlight" id="example-b70cce9f"><a class="self-link" href="#example-b70cce9f"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db?version=1.0"</c-><c- p>,</c->
+  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
   <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
   <c- f>"authored"</c-><c- p>:</c-> <c- u>"2022-05-05T00:00:00+00:00"</c-><c- p>,</c->
@@ -479,9 +471,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <dd data-md>
      <p>Top-level information on a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema③">Credential Schema</a>. Pieces of data wrapping the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema③">JSON Schema</a> to provide further context about the schema.</p>
    </dl>
-<pre class="example highlight" id="example-197ee118"><a class="self-link" href="#example-197ee118"></a><c- p>{</c->
+<pre class="example highlight" id="example-78c46abd"><a class="self-link" href="#example-78c46abd"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
   <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
@@ -491,13 +482,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="proof">proof</dfn>
     <dd data-md>
-     <p>A digital signature over the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema④">Credential Schema</a> for the sake of asserting authorship. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata①">Metadata</a>. Accomplished using either <a data-link-type="biblio" href="#biblio-data-integrity">[DATA-INTEGRITY]</a> or <a data-link-type="biblio" href="#biblio-jose">[JOSE]</a>.</p>
+     <p>A digital signature over the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema④">Credential Schema</a> for the sake of asserting authorship. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata①">Metadata</a>. Accomplished using either <a data-link-type="biblio" href="#biblio-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">[DATA-INTEGRITY]</a> or <a data-link-type="biblio" href="#biblio-jose" title="Javascript Object Signing and Encryption (JOSE)">[JOSE]</a>.</p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="type">type</dfn>
     <dd data-md>
      <p>It is important in software systems for machines to understand the context of what a document is. In credential schemas this is declared in the <b>type</b> field. This field resolves to a JSON schema with details about the <b>schema metadata</b> that applies to the schema. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata②">Metadata</a>.</p>
-    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="version">version</dfn>
-    <dd data-md>
-     <p>Denotes the revision of a given Credential Schema.</p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="name">name</dfn>
     <dd data-md>
      <p>A human-readable name for the schema. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata③">Metadata</a>.</p>
@@ -506,13 +494,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p><a data-link-type="dfn" href="#did" id="ref-for-did">DID</a> of the identity which authored the credential schema. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata④">Metadata</a>.</p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="authored">authored</dfn>
     <dd data-md>
-     <p><a data-link-type="biblio" href="#biblio-rfc3339">[RFC3339]</a> date on which the schema was created. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑤">Metadata</a>.</p>
+     <p><a data-link-type="biblio" href="#biblio-rfc3339" title="Date and Time on the Internet: Timestamps">[RFC3339]</a> date on which the schema was created. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑤">Metadata</a>.</p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="json-schema">json schema</dfn>
     <dd data-md>
      <p><a data-link-type="dfn" href="#schema" id="ref-for-schema">schema</a></p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="schema">schema</dfn>
     <dd data-md>
-     <p>This is where the Credential Schema data fields are defined as a valid <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a>. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑥">Metadata</a>.</p>
+     <p>This is where the Credential Schema data fields are defined as a valid <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a>. A piece of <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑥">Metadata</a>.</p>
    </dl>
 <pre class="example highlight" id="example-304a25bd"><a class="self-link" href="#example-304a25bd"></a><c- p>{</c->
   <c- f>"$id"</c-><c- p>:</c-> <c- u>"email-schema-1.0"</c-><c- p>,</c->
@@ -537,25 +525,25 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <dl>
-    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="credential">credential</dfn>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="credential">credential<a class="self-link" href="#credential"></a></dfn>
     <dd data-md>
      <p><a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential③">Verifiable Credential</a></p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="verifiable-credential">verifiable credential</dfn>
     <dd data-md>
-     <p>See <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a></p>
+     <p>See <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a></p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="did">DID</dfn>
     <dd data-md>
-     <p>See <a data-link-type="biblio" href="#biblio-did-core">[DID-CORE]</a></p>
+     <p>See <a data-link-type="biblio" href="#biblio-did-core" title="Decentralized Identifiers (DIDs) v1.0">[DID-CORE]</a></p>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="data-integrity">data integrity</dfn>
     <dd data-md>
-     <p>A methodology for ensuring the authentcitiy and integrity of digital documents which makes use of <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a>. See <a data-link-type="biblio" href="#biblio-data-integrity">[DATA-INTEGRITY]</a>.</p>
-    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="presentation">presentation</dfn>
+     <p>A methodology for ensuring the authentcitiy and integrity of digital documents which makes use of <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a>. See <a data-link-type="biblio" href="#biblio-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">[DATA-INTEGRITY]</a>.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-noexport id="presentation">presentation<a class="self-link" href="#presentation"></a></dfn>
     <dd data-md>
      <p><a href="https://www.w3.org/TR/vc-data-model/#presentations-0">Presentation</a> is a mechanism used to share one or more credentials with a given party.</p>
    </dl>
    <h2 class="heading settled" data-level="3" id="formatting"><span class="secno">3. </span><span class="content">Formatting</span><a class="self-link" href="#formatting"></a></h2>
-   <p>The <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a> utilizies the <a href="https://www.w3.org/TR/ld-glossary/#linked-data">JSON Linked Data interchange format</a>. The specification allows for other formats, such as standard JSON with JSON Schema but provides limited examples. In the <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas section</a>, <i>JSON-SCHEMA-2018</i> validation is noted explicitly. This specification does not <b>require</b> the use of <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a>, though some may prefer to utilize <a data-link-type="dfn" href="#data-integrity" id="ref-for-data-integrity">Data Integrity</a> Proofs which this specification supports. If it becomes evident that it would be useful to include <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> or another format that decision would be made in a revisal draft at a later date.</p>
-   <p>The Verifiable Credentials data model relies heavily upon standard JSON with validation provided by <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a>. The data model embeds <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> documents inside a larger document that contains useful metadata about a given credential schema.</p>
+   <p>The <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a> utilizies the <a href="https://www.w3.org/TR/ld-glossary/#linked-data">JSON Linked Data interchange format</a>. The specification allows for other formats, such as standard JSON with JSON Schema but provides limited examples. In the <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas section</a>, <i>JSON-SCHEMA-2018</i> validation is noted explicitly. This specification does not <b>require</b> the use of <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a>, though some may prefer to utilize <a data-link-type="dfn" href="#data-integrity" id="ref-for-data-integrity">Data Integrity</a> Proofs which this specification supports. If it becomes evident that it would be useful to include <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> or another format that decision would be made in a revisal draft at a later date.</p>
+   <p>The Verifiable Credentials data model relies heavily upon standard JSON with validation provided by <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a>. The data model embeds <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> documents inside a larger document that contains useful metadata about a given credential schema.</p>
    <h2 class="heading settled" data-level="4" id="concepts"><span class="secno">4. </span><span class="content">Concepts</span><a class="self-link" href="#concepts"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="verifiable_credentials_data_model"><span class="secno">4.1. </span><span class="content">Verifiable Credentials Data Model</span><a class="self-link" href="#verifiable_credentials_data_model"></a></h3>
    <p>The <b>Credential Schema</b> is a document that is used to guarantee the structure, and by extension the semantics, of the set of claims comprising a Verifiable Credential. A shared Credential Schema allows all parties to reference data in a known way.</p>
@@ -568,21 +556,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>With adherance to the specification, the following guarantees can be made about a schema:</p>
    <ul>
     <li data-md>
-     <p>A schema is <i>versionable</i> and it can evolve via new versions over time.</p>
-    <li data-md>
      <p>A schema is available for any issuer to use in a Credential and any holder or verifier of that Credential <i>read</i>.</p>
     <li data-md>
      <p>A schema always guarantees the structure of a credential. A schema can apply to all or specific parts of a credential.</p>
    </ul>
    <h3 class="heading settled" data-level="4.3" id="storage"><span class="secno">4.3. </span><span class="content">Storage</span><a class="self-link" href="#storage"></a></h3>
-   <p><a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑦">Credential Schemas</a> intended to be created and made available as <b>immutable</b> objects. They may be stored on any number of storage mediums such as a distributed ledger, traditional database, or decentralized file storage. The same schema <i>may</i> be replicated across multiple file stores with the same identifier. Immutability is key to enable consistent sources of truth for usage with Verifiable Credentials which are also immutable. Credential Schemas can evolve by creating new <a href="#versioning">versions</a>.</p>
-   <h3 class="heading settled" data-level="4.4" id="versioning"><span class="secno">4.4. </span><span class="content">Versioning</span><a class="self-link" href="#versioning"></a></h3>
-   <p>Credentials Schemas are versioned via a <a data-link-type="dfn" href="#version" id="ref-for-version">version</a> property. The <a data-link-type="dfn" href="#version" id="ref-for-version①">version</a> denotes the revision of a particular schema for a given storage medium.</p>
-   <p><a data-link-type="dfn" href="#author" id="ref-for-author">Authors</a> and Issuers have an interest in versioning to track advancements and changes over time both for formatting changes (e.g. supporting <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00">draft-bhutton-json-schema-00</a> as opposed to <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-01">Draft 7</a>) as well as field-level changes (e.g. adding a new required field) as a schema evolves over time. Holders have an interest in versioning to gain an understanding in where their credentials can be used as they may receive requests for <a data-link-type="dfn" href="#presentation" id="ref-for-presentation">presentation</a> filtering by schema ID. Similarly, Verifiers have an interest in versioning to know which data, or schema versions they should accept and known how to process in their systems.</p>
-   <p>Gudelines for versioning can be found in the <a href="#versioning_guidelines">Versioning Guidelines section of this document</a>.</p>
+   <p><a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑦">Credential Schemas</a> intended to be created and made available as <b>immutable</b> objects. They may be stored on any number of storage mediums such as a distributed ledger, traditional database, or decentralized file storage. The same schema <i>may</i> be replicated across multiple file stores with the same identifier. Immutability is key to enable consistent sources of truth for usage with Verifiable Credentials which are also immutable.</p>
    <h2 class="heading settled" data-level="5" id="data_model"><span class="secno">5. </span><span class="content">Data Model</span><a class="self-link" href="#data_model"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="credential_schema"><span class="secno">5.1. </span><span class="content">Credential Schema</span><a class="self-link" href="#credential_schema"></a></h3>
-   <p>This section provides the <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> definition for <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑧">Credential Schema</a> along with an example of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑨">Credential Schema</a> for an Email <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑦">Verifiable Credential</a>.</p>
+   <p>This section provides the <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> definition for <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑧">Credential Schema</a> along with an example of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema⑨">Credential Schema</a> for an Email <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑦">Verifiable Credential</a>.</p>
    <p>The JSON Schema definition for a Credential Schema below makes use of <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">JSON Schema Draft 2020-12</a>.</p>
    <p><b>JSON Schema</b></p>
 <pre class="highlight"><c- p>{</c->
@@ -593,10 +575,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
     <c- f>"type"</c-><c- p>:</c-> <c- p>{</c->
       <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c->
-    <c- p>},</c->
-    <c- f>"version"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-      <c- f>"pattern"</c-><c- p>:</c-> <c- u>"^\\d+\\.\\d+$"</c->
     <c- p>},</c->
     <c- f>"id"</c-><c- p>:</c-> <c- p>{</c->
       <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c->
@@ -619,7 +597,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- p>},</c->
   <c- f>"required"</c-><c- p>:</c-> <c- p>[</c->
     <c- u>"type"</c-><c- p>,</c->
-    <c- u>"version"</c-><c- p>,</c->
     <c- u>"id"</c-><c- p>,</c->
     <c- u>"name"</c-><c- p>,</c->
     <c- u>"author"</c-><c- p>,</c->
@@ -638,23 +615,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>The value of the <code>type</code> property <i>MUST</i> point to a URI specifying the draft of this specification to use. The current draft URI is <a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>.</p>
    <ol start="2">
     <li data-md>
-     <p><a data-link-type="dfn" href="#version" id="ref-for-version②">version</a></p>
-   </ol>
-   <p>Credential Schema Metadata <i>MUST</i> provide a <code>version</code> property.</p>
-   <p>The value of the <code>version</code> property <i>MUST</i> point to a semantic version of a given credential schema; follows the <a href="#versioning_guidelines">versioning guidelines</a>.</p>
-   <ol start="3">
-    <li data-md>
      <p><a data-link-type="dfn" href="#id" id="ref-for-id">id</a></p>
    </ol>
    <p>Credential Schema Metadata <i>MUST</i> provide an <code>id</code> property.</p>
-   <p>The value of the <code>id</code> property <i>MUST</i> point to a locally unique identifier to address the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier and each version of a schema is required to have its own unique identifier.</p>
-   <p>It is <i>RECOMMENDED</i> that this identifier is <a href="https://www.rfc-editor.org/rfc/rfc3986">Uniform Resource Identifier</a> which <i>SHOULD</i> contain information pertaining to the author and version of the schema. For example, if the author controls a DID </p>
+   <p>The value of the <code>id</code> property <i>MUST</i> point to a locally unique identifier to address the schema on a given data storage medium (e.g. a database, ledger, distributed file store). Each credential schema has its own unique identifier.</p>
+   <p>It is <i>RECOMMENDED</i> that this identifier is <a href="https://www.rfc-editor.org/rfc/rfc3986">Uniform Resource Identifier</a> which <i>SHOULD</i> contain information pertaining to the author. For example, if the author controls a DID </p>
 <pre>did:example:abcdefghi</pre>
    <p></p>
    <p>a possible schema ID the author created would have an identifier such as: </p>
-<pre>did:example:abcdefghi/17de181feb67447da4e78259d92d0240?version=1</pre>
+<pre>did:example:abcdefghi/17de181feb67447da4e78259d92d0240</pre>
    <p></p>
-   <p>which makes use of <a href="https://www.w3.org/TR/did-core/#path">DID Path syntax</a> as defined by <a data-link-type="biblio" href="#biblio-did-core">[DID-CORE]</a>.</p>
+   <p>which makes use of <a href="https://www.w3.org/TR/did-core/#path">DID Path syntax</a> as defined by <a data-link-type="biblio" href="#biblio-did-core" title="Decentralized Identifiers (DIDs) v1.0">[DID-CORE]</a>.</p>
    <ol start="4">
     <li data-md>
      <p><a data-link-type="dfn" href="#name" id="ref-for-name">name</a></p>
@@ -663,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>The value of the <code>name</code> property is <i>RECOMMENDED</i> to be a human-readable name which describes the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⓪">Credential Schema</a>.</p>
    <ol start="5">
     <li data-md>
-     <p><a data-link-type="dfn" href="#author" id="ref-for-author①">author</a></p>
+     <p><a data-link-type="dfn" href="#author" id="ref-for-author">author</a></p>
    </ol>
    <p>Credential Schema Metadata <i>MUST</i> provide an <code>author</code> property.</p>
    <p>The value of the <code>author</code> property is <i>RECOMMENDED</i> to be a <a data-link-type="dfn" href="#did" id="ref-for-did①">DID</a> of the author of the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①①">Credential Schema</a>.</p>
@@ -672,10 +643,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p><a data-link-type="dfn" href="#authored" id="ref-for-authored">authored</a></p>
    </ol>
    <p>Credential Schema Metadata <i>MUST</i> provide an <code>authored</code> property.</p>
-   <p>The value of the <code>authored</code> property <i>MUST</i> be a valid <a data-link-type="biblio" href="#biblio-rfc3339">[RFC3339]</a> timestamp whose value reflects the date-time value for when the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> was created.</p>
-<pre class="example highlight" id="example-ec3c7387"><a class="self-link" href="#example-ec3c7387"></a><c- p>{</c->
+   <p>The value of the <code>authored</code> property <i>MUST</i> be a valid <a data-link-type="biblio" href="#biblio-rfc3339" title="Date and Time on the Internet: Timestamps">[RFC3339]</a> timestamp whose value reflects the date-time value for when the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> was created.</p>
+<pre class="example highlight" id="example-8503f852"><a class="self-link" href="#example-8503f852"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
   <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
@@ -704,11 +674,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- p>}</c->
 <c- p>}</c->
 </pre>
-   <p class="note" role="note"><span>Note:</span> It is recommended that Credential Schemas avoid setting the <code>additionalProperties</code> value to <code>false</code>. Doing so could make credentials that utilize the <code>id</code> property in <code>credentialSubject</code> invalid. Alternatively, implementers could add an <code>id</code> property to each Credential Schema.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> It is recommended that Credential Schemas avoid setting the <code>additionalProperties</code> value to <code>false</code>. Doing so could make credentials that utilize the <code>id</code> property in <code>credentialSubject</code> invalid. Alternatively, implementers could add an <code>id</code> property to each Credential Schema.</p>
    <p class="issue" id="issue-56d2c1a9"><a class="self-link" href="#issue-56d2c1a9"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.</p>
    <h4 class="heading settled" data-level="5.3.1" id="credential_schema_schema_multiple"><span class="secno">5.3.1. </span><span class="content">Multiple Schemas</span><a class="self-link" href="#credential_schema_schema_multiple"></a></h4>
-   <p>A common use case is to include multiple schemas to validate against a single <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑧">Verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <i>MAY</i> be combined together using native constructs from the <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> specification, utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.</p>
-   <p>We provide an example of how to construct such a schema using the <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> property <code>allOf</code> below, combining schemas for a Verifiable Credential, name, and email address:</p>
+   <p>A common use case is to include multiple schemas to validate against a single <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑧">Verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <i>MAY</i> be combined together using native constructs from the <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> specification, utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.</p>
+   <p>We provide an example of how to construct such a schema using the <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> property <code>allOf</code> below, combining schemas for a Verifiable Credential, name, and email address:</p>
 <pre class="example highlight" id="example-35e86570"><a class="self-link" href="#example-35e86570"></a><c- p>{</c->
   <c- f>"allOf"</c-><c- p>:</c-> <c- p>[</c->
     <c- p>{</c->
@@ -788,16 +758,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <c- f>"proof"</c-><c- p>:</c-> <c- p>{</c-> ... <c- p>}</c->
 <c- p>}</c->
 </pre>
-   <p>Notably, no special processing rules are defined by this specification outside of those already defined by <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> itself.</p>
+   <p>Notably, no special processing rules are defined by this specification outside of those already defined by <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> itself.</p>
    <h3 class="heading settled" data-level="5.4" id="credential_schema_proof"><span class="secno">5.4. </span><span class="content">Proof</span><a class="self-link" href="#credential_schema_proof"></a></h3>
-   <p>Any <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①④">Credential Schema</a> may be authenticated using <a data-link-type="biblio" href="#biblio-data-integrity">[DATA-INTEGRITY]</a> or <a data-link-type="biblio" href="#biblio-jose">[JOSE]</a>.</p>
+   <p>Any <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①④">Credential Schema</a> may be authenticated using <a data-link-type="biblio" href="#biblio-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">[DATA-INTEGRITY]</a> or <a data-link-type="biblio" href="#biblio-jose" title="Javascript Object Signing and Encryption (JOSE)">[JOSE]</a>.</p>
    <p class="issue" id="issue-9b7c68c7"><a class="self-link" href="#issue-9b7c68c7"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should be packaged as a VC itself.</p>
    <h2 class="heading settled" data-level="6" id="processing"><span class="secno">6. </span><span class="content">Processing</span><a class="self-link" href="#processing"></a></h2>
-   <p>There is wide support for JSON Schema processing and support for <a data-link-type="biblio" href="#biblio-json-schema-implmentations">[JSON-SCHEMA-IMPLMENTATIONS]</a> can be found in most programming languages.</p>
+   <p>There is wide support for JSON Schema processing and support for <a data-link-type="biblio" href="#biblio-json-schema-implmentations" title="JSON Schema Implementations">[JSON-SCHEMA-IMPLMENTATIONS]</a> can be found in most programming languages.</p>
    <p>To process a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①⓪">Verifiable Credential</a> against a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑤">Credential Schema</a> one must first extract the schema from the <code>schema</code> property of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑥">Credential Schema</a> and next apply <a href="#processing_validation">validation</a>.</p>
    <h3 class="heading settled" data-level="6.1" id="processing_validation"><span class="secno">6.1. </span><span class="content">Validation</span><a class="self-link" href="#processing_validation"></a></h3>
-   <p>What determines the validity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①①">Verifiable Credential</a> is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof①">proof</a>, validation against a given <a data-link-type="dfn" href="#schema" id="ref-for-schema①">schema</a>, a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a>'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①②">Verifiable Credential</a> should be considered valid.</p>
-   <p>Validation of a given Credential against its schema is to be performed according to the <a data-link-type="biblio" href="#biblio-json-schema-validation">[JSON-SCHEMA-VALIDATION]</a> specification.</p>
+   <p>What determines the validity of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①①">Verifiable Credential</a> is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid <a data-link-type="dfn" href="#proof" id="ref-for-proof①">proof</a>, validation against a given <a data-link-type="dfn" href="#schema" id="ref-for-schema①">schema</a>, a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a>'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①②">Verifiable Credential</a> should be considered valid.</p>
+   <p>Validation of a given Credential against its schema is to be performed according to the <a data-link-type="biblio" href="#biblio-json-schema-validation" title="JSON Schema Validation: A Vocabulary for Structural Validation of JSON">[JSON-SCHEMA-VALIDATION]</a> specification.</p>
    <p>An example of the <code>credentialSchema</code> property is noted below, which specifies two properties:</p>
    <ul>
     <li data-md>
@@ -829,168 +799,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
    <p>It <i>RECOMMENDED</i> that implementers use at most one <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑧">Credential Schema</a> for each <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①③">Verifiable Credential</a>. This data model defines a mechanism to combine multiple <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema⑥">JSON Schemas</a> into a single <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑨">Credential Schema</a> in the <a href="#credential_schema_schema">schema section</a>.</p>
    <h3 class="heading settled" data-level="6.2" id="processing_acceptance"><span class="secno">6.2. </span><span class="content">Acceptance</span><a class="self-link" href="#processing_acceptance"></a></h3>
-   <p>A party may choose to accept <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②⓪">Credential Schemas</a> based on multiple different criteria: storage location, authorship, identifier, version, etc.</p>
-   <p>The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. <a data-link-type="dfn" href="#proof" id="ref-for-proof②">proof</a>).</p>
-   <h2 class="heading settled" data-level="7" id="versioning_guidelines"><span class="secno">7. </span><span class="content">Versioning Guidelines</span><a class="self-link" href="#versioning_guidelines"></a></h2>
-   <p class="issue" id="issue-9ff54d0d"><a class="self-link" href="#issue-9ff54d0d"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal.</p>
-   <p>This section applies to <a data-link-type="dfn" href="#version" id="ref-for-version③">version</a> property of the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑦">metadata</a>.</p>
-   <p>In versioning <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②①">Credential Schemas</a> we are primarily concerned with maintaining backwards compatibility and enabling a tracked evolution of schemas. Versioning is defined as <b>MODEL.REVISION</b> where <b>MODEL</b> refers to a breaking change and <b>REVISION</b> refers to a non-breaking change.</p>
-   <p><b>MODEL</b> Updating this number indicates that this version breaks the schema for <i>ANY</i> interaction with an older <a data-link-type="dfn" href="#schema" id="ref-for-schema②">schema</a>. For processing, if a holder presents a <a data-link-type="dfn" href="#credential" id="ref-for-credential">credential</a> referencing from a <a data-link-type="dfn" href="#schema" id="ref-for-schema③">schema</a> with version 1.0 and a verifier is requesting a credential against version 2.0 of that schema, the verifier is <i>not able</i> to process the credential.</p>
-   <p><b>REVISION</b> Updating this number indicates that this version <i>may</i> prevent interactions with parts of the <a data-link-type="dfn" href="#schema" id="ref-for-schema④">schema</a>. For processing, if a holder presents a credential referencing a schema with version 1.0 and a verifier is requesting a credential against version 1.5 of that schema, there are likely to be <i>SOME</i> fields incompatible with the expected <a data-link-type="dfn" href="#credential" id="ref-for-credential①">credential</a>.</p>
-   <h3 class="heading settled" data-level="7.1" id="model"><span class="secno">7.1. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h3>
-   <p>When a schema breaks backwards compatiblity it is considered a model change. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change as this introduces a breaking change, adding a required field.</p>
-   <p>An example of this rule is when the <i>additionalProperties</i> field’s value changes. Changing <i>additionalProperties</i> from <i>false</i> to <i>true</i> OR from <i>true</i> to <i>false</i> constitutes a breaking change, necessitating a <b>MODEL</b> increment.</p>
-<pre class="example highlight" id="example-79769d9b"><a class="self-link" href="#example-79769d9b"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.1"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
-  <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-  <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
-  <c- f>"authored"</c-><c- p>:</c-> <c- u>"2018-01-01T00:00:00+00:00"</c-><c- p>,</c->
-  <c- f>"schema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"$id"</c-><c- p>:</c-> <c- u>"email-schema-1.1"</c-><c- p>,</c->
-    <c- f>"$schema"</c-><c- p>:</c-> <c- u>"https://json-schema.org/draft/2020-12/schema"</c-><c- p>,</c->
-    <c- f>"description"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-    <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-    <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
-        <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-        <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-          <c- f>"emailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>},</c->
-          <c- f>"backupEmailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>}</c->
-        <c- p>},</c->
-        <c- f>"required"</c-><c- p>:</c-> <c- p>[</c->
-          <c- u>"emailAddress"</c->
-        <c- p>],</c->
-        <c- f>"additionalProperties"</c-><c- p>:</c-> <c- kc>false</c->
-      <c- p>}</c->
-    <c- p>}</c->
-  <c- p>}</c->
-<c- p>}</c->
-</pre>
-   <p>This time our credentialing requirements for our email schema have changed and we need to attach a <code>firstName</code> for verification. This is a <i>required</i> field, so we know it is a <b>MODEL</b> change.</p>
-<pre class="example highlight" id="example-02e7f0c7"><a class="self-link" href="#example-02e7f0c7"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"2.0"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0"</c-><c- p>,</c->
-  <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-  <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
-  <c- f>"authored"</c-><c- p>:</c-> <c- u>"2018-01-01T00:00:00+00:00"</c-><c- p>,</c->
-  <c- f>"schema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"$id"</c-><c- p>:</c-> <c- u>"email-schema-2.0"</c-><c- p>,</c->
-    <c- f>"$schema"</c-><c- p>:</c-> <c- u>"https://json-schema.org/draft/2020-12/schema"</c-><c- p>,</c->
-    <c- f>"description"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-    <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-    <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
-        <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-        <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-          <c- f>"emailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>},</c->
-          <c- f>"firstName"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c->
-          <c- p>},</c->
-          <c- f>"backupEmailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>}</c->
-        <c- p>},</c->
-        <c- f>"required"</c-><c- p>:</c-> <c- p>[</c->
-          <c- u>"emailAddress"</c-><c- p>,</c->
-          <c- u>"firstName"</c->
-        <c- p>],</c->
-        <c- f>"additionalProperties"</c-><c- p>:</c-> <c- kc>false</c->
-      <c- p>}</c->
-    <c- p>}</c->
-  <c- p>}</c->
-<c- p>}</c->
-</pre>
-   <h3 class="heading settled" data-level="7.2" id="revision"><span class="secno">7.2. </span><span class="content">Revision</span><a class="self-link" href="#revision"></a></h3>
-   <p>The addition or removal of an <b>optional</b> field is what constitutes a <b>REVISION</b>. Adding or removing an optional field does not break historical data in a <a data-link-type="dfn" href="#schema" id="ref-for-schema⑤">schema</a>, and in a claims exchange protocol, missing optional fields can be ignored.</p>
-<pre class="example highlight" id="example-381caece"><a class="self-link" href="#example-381caece"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
-  <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-  <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
-  <c- f>"authored"</c-><c- p>:</c-> <c- u>"2018-01-01T00:00:00+00:00"</c-><c- p>,</c->
-  <c- f>"schema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"$id"</c-><c- p>:</c-> <c- u>"email-schema-1.0"</c-><c- p>,</c->
-    <c- f>"$schema"</c-><c- p>:</c-> <c- u>"https://json-schema.org/draft/2020-12/schema"</c-><c- p>,</c->
-    <c- f>"description"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-    <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-    <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
-        <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-        <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-          <c- f>"emailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>}</c->
-        <c- p>},</c->
-        <c- f>"required"</c-><c- p>:</c-> <c- p>[</c->
-          <c- u>"emailAddress"</c->
-        <c- p>],</c->
-        <c- f>"additionalProperties"</c-><c- p>:</c-> <c- kc>false</c->
-      <c- p>}</c->
-    <c- p>}</c->
-  <c- p>}</c->
-<c- p>}</c->
-</pre>
-   <p>In this example we once again reference the email schema, but this time we add an optional field <i>backupEmailAddress</i>. Notice how this would not break the claims exchange because the field is optional.</p>
-<pre class="example highlight" id="example-79769d9b①"><a class="self-link" href="#example-79769d9b①"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.1"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
-  <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-  <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
-  <c- f>"authored"</c-><c- p>:</c-> <c- u>"2018-01-01T00:00:00+00:00"</c-><c- p>,</c->
-  <c- f>"schema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"$id"</c-><c- p>:</c-> <c- u>"email-schema-1.1"</c-><c- p>,</c->
-    <c- f>"$schema"</c-><c- p>:</c-> <c- u>"https://json-schema.org/draft/2020-12/schema"</c-><c- p>,</c->
-    <c- f>"description"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
-    <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-    <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
-        <c- f>"type"</c-><c- p>:</c-> <c- u>"object"</c-><c- p>,</c->
-        <c- f>"properties"</c-><c- p>:</c-> <c- p>{</c->
-          <c- f>"emailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>},</c->
-          <c- f>"backupEmailAddress"</c-><c- p>:</c-> <c- p>{</c->
-            <c- f>"type"</c-><c- p>:</c-> <c- u>"string"</c-><c- p>,</c->
-            <c- f>"format"</c-><c- p>:</c-> <c- u>"email"</c->
-          <c- p>}</c->
-        <c- p>},</c->
-        <c- f>"required"</c-><c- p>:</c-> <c- p>[</c->
-          <c- u>"emailAddress"</c->
-        <c- p>],</c->
-        <c- f>"additionalProperties"</c-><c- p>:</c-> <c- kc>false</c->
-      <c- p>}</c->
-    <c- p>}</c->
-  <c- p>}</c->
-<c- p>}</c->
-</pre>
-   <h2 class="heading settled" data-level="8" id="extensibility"><span class="secno">8. </span><span class="content">Extensibility</span><a class="self-link" href="#extensibility"></a></h2>
-   <p>By introducing a <a data-link-type="dfn" href="#version" id="ref-for-version④">version</a> field we allow the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②②">credential schema</a> to become extensible. Properties such as <i>derivedFrom</i> could reference a schema that a new schema is built on top of. Similarly, platform-utility features such as searchability could be provided by adding a tags array that contains categorization and classification information for a <a data-link-type="dfn" href="#schema" id="ref-for-schema⑥">schema</a>.</p>
+   <p>A party may choose to accept <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②⓪">Credential Schemas</a> based on multiple different criteria: storage location, authorship, identifier, etc.</p>
+   <p>The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accommodate important criteria of a schema, like enforcing authorship from a known author with a valid authentication mechanism (i.e. <a data-link-type="dfn" href="#proof" id="ref-for-proof②">proof</a>).</p>
+   <h2 class="heading settled" data-level="7" id="extensibility"><span class="secno">7. </span><span class="content">Extensibility</span><a class="self-link" href="#extensibility"></a></h2>
+   <p>By introducing a <a data-link-type="dfn">version</a> field we allow the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②①">credential schema</a> to become extensible. Properties such as <i>derivedFrom</i> could reference a schema that a new schema is built on top of. Similarly, platform-utility features such as searchability could be provided by adding a tags array that contains categorization and classification information for a <a data-link-type="dfn" href="#schema" id="ref-for-schema②">schema</a>.</p>
    <p>These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.</p>
    <p class="issue" id="issue-487e2dd7"><a class="self-link" href="#issue-487e2dd7"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove.</p>
-   <h2 class="heading settled" data-level="9" id="examples"><span class="secno">9. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-   <h3 class="heading settled" data-level="9.1" id="vc_example"><span class="secno">9.1. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#vc_example"></a></h3>
+   <h2 class="heading settled" data-level="8" id="examples"><span class="secno">8. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
+   <h3 class="heading settled" data-level="8.1" id="vc_example"><span class="secno">8.1. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#vc_example"></a></h3>
    <p>We define an Email schema as the basis for a credential.</p>
-<pre class="example highlight" id="example-53db8005"><a class="self-link" href="#example-53db8005"></a><c- p>{</c->
+<pre class="example highlight" id="example-27fa33a1"><a class="self-link" href="#example-27fa33a1"></a><c- p>{</c->
   <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
-  <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
-  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
+  <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
   <c- f>"author"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T"</c-><c- p>,</c->
   <c- f>"authored"</c-><c- p>:</c-> <c- u>"2021-01-01T00:00:00+00:00"</c-><c- p>,</c->
@@ -1017,8 +837,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- p>}</c->
 <c- p>}</c->
 </pre>
-   <p>The example references a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②③">Credential Schema</a> with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0</b> inside of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc-data-model">[VC-DATA-MODEL]</a>. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
-<pre class="example highlight" id="example-4b609382"><a class="self-link" href="#example-4b609382"></a><c- p>{</c->
+   <p>The example references a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②②">Credential Schema</a> with an identifier <b>did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db</b> inside of a Verifiable Credential following the <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model 1.0">[VC-DATA-MODEL]</a>. The example is adapted from <a href="https://w3c.github.io/vc-data-model/#example-18-usage-of-the-credentialschema-property-to-perform-json-schema-validation">Example 18</a> in the specification.</p>
+<pre class="example highlight" id="example-004c41b9"><a class="self-link" href="#example-004c41b9"></a><c- p>{</c->
   <c- f>"@context"</c-><c- p>:</c-> <c- p>[</c->
     <c- u>"https://www.w3.org/2018/credentials/v1"</c-><c- p>,</c->
     <c- u>"https://www.w3.org/2018/credentials/examples/v1"</c->
@@ -1028,7 +848,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- f>"issuer"</c-><c- p>:</c-> <c- u>"https://example.com/issuers/565049"</c-><c- p>,</c->
   <c- f>"issuanceDate"</c-><c- p>:</c-> <c- u>"2021-01-01T00:00:00Z"</c-><c- p>,</c->
   <c- f>"credentialSchema"</c-><c- p>:</c-> <c- p>{</c->
-    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
+    <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
     <c- f>"type"</c-><c- p>:</c-> <c- u>"CredentialSchema2022"</c->
   <c- p>},</c->
   <c- f>"credentialSubject"</c-><c- p>:</c-> <c- p>{</c->
@@ -1039,18 +859,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- f>"proof"</c-><c- p>:</c-> <c- p>{</c-> ... <c- p>}</c->
 <c- p>}</c->
 </pre>
-   <p>The ID of the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②④">Credential Schema</a> is visible in the <b>credentialSchema</b> section of the credential, and provides information about the schema’s author and version. The type of <b>CredentialSchema2022</b> refers to the type value defined by this specification providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.</p>
-   <h2 class="heading settled" data-level="10" id="drawbacks"><span class="secno">10. </span><span class="content">Drawbacks</span><a class="self-link" href="#drawbacks"></a></h2>
-   <p>Within a credentialing ecosystem, relying heavily upon <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> makes data shapes for credentials consistent, and could enable an ecosystem with many similar schemas with slight changes (naming, capitalization). Without proper oversight or authoritative schemas to limit duplication or misuse, utilization of <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> could lead to a poor user experience. At a higher level, platform level tooling can be provided to minimize confusion and promote reuse.</p>
-   <p>Validation against a <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> may be confused with <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a> or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a> of a Verifiable Credential. A valid credential according to a <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> refers only to the structure of the claims comprising a Verifiable Credential. This doesn’t imply anything about the validity of the Verifiable Credential itself. It’s possible for a Verifiable Credential to be considered valid by one verifier, while another verifier would not consider it valid.</p>
-   <p>Within the broader Credentialing Ecosystem, interoperability could be more difficult if the wider community adopts <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> without advocating for pairing with <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> based schemas or credentials. This issue can mainly be side-stepped with the metadata we include –– the <i>Credential Schema</i> –– since this model is flexible to change. A new <a data-link-type="dfn" href="#version" id="ref-for-version⑤">version</a> could be introduced that supports <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> and removes support for <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a>. A drawback here is the requirement that all schemas have this piece of metadata, which itself is versioned and evolvable.</p>
-   <p>A flip side to drawbacks of the usage of <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> is that there is a plethora of documentation, libraries, and usage of <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> across programming languages and the web.</p>
-   <h2 class="heading settled" data-level="11" id="alternatives"><span class="secno">11. </span><span class="content">Usage with JSON-LD</span><a class="self-link" href="#alternatives"></a></h2>
-   <p><a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> is widely used in the Verifiable Credentials Data Model ecosystem. Both <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> and <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> serve distinct use cases. <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> is primarily useful for facilitating global semantic interoperability for terms in a credential and tie-in to an "open world data model."" <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> on the other hand is most often useful for strict data validation, though it does not provide the same functionality in regards to strict data validation.</p>
-   <p>It has been suggested that both <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> and <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> can work symbiotically in the credentialing ecosystem: <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> providing semantic interoparability, and <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> providing static validation.</p>
+   <p>The ID of the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②③">Credential Schema</a> is visible in the <b>credentialSchema</b> section of the credential, and provides information about the schema’s author. The type of <b>CredentialSchema2022</b> refers to the type value defined by this specification providing information on how the data in the <b>credentialSubject</b> should be validated against the provided schema.</p>
+   <h2 class="heading settled" data-level="9" id="drawbacks"><span class="secno">9. </span><span class="content">Drawbacks</span><a class="self-link" href="#drawbacks"></a></h2>
+   <p>Within a credentialing ecosystem, relying heavily upon <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> makes data shapes for credentials consistent, and could enable an ecosystem with many similar schemas with slight changes (naming, capitalization). Without proper oversight or authoritative schemas to limit duplication or misuse, utilization of <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> could lead to a poor user experience. At a higher level, platform level tooling can be provided to minimize confusion and promote reuse.</p>
+   <p>Validation against a <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> may be confused with <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a> or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a> of a Verifiable Credential. A valid credential according to a <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> refers only to the structure of the claims comprising a Verifiable Credential. This doesn’t imply anything about the validity of the Verifiable Credential itself. It’s possible for a Verifiable Credential to be considered valid by one verifier, while another verifier would not consider it valid.</p>
+   <p>Within the broader Credentialing Ecosystem, interoperability could be more difficult if the wider community adopts <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> without advocating for pairing with <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> based schemas or credentials. This issue can mainly be side-stepped with the metadata we include –– the <i>Credential Schema</i> –– since this model is flexible to change. A new <a data-link-type="dfn">version</a> could be introduced that supports <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> and removes support for <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a>. A drawback here is the requirement that all schemas have this piece of metadata, which itself is versioned and evolvable.</p>
+   <p>A flip side to drawbacks of the usage of <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> is that there is a plethora of documentation, libraries, and usage of <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> across programming languages and the web.</p>
+   <h2 class="heading settled" data-level="10" id="alternatives"><span class="secno">10. </span><span class="content">Usage with JSON-LD</span><a class="self-link" href="#alternatives"></a></h2>
+   <p><a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> is widely used in the Verifiable Credentials Data Model ecosystem. Both <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> and <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> serve distinct use cases. <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> is primarily useful for facilitating global semantic interoperability for terms in a credential and tie-in to an "open world data model."" <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> on the other hand is most often useful for strict data validation, though it does not provide the same functionality in regards to strict data validation.</p>
+   <p>It has been suggested that both <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> and <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> can work symbiotically in the credentialing ecosystem: <a data-link-type="biblio" href="#biblio-json-ld" title="JSON-LD 1.1: A JSON-based Serialization for Linked Data">[JSON-LD]</a> providing semantic interoparability, and <a data-link-type="biblio" href="#biblio-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">[JSON-SCHEMA]</a> providing static validation.</p>
    <p class="issue" id="issue-250150b0"><a class="self-link" href="#issue-250150b0"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.</p>
-   <h2 class="heading settled" data-level="12" id="interoperability"><span class="secno">12. </span><span class="content">Interoperability</span><a class="self-link" href="#interoperability"></a></h2>
-   <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①④">Verifiable Credentials</a> can be issued and used. To be interoperable, additional schema types may need to be supported. Given the capability of versioning for <a href="#metadata" id="ref-for-metadata⑧">Credential Schema Metadata</a> interoperability between Credential Schemas is mostly solved.</p>
+   <h2 class="heading settled" data-level="11" id="interoperability"><span class="secno">11. </span><span class="content">Interoperability</span><a class="self-link" href="#interoperability"></a></h2>
+   <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①④">Verifiable Credentials</a> can be issued and used. To be interoperable, additional schema types may need to be supported.</p>
    <p>A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.</p>
    <p class="issue" id="issue-1117840e"><a class="self-link" href="#issue-1117840e"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.</p>
   </main>
@@ -1074,7 +894,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#schema">schema</a><span>, in § 2</span>
    <li><a href="#type">type</a><span>, in § 2</span>
    <li><a href="#verifiable-credential">verifiable credential</a><span>, in § 2</span>
-   <li><a href="#version">version</a><span>, in § 2</span>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
@@ -1099,6 +918,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <dd><a href="https://tools.ietf.org/html/rfc3339"><cite>Date and Time on the Internet: Timestamps</cite></a>. URL: <a href="https://tools.ietf.org/html/rfc3339">https://tools.ietf.org/html/rfc3339</a>
    <dt id="biblio-rfc8174">[RFC8174]
    <dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2017. Best Current Practice</cite></a>. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+   <dt id="biblio-schema-ver">[SCHEMA-VER]
+   <dd><a href="https://docs.snowplow.io/docs/pipeline-components-and-applications/iglu/common-architecture/schemaver"><cite>SchemaVer Documentation</cite></a>. URL: <a href="https://docs.snowplow.io/docs/pipeline-components-and-applications/iglu/common-architecture/schemaver">https://docs.snowplow.io/docs/pipeline-components-and-applications/iglu/common-architecture/schemaver</a>
    <dt id="biblio-vc-data-model">[VC-DATA-MODEL]
    <dd><a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model 1.0</cite></a>. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
   </dl>
@@ -1106,7 +927,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div style="counter-reset:issue">
    <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications. <a class="issue-return" href="#issue-56d2c1a9" title="Jump to section">↵</a></div>
    <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should be packaged as a VC itself. <a class="issue-return" href="#issue-9b7c68c7" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal. <a class="issue-return" href="#issue-9ff54d0d" title="Jump to section">↵</a></div>
    <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove. <a class="issue-return" href="#issue-487e2dd7" title="Jump to section">↵</a></div>
    <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this. <a class="issue-return" href="#issue-250150b0" title="Jump to section">↵</a></div>
    <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help. <a class="issue-return" href="#issue-1117840e" title="Jump to section">↵</a></div>
@@ -1131,9 +951,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-credential-schema①⑤">6. Processing</a> <a href="#ref-for-credential-schema①⑥">(2)</a>
     <li><a href="#ref-for-credential-schema①⑦">6.1. Validation</a> <a href="#ref-for-credential-schema①⑧">(2)</a> <a href="#ref-for-credential-schema①⑨">(3)</a>
     <li><a href="#ref-for-credential-schema②⓪">6.2. Acceptance</a>
-    <li><a href="#ref-for-credential-schema②①">7. Versioning Guidelines</a>
-    <li><a href="#ref-for-credential-schema②②">8. Extensibility</a>
-    <li><a href="#ref-for-credential-schema②③">9.1. Verifiable Credentials</a> <a href="#ref-for-credential-schema②④">(2)</a>
+    <li><a href="#ref-for-credential-schema②①">7. Extensibility</a>
+    <li><a href="#ref-for-credential-schema②②">8.1. Verifiable Credentials</a> <a href="#ref-for-credential-schema②③">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="credentialschema2022">
@@ -1146,8 +965,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <b><a href="#metadata">#metadata</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-metadata">2. Terminology</a> <a href="#ref-for-metadata①">(2)</a> <a href="#ref-for-metadata②">(3)</a> <a href="#ref-for-metadata③">(4)</a> <a href="#ref-for-metadata④">(5)</a> <a href="#ref-for-metadata⑤">(6)</a> <a href="#ref-for-metadata⑥">(7)</a>
-    <li><a href="#ref-for-metadata⑦">7. Versioning Guidelines</a>
-    <li><a href="#ref-for-metadata">12. Interoperability</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="proof">
@@ -1164,16 +981,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-type">5.2. Metadata</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="version">
-   <b><a href="#version">#version</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-version">4.4. Versioning</a> <a href="#ref-for-version①">(2)</a>
-    <li><a href="#ref-for-version②">5.2. Metadata</a>
-    <li><a href="#ref-for-version③">7. Versioning Guidelines</a>
-    <li><a href="#ref-for-version④">8. Extensibility</a>
-    <li><a href="#ref-for-version⑤">10. Drawbacks</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="name">
    <b><a href="#name">#name</a></b><b>Referenced in:</b>
    <ul>
@@ -1183,8 +990,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="author">
    <b><a href="#author">#author</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-author">4.4. Versioning</a>
-    <li><a href="#ref-for-author①">5.2. Metadata</a>
+    <li><a href="#ref-for-author">5.2. Metadata</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="authored">
@@ -1208,15 +1014,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <ul>
     <li><a href="#ref-for-schema">2. Terminology</a>
     <li><a href="#ref-for-schema①">6.1. Validation</a>
-    <li><a href="#ref-for-schema②">7. Versioning Guidelines</a> <a href="#ref-for-schema③">(2)</a> <a href="#ref-for-schema④">(3)</a>
-    <li><a href="#ref-for-schema⑤">7.2. Revision</a>
-    <li><a href="#ref-for-schema⑥">8. Extensibility</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="credential">
-   <b><a href="#credential">#credential</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-credential">7. Versioning Guidelines</a> <a href="#ref-for-credential①">(2)</a>
+    <li><a href="#ref-for-schema②">7. Extensibility</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="verifiable-credential">
@@ -1229,7 +1027,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-verifiable-credential⑧">5.3.1. Multiple Schemas</a> <a href="#ref-for-verifiable-credential⑨">(2)</a>
     <li><a href="#ref-for-verifiable-credential①⓪">6. Processing</a>
     <li><a href="#ref-for-verifiable-credential①①">6.1. Validation</a> <a href="#ref-for-verifiable-credential①②">(2)</a> <a href="#ref-for-verifiable-credential①③">(3)</a>
-    <li><a href="#ref-for-verifiable-credential①④">12. Interoperability</a>
+    <li><a href="#ref-for-verifiable-credential①④">11. Interoperability</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="did">
@@ -1243,12 +1041,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <b><a href="#data-integrity">#data-integrity</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-data-integrity">3. Formatting</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="presentation">
-   <b><a href="#presentation">#presentation</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-presentation">4.4. Versioning</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
