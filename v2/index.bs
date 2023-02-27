@@ -502,7 +502,7 @@ To process a [=Verifiable Credential=] against a [=Credential Schema=] one must 
 
 ## Validation ## {#processing_validation}
 
-What determines the validity of a [=Verifiable Credential=] is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid [=proof=], validation against a given [=schema=], a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The [[VC-DATA-MODEL]]'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a [=Verifiable Credential=] should be considered valid.
+What determines the validity of a [=Verifiable Credential=] is at the discretion of <i>verifier</i> for a given credential. Validity could mean any of: a valid [=proof=]; a valid [=proof=] and validation against a given [=schema=]; a valid [=proof=], valid <i>credentialStatus</i>, and trusted <i>issuer</i>; or any other set of conditions. The [[VC-DATA-MODEL]]'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a [=Verifiable Credential=] should be considered valid.
 
 Validation of a given Credential against its schema is to be performed according to the [[JSON-SCHEMA-VALIDATION]] specification.
 
