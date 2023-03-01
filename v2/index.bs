@@ -28,9 +28,9 @@ Ignored Vars: op, alg, type, algorithm
 Abstract: Among other things, the [[VC-DATA-MODEL]] specifies the models used for Verifiable Credentials,
   Verifiable Presentations, and explains the relationships between three parties:
   <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
-  throughout the [[VC-DATA-MODEL]] are the that of of verifiability, extensbility, and semantic 
+  throughout the [[VC-DATA-MODEL]] are the that of of verifiability, extensibility, and semantic 
   interoperability. This specification provides a mechanism to make use of a Credential Schema in
-  [=Verifiable Credential=], leveraging the exisiting 
+  [=Verifiable Credential=], leveraging the existing 
   <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
 
 Status Text: This specification was published by the <a href="http://www.w3.org/community/credentials/">W3C Credentials Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under  the <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a> other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>. </br></br> If you wish to make comments regarding this document, please send them to <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a> (<a href="mailto:public-credentials-request@w3.org">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-credentials/">archives</a>).
@@ -207,14 +207,14 @@ The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and 
 :: See [[DID-CORE]]
 
 : <dfn>data integrity</dfn>
-:: A methodology for ensuring the authentcitiy and integrity of digital documents which makes use of [[JSON-LD]]. See [[DATA-INTEGRITY]].
+:: A methodology for ensuring the authenticity and integrity of digital documents which makes use of [[JSON-LD]]. See [[DATA-INTEGRITY]].
 
 : <dfn>presentation</dfn>
 :: <a href="https://www.w3.org/TR/vc-data-model/#presentations-0">Presentation</a> is a mechanism used to share one or more credentials with a given party.
 
 # Formatting # {#formatting}
 
-The [[VC-DATA-MODEL]] utilizies the <a href="https://www.w3.org/TR/ld-glossary/#linked-data">JSON Linked Data interchange format</a>. The specification allows for other formats, such as standard JSON with JSON Schema but provides limited examples. In the [Data Schemas section](https://www.w3.org/TR/vc-data-model/#data-schemas), <i>JSON-SCHEMA-2018</i> validation is noted explicitly. This specification does not <b>require</b> the use of [[JSON-LD]], though some may prefer to utilize [=Data Integrity=] Proofs which this specification supports. If it becomes evident that it would be useful to include [[JSON-LD]] or another format that decision would be made in a revisal draft at a later date.
+The [[VC-DATA-MODEL]] uses the <a href="https://www.w3.org/TR/ld-glossary/#linked-data">JSON Linked Data interchange format</a>. The specification allows for other formats, such as standard JSON with JSON Schema but provides limited examples. In the [Data Schemas section](https://www.w3.org/TR/vc-data-model/#data-schemas), <i>JSON-SCHEMA-2018</i> validation is noted explicitly. This specification does not <b>require</b> the use of [[JSON-LD]], though some may prefer to utilize [=Data Integrity=] Proofs which this specification supports. If it becomes evident that it would be useful to include [[JSON-LD]] or another format that decision would be made in a revisal draft at a later date.
 
 The Verifiable Credentials data model relies heavily upon standard JSON with validation provided by [[JSON-SCHEMA]]. The data model embeds [[JSON-SCHEMA]] documents inside a larger document that contains useful metadata about a given credential schema.
 
@@ -230,13 +230,13 @@ A schema can be viewed from four perspectives: the author, issuer, verifier and 
 
 <b>Issuer:</b> Issuers utilize schemas to provide structure and meaning to the data they issue as [=Verifiable Credentials=]. By using schemas, issuers contribute to a credentialing ecosystem that promotes the usage and adoption of data standards.
 
-<b>Verifier:</b> Verifiers processes a [=Verifiable Credentials=] and need to do so with knowledge of the terms and data the compromise the credentials. [=Credential Schemas=] aid a verifier in both requesting and processing credenetials that have been produced in a well-known format.
+<b>Verifier:</b> Verifiers processes a [=Verifiable Credentials=] and need to do so with knowledge of the terms and data the compromise the credentials. [=Credential Schemas=] aid a verifier in both requesting and processing credentials that have been produced in a well-known format.
 
 <b>Holder:</b> Holders, or those who are the subject of credential issuance, can make sense of the data they control by evaluating it against a data schema. When data is requested from a holder which references a [=Credential Schema=] the holder has the capability to to present the data specifically requested by the verifier.
 
 ## Guarantees ## {#guarantees}
 
-With adherance to the specification, the following guarantees can be made about a schema:
+With adherence to the specification, the following guarantees can be made about a schema:
 
 - A schema is <i>versionable</i> and it can evolve via new versions over time.
 - A schema is available for any issuer to use in a Credential and any holder or verifier of that Credential <i>read</i>.
@@ -252,7 +252,7 @@ Credentials Schemas are versioned via a [=version=] property. The [=version=] de
 
 [=Authors=] and Issuers have an interest in versioning to track advancements and changes over time both for formatting changes (e.g. supporting [[JSON-SCHEMA]] [draft-bhutton-json-schema-00](https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00) as opposed to [Draft 7](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-01)) as well as field-level changes (e.g. adding a new required field) as a schema evolves over time. Holders have an interest in versioning to gain an understanding in where their credentials can be used as they may receive requests for [=presentation=] filtering by schema ID. Similarly, Verifiers have an interest in versioning to know which data, or schema versions they should accept and known how to process in their systems.
 
-Gudelines for versioning can be found in the [Versioning Guidelines section of this document](#versioning_guidelines).
+Guidelines for versioning can be found in the [Versioning Guidelines section of this document](#versioning_guidelines).
 
 # Data Model # {#data_model}
 
@@ -392,13 +392,13 @@ A [=Credential Schema=] <i>MUST</i> have a `schema` property. The `schema` prope
 }
 </pre>
 
-Note: It is recommended that Credential Schemas avoid setting the `additionalProperties` value to `false`. Doing so could make credentials that utilize the `id` property in `credentialSubject` invalid. Alternatively, implementers could add an `id` property to each Credential Schema.
+Note: It is recommended that Credential Schemas avoid setting the `additionalProperties` value to `false`. Doing so could invalidate credentials that utilize the `id` property in `credentialSubject`. As an alternative, implementers could add an `id` property to each Credential Schema.
 
 Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.
 
 ### Multiple Schemas ### {#credential_schema_schema_multiple}
 
-A common use case is to include multiple schemas to validate against a single [=Verifiable Credential=]. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the `credentialSubject`. Multiple schemas <i>MAY</i> be combined together using native constructs from the [[JSON-SCHEMA]] specification, utilizing properties such as `oneOf`, `anyOf`, or `allOf`.
+A common use case is to include multiple schemas to validate against which a single [=Verifiable Credential=]. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the `credentialSubject`. Multiple schemas <i>MAY</i> be combined together using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as `oneOf`, `anyOf`, or `allOf`.
 
 We provide an example of how to construct such a schema using the [[JSON-SCHEMA]] property `allOf` below, combining schemas for a Verifiable Credential, name, and email address:
 
@@ -486,27 +486,27 @@ The example above is used to validate every property in the following example [=
 }
 </pre>
 
-Notably, no special processing rules are defined by this specification outside of those already defined by [[JSON-SCHEMA]] itself.
+Notably, this specification defines no special processing rules beyond those already defined by [[JSON-SCHEMA]] itself.
 
 ## Proof ## {#credential_schema_proof}
 
 Any [=Credential Schema=] may be authenticated using [[DATA-INTEGRITY]] or [[JOSE]].
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should be packaged as a VC itself.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself.
 
 # Processing # {#processing}
 
 There is wide support for JSON Schema processing and support for [[JSON-SCHEMA-IMPLMENTATIONS]] can be found in most programming languages.
 
-To process a [=Verifiable Credential=] against a [=Credential Schema=] one must first extract the schema from the `schema` property of a [=Credential Schema=] and next apply [validation](#processing_validation).
+To process a [=Verifiable Credential=] against a [=Credential Schema=], one must first extract the schema from the `schema` property of a [=Credential Schema=], and next apply [validation](#processing_validation).
 
 ## Validation ## {#processing_validation}
 
-What determines the validity of a [=Verifiable Credential=] is at the discretion of <i>verifier</i> for a given credential. Validity could mean a a valid [=proof=], validation against a given [=schema=], a valid <i>credentialStatus</i>, a trusted <i>issuer</i>, or any other set of conditions. The [[VC-DATA-MODEL]]'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a [=Verifiable Credential=] should be considered valid.
+Determining the validity of a [=Verifiable Credential=] is at the discretion of the <i>verifier</i> of a given credential. Validity could mean any of: a valid [=proof=]; a valid [=proof=] and validation against a given [=schema=]; a valid [=proof=], valid <i>credentialStatus</i>, and trusted <i>issuer</i>; or any other set of conditions. The [[VC-DATA-MODEL]]'s section on <a href="https://w3c.github.io/vc-data-model/#validity-checks">Validity Checks</a> offers guidance on determining whether a [=Verifiable Credential=] should be considered valid.
 
 Validation of a given Credential against its schema is to be performed according to the [[JSON-SCHEMA-VALIDATION]] specification.
 
-An example of the `credentialSchema` property is noted below, which specifies two properties:
+An example of the `credentialSchema` property which specifies two properties is shown below:
 
 - <b>id</b>: a resolvable identifier for a specific [=Credential Schema=] document
 
@@ -542,7 +542,7 @@ It <i>RECOMMENDED</i> that implementers use at most one [=Credential Schema=] fo
 
 A party may choose to accept [=Credential Schemas=] based on multiple different criteria: storage location, authorship, identifier, version, etc. 
 
-The process by which a schema, or set of schemas are accepted by a party is out of scope of this document. It is advisable that such a process is flexible to accomodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (i.e. [=proof=]).
+The process by which a schema or set of schemas is accepted by a party is out of scope of this document. It is advisable that such a process be flexible to accommodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (often referred to as a [=proof=]).
 
 # Versioning Guidelines # {#versioning_guidelines}
 
@@ -558,7 +558,7 @@ In versioning [=Credential Schemas=] we are primarily concerned with maintaining
 
 ## Model ## {#model}
 
-When a schema breaks backwards compatiblity it is considered a model change. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change as this introduces a breaking change, adding a required field.
+When a schema breaks backwards compatibility it is considered a model change. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change as this introduces a breaking change, adding a required field.
 
 An example of this rule is when the <i>additionalProperties</i> field's value changes. Changing <i>additionalProperties</i> from <i>false</i> to <i>true</i> OR from <i>true</i> to <i>false</i> constitutes a breaking change, necessitating a <b>MODEL</b> increment.
 
@@ -676,7 +676,7 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
 }
 </pre>
 
-In this example we once again reference the email schema, but this time we add an optional field <i>backupEmailAddress</i>. Notice how this would not break the claims exchange because the field is optional.
+In this example we once again reference the email schema, but this time we add an optional field <i>backupEmailAddress</i>. Note that this would not break the claims exchange because the field is optional.
 
 <pre class="example" highlight="json">
 {
@@ -801,7 +801,7 @@ A flip side to drawbacks of the usage of [[JSON-SCHEMA]] is that there is a plet
 
 [[JSON-LD]] is widely used in the Verifiable Credentials Data Model ecosystem. Both [[JSON-LD]] and [[JSON-SCHEMA]] serve distinct use cases. [[JSON-LD]] is primarily useful for facilitating global semantic interoperability for terms in a credential and tie-in to an "open world data model."" [[JSON-SCHEMA]] on the other hand is most often useful for strict data validation, though it does not provide the same functionality in regards to strict data validation. 
 
-It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoparability, and [[JSON-SCHEMA]] providing static validation. 
+It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoperability, and [[JSON-SCHEMA]] providing static validation. 
 
 Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.
 
