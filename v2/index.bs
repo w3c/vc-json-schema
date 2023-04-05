@@ -36,7 +36,7 @@ Abstract: Among other things, the [[VC-DATA-MODEL]] specifies the models used fo
 Status Text: This specification was published by the <a href="http://www.w3.org/community/credentials/">W3C Credentials Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under  the <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a> other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>. </br></br> If you wish to make comments regarding this document, please send them to <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a> (<a href="mailto:public-credentials-request@w3.org">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-credentials/">archives</a>).
 
 
-Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header, omit logo
 Markup Shorthands: css off, markdown on
 </pre>
 
