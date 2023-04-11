@@ -3,10 +3,10 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Verifiable Credentials JSON Schema Specification</title>
-  <meta content="w3c/CG-DRAFT" name="w3c-status">
+  <meta content="w3c/CG-FINAL" name="w3c-status">
   <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
-  <link href="https://w3c-ccg.github.io/vc-json-schemas/" rel="canonical">
-  <meta content="4912aa8232bf71206bc2a200b6fe19b46bae706d" name="document-revision">
+  <link href="https://w3c-ccg.github.io/vc-json-schema/" rel="canonical">
+  <meta content="022baa8629a7b6b6de758c75fd65d8c74e2b6e4a" name="document-revision">
 <style>
 body {
     counter-reset: table;
@@ -324,29 +324,28 @@ c-[vg] { color: #0077aa } /* Name.Variable.Global */
 c-[vi] { color: #0077aa } /* Name.Variable.Instance */
 c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
-  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/cg-final" rel="stylesheet">
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1>Verifiable Credentials JSON Schema 2022</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-DRAFT">Draft Community Group Report</a>, <time class="dt-updated" datetime="2023-02-27">27 February 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CG-FINAL">Final Community Group Report</a>, <time class="dt-updated" datetime="2023-04-05">5 April 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dd><a class="u-url" href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>
       <dt>Latest published version:
-      <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dd><a href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>
       <dt>Feedback:
-      <dd><a href="https://github.com/w3c-ccg/vc-json-schemas/issues">GitHub</a>
+      <dd><a href="https://github.com/w3c-ccg/vc-json-schema/issues">GitHub</a>
       <dt class="editor">Editors:
       <dd class="editor p-author h-card vcard" data-editor-id="116851"><span class="p-name fn"><a href="https://linkedin.com/in/cohengabe">Gabe Cohen</a></span> (<span class="p-org org"><a href="https://www.block.xyz">Block</a></span>)
       <dd class="editor p-author h-card vcard" data-editor-id="109171"><a class="p-name fn u-email email" href="mailto:orie@transmute.industries">Orie Steele</a> (<span class="p-org org"><a href="https://www.transmute.industries/">Transmute</a></span>)
-      <dt>CG-DRAFT:
-      <dd><a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+      <dt>CG-FINAL:
+      <dd><a href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>
       <dt>Tests:
-      <dd><a href="https://github.com/w3c-ccg/vc-json-schemas">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schemas">ongoing work</a>)
+      <dd><a href="https://github.com/w3c-ccg/vc-json-schema">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schema">ongoing work</a>)
      </dl>
     </div>
    </details>
@@ -451,8 +450,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <dd data-md>
      <p>The type of the <code>credentialSchema</code> property to be used when utilizing this specification.</p>
    </dl>
-<pre class="example highlight" id="example-e7eea52d"><a class="self-link" href="#example-e7eea52d"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json"</c-><c- p>,</c->
+<pre class="example highlight" id="example-dc3b2b58"><a class="self-link" href="#example-dc3b2b58"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/schema/2.0/schema.json"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db?version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -479,8 +478,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <dd data-md>
      <p>Top-level information on a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema③">Credential Schema</a>. Pieces of data wrapping the <a data-link-type="dfn" href="#json-schema" id="ref-for-json-schema③">JSON Schema</a> to provide further context about the schema.</p>
    </dl>
-<pre class="example highlight" id="example-197ee118"><a class="self-link" href="#example-197ee118"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-954975df"><a class="self-link" href="#example-954975df"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -635,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p><a data-link-type="dfn" href="#type" id="ref-for-type">type</a></p>
    </ol>
    <p>Credential Schema Metadata <i>MUST</i> provide a <code>type</code> property.</p>
-   <p>The value of the <code>type</code> property <i>MUST</i> point to a URI specifying the draft of this specification to use. The current draft URI is <a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>.</p>
+   <p>The value of the <code>type</code> property <i>MUST</i> point to a URI specifying the draft of this specification to use. The current draft URI is <a href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>.</p>
    <ol start="2">
     <li data-md>
      <p><a data-link-type="dfn" href="#version" id="ref-for-version②">version</a></p>
@@ -673,8 +672,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </ol>
    <p>Credential Schema Metadata <i>MUST</i> provide an <code>authored</code> property.</p>
    <p>The value of the <code>authored</code> property <i>MUST</i> be a valid <a data-link-type="biblio" href="#biblio-rfc3339">[RFC3339]</a> timestamp whose value reflects the date-time value for when the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①②">Credential Schema</a> was created.</p>
-<pre class="example highlight" id="example-ec3c7387"><a class="self-link" href="#example-ec3c7387"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-a42057b3"><a class="self-link" href="#example-a42057b3"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"06e126d1-fa44-4882-a243-1e326fbe21db"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -705,7 +704,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <p class="note" role="note"><span>Note:</span> It is recommended that Credential Schemas avoid setting the <code>additionalProperties</code> value to <code>false</code>. Doing so could invalidate credentials that utilize the <code>id</code> property in <code>credentialSubject</code>. As an alternative, implementers could add an <code>id</code> property to each Credential Schema.</p>
-   <p class="issue" id="issue-56d2c1a9"><a class="self-link" href="#issue-56d2c1a9"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.</p>
+   <p class="issue" id="issue-56d2c1a9"><a class="self-link" href="#issue-56d2c1a9"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.</p>
    <h4 class="heading settled" data-level="5.3.1" id="credential_schema_schema_multiple"><span class="secno">5.3.1. </span><span class="content">Multiple Schemas</span><a class="self-link" href="#credential_schema_schema_multiple"></a></h4>
    <p>A common use case is to include multiple schemas to validate against which a single <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential⑧">Verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the VC Data Model</a> in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <i>MAY</i> be combined together using native constructs from the <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.</p>
    <p>We provide an example of how to construct such a schema using the <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> property <code>allOf</code> below, combining schemas for a Verifiable Credential, name, and email address:</p>
@@ -791,7 +790,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>Notably, this specification defines no special processing rules beyond those already defined by <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> itself.</p>
    <h3 class="heading settled" data-level="5.4" id="credential_schema_proof"><span class="secno">5.4. </span><span class="content">Proof</span><a class="self-link" href="#credential_schema_proof"></a></h3>
    <p>Any <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①④">Credential Schema</a> may be authenticated using <a data-link-type="biblio" href="#biblio-data-integrity">[DATA-INTEGRITY]</a> or <a data-link-type="biblio" href="#biblio-jose">[JOSE]</a>.</p>
-   <p class="issue" id="issue-9a235454"><a class="self-link" href="#issue-9a235454"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself.</p>
+   <p class="issue" id="issue-9a235454"><a class="self-link" href="#issue-9a235454"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself.</p>
    <h2 class="heading settled" data-level="6" id="processing"><span class="secno">6. </span><span class="content">Processing</span><a class="self-link" href="#processing"></a></h2>
    <p>There is wide support for JSON Schema processing and support for <a data-link-type="biblio" href="#biblio-json-schema-implmentations">[JSON-SCHEMA-IMPLMENTATIONS]</a> can be found in most programming languages.</p>
    <p>To process a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①⓪">Verifiable Credential</a> against a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑤">Credential Schema</a>, one must first extract the schema from the <code>schema</code> property of a <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema①⑥">Credential Schema</a>, and next apply <a href="#processing_validation">validation</a>.</p>
@@ -832,7 +831,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p>A party may choose to accept <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②⓪">Credential Schemas</a> based on multiple different criteria: storage location, authorship, identifier, version, etc.</p>
    <p>The process by which a schema or set of schemas is accepted by a party is out of scope of this document. It is advisable that such a process be flexible to accommodate important criteria of a schema, such as supporting version ranges with a common property, or enforcing authorship from a known author with a valid authentication mechanism (often referred to as a <a data-link-type="dfn" href="#proof" id="ref-for-proof④">proof</a>).</p>
    <h2 class="heading settled" data-level="7" id="versioning_guidelines"><span class="secno">7. </span><span class="content">Versioning Guidelines</span><a class="self-link" href="#versioning_guidelines"></a></h2>
-   <p class="issue" id="issue-9ff54d0d"><a class="self-link" href="#issue-9ff54d0d"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal.</p>
+   <p class="issue" id="issue-9ff54d0d"><a class="self-link" href="#issue-9ff54d0d"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/120">ISSUE #120</a>. Feature at risk of removal.</p>
    <p>This section applies to <a data-link-type="dfn" href="#version" id="ref-for-version③">version</a> property of the <a data-link-type="dfn" href="#metadata" id="ref-for-metadata⑦">metadata</a>.</p>
    <p>In versioning <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②①">Credential Schemas</a> we are primarily concerned with maintaining backwards compatibility and enabling a tracked evolution of schemas. Versioning is defined as <b>MODEL.REVISION</b> where <b>MODEL</b> refers to a breaking change and <b>REVISION</b> refers to a non-breaking change.</p>
    <p><b>MODEL</b> Updating this number indicates that this version breaks the schema for <i>ANY</i> interaction with an older <a data-link-type="dfn" href="#schema" id="ref-for-schema②">schema</a>. For processing, if a holder presents a <a data-link-type="dfn" href="#credential" id="ref-for-credential">credential</a> referencing from a <a data-link-type="dfn" href="#schema" id="ref-for-schema③">schema</a> with version 1.0 and a verifier is requesting a credential against version 2.0 of that schema, the verifier is <i>not able</i> to process the credential.</p>
@@ -840,8 +839,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h3 class="heading settled" data-level="7.1" id="model"><span class="secno">7.1. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h3>
    <p>When a schema breaks backwards compatibility it is considered a model change. The most common case of a <b>MODEL</b> change is the addition or subtraction of a required field. It is important to note that for the change of a key name on a required field constitutes a <b>MODEL</b> change as this introduces a breaking change, adding a required field.</p>
    <p>An example of this rule is when the <i>additionalProperties</i> field’s value changes. Changing <i>additionalProperties</i> from <i>false</i> to <i>true</i> OR from <i>true</i> to <i>false</i> constitutes a breaking change, necessitating a <b>MODEL</b> increment.</p>
-<pre class="example highlight" id="example-79769d9b"><a class="self-link" href="#example-79769d9b"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-2d56a004"><a class="self-link" href="#example-2d56a004"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.1"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -875,8 +874,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <p>This time our credentialing requirements for our email schema have changed and we need to attach a <code>firstName</code> for verification. This is a <i>required</i> field, so we know it is a <b>MODEL</b> change.</p>
-<pre class="example highlight" id="example-02e7f0c7"><a class="self-link" href="#example-02e7f0c7"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-d8925686"><a class="self-link" href="#example-d8925686"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"2.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -915,8 +914,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
    <h3 class="heading settled" data-level="7.2" id="revision"><span class="secno">7.2. </span><span class="content">Revision</span><a class="self-link" href="#revision"></a></h3>
    <p>The addition or removal of an <b>optional</b> field is what constitutes a <b>REVISION</b>. Adding or removing an optional field does not break historical data in a <a data-link-type="dfn" href="#schema" id="ref-for-schema⑤">schema</a>, and in a claims exchange protocol, missing optional fields can be ignored.</p>
-<pre class="example highlight" id="example-381caece"><a class="self-link" href="#example-381caece"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-8eedfc7d"><a class="self-link" href="#example-8eedfc7d"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -946,8 +945,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- p>}</c->
 </pre>
    <p>In this example we once again reference the email schema, but this time we add an optional field <i>backupEmailAddress</i>. Note that this would not break the claims exchange because the field is optional.</p>
-<pre class="example highlight" id="example-79769d9b①"><a class="self-link" href="#example-79769d9b①"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-2d56a004①"><a class="self-link" href="#example-2d56a004①"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.1"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -983,12 +982,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="heading settled" data-level="8" id="extensibility"><span class="secno">8. </span><span class="content">Extensibility</span><a class="self-link" href="#extensibility"></a></h2>
    <p>By introducing a <a data-link-type="dfn" href="#version" id="ref-for-version④">version</a> field we allow the <a data-link-type="dfn" href="#credential-schema" id="ref-for-credential-schema②②">credential schema</a> to become extensible. Properties such as <i>derivedFrom</i> could reference a schema that a new schema is built on top of. Similarly, platform-utility features such as searchability could be provided by adding a tags array that contains categorization and classification information for a <a data-link-type="dfn" href="#schema" id="ref-for-schema⑥">schema</a>.</p>
    <p>These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.</p>
-   <p class="issue" id="issue-487e2dd7"><a class="self-link" href="#issue-487e2dd7"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove.</p>
+   <p class="issue" id="issue-487e2dd7"><a class="self-link" href="#issue-487e2dd7"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/107">ISSUE #107</a>. Expand on this section or remove.</p>
    <h2 class="heading settled" data-level="9" id="examples"><span class="secno">9. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
    <h3 class="heading settled" data-level="9.1" id="vc_example"><span class="secno">9.1. </span><span class="content">Verifiable Credentials</span><a class="self-link" href="#vc_example"></a></h3>
    <p>We define an Email schema as the basis for a credential.</p>
-<pre class="example highlight" id="example-53db8005"><a class="self-link" href="#example-53db8005"></a><c- p>{</c->
-  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schemas/"</c-><c- p>,</c->
+<pre class="example highlight" id="example-ee922e09"><a class="self-link" href="#example-ee922e09"></a><c- p>{</c->
+  <c- f>"type"</c-><c- p>:</c-> <c- u>"https://w3c-ccg.github.io/vc-json-schema/"</c-><c- p>,</c->
   <c- f>"version"</c-><c- p>:</c-> <c- u>"1.0"</c-><c- p>,</c->
   <c- f>"id"</c-><c- p>:</c-> <c- u>"did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0"</c-><c- p>,</c->
   <c- f>"name"</c-><c- p>:</c-> <c- u>"Email"</c-><c- p>,</c->
@@ -1048,11 +1047,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="heading settled" data-level="11" id="alternatives"><span class="secno">11. </span><span class="content">Usage with JSON-LD</span><a class="self-link" href="#alternatives"></a></h2>
    <p><a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> is widely used in the Verifiable Credentials Data Model ecosystem. Both <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> and <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> serve distinct use cases. <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> is primarily useful for facilitating global semantic interoperability for terms in a credential and tie-in to an "open world data model."" <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> on the other hand is most often useful for strict data validation, though it does not provide the same functionality in regards to strict data validation.</p>
    <p>It has been suggested that both <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> and <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> can work symbiotically in the credentialing ecosystem: <a data-link-type="biblio" href="#biblio-json-ld">[JSON-LD]</a> providing semantic interoperability, and <a data-link-type="biblio" href="#biblio-json-schema">[JSON-SCHEMA]</a> providing static validation.</p>
-   <p class="issue" id="issue-250150b0"><a class="self-link" href="#issue-250150b0"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.</p>
+   <p class="issue" id="issue-250150b0"><a class="self-link" href="#issue-250150b0"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.</p>
    <h2 class="heading settled" data-level="12" id="interoperability"><span class="secno">12. </span><span class="content">Interoperability</span><a class="self-link" href="#interoperability"></a></h2>
    <p>The primary concern of this specification is to facilitate an ecosystem in which <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①④">Verifiable Credentials</a> can be issued and used. To be interoperable, additional schema types may need to be supported. Given the capability of versioning for <a href="#metadata" id="ref-for-metadata⑧">Credential Schema Metadata</a> interoperability between Credential Schemas is mostly solved.</p>
    <p>A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.</p>
-   <p class="issue" id="issue-1117840e"><a class="self-link" href="#issue-1117840e"></a> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.</p>
+   <p class="issue" id="issue-1117840e"><a class="self-link" href="#issue-1117840e"></a> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.</p>
   </main>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
@@ -1104,12 +1103,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications. <a class="issue-return" href="#issue-56d2c1a9" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself. <a class="issue-return" href="#issue-9a235454" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal. <a class="issue-return" href="#issue-9ff54d0d" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove. <a class="issue-return" href="#issue-487e2dd7" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this. <a class="issue-return" href="#issue-250150b0" title="Jump to section">↵</a></div>
-   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help. <a class="issue-return" href="#issue-1117840e" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications. <a class="issue-return" href="#issue-56d2c1a9" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself. <a class="issue-return" href="#issue-9a235454" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/120">ISSUE #120</a>. Feature at risk of removal. <a class="issue-return" href="#issue-9ff54d0d" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/107">ISSUE #107</a>. Expand on this section or remove. <a class="issue-return" href="#issue-487e2dd7" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this. <a class="issue-return" href="#issue-250150b0" title="Jump to section">↵</a></div>
+   <div class="issue"> <a href="https://github.com/w3c-ccg/vc-json-schema/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help. <a class="issue-return" href="#issue-1117840e" title="Jump to section">↵</a></div>
   </div>
   <aside class="dfn-panel" data-for="id">
    <b><a href="#id">#id</a></b><b>Referenced in:</b>

@@ -2,11 +2,11 @@
 <h1>Verifiable Credentials JSON Schema 2022</h1>
 <pre class='metadata'>
 Title: Verifiable Credentials JSON Schema Specification
-Status: w3c/CG-DRAFT
+Status: w3c/CG-FINAL
 Prepare for TR: true
-TR: https://w3c-ccg.github.io/vc-json-schemas/
-ED: https://w3c-ccg.github.io/vc-json-schemas/
-!CG-DRAFT: <a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>
+TR: https://w3c-ccg.github.io/vc-json-schema/
+ED: https://w3c-ccg.github.io/vc-json-schema/
+!CG-FINAL: <a href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>
 
 Shortname: vcjsonschemaspec
 Level: 1
@@ -15,8 +15,8 @@ Editor: [Gabe Cohen](https://linkedin.com/in/cohengabe), w3cid 116851, [Block](h
 Editor: Orie Steele, w3cid 109171, [Transmute](https://www.transmute.industries/), orie@transmute.industries
 
 group: ccg
-Issue Tracking: GitHub https://github.com/w3c-ccg/vc-json-schemas/issues
-!Tests: <a href="https://github.com/w3c-ccg/vc-json-schemas">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schemas">ongoing work</a>)
+Issue Tracking: GitHub https://github.com/w3c-ccg/vc-json-schema/issues
+!Tests: <a href="https://github.com/w3c-ccg/vc-json-schema">vc json schema spec tests</a> (<a href="https://github.com/w3c-ccg/vc-json-schema">ongoing work</a>)
 Text Macro: FALSE <code>false</code>
 Text Macro: PII personally identifying information
 Text Macro: RP Relying Party
@@ -36,7 +36,7 @@ Abstract: Among other things, the [[VC-DATA-MODEL]] specifies the models used fo
 Status Text: This specification was published by the <a href="http://www.w3.org/community/credentials/">W3C Credentials Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under  the <a href="https://www.w3.org/community/about/agreements/final/">W3C Community Final Specification Agreement (FSA)</a> other conditions apply. Learn more about <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>. </br></br> If you wish to make comments regarding this document, please send them to <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a> (<a href="mailto:public-credentials-request@w3.org">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-credentials/">archives</a>).
 
 
-Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header, omit logo
 Markup Shorthands: css off, markdown on
 </pre>
 
@@ -111,7 +111,7 @@ The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and 
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/schema/2.0/schema.json",
   "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db?version=1.0",
   "name": "Email",
@@ -140,7 +140,7 @@ The key words <i>MAY</i>, <i>MUST</i>, <i>MUST NOT</i>, <i>RECOMMENDED</i>, and 
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db",
   "name": "Email",
@@ -316,7 +316,7 @@ The properties, in order, before the JSON Schema document, embedded into the [=J
 
 Credential Schema Metadata <i>MUST</i> provide a `type` property.
 
-The value of the `type` property <i>MUST</i> point to a URI specifying the draft of this specification to use. The current draft URI is <a href="https://w3c-ccg.github.io/vc-json-schemas/">https://w3c-ccg.github.io/vc-json-schemas/</a>.
+The value of the `type` property <i>MUST</i> point to a URI specifying the draft of this specification to use. The current draft URI is <a href="https://w3c-ccg.github.io/vc-json-schema/">https://w3c-ccg.github.io/vc-json-schema/</a>.
 
 2. [=version=]
 
@@ -357,7 +357,7 @@ The value of the `authored` property <i>MUST</i> be a valid [[RFC3339]] timestam
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.0",
   "id": "06e126d1-fa44-4882-a243-1e326fbe21db",
   "name": "Email",
@@ -394,7 +394,7 @@ A [=Credential Schema=] <i>MUST</i> have a `schema` property. The `schema` prope
 
 Note: It is recommended that Credential Schemas avoid setting the `additionalProperties` value to `false`. Doing so could invalidate credentials that utilize the `id` property in `credentialSubject`. As an alternative, implementers could add an `id` property to each Credential Schema.
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/105">ISSUE #105</a>. Add language on using different versions of JSON Schema specifications.
 
 ### Multiple Schemas ### {#credential_schema_schema_multiple}
 
@@ -492,7 +492,7 @@ Notably, this specification defines no special processing rules beyond those alr
 
 Any [=Credential Schema=] may be authenticated using [[DATA-INTEGRITY]] or [[JOSE]].
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/103">ISSUE #103</a>. Discussion needed on whether it is necessary to add language on authentication, or whether a Credential Schema should itself be packaged as a VC itself.
 
 # Processing # {#processing}
 
@@ -546,7 +546,7 @@ The process by which a schema or set of schemas is accepted by a party is out of
 
 # Versioning Guidelines # {#versioning_guidelines}
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/120">ISSUE #120</a>. Feature at risk of removal.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/120">ISSUE #120</a>. Feature at risk of removal.
 
 This section applies to [=version=] property of the [=metadata=].
 
@@ -564,7 +564,7 @@ An example of this rule is when the <i>additionalProperties</i> field's value ch
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.1",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
   "name": "Email",
@@ -602,7 +602,7 @@ This time our credentialing requirements for our email schema have changed and w
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "2.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=2.0",
   "name": "Email",
@@ -646,7 +646,7 @@ The addition or removal of an <b>optional</b> field is what constitutes a <b>REV
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
@@ -680,7 +680,7 @@ In this example we once again reference the email schema, but this time we add a
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.1",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.1",
   "name": "Email",
@@ -720,7 +720,7 @@ By introducing a [=version=] field we allow the [=credential schema=] to become 
 
 These are just a few examples that illustrate the flexibility of the proposed model. It can be extended to support a wide variety of use-cases and make the burden on issuance and verification simpler by facilitating the development of higher-level tooling.
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/107">ISSUE #107</a>. Expand on this section or remove.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/107">ISSUE #107</a>. Expand on this section or remove.
 
 # Examples # {#examples}
 
@@ -730,7 +730,7 @@ We define an Email schema as the basis for a credential.
 
 <pre class="example" highlight="json">
 {
-  "type": "https://w3c-ccg.github.io/vc-json-schemas/",
+  "type": "https://w3c-ccg.github.io/vc-json-schema/",
   "version": "1.0",
   "id": "did:example:MDP8AsFhHzhwUvGNuYkX7T/06e126d1-fa44-4882-a243-1e326fbe21db;version=1.0",
   "name": "Email",
@@ -803,7 +803,7 @@ A flip side to drawbacks of the usage of [[JSON-SCHEMA]] is that there is a plet
 
 It has been suggested that both [[JSON-SCHEMA]] and [[JSON-LD]] can work symbiotically in the credentialing ecosystem: [[JSON-LD]] providing semantic interoperability, and [[JSON-SCHEMA]] providing static validation. 
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/122">ISSUE #122</a>. Need to add an example of a credential using both JSON-LD and JSON Schema along with language as to why one would choose to do this.
 
 # Interoperability # {#interoperability}
 
@@ -811,7 +811,7 @@ The primary concern of this specification is to facilitate an ecosystem in which
 
 A goal of publishing this document is to promote others to adopt this schema philosophy. It also opens the door for providing feedback and collaborative contribution to developing primitives that would lead to a successful verifiable ecosystem.
 
-Issue: <a href="https://github.com/w3c-ccg/vc-json-schemas/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.
+Issue: <a href="https://github.com/w3c-ccg/vc-json-schema/issues/106">ISSUE #106</a>. Discussion on other types of interoperability and how this schema does or does not help.
 
 <pre class="biblio">
 {
