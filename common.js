@@ -42,6 +42,11 @@ var vcwg = {
       title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
       publisher: "W3C"
     },
+    "VC-JWT": {
+      href: "https://www.w3.org/TR/vc-jwt/",
+      title: "Securing Verifiable Credentials using JSON Web Tokens",
+      publisher: "W3C"
+    },
     "DATA-INTEGRITY": {
       href: "https://w3c-ccg.github.io/data-integrity-spec/",
       title: "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
