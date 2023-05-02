@@ -1,4 +1,4 @@
-# W3C Credentials Community Group
+# W3C Verifiable Credentials Working Group
 
 Contributions to this repository are intended to become part of
 Recommendation-track documents governed by the
