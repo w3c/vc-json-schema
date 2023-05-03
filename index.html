@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+      <title>Verifiable Credentials JSON Schema Specification 2022</title>
+      <script
+         src="https://www.w3.org/Tools/respec/respec-w3c"
+         class="remove"
+         defer
+         ></script>
+      <script src="./common.js" class="remove"></script>
+      <script class="remove">
+         var respecConfig = {
+           specStatus: "ED",
+           group: "vc",
+           shortName: "vc-json-schema",
+           subtitle: "JSON Schemas for Verifiable Credentials",
+           previousMaturity: "CG-FINAL",
+           previousPublishDate: "2022-04-05",
+           localBiblio: vcwg.localBiblio,
+           doJsonLd: true,
+           github: "https://github.com/w3c/vc-json-schema/",
+           includePermalinks: false,
+           edDraftURI: "https://w3c.github.io/vc-json-schema/",
+           editors: [{
+             name: "Gabe Cohen",
+             url: "https://github.com/decentralgabe",
+             company: "Block",
+             companyURL: "https://www.tbd.website",
+             w3cid: 116851
+           }, {
+             name: 'Orie Steele',
+             url: 'https://github.com/OR13',
+             company: 'Transmute',
+             companyURL: 'https://transmute.industries/',
+             w3cid: 109171
+           }],
+           authors: [{
+             name: "Gabe Cohen",
+             url: "https://github.com/decentralgabe",
+             company: "Block",
+             companyURL: "https://www.tbd.website",
+             w3cid: 116851
+           }, {
+             name: 'Orie Steele',
+             url: 'https://github.com/OR13',
+             company: 'Transmute',
+             companyURL: 'https://transmute.industries/',
+             w3cid: 109171
+           }],
+           lint: {
+             "no-unused-dfns": false
+           },
+           // TODO(gabe): this is broken
+           // postProcess: [restrictRefs],
+           maxTocLevel: 2,
+           inlineCSS: true,
+           otherLinks: [{
+             key: "Related Documents",
+             data: [{
+               value: "Verifiable Credentials Data Model",
+               href: "https://www.w3.org/TR/vc-data-model/"
+             }]
+           }]
+         };
+      </script>
+      <style>
+         pre .highlight {
+          font-weight: bold;
+          color: green;
+         }
+         pre .comment {
+          font-weight: bold;
+          color: Gray;
+         }
+         .color-text {
+          font-weight: bold;
+          text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+         }
+         ol.algorithm {
+          counter-reset: numsection;
+          list-style-type: none;
+         }
+         ol.algorithm li {
+          margin: 0.5em 0;
+         }
+         ol.algorithm li:before {
+          font-weight: bold;
+          counter-increment: numsection;
+          content: counters(numsection, ".") ") ";
+         }
+      </style>
+   </head>
+   <body>
+      <section id='abstract'>
+        <h2>Abstract</h2>
+        <p>
+          Among other things, the [[VC-DATA-MODEL]] specifies the models used for Verifiable Credentials,
+          Verifiable Presentations, and explains the relationships between three parties:
+          <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
+          throughout the [[VC-DATA-MODEL]] are the that of of verifiability, extensibility, and semantic
+          interoperability. This specification provides a mechanism to make use of a Credential Schema in
+          <a>Verifiable Credential</a>, leveraging the existing
+          <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
+        </p>
+      </section>
+      <section id='sotd'>
+        <h2>Status of This Document</h2>
+         <p>
+            This document is experimental and is undergoing heavy development.
+            It is inadvisable to implement the specification in its current form.
+            An <a href="https://github.com/TBD54566975/ssi-sdk/tree/main/credential/schema">experimental
+            implementation</a> is available.
+         </p>
+      </section>
+      <section class="informative">
+         <h2>Introduction</h2>
+         <p>
+            This specification provides a mechanism for the use of <a>JSON Schemas</a> with
+            <a>Verifiable Credentials</a>. A significant part of the integrity of a <a>Verifiable Credential</a>
+            comes from the ability to structure its contents so that all three parties —
+            issuer, holder, verifier — may have a consistent mechanism of trust in
+            interpreting the data that they are provided with. We introducing a new data
+            model for an object to facilitate backing Credentials with <a>JSON Schemas</a>
+            that we call a <a>Credential Schema</a>.
+         </p>
+         <p>
+            This specification provides a standardized way of creating <a>Credential Schemas</a>
+            to be used in credentialing systems. Credential Schemas may apply to any portion
+            of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential,
+            e.g. a schema for the `credentialSubject` and another for other credential properties.
+         </p>
+         <section class="informative">
+            <h3>Terminology</h3>
+            <div data-include="terms.html"></div>
+         </section>
+         <section id="conformance" class="normative">
+         </section>
+      </section>
+      <section class="normative">
+         <h2>Data Model</h2>
+         <p>
+            The following sections outlines the data model for this document.
+         </p>
+         <section>
+            <h3>Metadata</h3>
+            <p>
+               When an <a>issuer</a> desires to enable JSON Schema validation for a
+               <a>verifiable credential</a> they MAY add the following data which
+               wraps a <i>schema</i> to be applied to the credential.
+            </p>
+            <table class="simple">
+               <thead>
+                  <tr>
+                     <th style="white-space: nowrap">Property</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>
+                        The <code>id</code> value is expected to be a URL that identifies the credential
+                        schema associated with the <a>verifiable credential</a>. The value of the <code>id</code>
+                        property MUST point to a locally unique identifier which addresses the schema
+                        on a given data storage medium (e.g. a database, ledger, distributed file store).
+                        Each credential schema has its own unique identifier and each revision of a schema
+                        is required to have its own unique identifier.
+                        It is <i>RECOMMENDED</i> that this identifier is a
+                        <a href="ttps://www.rfc-editor.org/rfc/rfc3986">Uniform Resource Identifier</a> which
+                        SHOULD contain information pertaining to the issuer and version of the schema.
+                        For example, if the issuer controls a DID 
+                        <pre>did:example:abcdefghi</pre>
+                        a possible schema ID the issuer created would have an identifier such as:
+                        <pre>did:example:abcdefghi/17de181feb67447da4e78259d92d0240?version=1</pre>
+                        which makes use of <a href="https://www.w3.org/TR/did-core/#path">DID Path syntax</a>
+                        as defined by [[DID-CORE]].
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>type</td>
+                     <td>
+                        The <code>type</code> property MUST be <code>CredentialSchema2022</code>.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>name</td>
+                     <td>
+                        The <code>name</code> of the credential schema MUST be a string. It is RECOMMENDED
+                        that the name is human-friendly and fits the credential schema.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>issuer</td>
+                     <td>
+                        The <code>issuer</code> property MUST identify the creator of the credential
+                        schmea. It is RECOMMENDED that the property is a <a>DID</a>.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>validFrom</td>
+                     <td>
+                        The <code>validFrom</code> property MUST be a valid [[RFC-3339]] timestamp whose
+                        value reflects the date-time value for when the credential schema was created.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>schema</td>
+                     <td>
+                        The <code>schema</code> property MUST be a valid [[JSON-SCHEMA]] as defined
+                        in the <a href="#credential-schema">credential schema</a> section of this document.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p>
+              <pre class="example highlight" title="Example Credential Schema Metadata">
+                {
+                    <span class="highlight">"id": "06e126d1-fa44-4882-a243-1e326fbe21db",
+                    "type": "https://w3c.github.io/vc-json-schema/",
+                    "name": "Email",
+                    "issuer": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+                    "validFrom": "2021-01-01T00:00:00+00:00",</span>
+                    "schema": { ... }
+                }
+              </pre>
+            </p>
+         </section>
+         <section>
+            <h3>Credential Schema</h3>
+            <p>
+               A credential schema may be used in conjunction with the <i>metadata</i> 
+               property listed above, as a part of the <i>schema</i> property OR be used
+               directly. The property MUST be a valid [[JSON-Schema]].
+            </p>
+            <p>
+              <pre class="example highlight" title="Example Email Credential Schema">
+              {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "Email",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "emailAddress": {
+                        "type": "string",
+                        "format": "email"
+                      }
+                    },
+                    "required": [
+                      "emailAddress"
+                    ]
+                  }
+                }
+              }
+              </pre>
+            </p>
+         </section>
+         <section>
+          <h3>Representation in a Verifiable Credential</h3>
+          <p>
+            An example of utilizing the VC Data Model's <code>credentialSchema</code>
+            is provided below:
+          </p>
+          <p>
+            • <b>id</b>: a resolvable identifier for a specific <a>credential schema</a> document</br>
+            • <b>type</b>: <code>CredentialSchema2022</code>
+          </p>
+          <p>
+            <b>Verifiable Credential</b>
+            <pre class="example highlight" title="Example Credential Schema in a Verifiable Credential">
+            {
+              "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://www.w3.org/2018/credentials/examples/v1"
+              ],
+              "id": "http://example.edu/credentials/3732",
+              "type": ["VerifiableCredential", "UniversityDegreeCredential"],
+              "issuer": "https://example.edu/issuers/14",
+              "issuanceDate": "2010-01-01T19:23:24Z",
+              "credentialSubject": {
+                "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                "degree": {
+                  "name": "Bachelor of Science and Arts"
+                  "type": "Bachelor's Degree",
+                },
+                "issuingInstitution": "Very Good University"
+              },
+              "credentialSchema": {
+                "id": "https://example.org/examples/degree.json",
+                "type": "CredentialSchema2022"
+              }
+            }
+            </pre>
+          </p>
+          <p>
+            <b>Credential Schema</b>
+            <pre class="example highlight" title="Example Degree Credential Schema">
+            {
+              "id": "06e126d1-fa44-4882-a243-1e326fbe21db",
+              "type": "https://w3c.github.io/vc-json-schema/",
+              "name": "Degree",
+              "issuer": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+              "validFrom": "2021-01-01T00:00:00+00:00",
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "Degree Schema",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "degree": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["name", "type"]
+                      },
+                      "issuingInstitution": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["degree", "issuingInstitution"]
+                  }
+
+                }
+              }
+            }
+            </pre>
+          </p>
+         </section>
+      </section>
+      <section class="normative">
+        <h2>JSON Schema Specifications</h2>
+          <p>
+             The following section describes the allowed specifications for 
+             using a [[JSON-Schema]] with a <a>credential schema</a>.
+          </p>
+          <table class="simple">
+             <thead>
+                <tr>
+                   <th style="white-space: nowrap">JSON Schema Specification</th>
+                   <th>Date of Publication</th>
+                   <th>References</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <td>draft-bhutton-json-schema-01</td>
+                   <td>10 June 2022</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-01">JSON Schema: A Media Type for Describing JSON Documents</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-01">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-relative-json-pointer-00">Relative JSON Pointers</a></br>
+                   </td>
+                </tr>
+                <tr>
+                   <td>Draft 2020-12, draft-bhutton-json-schema-00</td>
+                   <td>11 June 2021</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00">JSON Schema: A Media Type for Describing JSON Documents</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-00">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-relative-json-pointer-00">Relative JSON Pointers</a><</br>
+                   </td>
+                </tr>
+                <tr>
+                   <td>Draft 2019-09, Draft 8</td>
+                   <td>19 March 2020</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-02">JSON Schema: A Media Type for Describing JSON Documents</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-validation-02">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a></br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-hyperschema-02">JSON Hyper-Schema: A Vocabulary for Hypermedia Annotation of JSON</a></br>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+      </section>
+      <section class="informative">
+        <h2>Processing</h2>
+        <p>
+          This section details instructions on how to process Credential Schemas.
+        <p>
+        <section>
+          <h3>Integrity Validation</h3>
+          <p>
+            Credential schemas MAY be packaged as <a>verifiable credentials</a>.
+            Should this be the case, the credential containing a <a>credential schema</a>
+            may include a proof, either embedded according to [[DATA-INTEGRITY]] or
+            packaged as a [[VC-JWT]].
+          </p>
+          <p>
+            Secured credentials that contain credential schemas should first be validated
+            according to the rules set out in the aforementioned securing specifications
+            before proceeding with additional processing.
+          </p>
+          <p class="issue">
+            Provide examples for Data Integrity and VC-JWT Credential Schemas
+          </p>
+        </section>
+        <section>
+          <h3>Schema Extraction</h3>
+          <p>
+            If a Credential Schema contains <a href="#metadata">metadata</a>, extraction
+            is necessary to dereference the value of the <code>schema</code> property
+            within the metadata. Otherwise, extraction is not necessary.
+          </p>
+        </section>
+        <section>
+          <h3>Evaluation</h3>
+          <p>
+            Validation of a given Credential against its schema is to be performed according
+            to its associated [[JSON-SCHEMA-VALIDATION]] specification. Should validation
+            succeed the credential should be considered to be valid against its
+            <a>credential schema</a>.
+          </p>
+        </section>
+      </section>
+      <section class="informative">
+        <h2>Implementation Considerations</h2>
+        <p>
+          This section details some issues implementers of the specification
+          may consider.
+        </p>
+        <section class="informative">
+          <h3>Validation of Specific Properties in a Credential</h3>
+          <p>
+            Implementers may wish to validate certain sections of a <a>verifiable credential</a>.
+            To do this, <a>credential schemas</a> can be constructed to specify application
+            to subsets of a given credential.
+          </p>
+          <p>
+            One example of such a construction would be to validate the presence of certain
+            top-level properties in a <a>verifiable credential</a>. The following example
+            demonstrates a schema which enforces that a credential issued against it
+            has an <code>validUntil</code> property and includes <code>evidence</code>.
+          </p>
+          <p>
+            <pre class="example highlight" title="ValidUntil and Evidence Credential Schema">
+            {
+              "$id": "validuntil-and-evidence-schema",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "Schema requiring validUntil and evidence properties",
+              "type": "object",
+              "properties": {
+                "validUntil": {
+                  "type": "object"
+                },
+                "evidence": {
+                  "type": "object"
+                }
+              },
+              "required": ["validUntil", "evidence"]
+            }
+            </pre>
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Additional Properties</h3>
+          <p>
+            In using [[JSON-Schema]] it is RECOMMENDED that implementers avoid
+            setting the <code>additionalProperties</code> to <i>false</i>. Doing
+            so could inadvertently exclude properties in a credential from passing
+            validation.
+          </p>
+          <p>
+            As an example, consider a credential schema that is intended to validate
+            the <code>credentialSubject</code> property of a credential. It is common
+            for the <code>credentialSubject</code> property to include an <code>id</code>,
+            denoting the identifier the subject. Not including this <code>id</code> property
+            in a given schema would result in validation failure. The simple alternative
+            is to avoid setting <code>additionalProperties</code> to <i>false</i>.
+          </p>
+          <p>
+            <pre class="example highlight" title="Example Name Credential Schema">
+            {
+              "$id": "name-schema",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "Name",
+              "type": "object",
+              "properties": {
+                "credentialSubject": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "object",
+                      "properties": {
+                        "firstName": {
+                          "type": "string"
+                        },
+                        "lastName": {
+                          "type": "string"
+                        },
+                        "additionalProperties": false
+                      },
+                      "required": [
+                        "firstName",
+                        "lastName"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+            </pre>
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Versioning</h3>
+          <p>
+            Versioning is not provided as an explicit feature of this specification.
+            It is recommended to make backwards compatabile changes to schemas, should
+            they be adjusted. Otherwise, it is recommended that a new <a>credential schema</a>
+            is created with a unique identifier.
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Storage</h3>
+          <p>
+            Credential schemas are intended to be created and made available as <b>immutable</b>
+            objects. They may be stored on any number of storage mediums such as a distributed
+            ledger, traditional database, or decentralized file storage. The same schema <i>may</i>
+            be replicated across multiple file stores with the same identifier.
+
+            Immutability is key to enable consistent sources of truth for usage with <a>verifiable
+            credentials</a> which are also immutable.
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Multiple Schemas</h3>
+          <p>
+            A common use case is to include multiple schemas to validate against which a single
+            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+          </p>
+          <p>
+            An example of how to construct such a schema using the [[JSON-SCHEMA]] property
+            <code>allOf</code> is provided below, combining schemas for a <a>verifiable credential</a>,
+            name, and email address:
+            
+            <pre class="example highlight" title="Multiple Schema Credential Schema Example">
+            {
+              "allOf": [
+                {
+                  "$ref": "https://raw.githubusercontent.com/w3c/vc-data-model/main/schema/verifiable-credential/verifiable-credential-schema.json"
+                },
+                {
+                  "$id": "name-schema",
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "description": "Name",
+                  "type": "object",
+                  "properties": {
+                    "credentialSubject": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "object",
+                          "properties": {
+                            "firstName": {
+                              "type": "string"
+                            },
+                            "lastName": {
+                              "type": "string"
+                            },
+                            "additionalProperties": false
+                          },
+                          "required": [
+                            "firstName",
+                            "lastName"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "$id": "email-schema-1.0",
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "description": "Email",
+                  "type": "object",
+                  "properties": {
+                    "credentialSubject": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "object",
+                          "properties": {
+                            "emailAddress": {
+                              "type": "string",
+                              "format": "email"
+                            }
+                          },
+                          "required": ["emailAddress"]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+            </pre>
+          </p>
+          <p>
+            The example above is used to validate every property in the following 
+            <a>verifiable credential</a>:
+
+            <pre class="example highlight" title="Multiple Schema Verifiable Credential Example">
+            {
+                "@context": ["https://www.w3.org/ns/credentials/v2"],
+                "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
+                "type": ["VerifiableCredential"],
+                "issuer": "did:example:1234",
+                "validFrom": "2023-01-01T05:05:05Z",
+                "credentialSubject": {
+                    "firstName": "Alice",
+                    "lastName": "Bobertson",
+                    "emailAddress": "alice@bobertson.com"
+                },
+                "credentialSchema": {
+                    "id": "multiple-credential-schema-test",
+                    "type": "CredentialSchema2022"
+                },
+                "proof": { ... }
+            }
+            </pre>
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Validity of a Verifiable Credential</h3>
+          <p>
+            Validation against a [[JSON-SCHEMA]] may be confused with 
+            <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a>
+            or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a>
+            of a Verifiable Credential. A valid credential according to a [[JSON-SCHEMA]] refers
+            only to the structure of the claims comprising a Verifiable Credential. This idea of
+            validity does not imply anything about the validity of the Verifiable Credential itself.
+            It's possible for a Verifiable Credential to be considered valid by one verifier, 
+            while another verifier would not consider it valid.
+          </p>
+        </section>
+      </section>
+      <section class="informative">
+         <h2>Privacy Considerations</h2>
+         <p>
+            This section details the general privacy considerations and specific privacy
+            implications of deploying this specification into production environments.
+         </p>
+         <section class="informative">
+            <h3>Verifier Caching</h3>
+            <p>
+               Since schemas are immutable, they are highly cachable.
+               It is possible for <a>verifiers</a> to increase the privacy of the
+               <a>holder</a> whose <a>verifiable credential</a> is being checked by caching
+               schemas that have been fetched from remote servers. By caching the
+               content locally, less correlatable information can be inferred from
+               <a>verifier</a>-based access patterns on the schema. 
+            </p>
+         </section>
+         <section class="informative">
+            <h3>Content Distribution Networks</h3>
+            <p>
+               The use of content distribution networks by <a>issuers</a> can increase the
+               privacy of <a>holders</a> by reducing or eliminating requests for the
+               schemas lists from the <a>issuer</a>. Often, a request for a schema
+               list will be served by an edge device and thus be faster and reduce the load
+               on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
+               from <a>issuers</a>.
+            </p>
+         </section>
+      </section>
+      <section class="informative">
+         <h2>Security Considerations</h2>
+         <p>
+            There are a number of security considerations that implementers should be
+            aware of when processing data described by this specification. Ignoring or
+            not understanding the implications of this section can result in
+            security vulnerabilities.
+         </p>
+         <section class="informative">
+            <h3>Issuer Impersonation</h3>
+            <p>
+               It is possible for a schema to become authoritative, such as schemas
+               provided by a recognized industry group like a consoritum of financial
+               companies. To avoid confusion as to the authorship of <a>credential schemas</a>
+               it is recommended that they are packaged as secured <a>verifiable credentials</a>.
+            </p>
+         </section>
+         </section>
+      </section>
+      <section class="informative">
+         <h2>Accessibility Considerations</h2>
+         <p>
+            There are a number of accessibility considerations implementers should be
+            aware of when processing data described in this specification. As with any web
+            standards or protocols implementation, ignoring accessibility issues makes
+            this information unusable to a large subset of the population. It is important
+            to follow accessibility guidelines and standards, such as [[WCAG21]], to ensure
+            all people, regardless of ability, can make use of this data. This is
+            especially important when establishing systems utilizing cryptography, which
+            have historically created problems for assistive technologies.
+         </p>
+         <p>
+            This section details the general accessibility considerations to take into
+            account when utilizing this data model.
+         </p>
+         <p class="issue">
+            Write accessibility considerations.
+         </p>
+      </section>
+      <section class="informative">
+         <h2>Internationalization Considerations</h2>
+         <p>
+            There are a number of internationalization considerations implementers should be
+            aware of when publishing data described in this specification. As with any web
+            standards or protocols implementation, ignoring internationalization makes it
+            difficult for data to be produced and consumed across a disparate set of
+            languages and societies, which would limit the applicability of the
+            specification and significantly diminish its value as a standard.
+         </p>
+         <p>
+            This section outlines general internationalization considerations to take into
+            account when utilizing this data model.
+         </p>
+         <p class="issue">
+            Write i18n considerations.
+         </p>
+      </section>
+   </body>
+</html>

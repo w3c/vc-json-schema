@@ -1,27 +1,27 @@
-# Building the Draft
-Formatted HTML for the draft can be built using bikeshed (see below for instructions for bikeshed installation):
+## Verifiable Credential JSON Schema 2022
 
-```bash
-$ bikeshed spec v2/index.bs docs/index.html
+This specification provides a mechanism for the use of [JSON Schemas](https://json-schema.org/) with [Verifiable Credentials](https://w3c.github.io/vc-data-model/). A significant part of the integrity of a Verifiable Credential comes from the ability to structure its contents so that all three parties — issuer, holder, verifier — may have a consistent mechanism of trust in interpreting the data that they are provided with. We introducing a new data model for an object to facilitate backing Credentials with JSON Schemas that we call a Credential Schema.
+
+https://w3c.github.io/vc-json-schema/
+
+We encourage contributions meeting the [Contribution
+Guidelines](CONTRIBUTING.md).  While we prefer the creation of issues
+and Pull Requests in the GitHub repository, discussions often occur
+on the
+[public-credentials](http://lists.w3.org/Archives/Public/public-credentials/)
+mailing list as well.
+
+### Building
+
+To build, we use [respec](https://respec.org/).
+
+After installing respec, you can bulid the spec locally using the following command:
+
+```sh
+respec --localhost index.html out.html --verbose -e
 ```
 
-You may also want to use the watch functionality to automatically regenerate as you make changes:
+Next open up `out.html` in a web browser and review the document.
 
-```bash
-$ bikeshed watch v2/index.bs docs/index.html
-```
-
-`./spec/` contains the spec files processed by bikeshed.
-
-`./docs/` contains the build files that are hosted on github.
-
-## Bikeshed Installation and Setup
-See the full instructions at https://tabatkins.github.io/bikeshed/#installing.
-
-You will need to have Python 3.7 or later installed. Then, to install Bikeshed itself, run the following:
-
-```bash
-pip3 install bikeshed && bikeshed update
-```
-
-When that is completed, Bikeshed should be installed, and the `bikeshed` command should work in your shell.
+### Other useful links
+* [Public group email archive](https://lists.w3.org/Archives/Public/public-credentials/)
