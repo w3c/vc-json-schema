@@ -5,7 +5,7 @@ var vcwg = {
   // Add as the respecConfig localBiblio variable
   // Extend or override global respec references
   localBiblio: {
-    "RFC 3339": {
+    "RFC-3339": {
       title: "Date and Time on the Internet: Timestamps",
       date: "2002",
       href: "https://www.rfc-editor.org/rfc/rfc3339",
