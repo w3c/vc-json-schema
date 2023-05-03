@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-      <title>Verifiable Credentials JSON Schema Specification v2022</title>
+      <title>Verifiable Credentials JSON Schema Specification 2022</title>
       <script
          src="https://www.w3.org/Tools/respec/respec-w3c"
          class="remove"
@@ -51,7 +51,8 @@
            lint: {
              "no-unused-dfns": false
            },
-           postProcess: [restrictRefs],
+           // TODO(gabe): this is broken
+           // postProcess: [restrictRefs],
            maxTocLevel: 2,
            inlineCSS: true,
            otherLinks: [{
@@ -131,7 +132,7 @@
          </p>
          <section class="informative">
             <h3>Terminology</h3>
-            <div data-include="./terms.html"></div>
+            <div data-include="terms.html"></div>
          </section>
          <section id="conformance" class="normative">
          </section>
@@ -263,8 +264,11 @@
             is provided below:
           </p>
           <p>
-            - <b>id</b>: a resolvable identifier for a specific <a>credential schema</a> document</br>
-            - <b>type</b>: <b>CredentialSchema2022</b>
+            <li><b>id</b>: a resolvable identifier for a specific <a>credential schema</a> document</li>
+            <li><b>type</b>: <code>CredentialSchema2022</code></li>
+          </p>
+          <p>
+            <b>Verifiable Credential</b>
             <pre class="example" highlight="json" title="Example Credential Schema in a Verifiable Credential">
             {
               "@context": [
@@ -278,13 +282,55 @@
               "credentialSubject": {
                 "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
                 "degree": {
-                  "type": "BachelorDegree",
                   "name": "Bachelor of Science and Arts"
-                }
+                  "type": "Bachelor's Degree",
+                },
+                "issuingInstitution": "Very Good University"
               },
               "credentialSchema": {
                 "id": "https://example.org/examples/degree.json",
                 "type": "CredentialSchema2022"
+              }
+            }
+            </pre>
+          </p>
+          <p>
+            <b>Credential Schema</b>
+            <pre class="example" highlight="json" title="Example Degree Credential Schema">
+            {
+              "id": "06e126d1-fa44-4882-a243-1e326fbe21db",
+              "type": "https://w3c.github.io/vc-json-schema/",
+              "name": "Degree",
+              "issuer": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
+              "validFrom": "2021-01-01T00:00:00+00:00",
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "Degree Schema",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "degree": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["name", "type"]
+                      },
+                      "issuingInstitution": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["degree", "issuingInstitution"]
+                  }
+
+                }
               }
             }
             </pre>
@@ -385,6 +431,34 @@
         <section class="informative">
           <h3>Validation of Specific Properties in a Credential</h3>
           <p>
+            Implementers may wish to validate certain sections of a <a>verifiable credential</a>.
+            To do this, <a>credential schemas</a> can be constructed to specify application
+            to subsets of a given credential.
+          </p>
+          <p>
+            One example of such a construction would be to validate the presence of certain
+            top-level properties in a <a>verifiable credential</a>. The following example
+            demonstrates a schema which enforces that a credential issued against it
+            has an <code>validUntil</code> property and includes <code>evidence</code>.
+          </p>
+          <p>
+            <pre class="example" highlight="json" title="ValidUntil and Evidence Credential Schema">
+            {
+              "$id": "validuntil-and-evidence-schema",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "Schema requiring validUntil and evidence properties",
+              "type": "object",
+              "properties": {
+                "validUntil": {
+                  "type": "object"
+                },
+                "evidence": {
+                  "type": "object"
+                }
+              },
+              "required": ["validUntil", "evidence"]
+            }
+            </pre>
           </p>
         </section>
         <section class="informative">
@@ -462,11 +536,7 @@
           <h3>Multiple Schemas</h3>
           <p>
             A common use case is to include multiple schemas to validate against which a single
-            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by
-            the [[VC-DATA-MODEL]]</a> in addition to a schema to validate a specific property in
-            the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be
-            combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing
-            properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
             An example of how to construct such a schema using the [[JSON-SCHEMA]] property
