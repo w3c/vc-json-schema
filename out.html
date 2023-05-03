@@ -1,0 +1,1805 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="generator" content="ReSpec 34.1.1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+:is(aside,div).example{border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+.example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+      
+      
+<title>Verifiable Credentials JSON Schema Specification 2022</title>
+      
+      
+      
+      
+<style>
+
+         pre .highlight {
+          font-weight: bold;
+          color: green;
+         }
+         pre .comment {
+          font-weight: bold;
+          color: Gray;
+         }
+         .color-text {
+          font-weight: bold;
+          text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+         }
+         ol.algorithm {
+          counter-reset: numsection;
+          list-style-type: none;
+         }
+         ol.algorithm li {
+          margin: 0.5em 0;
+         }
+         ol.algorithm li:before {
+          font-weight: bold;
+          counter-increment: numsection;
+          content: counters(numsection, ".") ") ";
+         }
+      
+</style>
+   
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<meta name="description" content="Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,
+          Verifiable Presentations, and explains the relationships between three parties:
+          issuers, holders, and verifiers. Critical pieces of functionality referenced
+          throughout the [VC-DATA-MODEL] are the that of of verifiability, extensibility, and semantic
+          interoperability. This specification provides a mechanism to make use of a Credential Schema in
+          Verifiable Credential, leveraging the existing
+          Data Schemas concept.">
+<style>
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+.hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+.hljs-literal{color:#0b76c5}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "specStatus": "ED",
+  "group": "vc",
+  "shortName": "vc-json-schema",
+  "subtitle": "JSON Schemas for Verifiable Credentials",
+  "previousMaturity": "CG-FINAL",
+  "previousPublishDate": "2022-04-05",
+  "localBiblio": {
+    "RFC 3339": {
+      "title": "Date and Time on the Internet: Timestamps",
+      "date": "2002",
+      "href": "https://www.rfc-editor.org/rfc/rfc3339",
+      "authors": [
+        "G. Klyne",
+        "Clearswift Corporation",
+        "C. Newman",
+        "Sun Microsystems"
+      ],
+      "publisher": "Internet Engineering Task Force (IETF)",
+      "id": "rfc 3339"
+    },
+    "VC-DATA-MODEL": {
+      "href": "https://www.w3.org/TR/vc-data-model/",
+      "title": "Verifiable Credentials Data Model 1.0",
+      "publisher": "W3C",
+      "id": "vc-data-model"
+    },
+    "JSON-SCHEMA": {
+      "href": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "title": "JSON Schema: A Media Type for Describing JSON Documents",
+      "publisher": "IETF",
+      "id": "json-schema"
+    },
+    "JSON-SCHEMA-VALIDATION": {
+      "href": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+      "publisher": "IETF",
+      "id": "json-schema-validation"
+    },
+    "DID-CORE": {
+      "href": "https://w3c.github.io/did-core/",
+      "title": "Decentralized Identifiers (DIDs) v1.0",
+      "publisher": "W3C",
+      "id": "did-core"
+    },
+    "JSON-LD": {
+      "href": "https://w3c.github.io/json-ld-syntax/",
+      "title": "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
+      "publisher": "W3C"
+    },
+    "VC-JWT": {
+      "href": "https://www.w3.org/TR/vc-jwt/",
+      "title": "Securing Verifiable Credentials using JSON Web Tokens",
+      "publisher": "W3C",
+      "id": "vc-jwt"
+    },
+    "DATA-INTEGRITY": {
+      "href": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "title": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
+      "publisher": "W3C",
+      "id": "data-integrity"
+    },
+    "JOSE": {
+      "href": "https://jose.readthedocs.io/en/latest/",
+      "title": "Javascript Object Signing and Encryption (JOSE)",
+      "publisher": "IETF"
+    },
+    "JSON-SCHEMA-IMPLMENTATIONS": {
+      "href": "https://json-schema.org/implementations.html",
+      "title": "JSON Schema Implementations",
+      "publisher": "json-schema-org"
+    },
+    "RFC 2119": {
+      "href": "https://www.rfc-editor.org/rfc/rfc2119",
+      "title": "Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current Practice",
+      "publisher": "IETF"
+    },
+    "RFC 8174": {
+      "href": "https://www.rfc-editor.org/rfc/rfc8174",
+      "title": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2017. Best Current Practice",
+      "publisher": "IETF"
+    }
+  },
+  "doJsonLd": true,
+  "github": "https://github.com/w3c/vc-json-schema/",
+  "includePermalinks": false,
+  "edDraftURI": "https://w3c.github.io/vc-json-schema/",
+  "editors": [
+    {
+      "name": "Gabe Cohen",
+      "url": "https://github.com/decentralgabe",
+      "company": "Block",
+      "companyURL": "https://www.tbd.website",
+      "w3cid": 116851
+    },
+    {
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "company": "Transmute",
+      "companyURL": "https://transmute.industries/",
+      "w3cid": 109171
+    }
+  ],
+  "authors": [
+    {
+      "name": "Gabe Cohen",
+      "url": "https://github.com/decentralgabe",
+      "company": "Block",
+      "companyURL": "https://www.tbd.website",
+      "w3cid": 116851
+    },
+    {
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "company": "Transmute",
+      "companyURL": "https://transmute.industries/",
+      "w3cid": 109171
+    }
+  ],
+  "lint": {
+    "no-unused-dfns": false
+  },
+  "maxTocLevel": 2,
+  "inlineCSS": true,
+  "otherLinks": [
+    {
+      "key": "Related Documents",
+      "data": [
+        {
+          "value": "Verifiable Credentials Data Model",
+          "href": "https://www.w3.org/TR/vc-data-model/"
+        }
+      ]
+    }
+  ],
+  "publishISODate": "2023-05-03T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 03 May 2023"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
+   <body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">Verifiable Credentials JSON Schema Specification 2022</h1> <h2 id="subtitle" class="subtitle">JSON Schemas for Verifiable Credentials</h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-05-03">03 May 2023</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://w3c.github.io/vc-json-schema/">https://w3c.github.io/vc-json-schema/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/vc-json-schema/">https://www.w3.org/TR/vc-json-schema/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-json-schema/">https://w3c.github.io/vc-json-schema/</a></dd>
+        <dt>History:</dt><dd>
+                    <a href="https://github.com/w3c/vc-json-schema/commits/">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="116851">
+    <a class="u-url url p-name fn" href="https://github.com/decentralgabe">Gabe Cohen</a> (<a class="p-org org h-org" href="https://www.tbd.website">Block</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://github.com/OR13">Orie Steele</a> (<a class="p-org org h-org" href="https://transmute.industries/">Transmute</a>)
+  </dd>
+        
+        <dt>Authors:</dt><dd class="editor p-author h-card vcard" data-editor-id="116851">
+    <a class="u-url url p-name fn" href="https://github.com/decentralgabe">Gabe Cohen</a> (<a class="p-org org h-org" href="https://www.tbd.website">Block</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://github.com/OR13">Orie Steele</a> (<a class="p-org org h-org" href="https://transmute.industries/">Transmute</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/vc-json-schema/">GitHub w3c/vc-json-schema</a>
+        (<a href="https://github.com/w3c/vc-json-schema/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/vc-json-schema/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/vc-json-schema/issues/">open issues</a>)
+      </dd>
+        
+        <dt>Related Documents</dt><dd>
+    <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Data Model</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+    ©
+    2023
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+      <section id="abstract" class="introductory"><h2>Abstract</h2>
+        
+        <p>
+          Among other things, the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] specifies the models used for Verifiable Credentials,
+          Verifiable Presentations, and explains the relationships between three parties:
+          <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
+          throughout the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] are the that of of verifiability, extensibility, and semantic
+          interoperability. This specification provides a mechanism to make use of a Credential Schema in
+          <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-1">Verifiable Credential</a>, leveraging the existing
+          <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
+        </p>
+      </section>
+      <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+        <section id="status-of-this-document"><div class="header-wrapper"><h3 id="status-of-this-document-0">Status of This Document</h3><a class="self-link" href="#status-of-this-document" aria-label="Permalink for this Section"></a></div>
+         <p>
+            This document is experimental and is undergoing heavy development.
+            It is inadvisable to implement the specification in its current form.
+            An <a href="https://github.com/TBD54566975/ssi-sdk/tree/main/credential/schema">experimental
+            implementation</a> is available.
+         </p>
+      <p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/vc">Verifiable Credentials Working Group</a> as
+    an Editor's Draft. 
+  </p><p>Publication as an Editor's Draft does not
+  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p>
+    
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>.
+      
+    
+                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                <a rel="disclosure" href="https://www.w3.org/groups/wg/vc/ipr">public list of any patent disclosures</a>
+          made in connection with the deliverables of
+          the group; that page also includes
+          instructions for disclosing a patent. An individual who has actual
+          knowledge of a patent which the individual believes contains
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+          must disclose the information in accordance with
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+        
+  </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2021/Process-20211102/">2 November 2021 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#status-of-this-document">Status of This Document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#metadata"><bdi class="secno">2.1 </bdi>Metadata</a></li><li class="tocline"><a class="tocxref" href="#credential-schema"><bdi class="secno">2.2 </bdi>Credential Schema</a></li><li class="tocline"><a class="tocxref" href="#representation-in-a-verifiable-credential"><bdi class="secno">2.3 </bdi>Representation in a Verifiable Credential</a></li></ol></li><li class="tocline"><a class="tocxref" href="#json-schema-specifications"><bdi class="secno">3. </bdi>JSON Schema Specifications</a></li><li class="tocline"><a class="tocxref" href="#processing"><bdi class="secno">4. </bdi>Processing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#integrity-validation"><bdi class="secno">4.1 </bdi>Integrity Validation</a></li><li class="tocline"><a class="tocxref" href="#schema-extraction"><bdi class="secno">4.2 </bdi>Schema Extraction</a></li><li class="tocline"><a class="tocxref" href="#evaluation"><bdi class="secno">4.3 </bdi>Evaluation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#implementation-considerations"><bdi class="secno">5. </bdi>Implementation Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#validation-of-specific-properties-in-a-credential"><bdi class="secno">5.1 </bdi>Validation of Specific Properties in a Credential</a></li><li class="tocline"><a class="tocxref" href="#additional-properties"><bdi class="secno">5.2 </bdi>Additional Properties</a></li><li class="tocline"><a class="tocxref" href="#versioning"><bdi class="secno">5.3 </bdi>Versioning</a></li><li class="tocline"><a class="tocxref" href="#storage"><bdi class="secno">5.4 </bdi>Storage</a></li><li class="tocline"><a class="tocxref" href="#multiple-schemas"><bdi class="secno">5.5 </bdi>Multiple Schemas</a></li><li class="tocline"><a class="tocxref" href="#validity-of-a-verifiable-credential"><bdi class="secno">5.6 </bdi>Validity of a Verifiable Credential</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verifier-caching"><bdi class="secno">6.1 </bdi>Verifier Caching</a></li><li class="tocline"><a class="tocxref" href="#content-distribution-networks"><bdi class="secno">6.2 </bdi>Content Distribution Networks</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">7. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#issuer-impersonation"><bdi class="secno">7.1 </bdi>Issuer Impersonation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">8. </bdi>Accessibility Considerations</a></li><li class="tocline"><a class="tocxref" href="#internationalization-considerations"><bdi class="secno">9. </bdi>Internationalization Considerations</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+      <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            This specification provides a mechanism for the use of <a href="#dfn-json-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-json-schema-1">JSON Schemas</a> with
+            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-2">Verifiable Credentials</a>. A significant part of the integrity of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-3">Verifiable Credential</a>
+            comes from the ability to structure its contents so that all three parties —
+            issuer, holder, verifier — may have a consistent mechanism of trust in
+            interpreting the data that they are provided with. We introducing a new data
+            model for an object to facilitate backing Credentials with <a href="#dfn-json-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-json-schema-2">JSON Schemas</a>
+            that we call a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-1">Credential Schema</a>.
+         </p>
+         <p>
+            This specification provides a standardized way of creating <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-2">Credential Schemas</a>
+            to be used in credentialing systems. Credential Schemas may apply to any portion
+            of a Verifiable Credential. Multiple JSON Schemas may back a single Verifiable Credential,
+            e.g. a schema for the <code>credentialSubject</code> and another for other credential properties.
+         </p>
+         <section class="informative" id="terminology"><div class="header-wrapper"><h3 id="x1-1-terminology"><bdi class="secno">1.1 </bdi>Terminology</h3><a class="self-link" href="#terminology" aria-label="Permalink for Section 1.1"></a></div><p><em>This section is non-normative.</em></p>
+            
+            <div><p>
+The following terms are used to describe concepts in this specification.
+</p>
+
+<dl class="termlist">
+  <dt><dfn data-lt="claims|claim" id="dfn-claims" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">claim</dfn></dt>
+  <dd>
+An assertion made about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-1">subject</a>.
+  </dd>
+  <dt><dfn data-lt="credential schema|credential schemas" id="dfn-credential-schema" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">credential schema</dfn></dt>
+  <dd>
+The data model that this specification defines.
+  </dd>
+  <dt><dfn data-lt="json schema|json schemas" id="dfn-json-schema" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">json schema</dfn></dt>
+  <dd>
+A declarative language that allows you to annotate and validate JSON documents.
+  </dd>
+  <dt><dfn data-lt="credential|credentials" id="dfn-credential" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">credential</dfn></dt>
+  <dd>
+A set of one or more <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-1">claims</a> made by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-1">issuer</a>. 
+The <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-2">claims</a> in a credential can be about different <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-2">subjects</a>.
+  </dd>
+  <dt><dfn id="dfn-data-minimization" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">data minimization</dfn></dt>
+  <dd>
+The act of limiting the amount of shared data strictly to the minimum
+necessary to successfully accomplish a task or goal.
+  </dd>
+  <dt><dfn data-lt="decentralized identifiers|DID|DIDs|decentralized identifier" data-plurals="did" id="dfn-decentralized-identifiers" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">decentralized identifier</dfn></dt>
+  <dd>
+A portable URL-based identifier, also known as a <strong><em>DID</em></strong>,
+associated with an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-1">entity</a>. These identifiers are most often used in a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-4">verifiable credential</a> and are associated with <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-3">subjects</a> such that a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-5">verifiable credential</a> itself can be easily ported from one
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-repository-1">repository</a> to another without the need to reissue the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-1">credential</a>.
+An example of a DID is <code>did:example:123456abcdef</code>.
+  </dd>
+  <dt><dfn class="lint-ignore" data-lt="decentralized identifier documents|DID document|DID documents|decentralized identifier document" id="dfn-decentralized-identifier-documents" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">decentralized identifier document</dfn></dt>
+  <dd>
+Also referred to as a <strong><em>DID document</em></strong>, this is a document
+that is accessible using a <a href="#dfn-verifiable-data-registries" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-data-registries-1">verifiable data registry</a> and contains
+information related to a specific <a href="#dfn-decentralized-identifiers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-decentralized-identifiers-1">decentralized identifier</a>, such as the
+associated <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-repository-2">repository</a> and public key information.
+  </dd>
+  <dt><dfn class="lint-ignore" id="dfn-digital-signature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">digital signature</dfn></dt>
+  <dd>
+A mathematical scheme for demonstrating the authenticity of a digital message.
+  </dd>
+  <dt><dfn data-lt="entities|entity's|entity" id="dfn-entities" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">entity</dfn></dt>
+  <dd>
+A thing with distinct and independent existence, such as a person,
+organization, or device that performs one or more roles in the ecosystem.
+  </dd>
+  <dt><dfn data-lt="holders|holder's|holders'|holder" id="dfn-holders" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">holder</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-2">entity</a> might perform by possessing one or more
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-6">verifiable credentials</a> and generating <a href="#dfn-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-presentation-1">presentations</a> from them.
+A holder is usually, but not always, a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-4">subject</a> of the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-7">verifiable
+credentials</a> they are holding. Holders store their <a href="#dfn-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-2">credentials</a> in
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-repository-3">credential repositories</a>.
+  </dd>
+  <dt><dfn class="lint-ignore" data-lt="identities|identity's|identity" id="dfn-identities" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">identity</dfn></dt>
+  <dd>
+The means for keeping track of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-3">entities</a> across contexts. Digital
+identities enable tracking and customization of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-4">entity</a> interactions
+across digital contexts, typically using identifiers and attributes. Unintended
+distribution or use of identity information can compromise privacy. Collection
+and use of such information should follow the principle of
+<a href="#dfn-data-minimization" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-data-minimization-1">data minimization</a>.
+  </dd>
+  <dt><dfn data-lt="issuers|issuer's|issuer" id="dfn-issuers" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">issuer</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-5">entity</a> can perform by asserting <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-3">claims</a> about one or
+more <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-5">subjects</a>, creating a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-8">verifiable credential</a> from these
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-4">claims</a>, and transmitting the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-9">verifiable credential</a> to a
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-1">holder</a>.
+  </dd>
+  <dt><dfn data-lt="presentation|presentations" id="dfn-presentation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">presentation</dfn></dt>
+  <dd>
+Data derived from one or more <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-10">verifiable credentials</a>, issued by one or
+more <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-2">issuers</a>, that is shared with a specific <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-1">verifier</a>.
+  </dd>  
+  <dt><dfn data-lt="credential repository|credential repositories|repositories|repository" id="dfn-credential-repository" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">repository</dfn></dt>
+  <dd>
+A program, such as a storage vault or personal <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-11">verifiable credential</a>
+wallet, that stores and protects access to <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-2">holders'</a>
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-12">verifiable credentials</a>.
+  </dd>
+  <dt><dfn id="dfn-selective-disclosure" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">selective disclosure</dfn></dt>
+  <dd>
+The ability of a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-3">holder</a> to make fine-grained decisions about what
+information to share.
+  </dd>
+  <dt><dfn data-lt="subjects|subject's|subject" id="dfn-subjects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">subject</dfn></dt>
+  <dd>
+A thing about which <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-5">claims</a> are made.
+  </dd>
+  <dt><dfn class="lint-ignore" id="dfn-user-agent" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">user agent</dfn></dt>
+  <dd>
+A program, such as a browser or other Web client, that mediates the
+communication between <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-4">holders</a>, <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-3">issuers</a>, and <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-2">verifiers</a>.
+  </dd>
+  <dt><dfn data-lt="credential validation|validation" id="dfn-credential-validation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">validation</dfn></dt>
+  <dd>
+The assurance that a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-13">verifiable credential</a> or a
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-1">verifiable presentation</a> meets the needs of a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-3">verifier</a> and other
+dependent stakeholders. This specification is constrained to <a href="#dfn-verify" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verify-1">verifying</a>
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-14">verifiable credentials</a> and <a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-2">verifiable presentations</a> regardless of
+their usage. Validating <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-15">verifiable credentials</a> or
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-3">verifiable presentations</a> is outside the scope of this specification.
+  </dd>
+  <dt><dfn data-lt="verifiable credential|verifiable credentials|vc|vcs" id="dfn-verifiable-credential" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable credential</dfn></dt>
+  <dd>
+A verifiable credential is a tamper-evident credential that has authorship that 
+can be cryptographically verified. Verifiable credentials can be used to build
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-4">verifiable presentations</a>, which can also be cryptographically verified.
+  </dd>
+  <dt><dfn data-lt="verifiable data registries|verifiable data registry" id="dfn-verifiable-data-registries" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable data registry</dfn></dt>
+  <dd>
+A role a system might perform by mediating the creation and <a href="#dfn-verify" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verify-2">verification</a>
+of identifiers, keys, and other relevant data, such as
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-16">verifiable credential</a> schemas, revocation registries, issuer public keys,
+and so on, which might be required to use <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-17">verifiable credentials</a>. Some
+configurations might require correlatable identifiers for <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-6">subjects</a>. Some
+registries, such as ones for UUIDs and public keys, might just act as namespaces
+for identifiers.
+  </dd>
+  <dt><dfn data-lt="verifiable presentation|verifiable presentations|vp|vps" id="dfn-verifiable-presentation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable presentation</dfn></dt>
+  <dd>
+A verifiable presentation is a tamper-evident presentation encoded in such a way 
+that authorship of the data can be trusted after a process of cryptographic 
+verification. Certain types of verifiable presentations might contain data that 
+is synthesized from, but do not contain, the original <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-18">verifiable credentials</a> 
+(for example, zero-knowledge proofs).
+  </dd>
+  <dt><dfn data-lt="verify|verified|verifying|verifiable|verifiability|verification" id="dfn-verify" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verification</dfn></dt>
+  <dd>
+The evaluation of whether a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-19">verifiable credential</a> or <a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-5">verifiable presentation</a>
+is an authentic and timely statement of the issuer or presenter, respectively.
+    This includes checking that: the credential (or presentation) conforms to the specification; the proof method is
+satisfied; and, if present, the status check succeeds.
+Verification of a credential does not imply evaluation of the truth
+of <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-6">claims</a> encoded in the credential..
+
+  </dd>
+  <dt><dfn data-lt="verifier|verifiers|verifier's|credential verifiers|credential verifier's" id="dfn-verifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifier</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-6">entity</a> performs by receiving one or more
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-20">verifiable credentials</a>, optionally inside a
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-6">verifiable presentation</a> for processing. Other specifications might refer
+to this concept as a <dfn data-lt="relying parties|relying party" id="dfn-relying-parties" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">relying party</dfn>.
+  </dd>
+  <dt><dfn data-lt="URL|URLs" id="dfn-url" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">URL</dfn></dt>
+  <dd>
+A Uniform Resource Locator, as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>]. URLs can be dereferenced such
+that they result in a resource, such as a document. The rules for dereferencing,
+or fetching, a URL are defined by the URL <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://url.spec.whatwg.org/#concept-url-scheme">scheme</a>. This specification
+does not use the term URI or IRI because those terms have been deemed to be
+confusing to Web developers.
+  </dd>
+</dl></div>
+         </section>
+         <section id="conformance" class="normative"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">RECOMMENDED</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p>
+         </section>
+      </section>
+      <section class="normative" id="data-model"><div class="header-wrapper"><h2 id="x2-data-model"><bdi class="secno">2. </bdi>Data Model</h2><a class="self-link" href="#data-model" aria-label="Permalink for Section 2."></a></div>
+         
+         <p>
+            The following sections outlines the data model for this document.
+         </p>
+         <section id="metadata"><div class="header-wrapper"><h3 id="x2-1-metadata"><bdi class="secno">2.1 </bdi>Metadata</h3><a class="self-link" href="#metadata" aria-label="Permalink for Section 2.1"></a></div>
+            
+            <p>
+               When an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-4">issuer</a> desires to enable JSON Schema validation for a
+               <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-21">verifiable credential</a> they <em class="rfc2119">MAY</em> add the following data which
+               wraps a <i>schema</i> to be applied to the credential.
+            </p>
+            <table class="simple">
+               <thead>
+                  <tr>
+                     <th style="white-space: nowrap">Property</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>
+                        The <code>id</code> value is expected to be a URL that identifies the credential
+                        schema associated with the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-22">verifiable credential</a>. The value of the <code>id</code>
+                        property <em class="rfc2119">MUST</em> point to a locally unique identifier which addresses the schema
+                        on a given data storage medium (e.g. a database, ledger, distributed file store).
+                        Each credential schema has its own unique identifier and each revision of a schema
+                        is required to have its own unique identifier.
+                        It is <i><em class="rfc2119">RECOMMENDED</em></i> that this identifier is a
+                        <a href="ttps://www.rfc-editor.org/rfc/rfc3986">Uniform Resource Identifier</a> which
+                        <em class="rfc2119">SHOULD</em> contain information pertaining to the issuer and version of the schema.
+                        For example, if the issuer controls a DID 
+                        <pre aria-busy="false"><code class="hljs">did:example:abcdefghi</code></pre>
+                        a possible schema ID the issuer created would have an identifier such as:
+                        <pre aria-busy="false"><code class="hljs">did:example:abcdefghi/17de181feb67447da4e78259d92d0240?version=1</code></pre>
+                        which makes use of <a href="https://www.w3.org/TR/did-core/#path">DID Path syntax</a>
+                        as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-did-core" title="Decentralized Identifiers (DIDs) v1.0">DID-CORE</a></cite>].
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>type</td>
+                     <td>
+                        The <code>type</code> property <em class="rfc2119">MUST</em> be <code>CredentialSchema2022</code>.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>name</td>
+                     <td>
+                        The <code>name</code> of the credential schema <em class="rfc2119">MUST</em> be a string. It is <em class="rfc2119">RECOMMENDED</em>
+                        that the name is human-friendly and fits the credential schema.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>issuer</td>
+                     <td>
+                        The <code>issuer</code> property <em class="rfc2119">MUST</em> identify the creator of the credential
+                        schmea. It is <em class="rfc2119">RECOMMENDED</em> that the property is a <a href="#dfn-decentralized-identifiers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-decentralized-identifiers-2">DID</a>.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>validFrom</td>
+                     <td>
+                        The <code>validFrom</code> property <em class="rfc2119">MUST</em> be a valid [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc 3339" title="Date and Time on the Internet: Timestamps">RFC 3339</a></cite>] timestamp whose
+                        value reflects the date-time value for when the credential schema was created.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>schema</td>
+                     <td>
+                        The <code>schema</code> property <em class="rfc2119">MUST</em> be a valid [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] as defined
+                        in the <a href="#credential-schema">credential schema</a> section of this document.
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <p>
+              </p><div class="example" id="example-example-credential-schema-metadata">
+        <div class="marker">
+    <a class="self-link" href="#example-example-credential-schema-metadata">Example<bdi> 1</bdi></a><span class="example-title">: Example Credential Schema Metadata</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs css">{
+    "id": <span class="hljs-string">"06e126d1-fa44-4882-a243-1e326fbe21db"</span>,
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"https://w3c.github.io/vc-json-schema/"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Email"</span>,
+    <span class="hljs-string">"issuer"</span>: <span class="hljs-string">"did:example:MDP8AsFhHzhwUvGNuYkX7T"</span>,
+    <span class="hljs-string">"validFrom"</span>: <span class="hljs-string">"2021-01-01T00:00:00+00:00"</span>,
+    <span class="hljs-string">"schema"</span>: { ... }
+}</code></pre>
+      </div>
+            <p></p>
+         </section>
+         <section id="credential-schema"><div class="header-wrapper"><h3 id="x2-2-credential-schema"><bdi class="secno">2.2 </bdi>Credential Schema</h3><a class="self-link" href="#credential-schema" aria-label="Permalink for Section 2.2"></a></div>
+            
+            <p>
+               A credential schema may be used in conjunction with the <i>metadata</i> 
+               property listed above, as a part of the <i>schema</i> property OR be used
+               directly. The property <em class="rfc2119">MUST</em> be a valid [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-Schema</a></cite>].
+            </p>
+            <p>
+              </p><div class="example" id="example-example-email-credential-schema">
+        <div class="marker">
+    <a class="self-link" href="#example-example-email-credential-schema">Example<bdi> 2</bdi></a><span class="example-title">: Example Email Credential Schema</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Email"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"credentialSubject"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"emailAddress"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"email"</span>
+        }
+      },
+      <span class="hljs-attr">"required"</span>: [
+        <span class="hljs-string">"emailAddress"</span>
+      ]
+    }
+  }
+}</code></pre>
+      </div>
+            <p></p>
+         </section>
+         <section id="representation-in-a-verifiable-credential"><div class="header-wrapper"><h3 id="x2-3-representation-in-a-verifiable-credential"><bdi class="secno">2.3 </bdi>Representation in a Verifiable Credential</h3><a class="self-link" href="#representation-in-a-verifiable-credential" aria-label="Permalink for Section 2.3"></a></div>
+          
+          <p>
+            An example of utilizing the VC Data Model's <code>credentialSchema</code>
+            is provided below:
+          </p>
+          <p>
+            </p><li><b>id</b>: a resolvable identifier for a specific <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-3">credential schema</a> document</li>
+            <li><b>type</b>: <code>CredentialSchema2022</code></li>
+          <p></p>
+          <p>
+            <b>Verifiable Credential</b>
+            </p><div class="example" id="example-example-credential-schema-in-a-verifiable-credential">
+        <div class="marker">
+    <a class="self-link" href="#example-example-credential-schema-in-a-verifiable-credential">Example<bdi> 3</bdi></a><span class="example-title">: Example Credential Schema in a Verifiable Credential</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"@context"</span>: [
+    <span class="hljs-string">"https://www.w3.org/2018/credentials/v1"</span>,
+    <span class="hljs-string">"https://www.w3.org/2018/credentials/examples/v1"</span>
+  ],
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"http://example.edu/credentials/3732"</span>,
+  <span class="hljs-attr">"type"</span>: [<span class="hljs-string">"VerifiableCredential"</span>, <span class="hljs-string">"UniversityDegreeCredential"</span>],
+  <span class="hljs-attr">"issuer"</span>: <span class="hljs-string">"https://example.edu/issuers/14"</span>,
+  <span class="hljs-attr">"issuanceDate"</span>: <span class="hljs-string">"2010-01-01T19:23:24Z"</span>,
+  <span class="hljs-attr">"credentialSubject"</span>: {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"did:example:ebfeb1f712ebc6f1c276e12ec21"</span>,
+    <span class="hljs-attr">"degree"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Bachelor of Science and Arts"</span>
+      <span class="hljs-string">"type"</span>: <span class="hljs-string">"Bachelor's Degree"</span>,
+    },
+    <span class="hljs-attr">"issuingInstitution"</span>: <span class="hljs-string">"Very Good University"</span>
+  },
+  <span class="hljs-attr">"credentialSchema"</span>: {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"https://example.org/examples/degree.json"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CredentialSchema2022"</span>
+  }
+}</code></pre>
+      </div>
+          <p></p>
+          <p>
+            <b>Credential Schema</b>
+            </p><div class="example" id="example-example-degree-credential-schema">
+        <div class="marker">
+    <a class="self-link" href="#example-example-degree-credential-schema">Example<bdi> 4</bdi></a><span class="example-title">: Example Degree Credential Schema</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"06e126d1-fa44-4882-a243-1e326fbe21db"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"https://w3c.github.io/vc-json-schema/"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Degree"</span>,
+  <span class="hljs-attr">"issuer"</span>: <span class="hljs-string">"did:example:MDP8AsFhHzhwUvGNuYkX7T"</span>,
+  <span class="hljs-attr">"validFrom"</span>: <span class="hljs-string">"2021-01-01T00:00:00+00:00"</span>,
+  <span class="hljs-attr">"schema"</span>: {
+    <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Degree Schema"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+    <span class="hljs-attr">"properties"</span>: {
+      <span class="hljs-attr">"credentialSubject"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"degree"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+            <span class="hljs-attr">"properties"</span>: {
+              <span class="hljs-attr">"name"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+              },
+              <span class="hljs-attr">"type"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+              }
+            },
+            <span class="hljs-attr">"required"</span>: [<span class="hljs-string">"name"</span>, <span class="hljs-string">"type"</span>]
+          },
+          <span class="hljs-attr">"issuingInstitution"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"required"</span>: [<span class="hljs-string">"degree"</span>, <span class="hljs-string">"issuingInstitution"</span>]
+      }
+
+    }
+  }
+}</code></pre>
+      </div>
+          <p></p>
+         </section>
+      </section>
+      <section class="normative" id="json-schema-specifications"><div class="header-wrapper"><h2 id="x3-json-schema-specifications"><bdi class="secno">3. </bdi>JSON Schema Specifications</h2><a class="self-link" href="#json-schema-specifications" aria-label="Permalink for Section 3."></a></div>
+        
+          <p>
+             The following section describes the allowed specifications for 
+             using a [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-Schema</a></cite>] with a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-4">credential schema</a>.
+          </p>
+          <table class="simple">
+             <thead>
+                <tr>
+                   <th style="white-space: nowrap">JSON Schema Specification</th>
+                   <th>Date of Publication</th>
+                   <th>References</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <td>draft-bhutton-json-schema-01</td>
+                   <td>10 June 2022</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-01">JSON Schema: A Media Type for Describing JSON Documents</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-01">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-relative-json-pointer-00">Relative JSON Pointers</a><br>
+                   </td>
+                </tr>
+                <tr>
+                   <td>Draft 2020-12, draft-bhutton-json-schema-00</td>
+                   <td>11 June 2021</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00">JSON Schema: A Media Type for Describing JSON Documents</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-00">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-relative-json-pointer-00">Relative JSON Pointers</a>&lt;<br>
+                   </td>
+                </tr>
+                <tr>
+                   <td>Draft 2019-09, Draft 8</td>
+                   <td>19 March 2020</td>
+                   <td>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-02">JSON Schema: A Media Type for Describing JSON Documents</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-validation-02">JSON Schema Validation: A Vocabulary for Structural Validation of JSON</a><br>
+                      • <a href="https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-hyperschema-02">JSON Hyper-Schema: A Vocabulary for Hypermedia Annotation of JSON</a><br>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+      </section>
+      <section class="informative" id="processing"><div class="header-wrapper"><h2 id="x4-processing"><bdi class="secno">4. </bdi>Processing</h2><a class="self-link" href="#processing" aria-label="Permalink for Section 4."></a></div><p><em>This section is non-normative.</em></p>
+        
+        <p>
+          This section details instructions on how to process Credential Schemas.
+        </p><p>
+        </p><section id="integrity-validation"><div class="header-wrapper"><h3 id="x4-1-integrity-validation"><bdi class="secno">4.1 </bdi>Integrity Validation</h3><a class="self-link" href="#integrity-validation" aria-label="Permalink for Section 4.1"></a></div>
+          
+          <p>
+            Credential schemas <em class="rfc2119">MAY</em> be packaged as <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-23">verifiable credentials</a>.
+            Should this be the case, the credential containing a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-5">credential schema</a>
+            may include a proof, either embedded according to [<cite><a class="bibref" data-link-type="biblio" href="#bib-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">DATA-INTEGRITY</a></cite>] or
+            packaged as a [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-jwt" title="Securing Verifiable Credentials using JSON Web Tokens">VC-JWT</a></cite>].
+          </p>
+          <p>
+            Secured credentials that contain credential schemas should first be validated
+            according to the rules set out in the aforementioned securing specifications
+            before proceeding with additional processing.
+          </p>
+          <div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><span>Issue 1</span></div><p class="">
+            Provide examples for Data Integrity and VC-JWT Credential Schemas
+          </p></div>
+        </section>
+        <section id="schema-extraction"><div class="header-wrapper"><h3 id="x4-2-schema-extraction"><bdi class="secno">4.2 </bdi>Schema Extraction</h3><a class="self-link" href="#schema-extraction" aria-label="Permalink for Section 4.2"></a></div>
+          
+          <p>
+            If a Credential Schema contains <a href="#metadata">metadata</a>, extraction
+            is necessary to dereference the value of the <code>schema</code> property
+            within the metadata. Otherwise, extraction is not necessary.
+          </p>
+        </section>
+        <section id="evaluation"><div class="header-wrapper"><h3 id="x4-3-evaluation"><bdi class="secno">4.3 </bdi>Evaluation</h3><a class="self-link" href="#evaluation" aria-label="Permalink for Section 4.3"></a></div>
+          
+          <p>
+            Validation of a given Credential against its schema is to be performed according
+            to its associated [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema-validation" title="JSON Schema Validation: A Vocabulary for Structural Validation of JSON">JSON-SCHEMA-VALIDATION</a></cite>] specification. Should validation
+            succeed the credential should be considered to be valid against its
+            <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-6">credential schema</a>.
+          </p>
+        </section>
+      </section>
+      <section class="informative" id="implementation-considerations"><div class="header-wrapper"><h2 id="x5-implementation-considerations"><bdi class="secno">5. </bdi>Implementation Considerations</h2><a class="self-link" href="#implementation-considerations" aria-label="Permalink for Section 5."></a></div><p><em>This section is non-normative.</em></p>
+        
+        <p>
+          This section details some issues implementers of the specification
+          may consider.
+        </p>
+        <section class="informative" id="validation-of-specific-properties-in-a-credential"><div class="header-wrapper"><h3 id="x5-1-validation-of-specific-properties-in-a-credential"><bdi class="secno">5.1 </bdi>Validation of Specific Properties in a Credential</h3><a class="self-link" href="#validation-of-specific-properties-in-a-credential" aria-label="Permalink for Section 5.1"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            Implementers may wish to validate certain sections of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-24">verifiable credential</a>.
+            To do this, <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-7">credential schemas</a> can be constructed to specify application
+            to subsets of a given credential.
+          </p>
+          <p>
+            One example of such a construction would be to validate the presence of certain
+            top-level properties in a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-25">verifiable credential</a>. The following example
+            demonstrates a schema which enforces that a credential issued against it
+            has an <code>validUntil</code> property and includes <code>evidence</code>.
+          </p>
+          <p>
+            </p><div class="example" id="example-validuntil-and-evidence-credential-schema">
+        <div class="marker">
+    <a class="self-link" href="#example-validuntil-and-evidence-credential-schema">Example<bdi> 5</bdi></a><span class="example-title">: ValidUntil and Evidence Credential Schema</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"$id"</span>: <span class="hljs-string">"validuntil-and-evidence-schema"</span>,
+  <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Schema requiring validUntil and evidence properties"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"validUntil"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>
+    },
+    <span class="hljs-attr">"evidence"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>
+    }
+  },
+  <span class="hljs-attr">"required"</span>: [<span class="hljs-string">"validUntil"</span>, <span class="hljs-string">"evidence"</span>]
+}</code></pre>
+      </div>
+          <p></p>
+        </section>
+        <section class="informative" id="additional-properties"><div class="header-wrapper"><h3 id="x5-2-additional-properties"><bdi class="secno">5.2 </bdi>Additional Properties</h3><a class="self-link" href="#additional-properties" aria-label="Permalink for Section 5.2"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            In using [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-Schema</a></cite>] it is <em class="rfc2119">RECOMMENDED</em> that implementers avoid
+            setting the <code>additionalProperties</code> to <i>false</i>. Doing
+            so could inadvertently exclude properties in a credential from passing
+            validation.
+          </p>
+          <p>
+            As an example, consider a credential schema that is intended to validate
+            the <code>credentialSubject</code> property of a credential. It is common
+            for the <code>credentialSubject</code> property to include an <code>id</code>,
+            denoting the identifier the subject. Not including this <code>id</code> property
+            in a given schema would result in validation failure. The simple alternative
+            is to avoid setting <code>additionalProperties</code> to <i>false</i>.
+          </p>
+          <p>
+            </p><div class="example" id="example-example-name-credential-schema">
+        <div class="marker">
+    <a class="self-link" href="#example-example-name-credential-schema">Example<bdi> 6</bdi></a><span class="example-title">: Example Name Credential Schema</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"$id"</span>: <span class="hljs-string">"name-schema"</span>,
+  <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Name"</span>,
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"credentialSubject"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"name"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+          <span class="hljs-attr">"properties"</span>: {
+            <span class="hljs-attr">"firstName"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+            },
+            <span class="hljs-attr">"lastName"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+            },
+            <span class="hljs-attr">"additionalProperties"</span>: <span class="hljs-literal">false</span>
+          },
+          <span class="hljs-attr">"required"</span>: [
+            <span class="hljs-string">"firstName"</span>,
+            <span class="hljs-string">"lastName"</span>
+          ]
+        }
+      }
+    }
+  }
+}</code></pre>
+      </div>
+          <p></p>
+        </section>
+        <section class="informative" id="versioning"><div class="header-wrapper"><h3 id="x5-3-versioning"><bdi class="secno">5.3 </bdi>Versioning</h3><a class="self-link" href="#versioning" aria-label="Permalink for Section 5.3"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            Versioning is not provided as an explicit feature of this specification.
+            It is recommended to make backwards compatabile changes to schemas, should
+            they be adjusted. Otherwise, it is recommended that a new <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-8">credential schema</a>
+            is created with a unique identifier.
+          </p>
+        </section>
+        <section class="informative" id="storage"><div class="header-wrapper"><h3 id="x5-4-storage"><bdi class="secno">5.4 </bdi>Storage</h3><a class="self-link" href="#storage" aria-label="Permalink for Section 5.4"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            Credential schemas are intended to be created and made available as <b>immutable</b>
+            objects. They may be stored on any number of storage mediums such as a distributed
+            ledger, traditional database, or decentralized file storage. The same schema <i>may</i>
+            be replicated across multiple file stores with the same identifier.
+
+            Immutability is key to enable consistent sources of truth for usage with <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-26">verifiable
+            credentials</a> which are also immutable.
+          </p>
+        </section>
+        <section class="informative" id="multiple-schemas"><div class="header-wrapper"><h3 id="x5-5-multiple-schemas"><bdi class="secno">5.5 </bdi>Multiple Schemas</h3><a class="self-link" href="#multiple-schemas" aria-label="Permalink for Section 5.5"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            A common use case is to include multiple schemas to validate against which a single
+            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-27">verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <em class="rfc2119">MAY</em> be combined using native constructs from the [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+          </p>
+          <p>
+            An example of how to construct such a schema using the [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] property
+            <code>allOf</code> is provided below, combining schemas for a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-28">verifiable credential</a>,
+            name, and email address:
+            
+            </p><div class="example" id="example-multiple-schema-credential-schema-example">
+        <div class="marker">
+    <a class="self-link" href="#example-multiple-schema-credential-schema-example">Example<bdi> 7</bdi></a><span class="example-title">: Multiple Schema Credential Schema Example</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"allOf"</span>: [
+    {
+      <span class="hljs-attr">"$ref"</span>: <span class="hljs-string">"https://raw.githubusercontent.com/w3c/vc-data-model/main/schema/verifiable-credential/verifiable-credential-schema.json"</span>
+    },
+    {
+      <span class="hljs-attr">"$id"</span>: <span class="hljs-string">"name-schema"</span>,
+      <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Name"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"credentialSubject"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+          <span class="hljs-attr">"properties"</span>: {
+            <span class="hljs-attr">"name"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+              <span class="hljs-attr">"properties"</span>: {
+                <span class="hljs-attr">"firstName"</span>: {
+                  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+                },
+                <span class="hljs-attr">"lastName"</span>: {
+                  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+                },
+                <span class="hljs-attr">"additionalProperties"</span>: <span class="hljs-literal">false</span>
+              },
+              <span class="hljs-attr">"required"</span>: [
+                <span class="hljs-string">"firstName"</span>,
+                <span class="hljs-string">"lastName"</span>
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      <span class="hljs-attr">"$id"</span>: <span class="hljs-string">"email-schema-1.0"</span>,
+      <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"https://json-schema.org/draft/2020-12/schema"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Email"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"credentialSubject"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+          <span class="hljs-attr">"properties"</span>: {
+            <span class="hljs-attr">"email"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+              <span class="hljs-attr">"properties"</span>: {
+                <span class="hljs-attr">"emailAddress"</span>: {
+                  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+                  <span class="hljs-attr">"format"</span>: <span class="hljs-string">"email"</span>
+                }
+              },
+              <span class="hljs-attr">"required"</span>: [<span class="hljs-string">"emailAddress"</span>]
+            }
+          }
+        }
+      }
+    }
+  ]
+}</code></pre>
+      </div>
+          <p></p>
+          <p>
+            The example above is used to validate every property in the following 
+            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-29">verifiable credential</a>:
+
+            </p><div class="example" id="example-multiple-schema-verifiable-credential-example">
+        <div class="marker">
+    <a class="self-link" href="#example-multiple-schema-verifiable-credential-example">Example<bdi> 8</bdi></a><span class="example-title">: Multiple Schema Verifiable Credential Example</span>
+  </div> <pre class="highlight" aria-busy="false"><code class="hljs javascript">{
+    <span class="hljs-string">"@context"</span>: [<span class="hljs-string">"https://www.w3.org/ns/credentials/v2"</span>],
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"4995c86c-851f-43a6-9dd2-03dc891091fd"</span>,
+    <span class="hljs-string">"type"</span>: [<span class="hljs-string">"VerifiableCredential"</span>],
+    <span class="hljs-string">"issuer"</span>: <span class="hljs-string">"did:example:1234"</span>,
+    <span class="hljs-string">"validFrom"</span>: <span class="hljs-string">"2023-01-01T05:05:05Z"</span>,
+    <span class="hljs-string">"credentialSubject"</span>: {
+        <span class="hljs-string">"firstName"</span>: <span class="hljs-string">"Alice"</span>,
+        <span class="hljs-string">"lastName"</span>: <span class="hljs-string">"Bobertson"</span>,
+        <span class="hljs-string">"emailAddress"</span>: <span class="hljs-string">"alice@bobertson.com"</span>
+    },
+    <span class="hljs-string">"credentialSchema"</span>: {
+        <span class="hljs-string">"id"</span>: <span class="hljs-string">"multiple-credential-schema-test"</span>,
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"CredentialSchema2022"</span>
+    },
+    <span class="hljs-string">"proof"</span>: { ... }
+}</code></pre>
+      </div>
+          <p></p>
+        </section>
+        <section class="informative" id="validity-of-a-verifiable-credential"><div class="header-wrapper"><h3 id="x5-6-validity-of-a-verifiable-credential"><bdi class="secno">5.6 </bdi>Validity of a Verifiable Credential</h3><a class="self-link" href="#validity-of-a-verifiable-credential" aria-label="Permalink for Section 5.6"></a></div><p><em>This section is non-normative.</em></p>
+          
+          <p>
+            Validation against a [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] may be confused with 
+            <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a>
+            or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a>
+            of a Verifiable Credential. A valid credential according to a [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] refers
+            only to the structure of the claims comprising a Verifiable Credential. This idea of
+            validity does not imply anything about the validity of the Verifiable Credential itself.
+            It's possible for a Verifiable Credential to be considered valid by one verifier, 
+            while another verifier would not consider it valid.
+          </p>
+        </section>
+      </section>
+      <section class="informative" id="privacy-considerations"><div class="header-wrapper"><h2 id="x6-privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Section 6."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            This section details the general privacy considerations and specific privacy
+            implications of deploying this specification into production environments.
+         </p>
+         <section class="informative" id="verifier-caching"><div class="header-wrapper"><h3 id="x6-1-verifier-caching"><bdi class="secno">6.1 </bdi>Verifier Caching</h3><a class="self-link" href="#verifier-caching" aria-label="Permalink for Section 6.1"></a></div><p><em>This section is non-normative.</em></p>
+            
+            <p>
+               Since schemas are immutable, they are highly cachable.
+               It is possible for <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-4">verifiers</a> to increase the privacy of the
+               <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-5">holder</a> whose <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-30">verifiable credential</a> is being checked by caching
+               schemas that have been fetched from remote servers. By caching the
+               content locally, less correlatable information can be inferred from
+               <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-5">verifier</a>-based access patterns on the schema. 
+            </p>
+         </section>
+         <section class="informative" id="content-distribution-networks"><div class="header-wrapper"><h3 id="x6-2-content-distribution-networks"><bdi class="secno">6.2 </bdi>Content Distribution Networks</h3><a class="self-link" href="#content-distribution-networks" aria-label="Permalink for Section 6.2"></a></div><p><em>This section is non-normative.</em></p>
+            
+            <p>
+               The use of content distribution networks by <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-5">issuers</a> can increase the
+               privacy of <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-6">holders</a> by reducing or eliminating requests for the
+               schemas lists from the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-6">issuer</a>. Often, a request for a schema
+               list will be served by an edge device and thus be faster and reduce the load
+               on the server as well as cloaking <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-6">verifiers</a> and <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-7">holders</a>
+               from <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-7">issuers</a>.
+            </p>
+         </section>
+      </section>
+      <section class="informative" id="security-considerations"><div class="header-wrapper"><h2 id="x7-security-considerations"><bdi class="secno">7. </bdi>Security Considerations</h2><a class="self-link" href="#security-considerations" aria-label="Permalink for Section 7."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            There are a number of security considerations that implementers should be
+            aware of when processing data described by this specification. Ignoring or
+            not understanding the implications of this section can result in
+            security vulnerabilities.
+         </p>
+         <section class="informative" id="issuer-impersonation"><div class="header-wrapper"><h3 id="x7-1-issuer-impersonation"><bdi class="secno">7.1 </bdi>Issuer Impersonation</h3><a class="self-link" href="#issuer-impersonation" aria-label="Permalink for Section 7.1"></a></div><p><em>This section is non-normative.</em></p>
+            
+            <p>
+               It is possible for a schema to become authoritative, such as schemas
+               provided by a recognized industry group like a consoritum of financial
+               companies. To avoid confusion as to the authorship of <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-9">credential schemas</a>
+               it is recommended that they are packaged as secured <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-31">verifiable credentials</a>.
+            </p>
+         </section>
+         </section>
+      
+      <section class="informative" id="accessibility-considerations"><div class="header-wrapper"><h2 id="x8-accessibility-considerations"><bdi class="secno">8. </bdi>Accessibility Considerations</h2><a class="self-link" href="#accessibility-considerations" aria-label="Permalink for Section 8."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            There are a number of accessibility considerations implementers should be
+            aware of when processing data described in this specification. As with any web
+            standards or protocols implementation, ignoring accessibility issues makes
+            this information unusable to a large subset of the population. It is important
+            to follow accessibility guidelines and standards, such as [<cite><a class="bibref" data-link-type="biblio" href="#bib-wcag21" title="Web Content Accessibility Guidelines (WCAG) 2.1">WCAG21</a></cite>], to ensure
+            all people, regardless of ability, can make use of this data. This is
+            especially important when establishing systems utilizing cryptography, which
+            have historically created problems for assistive technologies.
+         </p>
+         <p>
+            This section details the general accessibility considerations to take into
+            account when utilizing this data model.
+         </p>
+         <div class="issue" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="3"><span>Issue 2</span></div><p class="">
+            Write accessibility considerations.
+         </p></div>
+      </section>
+      <section class="informative" id="internationalization-considerations"><div class="header-wrapper"><h2 id="x9-internationalization-considerations"><bdi class="secno">9. </bdi>Internationalization Considerations</h2><a class="self-link" href="#internationalization-considerations" aria-label="Permalink for Section 9."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            There are a number of internationalization considerations implementers should be
+            aware of when publishing data described in this specification. As with any web
+            standards or protocols implementation, ignoring internationalization makes it
+            difficult for data to be produced and consumed across a disparate set of
+            languages and societies, which would limit the applicability of the
+            specification and significantly diminish its value as a standard.
+         </p>
+         <p>
+            This section outlines general internationalization considerations to take into
+            account when utilizing this data model.
+         </p>
+         <div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><span>Issue 3</span></div><p class="">
+            Write i18n considerations.
+         </p></div>
+      </section>
+   
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-did-core">[DID-CORE]</dt><dd>
+      <a href="https://w3c.github.io/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>.  W3C. URL: <a href="https://w3c.github.io/did-core/">https://w3c.github.io/did-core/</a>
+    </dd><dt id="bib-json-schema">[JSON-SCHEMA]</dt><dd>
+      <a href="https://json-schema.org/draft/2020-12/json-schema-core.html"><cite>JSON Schema: A Media Type for Describing JSON Documents</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">https://json-schema.org/draft/2020-12/json-schema-core.html</a>
+    </dd><dt id="bib-rfc 3339">[RFC 3339]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc3339"><cite>Date and Time on the Internet: Timestamps</cite></a>. G. Klyne; Clearswift Corporation; C. Newman; Sun Microsystems.  Internet Engineering Task Force (IETF). 2002. URL: <a href="https://www.rfc-editor.org/rfc/rfc3339">https://www.rfc-editor.org/rfc/rfc3339</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-data-integrity">[DATA-INTEGRITY]</dt><dd>
+      <a href="https://w3c-ccg.github.io/data-integrity-spec/"><cite>Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT</cite></a>.  W3C. URL: <a href="https://w3c-ccg.github.io/data-integrity-spec/">https://w3c-ccg.github.io/data-integrity-spec/</a>
+    </dd><dt id="bib-json-schema-validation">[JSON-SCHEMA-VALIDATION]</dt><dd>
+      <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html"><cite>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html">https://json-schema.org/draft/2020-12/json-schema-validation.html</a>
+    </dd><dt id="bib-url">[URL]</dt><dd>
+      <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
+    </dd><dt id="bib-vc-data-model">[VC-DATA-MODEL]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model 1.0</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+    </dd><dt id="bib-vc-jwt">[VC-JWT]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-jwt/"><cite>Securing Verifiable Credentials using JSON Web Tokens</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-jwt/">https://www.w3.org/TR/vc-jwt/</a>
+    </dd><dt id="bib-wcag21">[WCAG21]</dt><dd>
+      <a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O'Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-claims" aria-label="Links in this document to definition: claim">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-claims" aria-label="Permalink for definition: claim. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-claims-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-claims-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-claims-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-claims-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-claims-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-claims-6" title="Reference 6">(6)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential-schema" aria-label="Links in this document to definition: credential schema">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential-schema" aria-label="Permalink for definition: credential schema. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-credential-schema-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-credential-schema-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-3" title="§ 2.3 Representation in a Verifiable Credential">§ 2.3 Representation in a Verifiable Credential</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-4" title="§ 3. JSON Schema Specifications">§ 3. JSON Schema Specifications</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-5" title="§ 4.1 Integrity Validation">§ 4.1 Integrity Validation</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-6" title="§ 4.3 Evaluation">§ 4.3 Evaluation</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-7" title="§ 5.1 Validation of Specific Properties in a Credential">§ 5.1 Validation of Specific Properties in a Credential</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-8" title="§ 5.3 Versioning">§ 5.3 Versioning</a> 
+  </li><li>
+    <a href="#ref-for-dfn-credential-schema-9" title="§ 7.1 Issuer Impersonation">§ 7.1 Issuer Impersonation</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-json-schema" aria-label="Links in this document to definition: json schema">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-json-schema" aria-label="Permalink for definition: json schema. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-json-schema-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-json-schema-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential" aria-label="Links in this document to definition: credential">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential" aria-label="Permalink for definition: credential. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-credential-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-credential-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-data-minimization" aria-label="Links in this document to definition: data minimization">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-data-minimization" aria-label="Permalink for definition: data minimization. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-data-minimization-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-decentralized-identifiers" aria-label="Links in this document to definition: decentralized identifier">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-decentralized-identifiers" aria-label="Permalink for definition: decentralized identifier. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-decentralized-identifiers-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> 
+  </li><li>
+    <a href="#ref-for-dfn-decentralized-identifiers-2" title="§ 2.1 Metadata">§ 2.1 Metadata</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-decentralized-identifier-documents" aria-label="Links in this document to definition: decentralized identifier document">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-decentralized-identifier-documents" aria-label="Permalink for definition: decentralized identifier document. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-digital-signature" aria-label="Links in this document to definition: digital signature">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-digital-signature" aria-label="Permalink for definition: digital signature. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-entities" aria-label="Links in this document to definition: entity">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-entities" aria-label="Permalink for definition: entity. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-entities-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-entities-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-entities-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-entities-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-entities-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-entities-6" title="Reference 6">(6)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-holders" aria-label="Links in this document to definition: holder">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-holders" aria-label="Permalink for definition: holder. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-holders-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-holders-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-holders-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-holders-4" title="Reference 4">(4)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-holders-5" title="§ 6.1 Verifier Caching">§ 6.1 Verifier Caching</a> 
+  </li><li>
+    <a href="#ref-for-dfn-holders-6" title="§ 6.2 Content Distribution Networks">§ 6.2 Content Distribution Networks</a> <a href="#ref-for-dfn-holders-7" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-identities" aria-label="Links in this document to definition: identity">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-identities" aria-label="Permalink for definition: identity. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-issuers" aria-label="Links in this document to definition: issuer">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-issuers" aria-label="Permalink for definition: issuer. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-issuers-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-issuers-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-issuers-3" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-issuers-4" title="§ 2.1 Metadata">§ 2.1 Metadata</a> 
+  </li><li>
+    <a href="#ref-for-dfn-issuers-5" title="§ 6.2 Content Distribution Networks">§ 6.2 Content Distribution Networks</a> <a href="#ref-for-dfn-issuers-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-issuers-7" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-presentation" aria-label="Links in this document to definition: presentation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-presentation" aria-label="Permalink for definition: presentation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-presentation-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential-repository" aria-label="Links in this document to definition: repository">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential-repository" aria-label="Permalink for definition: repository. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-credential-repository-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-credential-repository-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-credential-repository-3" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-selective-disclosure" aria-label="Links in this document to definition: selective disclosure">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-selective-disclosure" aria-label="Permalink for definition: selective disclosure. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-subjects" aria-label="Links in this document to definition: subject">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-subjects" aria-label="Permalink for definition: subject. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-subjects-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-subjects-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-subjects-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-subjects-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-subjects-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-subjects-6" title="Reference 6">(6)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-user-agent" aria-label="Links in this document to definition: user agent">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-user-agent" aria-label="Permalink for definition: user agent. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential-validation" aria-label="Links in this document to definition: validation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential-validation" aria-label="Permalink for definition: validation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-credential" aria-label="Links in this document to definition: verifiable credential">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-credential" aria-label="Permalink for definition: verifiable credential. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-verifiable-credential-1" title="§ Abstract">§ Abstract</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-2" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-verifiable-credential-3" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-4" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-verifiable-credential-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verifiable-credential-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-credential-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-credential-9" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verifiable-credential-10" title="Reference 7">(7)</a> <a href="#ref-for-dfn-verifiable-credential-11" title="Reference 8">(8)</a> <a href="#ref-for-dfn-verifiable-credential-12" title="Reference 9">(9)</a> <a href="#ref-for-dfn-verifiable-credential-13" title="Reference 10">(10)</a> <a href="#ref-for-dfn-verifiable-credential-14" title="Reference 11">(11)</a> <a href="#ref-for-dfn-verifiable-credential-15" title="Reference 12">(12)</a> <a href="#ref-for-dfn-verifiable-credential-16" title="Reference 13">(13)</a> <a href="#ref-for-dfn-verifiable-credential-17" title="Reference 14">(14)</a> <a href="#ref-for-dfn-verifiable-credential-18" title="Reference 15">(15)</a> <a href="#ref-for-dfn-verifiable-credential-19" title="Reference 16">(16)</a> <a href="#ref-for-dfn-verifiable-credential-20" title="Reference 17">(17)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-21" title="§ 2.1 Metadata">§ 2.1 Metadata</a> <a href="#ref-for-dfn-verifiable-credential-22" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-23" title="§ 4.1 Integrity Validation">§ 4.1 Integrity Validation</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-24" title="§ 5.1 Validation of Specific Properties in a Credential">§ 5.1 Validation of Specific Properties in a Credential</a> <a href="#ref-for-dfn-verifiable-credential-25" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-26" title="§ 5.4 Storage">§ 5.4 Storage</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-27" title="§ 5.5 Multiple Schemas">§ 5.5 Multiple Schemas</a> <a href="#ref-for-dfn-verifiable-credential-28" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-29" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-30" title="§ 6.1 Verifier Caching">§ 6.1 Verifier Caching</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifiable-credential-31" title="§ 7.1 Issuer Impersonation">§ 7.1 Issuer Impersonation</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-data-registries" aria-label="Links in this document to definition: verifiable data registry">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-data-registries" aria-label="Permalink for definition: verifiable data registry. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-verifiable-data-registries-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-presentation" aria-label="Links in this document to definition: verifiable presentation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-presentation" aria-label="Permalink for definition: verifiable presentation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-verifiable-presentation-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-verifiable-presentation-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-presentation-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verifiable-presentation-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-presentation-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-presentation-6" title="Reference 6">(6)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verify" aria-label="Links in this document to definition: verification">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verify" aria-label="Permalink for definition: verification. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-verify-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-verify-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifier" aria-label="Links in this document to definition: verifier">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifier" aria-label="Permalink for definition: verifier. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-verifier-1" title="§ 1.1 Terminology">§ 1.1 Terminology</a> <a href="#ref-for-dfn-verifier-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifier-3" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifier-4" title="§ 6.1 Verifier Caching">§ 6.1 Verifier Caching</a> <a href="#ref-for-dfn-verifier-5" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-verifier-6" title="§ 6.2 Content Distribution Networks">§ 6.2 Content Distribution Networks</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-relying-parties" aria-label="Links in this document to definition: relying party">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-relying-parties" aria-label="Permalink for definition: relying party. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-url" aria-label="Links in this document to definition: URL">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-url" aria-label="Permalink for definition: URL. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
