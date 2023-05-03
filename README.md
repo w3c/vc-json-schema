@@ -11,5 +11,17 @@ on the
 [public-credentials](http://lists.w3.org/Archives/Public/public-credentials/)
 mailing list as well.
 
+### Building
+
+To build, we use [respec](https://respec.org/).
+
+After installing respec, you can bulid the spec locally using the following command:
+
+```sh
+respec --localhost index.html out.html --verbose -e
+```
+
+Next open up `out.html` in a web browser and review the document.
+
 ### Other useful links
 * [Public group email archive](https://lists.w3.org/Archives/Public/public-credentials/)
