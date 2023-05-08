@@ -296,11 +296,11 @@
           </p>
           <p>
             <b>Credential Schema</b>
-            <pre class="example highlight" title="Example Degree Credential Schema">
+            <pre class="example highlight" title="Example University Degree Credential Schema">
             {
               "id": "06e126d1-fa44-4882-a243-1e326fbe21db",
               "type": "https://w3c.github.io/vc-json-schema/",
-              "name": "Degree",
+              "name": "UniversityDegreeCredential",
               "issuer": "did:example:MDP8AsFhHzhwUvGNuYkX7T",
               "validFrom": "2021-01-01T00:00:00+00:00",
               "schema": {
@@ -633,14 +633,73 @@
         <section class="informative">
           <h3>Validity of a Verifiable Credential</h3>
           <p>
-            Validation against a [[JSON-SCHEMA]] may be confused with 
+            Validation against a [[JSON-SCHEMA]] may be confused with
             <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a>
             or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a>
             of a Verifiable Credential. A valid credential according to a [[JSON-SCHEMA]] refers
             only to the structure of the claims comprising a Verifiable Credential. This idea of
             validity does not imply anything about the validity of the Verifiable Credential itself.
-            It's possible for a Verifiable Credential to be considered valid by one verifier, 
+            It's possible for a Verifiable Credential to be considered valid by one verifier,
             while another verifier would not consider it valid.
+          </p>
+        </section>
+        <section class="informative">
+          <h3>Relationship to Verifiable Credential Type Property</h3>
+          <p>
+            It is common to define a <code>credential schema</code> that will be set for Verifiable Credentials whose <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
+            property contains a specific <code>type</code>. In this scenario, it is RECOMMENDED to use the value of the specific type as the name property of
+            <a href="#metadata">metadata</a>. The example below illustrates this for <code>EmailCredential</code>:
+          </p>
+          <p>
+            <pre class="example highlight" title="Verifiable Credential type">
+              {
+                "@context": [
+                  "https://www.w3.org/2018/credentials/v1",
+                  "https://www.w3.org/2018/credentials/examples/v1"
+                ],
+                "id": "http://example.edu/credentials/3732",
+                "type": ["VerifiableCredential", "EmailCredential"],
+                "issuer": "https://example.edu/issuers/14",
+                "issuanceDate": "2010-01-01T19:23:24Z",
+                "credentialSubject": {
+                  "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                  "emailAddress": "tester@example.com",
+                },
+                "credentialSchema": {
+                  "id": "https://example.org/examples/email.json",
+                  "type": "CredentialSchema2022"
+                }
+              }
+            </pre>
+          </p>
+          <p>
+            <pre class="example highlight" title="Schema Metadata Name">
+              {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "name": "EmailCredential",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "emailAddress": {
+                        "type": "string",
+                        "format": "email"
+                      }
+                    },
+                    "required": [
+                      "emailAddress"
+                    ]
+                  }
+                }
+              }
+            </pre>
+          </p>
+          <p>
+            It is important to note that a <a>credential schema</a> enables issuers to communicate how to process
+            the structure of data inside a verifiable credential, whereas the <code>type</code> property of a <a>verifiable credential</a>
+            lets issuers communicate the semantics of the data. It is RECOMMENDED to associate all properties
+            that have a semantic mapping with a property in a <a>credential schema</a>.
           </p>
         </section>
       </section>
