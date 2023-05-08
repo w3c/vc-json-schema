@@ -646,11 +646,55 @@
         <section class="informative">
           <h3>Relationship to Verifiable Credential Type Property</h3>
           <p>
-            A Verifiable Credential can have a specific <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
-            property. Implementers are encouraged to use the value of the specific type for the name property of
-            <a href="#metadata">metadata</a>.
+            It is common to define a <code>credential schema</code> that will be set for Verifiable Credentials whose <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
+            property contains a specific <code>type</code>. In this scenario, it is RECOMMENDED to use the value of the specific type as the name property of
+            <a href="#metadata">metadata</a>. The example below illustrates this for <code>EmailCredential</code>:
           </p>
-
+          <p>
+            <pre class="example highlight" title="Verifiable Credential type">
+              {
+                "@context": [
+                  "https://www.w3.org/2018/credentials/v1",
+                  "https://www.w3.org/2018/credentials/examples/v1"
+                ],
+                "id": "http://example.edu/credentials/3732",
+                "type": ["VerifiableCredential", "EmailCredential"],
+                "issuer": "https://example.edu/issuers/14",
+                "issuanceDate": "2010-01-01T19:23:24Z",
+                "credentialSubject": {
+                  "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                  "emailAddress": "tester@example.com",
+                },
+                "credentialSchema": {
+                  "id": "https://example.org/examples/email.json",
+                  "type": "CredentialSchema2022"
+                }
+              }
+            </pre>
+          </p>
+          <p>
+            <pre class="example highlight" title="Schema Metadata Name">
+              {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "name": "EmailCredential",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "emailAddress": {
+                        "type": "string",
+                        "format": "email"
+                      }
+                    },
+                    "required": [
+                      "emailAddress"
+                    ]
+                  }
+                }
+              }
+            </pre>
+          </p>
           <p>
             It is important to note that a credential schema lets issuers communicate how to process the structure
             of data inside a verifiable credential, whereas the VC type property lets issuers communicate the
