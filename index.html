@@ -464,7 +464,7 @@
         <section class="informative">
           <h3>Additional Properties</h3>
           <p>
-            In using [[JSON-Schema]] it is RECOMMENDED that implementers avoid
+            In using [[JSON-Schema]] it is advised that implementers avoid
             setting the <code>additionalProperties</code> to <i>false</i>. Doing
             so could inadvertently exclude properties in a credential from passing
             validation.
@@ -515,8 +515,8 @@
           <h3>Versioning</h3>
           <p>
             Versioning is not provided as an explicit feature of this specification.
-            It is recommended to make backwards compatabile changes to schemas, should
-            they be adjusted. Otherwise, it is recommended that a new <a>credential schema</a>
+            It is advised to make backwards compatabile changes to schemas, should
+            they be adjusted. Otherwise, it is advised that a new <a>credential schema</a>
             is created with a unique identifier.
           </p>
         </section>
@@ -647,7 +647,7 @@
           <h3>Relationship to Verifiable Credential Type Property</h3>
           <p>
             It is common to define a <code>credential schema</code> that will be set for Verifiable Credentials whose <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
-            property contains a specific <code>type</code>. In this scenario, it is RECOMMENDED to use the value of the specific type as the name property of
+            property contains a specific <code>type</code>. In this scenario, it is adbised to use the value of the specific type as the name property of
             <a href="#metadata">metadata</a>. The example below illustrates this for <code>EmailCredential</code>:
           </p>
           <p>
@@ -698,7 +698,7 @@
           <p>
             It is important to note that a <a>credential schema</a> enables issuers to communicate how to process
             the structure of data inside a verifiable credential, whereas the <code>type</code> property of a <a>verifiable credential</a>
-            lets issuers communicate the semantics of the data. It is RECOMMENDED to associate all properties
+            lets issuers communicate the semantics of the data. It is advised to associate all properties
             that have a semantic mapping with a property in a <a>credential schema</a>.
           </p>
         </section>
@@ -746,7 +746,7 @@
                It is possible for a schema to become authoritative, such as schemas
                provided by a recognized industry group like a consoritum of financial
                companies. To avoid confusion as to the authorship of <a>credential schemas</a>
-               it is recommended that they are packaged as secured <a>verifiable credentials</a>.
+               it is advised that they are packaged as secured <a>verifiable credentials</a>.
             </p>
          </section>
          </section>
