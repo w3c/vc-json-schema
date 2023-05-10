@@ -301,15 +301,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2023-05-08T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 08 May 2023"
+  "publishISODate": "2023-05-10T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 10 May 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
    <body class="h-entry"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Verifiable Credentials JSON Schema Specification 2022</h1> <h2 id="subtitle" class="subtitle">JSON Schemas for Verifiable Credentials</h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-05-08">08 May 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-05-10">10 May 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -947,7 +947,7 @@ confusing to Web developers.
         <section class="informative" id="additional-properties"><div class="header-wrapper"><h3 id="x5-2-additional-properties"><bdi class="secno">5.2 </bdi>Additional Properties</h3><a class="self-link" href="#additional-properties" aria-label="Permalink for Section 5.2"></a></div><p><em>This section is non-normative.</em></p>
           
           <p>
-            In using [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-Schema</a></cite>] it is <em class="rfc2119">RECOMMENDED</em> that implementers avoid
+            In using [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-Schema</a></cite>] it is advised that implementers avoid
             setting the <code>additionalProperties</code> to <i>false</i>. Doing
             so could inadvertently exclude properties in a credential from passing
             validation.
@@ -1000,8 +1000,8 @@ confusing to Web developers.
           
           <p>
             Versioning is not provided as an explicit feature of this specification.
-            It is recommended to make backwards compatabile changes to schemas, should
-            they be adjusted. Otherwise, it is recommended that a new <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-8">credential schema</a>
+            It is advised to make backwards compatabile changes to schemas, should
+            they be adjusted. Otherwise, it is advised that a new <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-8">credential schema</a>
             is created with a unique identifier.
           </p>
         </section>
@@ -1136,7 +1136,7 @@ confusing to Web developers.
           
           <p>
             It is common to define a <code>credential schema</code> that will be set for Verifiable Credentials whose <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
-            property contains a specific <code>type</code>. In this scenario, it is <em class="rfc2119">RECOMMENDED</em> to use the value of the specific type as the name property of
+            property contains a specific <code>type</code>. In this scenario, it is advised to use the value of the specific type as the name property of
             <a href="#metadata">metadata</a>. The example below illustrates this for <code>EmailCredential</code>:
           </p>
           <p>
@@ -1191,7 +1191,7 @@ confusing to Web developers.
           <p>
             It is important to note that a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-9">credential schema</a> enables issuers to communicate how to process
             the structure of data inside a verifiable credential, whereas the <code>type</code> property of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-30">verifiable credential</a>
-            lets issuers communicate the semantics of the data. It is <em class="rfc2119">RECOMMENDED</em> to associate all properties
+            lets issuers communicate the semantics of the data. It is advised to associate all properties
             that have a semantic mapping with a property in a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-10">credential schema</a>.
           </p>
         </section>
@@ -1239,7 +1239,7 @@ confusing to Web developers.
                It is possible for a schema to become authoritative, such as schemas
                provided by a recognized industry group like a consoritum of financial
                companies. To avoid confusion as to the authorship of <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-11">credential schemas</a>
-               it is recommended that they are packaged as secured <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-32">verifiable credentials</a>.
+               it is advised that they are packaged as secured <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-32">verifiable credentials</a>.
             </p>
          </section>
          </section>
