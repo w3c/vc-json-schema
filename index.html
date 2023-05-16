@@ -145,6 +145,207 @@ dd{margin-left:0}
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           Verifiable Credential, leveraging the existing
           Data Schemas concept.">
+<link rel="canonical" href="https://www.w3.org/TR/vc-json-schema/">
+<script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "w3p": "http://www.w3.org/2001/02pd/rec54#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://www.w3.org/TR/vc-json-schema/",
+  "type": [
+    "TechArticle"
+  ],
+  "name": "Verifiable Credentials JSON Schema Specification 2023",
+  "inLanguage": "en",
+  "license": "https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document",
+  "datePublished": "2023-05-16",
+  "copyrightHolder": {
+    "name": "World Wide Web Consortium",
+    "url": "https://www.w3.org/"
+  },
+  "discussionUrl": "https://github.com/w3c/vc-json-schema/issues/",
+  "alternativeHeadline": "JSON Schemas for Verifiable Credentials",
+  "isBasedOn": "https://www.w3.org/TR/2022/CG-FINAL-vc-json-schema-20220405/",
+  "description": "Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,\n          Verifiable Presentations, and explains the relationships between three parties:\n          issuers, holders, and verifiers. Critical pieces of functionality referenced\n          throughout the [VC-DATA-MODEL] are the that of of verifiability, extensibility, and semantic\n          interoperability. This specification provides a mechanism to make use of a Credential Schema in\n          Verifiable Credential, leveraging the existing\n          Data Schemas concept.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Gabe Cohen",
+      "url": "https://github.com/decentralgabe",
+      "worksFor": {
+        "name": "Block",
+        "url": "https://www.tbd.website"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "worksFor": {
+        "name": "Transmute",
+        "url": "https://transmute.industries/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Andres Uribe",
+      "url": "https://github.com/andresuribe",
+      "worksFor": {
+        "name": "Block",
+        "url": "https://www.tbd.website"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Gabe Cohen",
+      "url": "https://github.com/decentralgabe",
+      "worksFor": {
+        "name": "Block",
+        "url": "https://www.tbd.website"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "worksFor": {
+        "name": "Transmute",
+        "url": "https://transmute.industries/"
+      }
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "type": "TechArticle",
+      "name": "JSON Schema: A Media Type for Describing JSON Documents",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.w3.org/TR/vc-data-model/",
+      "type": "TechArticle",
+      "name": "Verifiable Credentials Data Model 1.0",
+      "url": "https://www.w3.org/TR/vc-data-model/",
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc2119",
+      "type": "TechArticle",
+      "name": "Key words for use in RFCs to Indicate Requirement Levels",
+      "url": "https://www.rfc-editor.org/rfc/rfc2119",
+      "creator": [
+        {
+          "name": "S. Bradner"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc8174",
+      "type": "TechArticle",
+      "name": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words",
+      "url": "https://www.rfc-editor.org/rfc/rfc8174",
+      "creator": [
+        {
+          "name": "B. Leiba"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://url.spec.whatwg.org/",
+      "type": "TechArticle",
+      "name": "URL Standard",
+      "url": "https://url.spec.whatwg.org/",
+      "creator": [
+        {
+          "name": "Anne van Kesteren"
+        }
+      ],
+      "publisher": {
+        "name": "WHATWG"
+      }
+    },
+    {
+      "id": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "type": "TechArticle",
+      "name": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
+      "url": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://www.w3.org/TR/vc-jwt/",
+      "type": "TechArticle",
+      "name": "Securing Verifiable Credentials using JSON Web Tokens",
+      "url": "https://www.w3.org/TR/vc-jwt/",
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "type": "TechArticle",
+      "name": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.w3.org/TR/WCAG21/",
+      "type": "TechArticle",
+      "name": "Web Content Accessibility Guidelines (WCAG) 2.1",
+      "url": "https://www.w3.org/TR/WCAG21/",
+      "creator": [
+        {
+          "name": "Andrew Kirkpatrick"
+        },
+        {
+          "name": "Joshue O'Connor"
+        },
+        {
+          "name": "Alastair Campbell"
+        },
+        {
+          "name": "Michael Cooper"
+        }
+      ],
+      "publisher": {
+        "name": "W3C"
+      }
+    }
+  ]
+}</script>
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
 .hljs-comment,.hljs-quote{color:#717277;font-style:italic}
@@ -167,7 +368,7 @@ var[data-type]::after{content:attr(data-type);transform:translateX(-50%) transla
 var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 </style>
 <script id="initialUserConfig" type="application/json">{
-  "specStatus": "ED",
+  "specStatus": "FPWD",
   "group": "vc",
   "shortName": "vc-json-schema",
   "subtitle": "JSON Schemas for Verifiable Credentials",
@@ -307,25 +508,27 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     }
   ],
   "publishISODate": "2023-05-16T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 16 May 2023"
+  "generatedSubtitle": "W3C First Public Working Draft 16 May 2023"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-WD"></head>
    <body class="h-entry"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Verifiable Credentials JSON Schema Specification 2023</h1> <h2 id="subtitle" class="subtitle">JSON Schemas for Verifiable Credentials</h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-05-16">16 May 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#FPWD">W3C First Public Working Draft</a> <time class="dt-published" datetime="2023-05-16">16 May 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://w3c.github.io/vc-json-schema/">https://w3c.github.io/vc-json-schema/</a>
+                <a class="u-url" href="https://www.w3.org/TR/2023/WD-vc-json-schema-20230516/">https://www.w3.org/TR/2023/WD-vc-json-schema-20230516/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
                 <a href="https://www.w3.org/TR/vc-json-schema/">https://www.w3.org/TR/vc-json-schema/</a>
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-json-schema/">https://w3c.github.io/vc-json-schema/</a></dd>
         <dt>History:</dt><dd>
+                    <a href="https://www.w3.org/standards/history/vc-json-schema">https://www.w3.org/standards/history/vc-json-schema</a>
+                  </dd><dd>
                     <a href="https://github.com/w3c/vc-json-schema/commits/">Commit history</a>
                   </dd>
         
@@ -399,8 +602,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
          </p>
       <p>
     This document was published by the <a href="https://www.w3.org/groups/wg/vc">Verifiable Credentials Working Group</a> as
-    an Editor's Draft. 
-  </p><p>Publication as an Editor's Draft does not
+    a First Public Working Draft using the
+        <a href="https://www.w3.org/2021/Process-20211102/#recs-and-notes">Recommendation track</a>. 
+  </p><p>Publication as a First Public Working Draft does not
   imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
     This is a draft document and may be updated, replaced or obsoleted by other
     documents at any time. It is inappropriate to cite this document as other
