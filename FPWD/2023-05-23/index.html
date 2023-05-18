@@ -141,7 +141,7 @@ dd{margin-left:0}
 <meta name="description" content="Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           issuers, holders, and verifiers. Critical pieces of functionality referenced
-          throughout the [VC-DATA-MODEL] are the that of of verifiability, extensibility, and semantic
+          throughout the [VC-DATA-MODEL] are the that of verifiability, extensibility, and semantic
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           Verifiable Credential, leveraging the existing
           Data Schemas concept.">
@@ -183,7 +183,7 @@ dd{margin-left:0}
   "discussionUrl": "https://github.com/w3c/vc-json-schema/issues/",
   "alternativeHeadline": "JSON Schemas for Verifiable Credentials",
   "isBasedOn": "https://www.w3.org/TR/2022/CG-FINAL-vc-json-schema-20220405/",
-  "description": "Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,\n          Verifiable Presentations, and explains the relationships between three parties:\n          issuers, holders, and verifiers. Critical pieces of functionality referenced\n          throughout the [VC-DATA-MODEL] are the that of of verifiability, extensibility, and semantic\n          interoperability. This specification provides a mechanism to make use of a Credential Schema in\n          Verifiable Credential, leveraging the existing\n          Data Schemas concept.",
+  "description": "Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,\n          Verifiable Presentations, and explains the relationships between three parties:\n          issuers, holders, and verifiers. Critical pieces of functionality referenced\n          throughout the [VC-DATA-MODEL] are the that of verifiability, extensibility, and semantic\n          interoperability. This specification provides a mechanism to make use of a Credential Schema in\n          Verifiable Credential, leveraging the existing\n          Data Schemas concept.",
   "editor": [
     {
       "type": "Person",
@@ -253,6 +253,33 @@ dd{margin-left:0}
       }
     },
     {
+      "id": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "type": "TechArticle",
+      "name": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
+      "url": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://www.w3.org/TR/vc-jwt/",
+      "type": "TechArticle",
+      "name": "Securing Verifiable Credentials using JSON Web Tokens",
+      "url": "https://www.w3.org/TR/vc-jwt/",
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "type": "TechArticle",
+      "name": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
       "id": "https://www.rfc-editor.org/rfc/rfc2119",
       "type": "TechArticle",
       "name": "Key words for use in RFCs to Indicate Requirement Levels",
@@ -292,33 +319,6 @@ dd{margin-left:0}
       ],
       "publisher": {
         "name": "WHATWG"
-      }
-    },
-    {
-      "id": "https://w3c-ccg.github.io/data-integrity-spec/",
-      "type": "TechArticle",
-      "name": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
-      "url": "https://w3c-ccg.github.io/data-integrity-spec/",
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://www.w3.org/TR/vc-jwt/",
-      "type": "TechArticle",
-      "name": "Securing Verifiable Credentials using JSON Web Tokens",
-      "url": "https://www.w3.org/TR/vc-jwt/",
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
-      "id": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      "type": "TechArticle",
-      "name": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
-      "url": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      "publisher": {
-        "name": "IETF"
       }
     },
     {
@@ -582,7 +582,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           Among other things, the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
-          throughout the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] are the that of of verifiability, extensibility, and semantic
+          throughout the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] are the that of verifiability, extensibility, and semantic
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-1">Verifiable Credential</a>, leveraging the existing
           <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
@@ -813,7 +813,7 @@ confusing to Web developers.
 </dl></div>
          </section>
          <section id="conformance" class="normative"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
-        The key words <em class="rfc2119">MAY</em> and <em class="rfc2119">MUST</em> in this document
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
         are to be interpreted as described in
         <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
@@ -833,7 +833,7 @@ confusing to Web developers.
             
             <p>
                This <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
-               is <code>https://www.w3.org/ns/credentials/issuer-dependent#JsonSchema2023</code>.
+               is <code>https://www.w3.org/ns/credentials#JsonSchema2023</code>.
             </p>
             <p>
                <b>JsonSchema2023</b> is for the validation of <abbr title="World Wide Web Consortium">W3C</abbr> Verifiable Credentials, based
@@ -919,7 +919,7 @@ confusing to Web developers.
             
             <p>
                This <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
-               is <code>https://www.w3.org/ns/credentials/issuer-dependent#CredentialSchema2023</code>.
+               is <code>https://www.w3.org/ns/credentials#CredentialSchema2023</code>.
             </p>
             <p>
                <b>CredentialSchema2023</b> is for the validation of <abbr title="World Wide Web Consortium">W3C</abbr> Verifiable Credentials, based
@@ -1065,7 +1065,7 @@ confusing to Web developers.
             reserved keywords such as <code>$id</code> and <code>$schema</code>.
           </p></div>
       </section>
-      <section class="informative" id="processing"><div class="header-wrapper"><h2 id="x4-processing"><bdi class="secno">4. </bdi>Processing</h2><a class="self-link" href="#processing" aria-label="Permalink for Section 4."></a></div><p><em>This section is non-normative.</em></p>
+      <section class="normative" id="processing"><div class="header-wrapper"><h2 id="x4-processing"><bdi class="secno">4. </bdi>Processing</h2><a class="self-link" href="#processing" aria-label="Permalink for Section 4."></a></div>
         
         <p>
           This section details instructions on how to process Credential Schemas.
@@ -1073,13 +1073,13 @@ confusing to Web developers.
         </p><section id="integrity-validation"><div class="header-wrapper"><h3 id="x4-1-integrity-validation"><bdi class="secno">4.1 </bdi>Integrity Validation</h3><a class="self-link" href="#integrity-validation" aria-label="Permalink for Section 4.1"></a></div>
           
           <p>
-            Credential schemas <em class="rfc2119">MAY</em> be packaged as <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-25">verifiable credentials</a> as defined
+            Credential Schemas <em class="rfc2119">MAY</em> be packaged as <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-25">verifiable credentials</a> as defined
             by usage of the <a href="#credentialschema2023">CredentialSchema2023</a> type.
             The credential containing a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-4">credential schema</a> may include a proof, either
             embedded according to [<cite><a class="bibref" data-link-type="biblio" href="#bib-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">DATA-INTEGRITY</a></cite>] or packaged as a [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-jwt" title="Securing Verifiable Credentials using JSON Web Tokens">VC-JWT</a></cite>].
           </p>
           <p>
-            Secured credentials that contain credential schemas should first be validated
+            Secured credentials representing credential schemas <em class="rfc2119">SHOULD</em> first be validated
             according to the rules set out in the aforementioned securing specifications
             before proceeding with additional processing.
           </p>
@@ -1091,8 +1091,8 @@ confusing to Web developers.
           
           <p>
             Validation of a given Credential against its schema is to be performed according
-            to its associated [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema-validation" title="JSON Schema Validation: A Vocabulary for Structural Validation of JSON">JSON-SCHEMA-VALIDATION</a></cite>] specification. Should validation
-            succeed the credential should be considered to be valid against its
+            to its associated [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema-validation" title="JSON Schema Validation: A Vocabulary for Structural Validation of JSON">JSON-SCHEMA-VALIDATION</a></cite>] specification. If validation
+            succeeds the credential is considered to be valid against its
             <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-5">credential schema</a>.
           </p>
         </section>
@@ -1205,13 +1205,14 @@ confusing to Web developers.
         <section class="informative" id="storage"><div class="header-wrapper"><h3 id="x5-4-storage"><bdi class="secno">5.4 </bdi>Storage</h3><a class="self-link" href="#storage" aria-label="Permalink for Section 5.4"></a></div><p><em>This section is non-normative.</em></p>
           
           <p>
-            Credential schemas are intended to be created and made available as <b>immutable</b>
-            objects. They may be stored on any number of storage mediums such as a distributed
-            ledger, traditional database, or decentralized file storage. The same schema <i>may</i>
+            Credential schemas <em class="rfc2119">MAY</em> be created and made available as <b>immutable</b>
+            objects. They can be stored on any number of storage mediums such as a distributed
+            ledger, traditional database, or decentralized file storage. The same schema could
             be replicated across multiple file stores with the same identifier.
-
-            Immutability is key to enable consistent sources of truth for usage with <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-28">verifiable
-            credentials</a> which are also immutable.
+          </p>
+          <p>
+            Immutability is key to enabling a consistent source of truth for usage with 
+            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-28">verifiable credentials</a> which are tamper-evident by design.
           </p>
         </section>
         <section class="informative" id="resolution"><div class="header-wrapper"><h3 id="x5-5-resolution"><bdi class="secno">5.5 </bdi>Resolution</h3><a class="self-link" href="#resolution" aria-label="Permalink for Section 5.5"></a></div><p><em>This section is non-normative.</em></p>
@@ -1498,25 +1499,25 @@ confusing to Web developers.
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
     
-    <dl class="bibliography"><dt id="bib-json-schema">[JSON-Schema]</dt><dd>
+    <dl class="bibliography"><dt id="bib-data-integrity">[DATA-INTEGRITY]</dt><dd>
+      <a href="https://w3c-ccg.github.io/data-integrity-spec/"><cite>Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT</cite></a>.  W3C. URL: <a href="https://w3c-ccg.github.io/data-integrity-spec/">https://w3c-ccg.github.io/data-integrity-spec/</a>
+    </dd><dt id="bib-json-schema">[JSON-Schema]</dt><dd>
       <a href="https://json-schema.org/draft/2020-12/json-schema-core.html"><cite>JSON Schema: A Media Type for Describing JSON Documents</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">https://json-schema.org/draft/2020-12/json-schema-core.html</a>
+    </dd><dt id="bib-json-schema-validation">[JSON-SCHEMA-VALIDATION]</dt><dd>
+      <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html"><cite>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html">https://json-schema.org/draft/2020-12/json-schema-validation.html</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
     </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
     </dd><dt id="bib-vc-data-model">[VC-DATA-MODEL]</dt><dd>
       <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model 1.0</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+    </dd><dt id="bib-vc-jwt">[VC-JWT]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-jwt/"><cite>Securing Verifiable Credentials using JSON Web Tokens</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-jwt/">https://www.w3.org/TR/vc-jwt/</a>
     </dd></dl>
   </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
     
-    <dl class="bibliography"><dt id="bib-data-integrity">[DATA-INTEGRITY]</dt><dd>
-      <a href="https://w3c-ccg.github.io/data-integrity-spec/"><cite>Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT</cite></a>.  W3C. URL: <a href="https://w3c-ccg.github.io/data-integrity-spec/">https://w3c-ccg.github.io/data-integrity-spec/</a>
-    </dd><dt id="bib-json-schema-validation">[JSON-SCHEMA-VALIDATION]</dt><dd>
-      <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html"><cite>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html">https://json-schema.org/draft/2020-12/json-schema-validation.html</a>
-    </dd><dt id="bib-url">[URL]</dt><dd>
+    <dl class="bibliography"><dt id="bib-url">[URL]</dt><dd>
       <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
-    </dd><dt id="bib-vc-jwt">[VC-JWT]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-jwt/"><cite>Securing Verifiable Credentials using JSON Web Tokens</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-jwt/">https://www.w3.org/TR/vc-jwt/</a>
     </dd><dt id="bib-wcag21">[WCAG21]</dt><dd>
       <a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O'Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
     </dd></dl>
