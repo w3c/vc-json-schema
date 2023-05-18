@@ -138,10 +138,10 @@ dd{margin-left:0}
 .removeOnSave{display:none}
 }
 </style>
-<meta name="description" content="Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,
+<meta name="description" content="Among other things, the [VC-DATA-MODEL-2] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           issuers, holders, and verifiers. Critical pieces of functionality referenced
-          throughout the [VC-DATA-MODEL] are the that of verifiability, extensibility, and semantic
+          throughout the [VC-DATA-MODEL-2] are the that of verifiability, extensibility, and semantic
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           Verifiable Credential, leveraging the existing
           Data Schemas concept.">
@@ -183,7 +183,7 @@ dd{margin-left:0}
   "discussionUrl": "https://github.com/w3c/vc-json-schema/issues/",
   "alternativeHeadline": "JSON Schemas for Verifiable Credentials",
   "isBasedOn": "https://www.w3.org/TR/2022/CG-FINAL-vc-json-schema-20220405/",
-  "description": "Among other things, the [VC-DATA-MODEL] specifies the models used for Verifiable Credentials,\n          Verifiable Presentations, and explains the relationships between three parties:\n          issuers, holders, and verifiers. Critical pieces of functionality referenced\n          throughout the [VC-DATA-MODEL] are the that of verifiability, extensibility, and semantic\n          interoperability. This specification provides a mechanism to make use of a Credential Schema in\n          Verifiable Credential, leveraging the existing\n          Data Schemas concept.",
+  "description": "Among other things, the [VC-DATA-MODEL-2] specifies the models used for Verifiable Credentials,\n          Verifiable Presentations, and explains the relationships between three parties:\n          issuers, holders, and verifiers. Critical pieces of functionality referenced\n          throughout the [VC-DATA-MODEL-2] are the that of verifiability, extensibility, and semantic\n          interoperability. This specification provides a mechanism to make use of a Credential Schema in\n          Verifiable Credential, leveraging the existing\n          Data Schemas concept.",
   "editor": [
     {
       "type": "Person",
@@ -235,30 +235,64 @@ dd{margin-left:0}
   ],
   "citation": [
     {
-      "id": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "id": "https://json-schema.org/specification.html",
       "type": "TechArticle",
       "name": "JSON Schema: A Media Type for Describing JSON Documents",
-      "url": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "url": "https://json-schema.org/specification.html",
       "publisher": {
-        "name": "IETF"
+        "name": "OpenJS Foundation"
       }
     },
     {
-      "id": "https://www.w3.org/TR/vc-data-model/",
+      "id": "https://www.w3.org/TR/vc-data-model-2.0/",
       "type": "TechArticle",
-      "name": "Verifiable Credentials Data Model 1.0",
-      "url": "https://www.w3.org/TR/vc-data-model/",
+      "name": "Verifiable Credentials Data Model v2.0",
+      "url": "https://www.w3.org/TR/vc-data-model-2.0/",
+      "creator": [
+        {
+          "name": "Manu Sporny"
+        },
+        {
+          "name": "Dave Longley"
+        },
+        {
+          "name": "Grant Noble"
+        },
+        {
+          "name": "Dan Burnett"
+        },
+        {
+          "name": "Ted Thibodeau"
+        },
+        {
+          "name": "Brent Zundel"
+        },
+        {
+          "name": "David Chadwick"
+        },
+        {
+          "name": "Kyle Den Hartog"
+        }
+      ],
       "publisher": {
-        "name": "W3C"
+        "name": "W3C Verifiable Credentials Working Group"
       }
     },
     {
-      "id": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "id": "https://www.w3.org/TR/vc-data-integrity/",
       "type": "TechArticle",
-      "name": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
-      "url": "https://w3c-ccg.github.io/data-integrity-spec/",
+      "name": "Verifiable Credential Data Integrity 1.0",
+      "url": "https://www.w3.org/TR/vc-data-integrity/",
+      "creator": [
+        {
+          "name": "David Longley"
+        },
+        {
+          "name": "Manu Sporny"
+        }
+      ],
       "publisher": {
-        "name": "W3C"
+        "name": "W3C Verifiable Credentials Working Group"
       }
     },
     {
@@ -266,17 +300,19 @@ dd{margin-left:0}
       "type": "TechArticle",
       "name": "Securing Verifiable Credentials using JSON Web Tokens",
       "url": "https://www.w3.org/TR/vc-jwt/",
+      "creator": [
+        {
+          "name": "Orie Steele"
+        },
+        {
+          "name": "Michael Jones"
+        },
+        {
+          "name": "Michael Prorock"
+        }
+      ],
       "publisher": {
         "name": "W3C"
-      }
-    },
-    {
-      "id": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      "type": "TechArticle",
-      "name": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
-      "url": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      "publisher": {
-        "name": "IETF"
       }
     },
     {
@@ -387,23 +423,28 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ],
       "publisher": "Internet Engineering Task Force (IETF)"
     },
-    "VC-DATA-MODEL": {
-      "href": "https://www.w3.org/TR/vc-data-model/",
-      "title": "Verifiable Credentials Data Model 1.0",
-      "publisher": "W3C",
-      "id": "vc-data-model"
+    "VC-DATA-MODEL-2": {
+      "title": "Verifiable Credentials Data Model v2.0",
+      "href": "https://www.w3.org/TR/vc-data-model-2.0/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley",
+        "Grant Noble",
+        "Dan Burnett",
+        "Ted Thibodeau",
+        "Brent Zundel",
+        "David Chadwick",
+        "Kyle Den Hartog"
+      ],
+      "status": "Working Draft",
+      "publisher": "W3C Verifiable Credentials Working Group",
+      "id": "vc-data-model-2"
     },
     "JSON-SCHEMA": {
-      "href": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "href": "https://json-schema.org/specification.html",
       "title": "JSON Schema: A Media Type for Describing JSON Documents",
-      "publisher": "IETF",
+      "publisher": "OpenJS Foundation",
       "id": "json-schema"
-    },
-    "JSON-SCHEMA-VALIDATION": {
-      "href": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
-      "publisher": "IETF",
-      "id": "json-schema-validation"
     },
     "DID-CORE": {
       "href": "https://w3c.github.io/did-core/",
@@ -418,14 +459,24 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "VC-JWT": {
       "href": "https://www.w3.org/TR/vc-jwt/",
       "title": "Securing Verifiable Credentials using JSON Web Tokens",
+      "authors": [
+        "Orie Steele",
+        "Michael Jones",
+        "Michael Prorock"
+      ],
       "publisher": "W3C",
       "id": "vc-jwt"
     },
-    "DATA-INTEGRITY": {
-      "href": "https://w3c-ccg.github.io/data-integrity-spec/",
-      "title": "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
-      "publisher": "W3C",
-      "id": "data-integrity"
+    "VC-DATA-INTEGRITY": {
+      "title": "Verifiable Credential Data Integrity 1.0",
+      "href": "https://www.w3.org/TR/vc-data-integrity/",
+      "authors": [
+        "David Longley",
+        "Manu Sporny"
+      ],
+      "status": "Working Draft",
+      "publisher": "W3C Verifiable Credentials Working Group",
+      "id": "vc-data-integrity"
     },
     "JOSE": {
       "href": "https://jose.readthedocs.io/en/latest/",
@@ -579,10 +630,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <section id="abstract" class="introductory"><h2>Abstract</h2>
         
         <p>
-          Among other things, the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] specifies the models used for Verifiable Credentials,
+          Among other things, the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2</a></cite>] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
-          throughout the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] are the that of verifiability, extensibility, and semantic
+          throughout the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2</a></cite>] are the that of verifiability, extensibility, and semantic
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-1">Verifiable Credential</a>, leveraging the existing
           <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
@@ -852,7 +903,7 @@ confusing to Web developers.
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>]. The value is expected to be a URL that identifies
+                      Data Model specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2</a></cite>]. The value is expected to be a URL that identifies
                       the schema associated with the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-22">verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -938,7 +989,7 @@ confusing to Web developers.
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>]. The value is expected to be a URL that identifies
+                      Data Model specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2</a></cite>]. The value is expected to be a URL that identifies
                       the credential schema associated with the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-24">verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -1076,7 +1127,7 @@ confusing to Web developers.
             Credential Schemas <em class="rfc2119">MAY</em> be packaged as <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-25">verifiable credentials</a> as defined
             by usage of the <a href="#credentialschema2023">CredentialSchema2023</a> type.
             The credential containing a <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-4">credential schema</a> may include a proof, either
-            embedded according to [<cite><a class="bibref" data-link-type="biblio" href="#bib-data-integrity" title="Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT">DATA-INTEGRITY</a></cite>] or packaged as a [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-jwt" title="Securing Verifiable Credentials using JSON Web Tokens">VC-JWT</a></cite>].
+            embedded according to [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-integrity" title="Verifiable Credential Data Integrity 1.0">VC-DATA-INTEGRITY</a></cite>] or packaged as a [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-jwt" title="Securing Verifiable Credentials using JSON Web Tokens">VC-JWT</a></cite>].
           </p>
           <p>
             Secured credentials representing credential schemas <em class="rfc2119">SHOULD</em> first be validated
@@ -1091,7 +1142,7 @@ confusing to Web developers.
           
           <p>
             Validation of a given Credential against its schema is to be performed according
-            to its associated [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema-validation" title="JSON Schema Validation: A Vocabulary for Structural Validation of JSON">JSON-SCHEMA-VALIDATION</a></cite>] specification. If validation
+            to its associated [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] specification. If validation
             succeeds the credential is considered to be valid against its
             <a href="#dfn-credential-schema" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-schema-5">credential schema</a>.
           </p>
@@ -1225,7 +1276,7 @@ confusing to Web developers.
           
           <p>
             A common use case is to include multiple schemas to validate against which a single
-            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-29">verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model 1.0">VC-DATA-MODEL</a></cite>] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <em class="rfc2119">MAY</em> be combined using native constructs from the [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+            <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-29">verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2</a></cite>] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas <em class="rfc2119">MAY</em> be combined using native constructs from the [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
             An example of how to construct such a schema using the [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema" title="JSON Schema: A Media Type for Describing JSON Documents">JSON-SCHEMA</a></cite>] property
@@ -1499,20 +1550,18 @@ confusing to Web developers.
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
     
-    <dl class="bibliography"><dt id="bib-data-integrity">[DATA-INTEGRITY]</dt><dd>
-      <a href="https://w3c-ccg.github.io/data-integrity-spec/"><cite>Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT</cite></a>.  W3C. URL: <a href="https://w3c-ccg.github.io/data-integrity-spec/">https://w3c-ccg.github.io/data-integrity-spec/</a>
-    </dd><dt id="bib-json-schema">[JSON-Schema]</dt><dd>
-      <a href="https://json-schema.org/draft/2020-12/json-schema-core.html"><cite>JSON Schema: A Media Type for Describing JSON Documents</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">https://json-schema.org/draft/2020-12/json-schema-core.html</a>
-    </dd><dt id="bib-json-schema-validation">[JSON-SCHEMA-VALIDATION]</dt><dd>
-      <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html"><cite>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</cite></a>.  IETF. URL: <a href="https://json-schema.org/draft/2020-12/json-schema-validation.html">https://json-schema.org/draft/2020-12/json-schema-validation.html</a>
+    <dl class="bibliography"><dt id="bib-json-schema">[JSON-Schema]</dt><dd>
+      <a href="https://json-schema.org/specification.html"><cite>JSON Schema: A Media Type for Describing JSON Documents</cite></a>.  OpenJS Foundation. URL: <a href="https://json-schema.org/specification.html">https://json-schema.org/specification.html</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
     </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
-    </dd><dt id="bib-vc-data-model">[VC-DATA-MODEL]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model 1.0</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+    </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. David Longley; Manu Sporny.  W3C Verifiable Credentials Working Group. Working Draft. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
+    </dd><dt id="bib-vc-data-model-2">[VC-DATA-MODEL-2]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Dave Longley; Grant Noble; Dan Burnett; Ted Thibodeau; Brent Zundel; David Chadwick; Kyle Den Hartog.  W3C Verifiable Credentials Working Group. Working Draft. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-vc-jwt">[VC-JWT]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-jwt/"><cite>Securing Verifiable Credentials using JSON Web Tokens</cite></a>.  W3C. URL: <a href="https://www.w3.org/TR/vc-jwt/">https://www.w3.org/TR/vc-jwt/</a>
+      <a href="https://www.w3.org/TR/vc-jwt/"><cite>Securing Verifiable Credentials using JSON Web Tokens</cite></a>. Orie Steele; Michael Jones; Michael Prorock.  W3C. URL: <a href="https://www.w3.org/TR/vc-jwt/">https://www.w3.org/TR/vc-jwt/</a>
     </dd></dl>
   </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
     

@@ -17,20 +17,21 @@ var vcwg = {
       ],
       publisher: "Internet Engineering Task Force (IETF)"
     },
-    "VC-DATA-MODEL": {
-      href: "https://www.w3.org/TR/vc-data-model/",
-      title: "Verifiable Credentials Data Model 1.0",
-      publisher: "W3C"
+    "VC-DATA-MODEL-2": {
+      title: "Verifiable Credentials Data Model v2.0",
+      href: "https://www.w3.org/TR/vc-data-model-2.0/",
+      authors: [
+        "Manu Sporny", "Dave Longley", "Grant Noble", "Dan Burnett",
+        "Ted Thibodeau", "Brent Zundel", "David Chadwick",
+        "Kyle Den Hartog"
+      ],
+      status: "Working Draft",
+      publisher: "W3C Verifiable Credentials Working Group"
     },
     "JSON-SCHEMA": {
-      href: "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      href: "https://json-schema.org/specification.html",
       title: "JSON Schema: A Media Type for Describing JSON Documents",
-      publisher: "IETF"
-    },
-    "JSON-SCHEMA-VALIDATION": {
-      href: "https://json-schema.org/draft/2020-12/json-schema-validation.html",
-      title: "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
-      publisher: "IETF"
+      publisher: "OpenJS Foundation"
     },
     "DID-CORE": {
       href: "https://w3c.github.io/did-core/",
@@ -45,12 +46,15 @@ var vcwg = {
     "VC-JWT": {
       href: "https://www.w3.org/TR/vc-jwt/",
       title: "Securing Verifiable Credentials using JSON Web Tokens",
+      authors: ["Orie Steele", "Michael Jones", "Michael Prorock"],
       publisher: "W3C"
     },
-    "DATA-INTEGRITY": {
-      href: "https://w3c-ccg.github.io/data-integrity-spec/",
-      title: "Data Integrity. Manu Sporny; Dave Longley. Credentials Community Group. CG-DRAFT",
-      publisher: "W3C"
+    "VC-DATA-INTEGRITY": {
+      title:    "Verifiable Credential Data Integrity 1.0",
+      href:     "https://www.w3.org/TR/vc-data-integrity/",
+      authors:  ["David Longley", "Manu Sporny"],
+      status:   "Working Draft",
+      publisher:  "W3C Verifiable Credentials Working Group"
     },
     "JOSE": {
       href: "https://jose.readthedocs.io/en/latest/",

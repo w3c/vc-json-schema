@@ -101,10 +101,10 @@
       <section id='abstract'>
         <h2>Abstract</h2>
         <p>
-          Among other things, the [[VC-DATA-MODEL]] specifies the models used for Verifiable Credentials,
+          Among other things, the [[VC-DATA-MODEL-2]] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Critical pieces of functionality referenced
-          throughout the [[VC-DATA-MODEL]] are the that of verifiability, extensibility, and semantic
+          throughout the [[VC-DATA-MODEL-2]] are the that of verifiability, extensibility, and semantic
           interoperability. This specification provides a mechanism to make use of a Credential Schema in
           <a>Verifiable Credential</a>, leveraging the existing
           <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
@@ -174,7 +174,7 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL]]. The value is expected to be a URL that identifies
+                      Data Model specification [[VC-DATA-MODEL-2]]. The value is expected to be a URL that identifies
                       the schema associated with the <a>verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -256,7 +256,7 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL]]. The value is expected to be a URL that identifies
+                      Data Model specification [[VC-DATA-MODEL-2]]. The value is expected to be a URL that identifies
                       the credential schema associated with the <a>verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -390,7 +390,7 @@
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
             by usage of the <a href="#credentialschema2023">CredentialSchema2023</a> type.
             The credential containing a <a>credential schema</a> may include a proof, either
-            embedded according to [[DATA-INTEGRITY]] or packaged as a [[VC-JWT]].
+            embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JWT]].
           </p>
           <p>
             Secured credentials representing credential schemas SHOULD first be validated
@@ -405,7 +405,7 @@
           <h3>Evaluation</h3>
           <p>
             Validation of a given Credential against its schema is to be performed according
-            to its associated [[JSON-SCHEMA-VALIDATION]] specification. If validation
+            to its associated [[JSON-SCHEMA]] specification. If validation
             succeeds the credential is considered to be valid against its
             <a>credential schema</a>.
           </p>
@@ -535,7 +535,7 @@
           <h3>Multiple Schemas</h3>
           <p>
             A common use case is to include multiple schemas to validate against which a single
-            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
             An example of how to construct such a schema using the [[JSON-SCHEMA]] property
