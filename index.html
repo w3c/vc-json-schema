@@ -210,7 +210,7 @@
             <p>
               <pre class="example highlight" title="Example Email JSON Schema">
               {
-                "$id": "https://example.com/schemas/email.json"
+                "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "name": "EmailCredential",
                 "description": "EmailCredential using JsonSchema2023",
@@ -240,7 +240,7 @@
                is <code>https://www.w3.org/ns/credentials#CredentialSchema2023</code>.
             </p>
             <p>
-               <b>CredentialSchema2023</b> is for the validation of W3C Verifiable Credentials, based
+               <b>CredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials, based
                on representing JSON Schema in a <a>verifiable credential</a>. The version of [[JSON-Schema]]
                can be any version noted in the section on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
@@ -257,7 +257,8 @@
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
                       Data Model specification [[VC-DATA-MODEL-2]]. The value is expected to be a URL that identifies
-                      the credential schema associated with the <a>verifiable credential</a>.</td>
+                      the <a>verifiable credential</a> which contains a credential schema. It is RECOMMENDED that
+                      the <code>id</code> of the verifiable credential match that of the credential schema.</td>
                    </tr>
                    <tr>
                       <td>type</td>
@@ -283,7 +284,7 @@
                    "email": "subject@example.com"
                  },
                  "credentialSchema": {
-                   "id": "https://example.com/schemas/email-credential-schema.json",
+                   "id": "http://example.edu/credentials/3734",
                    "type": "CredentialSchema2023"
                  }
                }
@@ -301,7 +302,7 @@
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
                 "credentialSubject": {
-                  "$id": "https://example.com/schemas/email-credential-schema.json",
+                  "$id": "http://example.edu/credentials/3734",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
                   "name": "EmailCredential",
                   "description": "EmailCredential using CredentialSchema2023",
@@ -321,6 +322,10 @@
                 }
               }
               </pre>
+            </p>
+            <p class="issue" data-number="159">
+               Add language about CredentialSchema2023 credentials having a credentialSchema property
+               and the risks of nesting.
             </p>
          </section>
       </section>
