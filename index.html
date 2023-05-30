@@ -174,7 +174,7 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2]]. The value is expected to be a URL that identifies
+                      Data Model specification [[VC-DATA-MODEL-2]]. The value MUST be a URL that identifies
                       the schema associated with the <a>verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -192,13 +192,13 @@
                    "https://www.w3.org/ns/credentials/v2",
                    "https://www.w3.org/ns/credentials/examples/v2"
                  ],
-                 "id": "http://example.edu/credentials/3732",
+                 "id": "https://example.com/credentials/3732",
                  "type": ["VerifiableCredential", "EmailCredential"],
                  "issuer": "https://example.com/issuers/14",
                  "issuanceDate": "2010-01-01T19:23:24Z",
                  "credentialSubject": {
-                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21"
-                   "email": "subject@example.com"
+                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                   "emailAddress": "subject@example.com"
                  },
                  "credentialSchema": {
                    "id": "https://example.com/schemas/email.json",
@@ -210,7 +210,7 @@
             <p>
               <pre class="example highlight" title="Example Email JSON Schema">
               {
-                "$id": "https://example.com/schemas/email.json"
+                "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "name": "EmailCredential",
                 "description": "EmailCredential using JsonSchema2023",
@@ -240,7 +240,7 @@
                is <code>https://www.w3.org/ns/credentials#CredentialSchema2023</code>.
             </p>
             <p>
-               <b>CredentialSchema2023</b> is for the validation of W3C Verifiable Credentials, based
+               <b>CredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials, based
                on representing JSON Schema in a <a>verifiable credential</a>. The version of [[JSON-Schema]]
                can be any version noted in the section on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
@@ -256,8 +256,8 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2]]. The value is expected to be a URL that identifies
-                      the credential schema associated with the <a>verifiable credential</a>.</td>
+                      Data Model specification [[VC-DATA-MODEL-2]]. The value MUST be a URL that identifies
+                      the <a>verifiable credential</a> which contains a credential schema.</td>
                    </tr>
                    <tr>
                       <td>type</td>
@@ -274,16 +274,16 @@
                    "https://www.w3.org/ns/credentials/v2",
                    "https://www.w3.org/ns/credentials/examples/v2"
                  ],
-                 "id": "http://example.edu/credentials/3733",
+                 "id": "https://example.com/credentials/3733",
                  "type": ["VerifiableCredential", "EmailCredential"],
                  "issuer": "https://example.com/issuers/14",
                  "issuanceDate": "2010-01-01T19:23:24Z",
                  "credentialSubject": {
-                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21"
-                   "email": "subject@example.com"
+                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                   "emailAddress": "subject@example.com"
                  },
                  "credentialSchema": {
-                   "id": "https://example.com/schemas/email-credential-schema.json",
+                   "id": "https://example.com/credentials/3734",
                    "type": "CredentialSchema2023"
                  }
                }
@@ -296,7 +296,7 @@
                     "https://www.w3.org/ns/credentials/v2",
                     "https://www.w3.org/ns/credentials/examples/v2"
                 ],
-                "id": "http://example.edu/credentials/3734",
+                "id": "https://example.com/credentials/3734",
                 "type": ["VerifiableCredential", "CredentialSchema2023"],
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
@@ -321,6 +321,10 @@
                 }
               }
               </pre>
+            </p>
+            <p class="issue" data-number="159">
+               Add language about CredentialSchema2023 credentials having a credentialSchema property
+               and the risks of nesting.
             </p>
          </section>
       </section>
@@ -663,13 +667,13 @@
                   "https://www.w3.org/ns/credentials/v2",
                   "https://www.w3.org/ns/credentials/examples/v2"
                 ],
-                "id": "http://example.edu/credentials/3732",
+                "id": "https://example.com/credentials/email-credential",
                 "type": ["VerifiableCredential", "EmailCredential"],
-                "issuer": "https://example.edu/issuers/14",
+                "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
                 "credentialSubject": {
                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                  "emailAddress": "tester@example.com",
+                  "emailAddress": "tester@example.com"
                 },
                 "credentialSchema": {
                   "id": "https://example.org/examples/email.json",
@@ -681,7 +685,7 @@
           <p>
             <pre class="example highlight" title="Schema with Matching Type Name">
               {
-               "$id": "https://example.org/examples/email.json",
+                "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "name": "EmailCredential",
                 "description": "Email Credential Schema for usage in JsonSchema2023",
