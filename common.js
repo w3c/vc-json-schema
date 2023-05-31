@@ -17,6 +17,25 @@ var vcwg = {
       ],
       publisher: "Internet Engineering Task Force (IETF)"
     },
+    "RFC-6596": {
+      title: "The Canonical Link Relation",
+      date:" April 2012",
+      href: "https://www.rfc-editor.org/rfc/rfc6596",
+      authors: [
+        "M. Ohye",
+        "J. Kupke"
+      ]
+    },
+    "RFC-3986": {
+      title: "Uniform Resource Identifier (URI): Generic Syntax",
+      date:" January 2005",
+      href: "https://www.rfc-editor.org/rfc/rfc3986",
+      authors: [
+        "T. Berners-Lee",
+        "R. Fielding",
+        "L. Masinter"
+      ]
+    },
     "VC-DATA-MODEL-2": {
       title: "Verifiable Credentials Data Model v2.0",
       href: "https://www.w3.org/TR/vc-data-model-2.0/",

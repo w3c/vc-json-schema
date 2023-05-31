@@ -105,7 +105,7 @@
           Verifiable Presentations, and explains the relationships between three parties:
           <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Verifiability, extensibility, and semantic
           interoperability are critical pieces of functionality referenced throughout
-          the [VC-DATA-MODEL-2]. This specification provides a mechanism to make use of a Credential Schema in
+          the [[VC-DATA-MODEL-2]. This specification provides a mechanism to make use of a Credential Schema in
           <a>Verifiable Credential</a>, leveraging the existing
           <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
         </p>
@@ -375,13 +375,64 @@
           <p class="issue" data-number="133">
             Write considerations for normatively referencing JSON Schema.
           </p>
-          <p class="issue" data-number="142">
-            Write section on using different representations of JSON Schema, such as YAML.
-          </p>
-          <p class="issue" data-number="146">
-            Write section on implementation considerations, such as using <code>name</code>, <code>description</code> and
-            reserved keywords such as <code>$id</code> and <code>$schema</code>.
-          </p>
+          <section class="normative">
+            <h3>Reserved Keywords</h3>
+            <p>
+               JSON Schema specifications reserve certain keywords that hold specific meanings and
+               functions during the processing of JSON Schemas. It is crucial to avoid using conflicting
+               keys when creating JSON Schemas. The specification document for each version of JSON Schema
+               lists these reserved keywords, which can be found in the table provided above.
+
+               In the upcoming sections we list <i>some</i> keywords that possess unique significant and
+               should not be used in conflicting ways.
+            </p>
+            <p>
+               Furthermore, we will identify specific keywords that are not explicitly defined by JSON Schema
+               but are emphasized in this specification to support widespread usage.
+            </p>
+            <section>
+               <h4>$id</h4>
+               <p>
+                  Across JSON Schema specifications the <code>$id</code> keyword identifies a schema resource
+                  with its canonical [[RFC-6596]] URI. The <code>$id</code> MUST be present and its value
+                  MUST represent a valid URI-reference [[RFC-3986]].
+               </p>
+               <p>
+                  It is RECOMMENDED that the value of the <code>$id</code> property match the <code>id</code>
+                  value in the <code>credentialSchema</code> object of a <a>verifiable credential</a>, and
+                  that the value of the <code>$id</code> is a network-adderssable URL.
+               </p>
+            </section>
+            <section>
+               <h4>$schema</h4>
+               <p>
+                  Across JSON Schema specifications the <code>$schema</code> keyword identifies a JSON Schema
+                  providing the feature set for a given JSON Schema specification. This property MUST be present
+                  in each schema. For example, when constructing a schema for <a href="https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-01">Draft 2020-12</a> the value of the <code>$schema</code> identifier MUST 
+                  be <code>https://json-schema.org/draft/2020-12/schema</code>.
+               </p>
+            </section>
+            <section>
+               <h4>name</h4>
+               <p>
+                  It is RECOMMENDED that all JSON Schemas include a <code>name</code> property which provides
+                  a human-readable name that describes the schema.
+               </p>
+            </section>
+            <section>
+               <h4>description</h4>
+               <p>
+                  JSON Schemas MAY choose to include an optional <code>description</code> property which provides
+                  a human-readible sentence describing the schema.
+               </p>
+            </section>
+          </section>
+          <section class="normative">
+            <h3>Representations of JSON Schema</h3>
+            <p class="issue" data-number="142">
+               Write section on using different representations of JSON Schema, such as YAML.
+            </p>
+          </section>
       </section>
       <section class="normative">
         <h2>Processing</h2>
@@ -439,6 +490,7 @@
             {
               "$id": "validuntil-and-evidence-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "name": "Example validUntil and evidence schema",
               "description": "Schema requiring validUntil and evidence properties",
               "type": "object",
               "properties": {
@@ -475,7 +527,8 @@
             {
               "$id": "name-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "Name",
+              "name": "Name schema",
+              "description": "A schema capturing a human name",
               "type": "object",
               "properties": {
                 "credentialSubject": {
@@ -555,7 +608,8 @@
                 {
                   "$id": "name-schema",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "description": "Name",
+                  "name": "Name schema",
+                  "description": "A schema capturing a human name",
                   "type": "object",
                   "properties": {
                     "credentialSubject": {
@@ -584,7 +638,8 @@
                 {
                   "$id": "email-schema-1.0",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "description": "Email",
+                  "name": "Email schema",
+                  "description": "A schema requiring an email address.",
                   "type": "object",
                   "properties": {
                     "credentialSubject": {
@@ -687,7 +742,7 @@
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "name": "EmailCredential",
+                "name": "Email Credential",
                 "description": "Email Credential Schema for usage in JsonSchema2023",
                 "type": "object",
                 "properties": {
