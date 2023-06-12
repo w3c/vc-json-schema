@@ -5,17 +5,24 @@ var vcwg = {
   // Add as the respecConfig localBiblio variable
   // Extend or override global respec references
   localBiblio: {
-    "RFC-3339": {
-      title: "Date and Time on the Internet: Timestamps",
-      date: "2002",
-      href: "https://www.rfc-editor.org/rfc/rfc3339",
+    "RFC-6596": {
+      title: "The Canonical Link Relation",
+      date:" April 2012",
+      href: "https://www.rfc-editor.org/rfc/rfc6596",
       authors: [
-        "G. Klyne",
-        "Clearswift Corporation",
-        "C. Newman",
-        "Sun Microsystems"
-      ],
-      publisher: "Internet Engineering Task Force (IETF)"
+        "M. Ohye",
+        "J. Kupke"
+      ]
+    },
+    "RFC-3986": {
+      title: "Uniform Resource Identifier (URI): Generic Syntax",
+      date:" January 2005",
+      href: "https://www.rfc-editor.org/rfc/rfc3986",
+      authors: [
+        "T. Berners-Lee",
+        "R. Fielding",
+        "L. Masinter"
+      ]
     },
     "VC-DATA-MODEL-2": {
       title: "Verifiable Credentials Data Model v2.0",
@@ -65,16 +72,6 @@ var vcwg = {
       href: "https://json-schema.org/implementations.html",
       title: "JSON Schema Implementations",
       publisher: "json-schema-org"
-    },
-    "RFC 2119": {
-      href: "https://www.rfc-editor.org/rfc/rfc2119",
-      title: "Key words for use in RFCs to Indicate Requirement Levels. S. Bradner. IETF. March 1997. Best Current Practice",
-      publisher: "IETF"
-    },
-    "RFC 8174": {
-      href: "https://www.rfc-editor.org/rfc/rfc8174",
-      title: "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2017. Best Current Practice",
-      publisher: "IETF"
     }
   }
 };
