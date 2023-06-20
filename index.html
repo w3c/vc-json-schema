@@ -777,7 +777,28 @@
             This section details the general privacy considerations and specific privacy
             implications of deploying this specification into production environments.
          </p>
-         <section class="informative">
+         <section>
+            <h3>Personally Identifiable Information</h3>
+            <p>
+               Data associated with schemas and <a>verifiable credentials</a> are susceptible
+               to privacy violations when shared. Personally identifying data, such as a
+               government-issued identifier, address, or name, can be used to track and correlate
+               entities. Even less overt personal data such as a birthdate or postal code has
+               the ability to result in correlation and de-anonymization.
+            </p>
+            <p>
+               Implementers are strongly advised to avoid constructing schemas with any personally
+               identifiable information.
+            </p>
+            <p>
+               If such personally identifiable information is necessary in a schema, or a credential
+               schema, implementers are strongly advised to used mechanisms while storing and
+               transporting <a>verifiable credentials</a> that protect the data from those who should
+               not access it such as Transportation Layer Security (TLS) or other means of encrypting
+               the data whether in transit or at rest.
+            </p>
+         </section>
+         <section>
             <h3>Verifier Caching</h3>
             <p>
                Since schemas are immutable, they are highly cachable.
@@ -788,7 +809,7 @@
                <a>verifier</a>-based access patterns on the schema. 
             </p>
          </section>
-         <section class="informative">
+         <section>
             <h3>Content Distribution Networks</h3>
             <p>
                The use of content distribution networks by <a>issuers</a> can increase the
@@ -808,7 +829,7 @@
             not understanding the implications of this section can result in
             security vulnerabilities.
          </p>
-         <section class="informative">
+         <section>
             <h3>Issuer Impersonation</h3>
             <p>
                It is possible for a schema to become authoritative, such as schemas
