@@ -832,11 +832,10 @@
             have historically created problems for assistive technologies.
          </p>
          <p>
-            This section details the general accessibility considerations to take into
-            account when utilizing this data model.
-         </p>
-         <p class="issue" data-number="147">
-            Write accessibility considerations.
+            JSON Schemas are designed to be a machine-readable format which provides static
+            validation. As such, human readability is a secondary concern. When using a
+            <a>verifiable credential</a> to represent a schema, we recommend following the
+            guidance in the <a href="https://w3c.github.io/vc-data-model/#accessibility-considerations">VC Data Model</a>.
          </p>
       </section>
       <section class="informative">
@@ -850,11 +849,14 @@
             specification and significantly diminish its value as a standard.
          </p>
          <p>
-            This section outlines general internationalization considerations to take into
-            account when utilizing this data model.
+            JSON Schemas are JSON text intended primarily for machines to read, since they 
+            are used for strict static validation of data. Language and text direction concerns 
+            are addressed by the <a href="#json-schema-specifications">noted specification documents</a>
+            for JSON Schema itself.
          </p>
-         <p class="issue" data-number="148">
-            Write i18n considerations.
+         <p>
+            When using a <a>verifiable credential</a> to represent a schema, we recommend following the
+            guidance in the <a href="https://w3c.github.io/vc-data-model/#internationalization-considerations">VC Data Model</a>.
          </p>
       </section>
    </body>
