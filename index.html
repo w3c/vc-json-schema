@@ -107,7 +107,7 @@
           interoperability are critical pieces of functionality referenced throughout
           the [[VC-DATA-MODEL-2]]. This specification provides a mechanism to make use of a Credential Schema in
           <a>Verifiable Credential</a>, leveraging the existing
-          <a href="https://www.w3.org/TR/vc-data-model/#data-schemas">Data Schemas</a> concept.
+          <a data-cite="vc-data-model/#data-schemas">Data Schemas</a> concept.
         </p>
       </section>
       <section id='sotd'>
@@ -696,8 +696,8 @@
           <h3>Validity of a Verifiable Credential</h3>
           <p>
             Validation against a [[JSON-SCHEMA]] may be confused with
-            <a href="https://www.w3.org/TR/vc-data-model/#dfn-credential-validation">validation</a>
-            or <a href="https://www.w3.org/TR/vc-data-model/#dfn-verify">verification</a>
+            <a data-cite="vc-data-model/#dfn-credential-validation">validation</a>
+            or <a data-cite="vc-data-model/#dfn-verify">verification</a>
             of a Verifiable Credential. A valid credential according to a [[JSON-SCHEMA]] refers
             only to the structure of the claims comprising a Verifiable Credential. This idea of
             validity does not imply anything about the validity of the Verifiable Credential itself.
@@ -709,7 +709,7 @@
           <h3>Relationship to Verifiable Credential Type Property</h3>
           <p>
             It is common to define a <code>credential schema</code> that will be set for 
-            Verifiable Credentials whose <a href="https://www.w3.org/TR/vc-data-model/#dfn-type">type</a>
+            Verifiable Credentials whose <a data-cite="vc-data-model/#dfn-type">type</a>
             property contains a specific <code>type</code>. In this scenario, it is advised to use the value
             of the specific <code>type</code> in the <code>id</code> or in a <code>name</code> or
             <code>description</code> property.
@@ -832,11 +832,10 @@
             have historically created problems for assistive technologies.
          </p>
          <p>
-            This section details the general accessibility considerations to take into
-            account when utilizing this data model.
-         </p>
-         <p class="issue" data-number="147">
-            Write accessibility considerations.
+            JSON Schemas are designed to be a machine-readable format which provides static
+            validation. As such, human readability is a secondary concern. When using a
+            <a>verifiable credential</a> to represent a schema, we recommend following the
+            guidance in the <a data-cite="vc-data-model/#accessibility-considerations">VC Data Model</a>.
          </p>
       </section>
       <section class="informative">
@@ -850,11 +849,14 @@
             specification and significantly diminish its value as a standard.
          </p>
          <p>
-            This section outlines general internationalization considerations to take into
-            account when utilizing this data model.
+            JSON Schemas are JSON text intended primarily for machines to read, since they 
+            are used for strict static validation of data. Language and text direction concerns 
+            are addressed by the <a href="#json-schema-specifications">noted specification documents</a>
+            for JSON Schema itself.
          </p>
-         <p class="issue" data-number="148">
-            Write i18n considerations.
+         <p>
+            When using a <a>verifiable credential</a> to represent a schema, we recommend following the
+            guidance in the <a data-cite="vc-data-model/#internationalization-considerations">VC Data Model</a>.
          </p>
       </section>
    </body>
