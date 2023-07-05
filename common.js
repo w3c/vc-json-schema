@@ -40,6 +40,24 @@ var vcwg = {
       title: "JSON Schema: A Media Type for Describing JSON Documents",
       publisher: "OpenJS Foundation"
     },
+    "JSON-SCHEMA-2020-12": {
+      href: "https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-01",
+      date: "December 2022",
+      title: "JSON Schema: A Media Type for Describing JSON Documents",
+      publisher: "IETF"
+    },
+    "JSON-SCHEMA-2019-09": {
+      href: "https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-02",
+      date: "March 2020",
+      title: "JSON Schema: A Media Type for Describing JSON Documents",
+      publisher: "IETF"
+    },
+    "JSON-SCHEMA-DRAFT-7": {
+      href: "https://tools.ietf.org/html/draft-handrews-json-schema-01",
+      date: "September 2018",
+      title: "JSON Schema: A Media Type for Describing JSON Documents",
+      publisher: "IETF"
+    },
     "DID-CORE": {
       href: "https://w3c.github.io/did-core/",
       title: "Decentralized Identifiers (DIDs) v1.0",
