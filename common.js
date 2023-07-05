@@ -41,22 +41,19 @@ var vcwg = {
       publisher: "OpenJS Foundation"
     },
     "JSON-SCHEMA-2020-12": {
-      href: "https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-01",
-      date: "December 2022",
-      title: "JSON Schema: A Media Type for Describing JSON Documents",
-      publisher: "IETF"
+      href: "https://json-schema.org/draft/2020-12/release-notes.html",
+      title: "JSON Schema 2020-12 Release Notes",
+      publisher: "OpenJS Foundation"
     },
     "JSON-SCHEMA-2019-09": {
-      href: "https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-02",
-      date: "March 2020",
-      title: "JSON Schema: A Media Type for Describing JSON Documents",
-      publisher: "IETF"
+      href: "https://json-schema.org/draft/2019-09/release-notes.html",
+      title: "JSON Schema 2019-09 Release Notes",
+      publisher: "OpenJS Foundation"
     },
     "JSON-SCHEMA-DRAFT-7": {
-      href: "https://tools.ietf.org/html/draft-handrews-json-schema-01",
-      date: "September 2018",
-      title: "JSON Schema: A Media Type for Describing JSON Documents",
-      publisher: "IETF"
+      href: "https://json-schema.org/draft-07/json-schema-release-notes.html",
+      title: "JSON Schema Draft-07 Release Notes",
+      publisher: "OpenJS Foundation"
     },
     "DID-CORE": {
       href: "https://w3c.github.io/did-core/",
