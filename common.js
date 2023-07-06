@@ -40,6 +40,21 @@ var vcwg = {
       title: "JSON Schema: A Media Type for Describing JSON Documents",
       publisher: "OpenJS Foundation"
     },
+    "JSON-SCHEMA-2020-12": {
+      href: "https://json-schema.org/draft/2020-12/release-notes.html",
+      title: "JSON Schema 2020-12 Release Notes",
+      publisher: "OpenJS Foundation"
+    },
+    "JSON-SCHEMA-2019-09": {
+      href: "https://json-schema.org/draft/2019-09/release-notes.html",
+      title: "JSON Schema 2019-09 Release Notes",
+      publisher: "OpenJS Foundation"
+    },
+    "JSON-SCHEMA-DRAFT-7": {
+      href: "https://json-schema.org/draft-07/json-schema-release-notes.html",
+      title: "JSON Schema Draft-07 Release Notes",
+      publisher: "OpenJS Foundation"
+    },
     "DID-CORE": {
       href: "https://w3c.github.io/did-core/",
       title: "Decentralized Identifiers (DIDs) v1.0",
