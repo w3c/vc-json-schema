@@ -148,7 +148,7 @@
          <p>
             The following sections outline the data models for this document, of which there are two:
             <code>JsonSchema2023</code> for usage of a [[JSON-Schema]] directly in a <code>credentialSchema</code>
-            property, and <code>CredentialSchema2023</code> for usage of a [[JSON-Schema]] represented as a
+            property, and <code>VerifiableCredentialSchema2023</code> for usage of a [[JSON-Schema]] represented as a
             <a>verifiable credential</a>.
          </p>
          <section>
@@ -186,7 +186,7 @@
             </p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example highlight" title="Example JsonSchema2023">
+               <pre class="example" title="Example JsonSchema2023">
                {
                  "@context": [
                    "https://www.w3.org/ns/credentials/v2",
@@ -208,7 +208,7 @@
               </pre>
             </p>
             <p>
-              <pre class="example highlight" title="Example Email JSON Schema">
+              <pre class="example" title="Example Email JSON Schema">
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -234,13 +234,13 @@
             </p>
          </section>
          <section>
-            <h3>CredentialSchema2023</h3>
+            <h3>VerifiableCredentialSchema2023</h3>
             <p>
                This <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
-               is <code>https://www.w3.org/ns/credentials#CredentialSchema2023</code>.
+               is <code>https://www.w3.org/ns/credentials#VerifiableCredentialSchema2023</code>.
             </p>
             <p>
-               <b>CredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials, based
+               <b>VerifiableCredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials, based
                on representing JSON Schema in a <a>verifiable credential</a>. The version of [[JSON-Schema]]
                can be any version noted in the section on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
@@ -261,14 +261,14 @@
                    </tr>
                    <tr>
                       <td>type</td>
-                      <td>The <code>type</code> property MUST be CredentialSchema2023</td>
+                      <td>The <code>type</code> property MUST be VerifiableCredentialSchema2023</td>
                    </tr>
                 </tbody>
                </table>
             </p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example highlight" title="Example CredentialSchema2023">
+               <pre class="example" title="Example VerifiableCredentialSchema2023">
                {
                  "@context": [
                    "https://www.w3.org/ns/credentials/v2",
@@ -284,27 +284,27 @@
                  },
                  "credentialSchema": {
                    "id": "https://example.com/credentials/3734",
-                   "type": "CredentialSchema2023"
+                   "type": "VerifiableCredentialSchema2023"
                  }
                }
               </pre>
             </p>
             <p>
-              <pre class="example highlight" title="Example Email Credential Schema">
+              <pre class="example" title="Example Email Credential Schema">
               {
                 "@context": [
                     "https://www.w3.org/ns/credentials/v2",
                     "https://www.w3.org/ns/credentials/examples/v2"
                 ],
                 "id": "https://example.com/credentials/3734",
-                "type": ["VerifiableCredential", "CredentialSchema2023"],
+                "type": ["VerifiableCredential", "VerifiableCredentialSchema2023"],
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
                 "credentialSubject": {
                   "$id": "https://example.com/schemas/email-credential-schema.json",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
                   "name": "EmailCredential",
-                  "description": "EmailCredential using CredentialSchema2023",
+                  "description": "EmailCredential using VerifiableCredentialSchema2023",
                   "type": "object",
                   "properties": {
                     "credentialSubject": {
@@ -429,7 +429,7 @@
           <h3>Integrity Validation</h3>
           <p>
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
-            by usage of the <a href="#credentialschema2023">CredentialSchema2023</a> type.
+            by usage of the <a href="#verifiablecredentialschema2023">VerifiableCredentialSchema2023</a> type.
             The credential containing a <a>credential schema</a> may include a proof, either
             embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JWT]].
           </p>
@@ -472,7 +472,7 @@
             has an <code>validUntil</code> property and includes <code>evidence</code>.
           </p>
           <p>
-            <pre class="example highlight" title="ValidUntil and Evidence Credential Schema">
+            <pre class="example" title="ValidUntil and Evidence Credential Schema">
             {
               "$id": "validuntil-and-evidence-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -509,7 +509,7 @@
             is to avoid setting <code>additionalProperties</code> to <i>false</i>.
           </p>
           <p>
-            <pre class="example highlight" title="Example Name Credential Schema">
+            <pre class="example" title="Example Name Credential Schema">
             {
               "$id": "name-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -585,7 +585,7 @@
             <code>allOf</code> is provided below, combining schemas for a <a>verifiable credential</a>,
             name, and email address:
             
-            <pre class="example highlight" title="Multiple Schema Credential Schema Example">
+            <pre class="example" title="Multiple Schema Credential Schema Example">
             {
               "allOf": [
                 {
@@ -653,7 +653,7 @@
             The example above is used to validate every property in the following 
             <a>verifiable credential</a>:
 
-            <pre class="example highlight" title="Multiple Schema Verifiable Credential Example">
+            <pre class="example" title="Multiple Schema Verifiable Credential Example">
             {
                 "@context": ["https://www.w3.org/ns/credentials/v2"],
                 "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
@@ -667,7 +667,7 @@
                 },
                 "credentialSchema": {
                     "id": "multiple-credential-schema-test",
-                    "type": "CredentialSchema2023"
+                    "type": "VerifiableCredentialSchema2023"
                 },
                 "proof": { ... }
             }
@@ -702,7 +702,7 @@
           </p>
           <p>
             The example below illustrates this for <code>EmailCredential</code>:
-            <pre class="example highlight" title="Verifiable Credential with Schema Type">
+            <pre class="example" title="Verifiable Credential with Schema Type">
               {
                 "@context": [
                   "https://www.w3.org/ns/credentials/v2",
@@ -724,7 +724,7 @@
             </pre>
           </p>
           <p>
-            <pre class="example highlight" title="Schema with Matching Type Name">
+            <pre class="example" title="Schema with Matching Type Name">
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
