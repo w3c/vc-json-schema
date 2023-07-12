@@ -423,8 +423,20 @@
       <section class="normative">
         <h2>Processing</h2>
         <p>
-          This section details instructions on how to process Credential Schemas.
+          This section details instructions on how to process Credential Schemas, which is commonly referred to
+          as <i>JSON schema validation</i>.
         <p>
+        <p>
+         There are many open source implementations of [[JSON-SCHEMA]] validators across many common programming
+         languages. The <a href="https://openjsf.org/">OpenJS Foundation</a> maintains a list of implementations
+         as a part of the <a href="https://json-schema.org/implementations.html">JSON Schema official documentation</a>.
+        </p>
+        <p>
+         A common feature of a JSON schema validator is the ability detect the version of a JSON schema document
+         and select the validator for that specific version of [[JSON-SCHEMA]]. It is RECOMMENDED that implementers
+         choose validators which possess this capability, and are able to limit validation to the 
+         <a href="#json-schema-specifications">JSON schema specifications</a> supported by this document.
+        </p>
         <section>
           <h3>Integrity Validation</h3>
           <p>
