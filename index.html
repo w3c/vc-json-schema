@@ -182,8 +182,9 @@
                       <td>The <code>type</code> property MUST be JsonSchema2023.</td>
                    </tr>
                 </tbody>
-               </table>
+             </table>
             </p>
+            <p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
                <pre class="example" title="Example JsonSchema2023">
@@ -441,6 +442,37 @@
           <p class="issue" data-number="143">
             Provide examples for Data Integrity and VC-JWT Credential Schemas
           </p>
+          <p>
+            The integrity of Credential Schemas of type <a href="#verifiablecredentialschema2023">JsonSchema2023</a> MAY
+            be annotated with integrity information by adding the property `digestSRI` to the `credentialSchema` value
+            in the Verifiable Credential which contains the schema, as described in <a data-cite="vc-data-model/#integrity-of-related-resources">Integrity of Related Resources</a>.
+            Validation of the integrity of the schema MUST be done before evaluation.
+          </p>
+        <p>
+          An example of such usage is provided below:
+        </p>
+        <pre class="example nohighlight" title="Example Verifiable Credential JsonSchema2023  with Integrity Information">
+         {
+           "@context": [
+             "https://www.w3.org/ns/credentials/v2",
+             "https://www.w3.org/ns/credentials/examples/v2"
+           ],
+           "id": "https://example.com/credentials/3733",
+           "type": ["VerifiableCredential", "EmailCredential"],
+           "issuer": "https://example.com/issuers/14",
+           "issuanceDate": "2010-01-01T19:23:24Z",
+           "credentialSubject": {
+             "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+             "emailAddress": "subject@example.com"
+           },
+          <span class="highlight"> "credentialSchema": {
+             "id": "https://example.com/schemas/email.json",
+             "type": "JsonSchema2023",
+             "digestSRI": "sha384-dNwyy/Zs/YjPor8aoOgnaCqb+PH24QcNFxbxM1XoBOxdbgnpQcVaGYH8QunXww2U",
+           }</span>
+         }
+        </pre>
+
         </section>
         <section>
           <h3>Evaluation</h3>
