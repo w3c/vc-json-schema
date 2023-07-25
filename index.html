@@ -158,8 +158,12 @@
                is <code>https://www.w3.org/TR/vc-json-schema/#JsonSchema2023</code>.
             </p>
             <p>
-               <b>JsonSchema2023</b> is for the validation of W3C Verifiable Credentials, based
-               on JSON Schema. The version of [[JSON-Schema]] can be any version noted in the section
+               <b>JsonSchema2023</b> is used for the validation of W3C Verifiable Credentials using
+               JSON Schema. When dereferencing the <code>id</code> property associated with the
+               <code>JsonSchema2023</code> <code>type</code> value the result is a valid JSON
+               Schema document according to its specification version.
+            <p>
+               The specification version of [[JSON-Schema]] can be any version noted in the section
                on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
             <p>
@@ -209,6 +213,11 @@
               </pre>
             </p>
             <p>
+              <p>
+               Upon dereferencing the value of the <code>id</code> <code>https://example.com/schemas/email.json</code>,
+               a process also be referred to as <a>schema resolution</a>, the following JSON Schema 
+               document is returned:
+              </p>
               <pre class="example" title="Example Email JSON Schema">
               {
                 "$id": "https://example.com/schemas/email.json",
@@ -241,9 +250,16 @@
                is <code>https://www.w3.org/TR/vc-json-schema/#VerifiableCredentialSchema2023</code>.
             </p>
             <p>
-               <b>VerifiableCredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials, based
-               on representing JSON Schema in a <a>verifiable credential</a>. The version of [[JSON-Schema]]
-               can be any version noted in the section on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
+               <b>VerifiableCredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials using
+               JSON Schema, where the JSON Schema is contained with a <a>verifiable credential</a>.
+               When dereferencing the <code>id</code> property associated with the
+               <code>VerifiableCredentialSchema2023</code> <code>type</code> value the result is a valid 
+               <a>verifiable credential</a>. The resulting <a>verifiable credential</a> MUST NOT
+               have a <code>credentialSubject</code> property and it MUST have a <code>jsonSchema</code>
+               property containing a valid JSON Schema, as exemplified below.
+            <p>
+               The specification version of [[JSON-Schema]] can be any version noted in the section
+               on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
             <p>
              <table class="simple">
@@ -291,6 +307,11 @@
               </pre>
             </p>
             <p>
+              <p>
+               Upon dereferencing the value of the <code>id</code> <code>https://example.com/credentials/3734</code>,
+               a process also be referred to as <a>schema resolution</a>, the following verifiable credential,
+               representing a JSON Schema, is returned:
+              </p>
               <pre class="example" title="Example Email Credential Schema">
               {
                 "@context": [
@@ -301,7 +322,7 @@
                 "type": ["VerifiableCredential", "VerifiableCredentialSchema2023"],
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
-                "credentialSubject": {
+                "jsonSchema": {
                   "$id": "https://example.com/schemas/email-credential-schema.json",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
                   "name": "EmailCredential",
