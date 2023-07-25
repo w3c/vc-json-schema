@@ -335,12 +335,18 @@
              The following section describes the allowed specifications for 
              using a [[JSON-Schema]] with a <a>credential schema</a>.
           </p>
+          <p>
+            To promote conformance and enable interoperability implementers are REQUIRED to
+            provide support for JSON Schema specifications where, in the following table,
+            the <i>required</i> column's value is <b>yes</b>.
+          </p>
           <table class="simple">
              <thead>
                 <tr>
                    <th style="white-space: nowrap">JSON Schema Specification</th>
                    <th>Date of Publication</th>
                    <th>$schema URI</th>
+                   <th>Required</th>
                 </tr>
              </thead>
              <tbody>
@@ -348,16 +354,19 @@
                    <td>[[JSON-SCHEMA-2020-12]]</td>
                    <td>10 June 2022</td>
                    <td><a href="https://json-schema.org/draft/2020-12/schema">https://json-schema.org/draft/2020-12/schema</a></td>
+                   <td>Yes</td>
                 </tr>
                 <tr>
                    <td>[[JSON-SCHEMA-2019-09]]</td>
                    <td>19 March 2020</td>
                    <td><a href="https://json-schema.org/draft/2019-09/schema">https://json-schema.org/draft/2019-09/schema</a></td>
+                   <td>No</td>
                 </tr>
                 <tr>
                    <td>[[JSON-SCHEMA-DRAFT-7]]</td>
                    <td>20 September 2018</td>
                    <td><a href="http://json-schema.org/draft-07/schema#">http://json-schema.org/draft-07/schema#</a></td>
+                   <td>No</td>
                 </tr>
              </tbody>
           </table>
@@ -435,10 +444,14 @@
         <p>
          A common feature of a JSON schema validator is the ability to detect the version of a JSON schema document
          and select the validator for that specific version of [[JSON-SCHEMA]]. This is done by switching on the
-         schema's <code>$schema</code> and picking the corresponding validator. Schemas without a <code>$schema</code>
-         property are not considered valid and MUST not be processed. It is RECOMMENDED that implementers
-         choose validators which possess this capability and are able to limit validation to the 
+         schema's <code>$schema</code> property and picking the corresponding validator. Schemas without a 
+         <code>$schema</code> property are not considered valid and MUST not be processed. It is RECOMMENDED that implementers choose validators which possess this capability and are able to limit validation to the 
          <a href="#json-schema-specifications">JSON schema specifications</a> supported by this document.
+        </p>
+        <p>
+         Conformant implementers MUST support JSON schema specification versions marked as <b>required</b>
+         in the table defined in the <a href="#json-schema-specifications">JSON schema specifications section</a>
+         of this document.
         </p>
         <section>
           <h3>Integrity Validation</h3>
