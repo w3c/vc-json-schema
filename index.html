@@ -336,7 +336,7 @@
              using a [[JSON-Schema]] with a <a>credential schema</a>.
           </p>
           <p>
-            To promote conformance and enable interoperability implementers are REQUIRED to
+            To promote conformance and enable interoperability, implementers MUST
             provide support for JSON Schema specifications where, in the following table,
             the <i>required</i> column's value is <b>yes</b>.
           </p>
@@ -451,7 +451,8 @@
          A common feature of a JSON schema validator is the ability to detect the version of a JSON schema document
          and select the validator for that specific version of [[JSON-SCHEMA]]. This is done by switching on the
          schema's <code>$schema</code> property and picking the corresponding validator. Schemas without a 
-         <code>$schema</code> property are not considered valid and MUST not be processed. It is RECOMMENDED that implementers choose validators which possess this capability and are able to limit validation to the 
+         <code>$schema</code> property are not considered valid and MUST NOT be processed. Implementers
+         SHOULD choose validators which possess this capability and are able to limit validation to the 
          <a href="#json-schema-specifications">JSON schema specifications</a> supported by this document.
         </p>
         <p>
