@@ -148,7 +148,7 @@
          <p>
             The following sections outline the data models for this document, of which there are two:
             <code>JsonSchema2023</code> for usage of a [[JSON-Schema]] directly in a <code>credentialSchema</code>
-            property, and <code>VerifiableCredentialSchema2023</code> for usage of a [[JSON-Schema]] represented as a
+            property, and <code>JsonSchemaCredential2023</code> for usage of a [[JSON-Schema]] represented as a
             <a>verifiable credential</a>.
          </p>
          <section>
@@ -244,19 +244,26 @@
             </p>
          </section>
          <section>
-            <h3>VerifiableCredentialSchema2023</h3>
+            <h3>JsonSchemaCredential2023</h3>
             <p>
                This <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
-               is <code>https://www.w3.org/ns/credentials#VerifiableCredentialSchema2023</code>.
+               is <code>https://www.w3.org/ns/credentials#JsonSchemaCredential2023</code>.
             </p>
             <p>
-               <b>VerifiableCredentialSchema2023</b> is used for the validation of W3C Verifiable Credentials using
+               <b>JsonSchemaCredential2023</b> is used for the validation of W3C Verifiable Credentials using
                JSON Schema, where the JSON Schema is contained with a <a>verifiable credential</a>.
                When dereferencing the <code>id</code> property associated with the
-               <code>VerifiableCredentialSchema2023</code> <code>type</code> value the result is a valid 
-               <a>verifiable credential</a>. The resulting <a>verifiable credential</a> MUST NOT
-               have a <code>credentialSubject</code> property and it MUST have a <code>jsonSchema</code>
-               property containing a valid JSON Schema, as exemplified below.
+               <code>JsonSchemaCredential2023</code> <code>type</code> value the result is a valid 
+               <a>verifiable credential</a>. The resulting <a>verifiable credential</a>'s  
+               <code>credentialSubject</code> property MUST contain a two properties:
+               <li><code>type</code> – the value of which MUST be <code>JsonSchema2023</code></li>
+               <li><code>jsonSchema</code> – an object which contains a valid JSON Schema</li>
+            </p>
+            <p>
+               The <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
+               for using the <code>jsonSchema</code> property within the <code>credentialSubject</code>
+               of a verifiable credential is <code>https://www.w3.org/ns/credentials#JsonSchema</code>.
+            </p>
             <p>
                The specification version of [[JSON-Schema]] can be any version noted in the section
                on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
@@ -278,14 +285,14 @@
                    </tr>
                    <tr>
                       <td>type</td>
-                      <td>The <code>type</code> property MUST be VerifiableCredentialSchema2023</td>
+                      <td>The <code>type</code> property MUST be JsonSchemaCredential2023</td>
                    </tr>
                 </tbody>
                </table>
             </p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example" title="Example VerifiableCredentialSchema2023">
+               <pre class="example" title="Example JsonSchemaCredential2023">
                {
                  "@context": [
                    "https://www.w3.org/ns/credentials/v2",
@@ -301,7 +308,7 @@
                  },
                  "credentialSchema": {
                    "id": "https://example.com/credentials/3734",
-                   "type": "VerifiableCredentialSchema2023"
+                   "type": "JsonSchemaCredential2023"
                  }
                }
               </pre>
@@ -319,33 +326,37 @@
                     "https://www.w3.org/ns/credentials/examples/v2"
                 ],
                 "id": "https://example.com/credentials/3734",
-                "type": ["VerifiableCredential", "VerifiableCredentialSchema2023"],
+                "type": ["VerifiableCredential", "JsonSchemaCredential2023"],
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
-                "jsonSchema": {
-                  "$id": "https://example.com/schemas/email-credential-schema.json",
-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "name": "EmailCredential",
-                  "description": "EmailCredential using VerifiableCredentialSchema2023",
-                  "type": "object",
-                  "properties": {
-                    "credentialSubject": {
-                      "type": "object",
-                      "properties": {
-                        "emailAddress": {
-                          "type": "string",
-                          "format": "email"
-                        }
-                      },
-                      "required": ["emailAddress"]
-                    }
+                "credentialSubject": {
+                  "id": "https://example.com/schemas/email-credential-schema.json",
+                  "type": "JsonSchema2023",
+                  "jsonSchema": {
+                     "$id": "https://example.com/schemas/email-credential-schema.json",
+                     "$schema": "https://json-schema.org/draft/2020-12/schema",
+                     "name": "EmailCredential",
+                     "description": "EmailCredential using JsonSchemaCredential2023",
+                     "type": "object",
+                     "properties": {
+                       "credentialSubject": {
+                         "type": "object",
+                         "properties": {
+                           "emailAddress": {
+                             "type": "string",
+                             "format": "email"
+                           }
+                         },
+                         "required": ["emailAddress"]
+                       }
+                     }
                   }
                 }
               }
               </pre>
             </p>
             <p class="issue" data-number="159">
-               Add language about CredentialSchema2023 credentials having a credentialSchema property
+               Add language about JsonSchemaCredential2023 credentials having a credentialSchema property
                and the risks of nesting.
             </p>
          </section>
@@ -465,7 +476,7 @@
           <h3>Integrity Validation</h3>
           <p>
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
-            by usage of the <a href="#verifiablecredentialschema2023">VerifiableCredentialSchema2023</a> type.
+            by usage of the <a href="#jsonschemacredential2023">JsonSchemaCredential2023</a> type.
             The credential containing a <a>credential schema</a> may include a proof, either
             embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JWT]].
           </p>
@@ -735,7 +746,7 @@
                 },
                 "credentialSchema": {
                     "id": "multiple-credential-schema-test",
-                    "type": "VerifiableCredentialSchema2023"
+                    "type": "JsonSchemaCredential2023"
                 },
                 "proof": { ... }
             }
