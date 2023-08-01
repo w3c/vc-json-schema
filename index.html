@@ -482,17 +482,18 @@
          as a part of the <a href="https://json-schema.org/implementations.html">JSON Schema official documentation</a>.
         </p>
         <p>
-         A common feature of a JSON schema validator is the ability to detect the version of a JSON schema document
+         A common feature of a JSON Schema validator is the ability to detect the version of a JSON Schema document
          and select the validator for that specific version of [[JSON-SCHEMA]]. This is done by switching on the
          schema's <code>$schema</code> property and picking the corresponding validator. Schemas without a 
          <code>$schema</code> property are not considered valid and MUST NOT be processed. Implementers
          SHOULD choose validators which possess this capability and are able to limit validation to the 
-         <a href="#json-schema-specifications">JSON schema specifications</a> supported by this document.
+         <a href="#json-schema-specifications">JSON Schema specifications</a> supported by this document.
         </p>
         <p>
-         Conformant implementers MUST support JSON schema specification versions marked as <b>required</b>
-         in the table defined in the <a href="#json-schema-specifications">JSON schema specifications section</a>
-         of this document.
+         Conformant implementers MUST support JSON Schema specification versions marked as <b>required</b>
+         in the table defined in the <a href="#json-schema-specifications">JSON Schema specifications section</a>
+         of this document. Implementers MAY support JSON Schema specification versions not marked as
+         <b>required</b>.
         </p>
         <section>
           <h3>Integrity Validation</h3>
@@ -520,7 +521,7 @@
         <p>
           An example of such usage is provided below:
         </p>
-        <pre class="example nohighlight" title="Example Verifiable Credential JsonSchema2023  with Integrity Information">
+        <pre class="example" title="Example Verifiable Credential JsonSchema2023  with Integrity Information">
          {
            "@context": [
              "https://www.w3.org/ns/credentials/v2",
@@ -546,10 +547,11 @@
         <section>
           <h3>Evaluation</h3>
           <p>
-            Validation of a given Credential against its schema is to be performed according
-            to its associated [[JSON-SCHEMA]] specification. If validation
-            succeeds the credential is considered to be valid against its
-            <a>credential schema</a>.
+            Validation of a given credential against its schema is to be performed according
+            to its associated [[JSON-SCHEMA]] specification. If validation succeeds the credential
+            is considered to be valid against its <a>credential schema</a>. In the case that 
+            an implementer encounters a schema whose version it does not support, processing
+            cannot continue, and validation MUST be halted. 
           </p>
         </section>
       </section>
