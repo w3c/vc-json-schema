@@ -87,13 +87,6 @@ var vcwg = {
       href: "https://json-schema.org/implementations.html",
       title: "JSON Schema Implementations",
       publisher: "json-schema-org"
-    },
-    "HASHLINK": {
-      title: 'Cryptographic Hyperlinks',
-      href: 'https://datatracker.ietf.org/doc/draft-sporny-hashlink/',
-      authors: ['Manu Sporny'],
-      status: 'Internet-Draft',
-      publisher: 'Internet Engineering Task Force (IETF)'
     }
   }
 };
