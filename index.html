@@ -152,17 +152,14 @@
             <a>verifiable credential</a>.
          </p>
          <p>
-            Implementers MAY choose to use <code>JsonSchemaCredential2023</code> when they wish to
-            leverage features of the [[VC-DATA-MODEL-2]]. Providing a JSON Schema as a verifiable credential is
-            useful when it is valuable to leverage the data model's features, answering questions such as:
+            Implementers may find use in packaging a JSON Schema as a verifiable credential when they wish to
+            leverage features of the [[VC-DATA-MODEL-2]], answering questions such as:
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
                <li>Why should the author be trusted for providing this schema? (provided by the <code>evidence</code> property)</li>
                <li>Is it schema still in use? (provided by the <code>validFrom</code>, <code>validUntil</code>, and <code>credentialStatus</code> properties)</li>
+               <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JWT]])</li>
             </ul>
-
-            When these features are not necessary for a given use case it is RECOMMENDED that implementers
-            use the <code>JsonSchema2023</code> type.
          </p>
          <section>
             <h3>JsonSchema2023</h3>
