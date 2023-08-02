@@ -651,7 +651,7 @@
             Versioning is not provided as an explicit feature of this specification.
             Implementers are advised to make backwards compatabile changes to schemas, should
             they be adjusted. Otherwise, it is advised that new <a>credential schemas</a>
-            are created with unique identifiers to avoid processing conflicts.
+            be created with unique identifiers to avoid processing conflicts.
           </p>
         </section>
         <section class="informative">
@@ -659,8 +659,8 @@
          <p>
             It is important to make sure that <a>credential schemas</a> have not been tampered with
             before processing. When making use of the <code>JsonSchemaCredential2023</code> representation
-            of a schema, the credential's associated integrity protection mechanism can act
-            as mutability detection since digital signatures break with content changes.
+            of a schema, the credential's associated integrity protection mechanism can be used to detect mutations
+            of the <a>credential schema</a> by detecting changes in it's digital signature.
          </p>
          <p>
             As an alternative, the aforementioned [[SRI]] scheme may be used to
