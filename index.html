@@ -151,6 +151,15 @@
             property, and <code>JsonSchemaCredential</code> for usage of a [[JSON-Schema]] represented as a
             <a>verifiable credential</a>.
          </p>
+         <p>
+            Implementers may find use in packaging a JSON Schema as a verifiable credential when they wish to
+            leverage features of the [[VC-DATA-MODEL-2]], answering questions such as:
+            <ul>
+               <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
+               <li>Is it schema still valid? (provided by the <code>validFrom</code>, <code>validUntil</code>, and <code>credentialStatus</code> properties)</li>
+               <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JWT]])</li>
+            </ul>
+         </p>
          <section>
             <h3>JsonSchema</h3>
             <p>
