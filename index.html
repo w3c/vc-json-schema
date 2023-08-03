@@ -522,8 +522,8 @@
           <p>
             Credential Schemas of type <a href="#jsonschema">JsonSchema</a> MAY
             be annotated with integrity information by adding the `digestSRI` property to the `credentialSchema` value
-            in the Verifiable Credential which contains the schema, as described in
-            <a data-cite="vc-data-model/#integrity-of-related-resources">Integrity of Related Resources</a>.
+            in the Verifiable Credential which contains the schema, using the method specified in
+            <a data-cite="sri/#integrity-metadata">Subresource Integrity</a>.
             Validation of the integrity of the schema MUST be done before evaluation.
           </p>
         <p>
@@ -550,7 +550,6 @@
            }</span>
          }
         </pre>
-
         </section>
         <section>
           <h3>Evaluation</h3>
@@ -657,25 +656,30 @@
           <h3>Versioning</h3>
           <p>
             Versioning is not provided as an explicit feature of this specification.
-            It is advised to make backwards compatabile changes to schemas, should
-            they be adjusted. Otherwise, it is advised that a new <a>credential schema</a>
-            is created with a unique identifier.
+            Implementers are advised to make backwards compatabile changes to schemas, should
+            they be adjusted. Otherwise, it is advised that new <a>credential schemas</a>
+            be created with unique identifiers to avoid processing conflicts.
           </p>
-          <p class="issue" data-number="120">
-            Add language on enabling schema immutability/versioning, such as making use of hashlinks.
-          </p>
+        </section>
+        <section class="informative">
+         <h3>Content Integrity Protection</h3>
+         <p>
+            It is important to make sure that <a>credential schemas</a> have not been tampered with
+            before processing. When making use of the <code>JsonSchemaCredential2023</code> representation
+            of a schema, the credential's associated integrity protection mechanism can be used to detect mutations
+            of a <a>credential schema</a> via its digital signature.
+         </p>
+         <p>
+            As an alternative, the aforementioned [[SRI]] scheme may be used to provide content integrity
+            protection, ensuring that the underlying <a>credential schema</a> resource has not been tampered with.
+         </p>
         </section>
         <section class="informative">
           <h3>Storage</h3>
           <p>
-            Credential schemas MAY be created and made available as <b>immutable</b>
-            objects. They can be stored on any number of storage mediums such as a distributed
-            ledger, traditional database, or decentralized file storage. The same schema could
-            be replicated across multiple file stores with the same identifier.
-          </p>
-          <p>
-            Immutability is key to enabling a consistent source of truth for usage with 
-            <a>verifiable credentials</a> which are tamper-evident by design.
+            Credential schemas can be stored on any number of storage media such as a distributed
+            ledger, traditional database, or decentralized file storage. For more robust availability
+            guarantees, the same schema could be replicated across multiple file stores.
           </p>
         </section>
         <section class="informative">
