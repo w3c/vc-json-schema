@@ -593,6 +593,9 @@
             }
           }
           </pre>
+          <p>
+            Validation according to the spec [[JSON-schema-2020-12]] yields Success when applying it to the VC below.
+          </p>
           <pre class="example vc" title="Example Verifiable Credential - validations Success">
           {
             "@context": [
@@ -612,7 +615,10 @@
               "type": "JsonSchema"
             }
           }
-        </pre>
+          </pre>
+          <p>
+            Validation according to the spec [[JSON-schema-2020-12]] yields Failure when applying it to the VC below.
+          </p>
           <pre class="illegal-example vc" title="Example Verifiable Credential - validation Failure">
           {
             "@context": [
