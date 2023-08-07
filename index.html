@@ -8,6 +8,7 @@
          class="remove"
          defer
          ></script>
+      <script class="remove" src="https://cdn.jsdelivr.net/gh/transmute-industries/respec-vc-jwt@0.0.9/dist/main.js"></script>
       <script src="./common.js" class="remove"></script>
       <script class="remove">
          var respecConfig = {
@@ -61,6 +62,7 @@
            // postProcess: [restrictRefs],
            maxTocLevel: 2,
            inlineCSS: true,
+           postProcess: [window.respecVc.createVcExamples],
            otherLinks: [{
              key: "Related Documents",
              data: [{
@@ -590,7 +592,7 @@
             }
           }
           </pre>
-          <pre class="example" title="Example Verifiable Credential - validations Success">
+          <pre class="example vc-jwt" title="Example Verifiable Credential - validations Success">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -606,11 +608,11 @@
             },
             "credentialSchema": {
               "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema",
+              "type": "JsonSchema"
             }
           }
         </pre>
-          <pre class="example" title="Example Verifiable Credential - validation Failure">
+          <pre class="illegal-example vc-jwt" title="Example Verifiable Credential - validation Failure">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -626,7 +628,7 @@
             },
             "credentialSchema": {
               "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema",
+              "type": "JsonSchema"
             }
           }
         </pre>
@@ -656,7 +658,7 @@
             }
           }
           </pre>
-          <pre class="example" title="Example Verifiable Credential - validation Indeterminate">
+          <pre class="example vc-jwt" title="Example Verifiable Credential - validation Indeterminate">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -672,7 +674,7 @@
             },
             "credentialSchema": {
               "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema",
+              "type": "JsonSchema"
             }
           }
           </pre>
