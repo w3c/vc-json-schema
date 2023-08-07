@@ -690,7 +690,7 @@
         <section class="informative">
           <h3>Multiple Schemas</h3>
           <p>
-            A common use case is to include multiple schemas to validate against which a single
+            A common use case is to include multiple schemas to validate against a single
             <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
@@ -786,8 +786,8 @@
             }
             </pre>
           </p>
-          <p class="issue" data-number="136">
-            Add warning for improperly formed schemas and risks associated with using multiple schemas.
+          <p>
+            Composition using `allOf` into a JSON Schema can easily result in a schema for which all JSON documents will fail to validate. Such a situation may happen when multiple schemas reference the same property. Schema authors are advised to ensure that there exists at least one JSON document for which schema validation would pass.
           </p>
         </section>
         <section class="informative">
