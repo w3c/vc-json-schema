@@ -1,0 +1,100 @@
+$id: https://vendor.example/schemas/credential.yaml
+title: Example Credential using a YAML-based JSON Schema
+description: >-
+  An example verifiable credential with schema.
+example: |-
+  {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://www.w3.org/ns/credentials/examples/v2"
+    ],
+    "id": "http://vendor.example/credentials/1776",
+    "type": ["VerifiableCredential", "NewCredentialType"],
+    "issuer": {
+      "id": "did:example:123",
+      "type": ["Organization", "OrganizationType"]
+    },
+    "validFrom": "2010-01-01T19:23:24Z",
+    "credentialSchema": {
+      "id": "https://vendor.example/schemas/credential.yaml",
+      "type": "JsonSchema"
+    },
+    "credentialSubject": {
+      "id": "did:example:456",
+      "type": ["Person", "JobType"],
+      "claimName": "claimValue"
+    }
+  }
+type: object
+properties:
+  '@context':
+    type: array
+    const:
+      - 'https://www.w3.org/ns/credentials/v2'
+      - 'https://www.w3.org/ns/credentials/examples/v2'
+  type:
+    type: array
+    readOnly: true
+    const:
+      - VerifiableCredential
+      - NewCredentialType
+    default:
+      - VerifiableCredential
+      - NewCredentialType
+    items:
+      type: string
+      enum:
+        - VerifiableCredential
+        - NewCredentialType
+  id:
+    type: string
+  issuer:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: array
+        readOnly: true
+        const:
+          - Organization
+          - OrganizationType
+        default:
+          - Organization
+          - OrganizationType
+  validFrom:
+    type: string
+  credentialSchema:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: string
+        const: JsonSchema
+  credentialSubject:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: array
+        readOnly: true
+        const:
+          - Person
+          - JobType
+        default:
+          - Person
+          - JobType
+      claimName:
+        type: string
+
+additionalProperties: false
+required:
+  - '@context'
+  - id
+  - type
+  - issuer
+  - validFrom
+  - credentialSchema
+  - credentialSubject
