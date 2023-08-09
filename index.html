@@ -10,6 +10,8 @@
          ></script>
      <script class="remove"
              src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@2.0.1/dist/main.js"></script>
+     <script class="remove"
+             src="https://cdn.jsdelivr.net/gh/transmute-industries/respec-vc-jwt@0.0.9/dist/main.js"></script>
       <script src="./common.js" class="remove"></script>
       <script class="remove">
          var respecConfig = {
@@ -203,7 +205,7 @@
             <p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example" title="Example JsonSchema">
+               <pre class="example vc-jwt" title="Example JsonSchema">
                {
                  "@context": [
                    "https://www.w3.org/ns/credentials/v2",
@@ -306,7 +308,7 @@
             </p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example" title="Example JsonSchemaCredential">
+               <pre class="example vc-jwt" title="Example JsonSchemaCredential">
                {
                  "@context": [
                    "https://www.w3.org/ns/credentials/v2",
@@ -333,7 +335,7 @@
                a process also be referred to as <a>schema resolution</a>, the following verifiable credential,
                representing a JSON Schema, is returned:
               </p>
-              <pre class="example" title="Example Email Credential Schema">
+              <pre class="example vc-jwt" title="Example Email Credential Schema">
               {
                 "@context": [
                     "https://www.w3.org/ns/credentials/v2",
@@ -533,7 +535,7 @@
         <p>
           An example of such usage is provided below:
         </p>
-        <pre class="example nohighlight" title="Example Verifiable Credential JsonSchema with Integrity Information">
+        <pre class="example vc-jwt nohighlight" title="Example Verifiable Credential JsonSchema with Integrity Information">
          {
            "@context": [
              "https://www.w3.org/ns/credentials/v2",
@@ -550,7 +552,7 @@
           <span class="highlight"> "credentialSchema": {
              "id": "https://example.com/schemas/email.json",
              "type": "JsonSchema",
-             "digestSRI": "sha384-dNwyy/Zs/YjPor8aoOgnaCqb+PH24QcNFxbxM1XoBOxdbgnpQcVaGYH8QunXww2U",
+             "digestSRI": "sha384-dNwyy/Zs/YjPor8aoOgnaCqb+PH24QcNFxbxM1XoBOxdbgnpQcVaGYH8QunXww2U"
            }</span>
          }
         </pre>
@@ -596,7 +598,7 @@
           <p>
             Validation according to the spec [[JSON-schema-2020-12]] yields Success when applying it to the VC below.
           </p>
-          <pre class="example vc" title="Example Verifiable Credential - validations Success">
+          <pre class="example vc-jwt" title="Example Verifiable Credential - validations Success">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -619,7 +621,7 @@
           <p>
             Validation according to the spec [[JSON-schema-2020-12]] yields Failure when applying it to the VC below.
           </p>
-          <pre class="illegal-example vc" title="Example Verifiable Credential - validation Failure">
+          <pre class="illegal-example vc-jwt" title="Example Verifiable Credential - validation Failure">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -665,7 +667,7 @@
             }
           }
           </pre>
-          <pre class="example vc" title="Example Verifiable Credential - validation Indeterminate">
+          <pre class="example vc-jwt" title="Example Verifiable Credential - validation Indeterminate">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
@@ -887,7 +889,7 @@
             The example above is used to validate every property in the following 
             <a>verifiable credential</a>:
 
-            <pre class="example" title="Multiple Schema Verifiable Credential Example">
+            <pre class="example vc-jwt" title="Multiple Schema Verifiable Credential Example">
             {
                 "@context": ["https://www.w3.org/ns/credentials/v2"],
                 "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
@@ -902,8 +904,7 @@
                 "credentialSchema": {
                     "id": "multiple-credential-schema-test",
                     "type": "JsonSchemaCredential"
-                },
-                "proof": { ... }
+                }
             }
             </pre>
           </p>
@@ -936,7 +937,7 @@
           </p>
           <p>
             The example below illustrates this for <code>EmailCredential</code>:
-            <pre class="example" title="Verifiable Credential with Schema Type">
+            <pre class="example vc-jwt" title="Verifiable Credential with Schema Type">
               {
                 "@context": [
                   "https://www.w3.org/ns/credentials/v2",
