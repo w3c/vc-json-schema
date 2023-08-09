@@ -570,121 +570,141 @@
           <p>
             Examples for the Success and Failure possible outcomes are provided below.
           </p>
-          <pre class="example" title="Example Email JSON Schema">
-          {
-            "$id": "https://example.com/schemas/email.json",
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "name": "EmailCredential",
-            "description": "EmailCredential using JsonSchema",
-            "type": "object",
-            "properties": {
-              "credentialSubject": {
-                "type": "object",
-                "properties": {
-                  "emailAddress": {
-                    "type": "string",
-                    "format": "email"
+          <section class="normative">
+            <h4>Success Result</h4>
+            <p>
+               <pre class="example" title="Example Email JSON Schema">
+               {
+                 "$id": "https://example.com/schemas/email.json",
+                 "$schema": "https://json-schema.org/draft/2020-12/schema",
+                 "name": "EmailCredential",
+                 "description": "EmailCredential using JsonSchema",
+                 "type": "object",
+                 "properties": {
+                   "credentialSubject": {
+                     "type": "object",
+                     "properties": {
+                       "emailAddress": {
+                         "type": "string",
+                         "format": "email"
+                       }
+                     },
+                     "required": ["emailAddress"]
+                    }
                   }
-                },
-                "required": [
-                  "emailAddress"
-                ]
-              }
-            }
-          }
-          </pre>
-          <p>
-            Validation according to the spec [[JSON-schema-2020-12]] yields Success when applying it to the VC below.
-          </p>
-          <pre class="example vc" title="Example Verifiable Credential - validations Success">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "subject@example.com"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-          </pre>
-          <p>
-            Validation according to the spec [[JSON-schema-2020-12]] yields Failure when applying it to the VC below.
-          </p>
-          <pre class="illegal-example vc" title="Example Verifiable Credential - validation Failure">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "not an email"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-        </pre>
-          <p>
-            Assuming that the implementer does not support [[JSON-SCHEMA-2019-09]], an example of Indeterminate evaluation is provided below.
-          </p>
-          <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
-          {
-            "$id": "https://example.com/schemas/email.json",
-            "$schema": "https://json-schema.org/draft/2019-09/schema",
-            "name": "EmailCredential",
-            "description": "EmailCredential using JsonSchema",
-            "type": "object",
-            "properties": {
-              "credentialSubject": {
-                "type": "object",
-                "properties": {
-                  "emailAddress": {
-                    "type": "string",
-                    "format": "email"
+               }
+               </pre>
+            </p>
+            <p>
+              Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Success</i> result
+              when applying it to the VC below.
+            </p>
+            <p>
+               <pre class="example vc" title="Example Verifiable Credential - validations Success">
+               {
+                 "@context": [
+                   "https://www.w3.org/ns/credentials/v2",
+                   "https://www.w3.org/ns/credentials/examples/v2"
+                 ],
+                 "id": "https://example.com/credentials/3732",
+                 "type": ["VerifiableCredential", "EmailCredential"],
+                 "issuer": "https://example.com/issuers/14",
+                 "issuanceDate": "2010-01-01T19:23:24Z",
+                 "credentialSubject": {
+                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                   "emailAddress": "subject@example.com"
+                 },
+                 "credentialSchema": {
+                   "id": "https://example.com/schemas/email.json",
+                   "type": "JsonSchema"
+                 }
+               }
+               </pre>
+            </p>
+         </section>
+         <section>
+            <h4>Failure Result</h4>
+            <p>
+               Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Failure</i> result when 
+               applying it to the VC below.
+            </p>
+            <p>
+               <pre class="illegal-example vc" title="Example Verifiable Credential - validation Failure">
+                {
+                  "@context": [
+                    "https://www.w3.org/ns/credentials/v2",
+                    "https://www.w3.org/ns/credentials/examples/v2"
+                  ],
+                  "id": "https://example.com/credentials/3732",
+                  "type": ["VerifiableCredential", "EmailCredential"],
+                  "issuer": "https://example.com/issuers/14",
+                  "issuanceDate": "2010-01-01T19:23:24Z",
+                  "credentialSubject": {
+                    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                    "emailAddress": "not an email"
+                  },
+                  "credentialSchema": {
+                    "id": "https://example.com/schemas/email.json",
+                    "type": "JsonSchema"
                   }
-                },
-                "required": [
-                  "emailAddress"
-                ]
-              }
-            }
-          }
-          </pre>
-          <pre class="example vc" title="Example Verifiable Credential - validation Indeterminate">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "not an email"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-          </pre>
+                }
+               </pre>
+            </p>
+         </section>
+         <section>
+            <h4>Indeterminate Result</h4>   
+            <p>
+               Assuming that the implementer does not support [[JSON-SCHEMA-2019-09]], an example of an <i>Indeterminate</i>
+               evaluation is provided below.
+            </p>
+            <p>
+               <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
+                {
+                  "$id": "https://example.com/schemas/email.json",
+                  "$schema": "https://json-schema.org/draft/2019-09/schema",
+                  "name": "EmailCredential",
+                  "description": "EmailCredential using JsonSchema",
+                  "type": "object",
+                  "properties": {
+                    "credentialSubject": {
+                      "type": "object",
+                      "properties": {
+                        "emailAddress": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      },
+                      "required": [
+                        "emailAddress"
+                      ]
+                    }
+                  }
+                }
+               </pre>
+            </p>
+            <p>
+             <pre class="example vc" title="Example Verifiable Credential - validation Indeterminate">
+             {
+               "@context": [
+                 "https://www.w3.org/ns/credentials/v2",
+                 "https://www.w3.org/ns/credentials/examples/v2"
+               ],
+               "id": "https://example.com/credentials/3732",
+               "type": ["VerifiableCredential", "EmailCredential"],
+               "issuer": "https://example.com/issuers/14",
+               "issuanceDate": "2010-01-01T19:23:24Z",
+               "credentialSubject": {
+                 "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                 "emailAddress": "not an email"
+               },
+               "credentialSchema": {
+                 "id": "https://example.com/schemas/email.json",
+                 "type": "JsonSchema"
+               }
+             }
+             </pre>
+          </p>
+         </section>
         </section>
       </section>
       <section class="informative">
