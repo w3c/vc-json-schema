@@ -87,6 +87,24 @@ var vcwg = {
       href: "https://json-schema.org/implementations.html",
       title: "JSON Schema Implementations",
       publisher: "json-schema-org"
+    },
+    "OAS": {
+      title: "OpenAPI Specification Version 3.1.0",
+      href: "https://swagger.io/specification/",
+      authors: [
+        "Darrel Miller",
+        "Jeremy Whitlock",
+        "Marsh Gardiner ",
+        "Mike Ralphson",
+        "Ron Ratovsky",
+        "Uri Sarid",
+      ],
+      publisher: "OpenAPI Initiative",
+    },
+    "YAML": {
+      href: "https://yaml.org/spec/1.2.2/",
+      title: "YAML Ain’t Markup Language (YAML™) version 1.2",
+      publisher:"YAML Language Development Team"
     }
   }
 };
