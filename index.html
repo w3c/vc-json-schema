@@ -279,7 +279,14 @@
                of a verifiable credential is <code>https://www.w3.org/ns/credentials#JsonSchema</code>.
             </p>
             <p>
-               The specification version of [[JSON-Schema]] can be any version noted in the section
+               When defining a credential schema using the <code>JsonSchemaCredential</code> type,
+               the credential's <code>credentialSubject</code> MUST use the <a href="#jsonschema">JsonSchema</a> 
+               <code>type</code> value and make use of the <code>jsonSchema</code> property, as exemplified below.
+               The <code>credentialSubject</code> MAY have an <code>id</code> property, and if present, 
+               the value MUST match the <code>$id</code> property in the <code>jsonSchema</code> property.
+            </p>
+            <p>
+               Any version of [[JSON-Schema]] can be used from the section
                on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
             <p>
