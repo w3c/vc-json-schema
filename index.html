@@ -1098,5 +1098,110 @@
             guidance in the <a data-cite="vc-data-model/#internationalization-considerations">VC Data Model</a>.
          </p>
       </section>
+      <section class="normative">
+         <h2>IANA Considerations</h2>
+         <section id="media-types">
+            <h3>Media Types</h3>
+            <section id="schema-json-type">
+               <h2><code>application/schema+json</code></h2>
+               <p>
+                  This specification acknowledges the use of the <code>application/schema+json</code>
+                  Media Type specifically for identifying a [[JSON-SCHEMA]] with usage of the
+                  <a href="#jsonschema">JsonSchema</a> type, as registered in 
+                  <a href="#json-schema-specifications">JSON Schema specifications</a>.
+               </p>
+            </section>  
+            <section id="vc-jwt-schema-json-media-type">
+               <h2><code>application/vc+ld+jwt+schema+json</code></h2>
+               <p>
+                 This specification registers the <code>application/vc+jwt+schema+json</code>
+                 Media Type specifically for identifying a <a data-cite="rfc7519#section-3">JWT</a> conforming to the
+                 Verifiable Credentials JWT format in the `typ` header with usage of the 
+                 <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
+               </p>
+               <table>
+                 <tr>
+                   <td>Type name: </td>
+                   <td>application</td>
+                 </tr>
+                 <tr>
+                   <td>Subtype name: </td>
+                   <td>application/vc+jwt+schema+json</td>
+                 </tr>
+                 <tr>
+                   <td>Required parameters: </td>
+                   <td>None</td>
+                 </tr>
+                 <tr>
+                   <td>Encoding considerations: </td>
+                   <td>
+                     <code>application/vc+jwt+schema+json</code> values are encoded as a
+                     series of base64url encoded values (some of which may be the
+                     empty string) each separated from the next by a single
+                     period ('.') character.
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Security considerations: </td>
+                   <td>
+                     As defined in this specification. See also the security
+                     considerations in [[RFC7519]].
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Contact: </td>
+                   <td>
+                     W3C Verifiable Credentials Working Group <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
+                   </td>
+                 </tr>
+               </table>
+            </section>
+            <section id="vc-ld-sd-jwt-schema-json-media-type">
+               <h2><code>application/vc+ld+sd-jwt+schema+json</code></h2>
+               <p>
+                 This specification registers the <code>application/vc+ld+sd-jwt+schema+json</code>
+                 Media Type specifically for identifying a [[SD-JWT]] conforming to the
+                 Verifiable Credentials SD-JWT format in the `typ` header with usage of the 
+                 <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
+               </p>
+               <table>
+                 <tr>
+                   <td>Type name: </td>
+                   <td>application</td>
+                 </tr>
+                 <tr>
+                   <td>Subtype name: </td>
+                   <td>application/vc+ld+sd-jwt+schema+json</td>
+                 </tr>
+                 <tr>
+                   <td>Required parameters: </td>
+                   <td>None</td>
+                 </tr>
+                 <tr>
+                   <td>Encoding considerations: </td>
+                   <td>
+                     <code>application/vc+ld+sd-jwt+schema+json</code> values are encoded as a
+                     series of base64url encoded values (some of which may be the
+                     empty string) each separated from the next by a single
+                     period ('.') character.
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Security considerations: </td>
+                   <td>
+                     As defined in this specification. See also the security
+                     considerations in [[SD-JWT]].
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Contact: </td>
+                   <td>
+                     W3C Verifiable Credentials Working Group <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
+                   </td>
+                 </tr>
+               </table>
+            </section>
+         </section>
+      </section> 
    </body>
 </html>
