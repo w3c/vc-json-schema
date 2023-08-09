@@ -94,6 +94,19 @@ var vcwg = {
       authors:  [ "Daniel Fett" , "Kristina Yasuda" , "Brian Campbell"],
       status:   "Internet-Draft",
       publisher:  "IETF"
+    },
+    "OAS": {
+      title: "OpenAPI Specification",
+      href: "https://swagger.io/specification/",
+      authors: [
+        "Darrel Miller",
+        "Jeremy Whitlock",
+        "Marsh Gardiner ",
+        "Mike Ralphson",
+        "Ron Ratovsky",
+        "Uri Sarid",
+      ],
+      publisher: "OpenAPI Initiative",
     }
   }
 };
