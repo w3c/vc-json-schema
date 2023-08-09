@@ -160,7 +160,7 @@
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
                <li>Is it schema still valid? (provided by the <code>validFrom</code>, <code>validUntil</code>, and <code>credentialStatus</code> properties)</li>
-               <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JWT]])</li>
+               <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JOSE-COSE]])</li>
             </ul>
          </p>
          <section>
@@ -513,7 +513,7 @@
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
             by usage of the <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
             The credential containing a <a>credential schema</a> may include a proof, either
-            embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JWT]].
+            embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JOSE-COSE]].
           </p>
           <p>
             Secured credentials representing credential schemas SHOULD first be validated
@@ -521,7 +521,7 @@
             before proceeding with additional processing.
           </p>
           <p class="issue" data-number="143">
-            Provide examples for Data Integrity and VC-JWT Credential Schemas
+            Provide examples for Data Integrity and VC-JOSE-COSE Credential Schemas
           </p>
           <p>
             Credential Schemas of type <a href="#jsonschema">JsonSchema</a> MAY
