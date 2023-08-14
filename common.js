@@ -28,9 +28,11 @@ var vcwg = {
       title: "Verifiable Credentials Data Model v2.0",
       href: "https://www.w3.org/TR/vc-data-model-2.0/",
       authors: [
-        "Manu Sporny", "Dave Longley", "Grant Noble", "Dan Burnett",
-        "Ted Thibodeau", "Brent Zundel", "David Chadwick",
-        "Kyle Den Hartog"
+        "Manu Sporny", 
+        "Orie Steele",
+        "Michael B. Jones",
+        "Gabe Cohen",
+        "Oliver Terbu"
       ],
       status: "Working Draft",
       publisher: "W3C Verifiable Credentials Working Group"
