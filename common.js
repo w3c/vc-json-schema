@@ -67,9 +67,9 @@ var vcwg = {
       title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
       publisher: "W3C"
     },
-    "VC-JWT": {
-      href: "https://www.w3.org/TR/vc-jwt/",
-      title: "Securing Verifiable Credentials using JSON Web Tokens",
+    "VC-JOSE-COSE": {
+      href: "https://www.w3.org/TR/vc-jose-cose/",
+      title: "Securing Verifiable Credentials using JOSE and COSE",
       authors: ["Orie Steele", "Michael Jones", "Michael Prorock"],
       publisher: "W3C"
     },
