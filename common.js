@@ -87,6 +87,26 @@ var vcwg = {
       href: "https://json-schema.org/implementations.html",
       title: "JSON Schema Implementations",
       publisher: "json-schema-org"
+    },
+    "SD-JWT": {
+      title:    "Selective Disclosure for JWTs (SD-JWT)",
+      href:     "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05",
+      authors:  [ "Daniel Fett" , "Kristina Yasuda" , "Brian Campbell"],
+      status:   "Internet-Draft",
+      publisher:  "IETF"
+    },
+    "OAS": {
+      title: "OpenAPI Specification",
+      href: "https://swagger.io/specification/",
+      authors: [
+        "Darrel Miller",
+        "Jeremy Whitlock",
+        "Marsh Gardiner ",
+        "Mike Ralphson",
+        "Ron Ratovsky",
+        "Uri Sarid",
+      ],
+      publisher: "OpenAPI Initiative",
     }
   }
 };

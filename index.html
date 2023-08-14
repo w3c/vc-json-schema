@@ -163,7 +163,7 @@
                <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JOSE-COSE]])</li>
             </ul>
          </p>
-         <section>
+         <section class="normative">
             <h3>JsonSchema</h3>
             <p>
                This term is part of the 
@@ -255,7 +255,7 @@
               </pre>
             </p>
          </section>
-         <section>
+         <section class="normative">
             <h3>JsonSchemaCredential</h3>
             <p>
                This term is part of the 
@@ -438,7 +438,7 @@
                Furthermore, we identify specific keywords, that are not explicitly defined by JSON Schema,
                but are emphasized in this specification to support widespread usage.
             </p>
-            <section>
+            <section class="normative">
                <h4>$id</h4>
                <p>
                   Across JSON Schema specifications, the <code>$id</code> keyword identifies a schema resource
@@ -451,7 +451,7 @@
                   that the value of the <code>$id</code> is a dereferenceable URL [[URL]].
                </p>
             </section>
-            <section>
+            <section class="normative">
                <h4>$schema</h4>
                <p>
                   Across JSON Schema specifications, the <code>$schema</code> keyword identifies a JSON Schema
@@ -460,14 +460,14 @@
                   the <code>$schema</code> identifier MUST be <code>https://json-schema.org/draft/2020-12/schema</code>.
                </p>
             </section>
-            <section>
+            <section class="normative">
                <h4>name</h4>
                <p>
                   It is RECOMMENDED that all JSON Schemas include a <code>name</code> property which provides
                   a human-readable name that describes the schema.
                </p>
             </section>
-            <section>
+            <section class="normative">
                <h4>description</h4>
                <p>
                   JSON Schemas MAY choose to include an optional <code>description</code> property which provides
@@ -507,7 +507,7 @@
          of this document. Implementers MAY support JSON Schema specification versions not marked as
          <b>required</b>.
         </p>
-        <section>
+        <section class="normative">
           <h3>Integrity Validation</h3>
           <p>
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
@@ -555,7 +555,7 @@
          }
         </pre>
         </section>
-        <section>
+        <section class="normative">
           <h3>Evaluation</h3>
           <p>
             Validation of a given credential against a schema is to be performed according
@@ -570,121 +570,141 @@
           <p>
             Examples for the Success and Failure possible outcomes are provided below.
           </p>
-          <pre class="example" title="Example Email JSON Schema">
-          {
-            "$id": "https://example.com/schemas/email.json",
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "name": "EmailCredential",
-            "description": "EmailCredential using JsonSchema",
-            "type": "object",
-            "properties": {
-              "credentialSubject": {
-                "type": "object",
-                "properties": {
-                  "emailAddress": {
-                    "type": "string",
-                    "format": "email"
+          <section class="normative">
+            <h4>Success Result</h4>
+            <p>
+               <pre class="example" title="Example Email JSON Schema">
+               {
+                 "$id": "https://example.com/schemas/email.json",
+                 "$schema": "https://json-schema.org/draft/2020-12/schema",
+                 "name": "EmailCredential",
+                 "description": "EmailCredential using JsonSchema",
+                 "type": "object",
+                 "properties": {
+                   "credentialSubject": {
+                     "type": "object",
+                     "properties": {
+                       "emailAddress": {
+                         "type": "string",
+                         "format": "email"
+                       }
+                     },
+                     "required": ["emailAddress"]
+                    }
                   }
-                },
-                "required": [
-                  "emailAddress"
-                ]
-              }
-            }
-          }
-          </pre>
-          <p>
-            Validation according to the spec [[JSON-schema-2020-12]] yields Success when applying it to the VC below.
-          </p>
-          <pre class="example vc-jwt" title="Example Verifiable Credential - validations Success">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "subject@example.com"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-          </pre>
-          <p>
-            Validation according to the spec [[JSON-schema-2020-12]] yields Failure when applying it to the VC below.
-          </p>
-          <pre class="illegal-example vc-jwt" title="Example Verifiable Credential - validation Failure">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "not an email"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-        </pre>
-          <p>
-            Assuming that the implementer does not support [[JSON-SCHEMA-2019-09]], an example of Indeterminate evaluation is provided below.
-          </p>
-          <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
-          {
-            "$id": "https://example.com/schemas/email.json",
-            "$schema": "https://json-schema.org/draft/2019-09/schema",
-            "name": "EmailCredential",
-            "description": "EmailCredential using JsonSchema",
-            "type": "object",
-            "properties": {
-              "credentialSubject": {
-                "type": "object",
-                "properties": {
-                  "emailAddress": {
-                    "type": "string",
-                    "format": "email"
+               }
+               </pre>
+            </p>
+            <p>
+              Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Success</i> result
+              when applying it to the VC below.
+            </p>
+            <p>
+               <pre class="example vc-jwt" title="Example Verifiable Credential - validations Success">
+               {
+                 "@context": [
+                   "https://www.w3.org/ns/credentials/v2",
+                   "https://www.w3.org/ns/credentials/examples/v2"
+                 ],
+                 "id": "https://example.com/credentials/3732",
+                 "type": ["VerifiableCredential", "EmailCredential"],
+                 "issuer": "https://example.com/issuers/14",
+                 "issuanceDate": "2010-01-01T19:23:24Z",
+                 "credentialSubject": {
+                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                   "emailAddress": "subject@example.com"
+                 },
+                 "credentialSchema": {
+                   "id": "https://example.com/schemas/email.json",
+                   "type": "JsonSchema"
+                 }
+               }
+               </pre>
+            </p>
+         </section>
+         <section>
+            <h4>Failure Result</h4>
+            <p>
+               Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Failure</i> result when 
+               applying it to the VC below.
+            </p>
+            <p>
+               <pre class="illegal-example vc-jwt" title="Example Verifiable Credential - validation Failure">
+                {
+                  "@context": [
+                    "https://www.w3.org/ns/credentials/v2",
+                    "https://www.w3.org/ns/credentials/examples/v2"
+                  ],
+                  "id": "https://example.com/credentials/3732",
+                  "type": ["VerifiableCredential", "EmailCredential"],
+                  "issuer": "https://example.com/issuers/14",
+                  "issuanceDate": "2010-01-01T19:23:24Z",
+                  "credentialSubject": {
+                    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                    "emailAddress": "not an email"
+                  },
+                  "credentialSchema": {
+                    "id": "https://example.com/schemas/email.json",
+                    "type": "JsonSchema"
                   }
-                },
-                "required": [
-                  "emailAddress"
-                ]
-              }
-            }
-          }
-          </pre>
-          <pre class="example vc-jwt" title="Example Verifiable Credential - validation Indeterminate">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2",
-              "https://www.w3.org/ns/credentials/examples/v2"
-            ],
-            "id": "https://example.com/credentials/3732",
-            "type": ["VerifiableCredential", "EmailCredential"],
-            "issuer": "https://example.com/issuers/14",
-            "issuanceDate": "2010-01-01T19:23:24Z",
-            "credentialSubject": {
-              "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-              "emailAddress": "not an email"
-            },
-            "credentialSchema": {
-              "id": "https://example.com/schemas/email.json",
-              "type": "JsonSchema"
-            }
-          }
-          </pre>
+                }
+               </pre>
+            </p>
+         </section>
+         <section>
+            <h4>Indeterminate Result</h4>   
+            <p>
+               Assuming that the implementer does not support [[JSON-SCHEMA-2019-09]], an example of an <i>Indeterminate</i>
+               evaluation is provided below.
+            </p>
+            <p>
+               <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
+                {
+                  "$id": "https://example.com/schemas/email.json",
+                  "$schema": "https://json-schema.org/draft/2019-09/schema",
+                  "name": "EmailCredential",
+                  "description": "EmailCredential using JsonSchema",
+                  "type": "object",
+                  "properties": {
+                    "credentialSubject": {
+                      "type": "object",
+                      "properties": {
+                        "emailAddress": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      },
+                      "required": [
+                        "emailAddress"
+                      ]
+                    }
+                  }
+                }
+               </pre>
+            </p>
+            <p>
+             <pre class="example vc-jwt" title="Example Verifiable Credential - validation Indeterminate">
+             {
+               "@context": [
+                 "https://www.w3.org/ns/credentials/v2",
+                 "https://www.w3.org/ns/credentials/examples/v2"
+               ],
+               "id": "https://example.com/credentials/3732",
+               "type": ["VerifiableCredential", "EmailCredential"],
+               "issuer": "https://example.com/issuers/14",
+               "issuanceDate": "2010-01-01T19:23:24Z",
+               "credentialSubject": {
+                 "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                 "emailAddress": "not an email"
+               },
+               "credentialSchema": {
+                 "id": "https://example.com/schemas/email.json",
+                 "type": "JsonSchema"
+               }
+             }
+             </pre>
+          </p>
+         </section>
         </section>
       </section>
       <section class="informative">
@@ -694,11 +714,11 @@
           may consider.
         </p>
         <section class="informative">
-          <h3>Validation of Specific Properties in a Credential</h3>
+          <h3>Credential Property Validation</h3>
           <p>
-            Implementers may wish to validate certain sections of a <a>verifiable credential</a>.
-            To do this, <a>credential schemas</a> can be constructed to specify application
-            to subsets of a given credential.
+            Implementers may wish to validate certain properties in a 
+            <a>verifiable credential</a>. To do this, <a>credential schemas</a> can be 
+            constructed to validate subsets of a credential's data.
           </p>
           <p>
             One example of such a construction would be to validate the presence of certain
@@ -995,7 +1015,7 @@
             This section details the general privacy considerations and specific privacy
             implications of deploying this specification into production environments.
          </p>
-         <section>
+         <section class="informative">
             <h3>Personally Identifiable Information</h3>
             <p>
                Data associated with schemas and <a>verifiable credentials</a> are susceptible
@@ -1016,7 +1036,7 @@
                the data whether in transit or at rest.
             </p>
          </section>
-         <section>
+         <section class="informative">
             <h3>Verifier Caching</h3>
             <p>
                Since schemas are immutable, they are highly cachable.
@@ -1027,7 +1047,7 @@
                <a>verifier</a>-based access patterns on the schema. 
             </p>
          </section>
-         <section>
+         <section class="informative">
             <h3>Content Distribution Networks</h3>
             <p>
                The use of content distribution networks by <a>issuers</a> can increase the
@@ -1047,7 +1067,7 @@
             not understanding the implications of this section can result in
             security vulnerabilities.
          </p>
-         <section>
+         <section class="informative">
             <h3>Issuer Impersonation</h3>
             <p>
                It is possible for a schema to become authoritative, such as schemas
@@ -1055,7 +1075,6 @@
                companies. To avoid confusion as to the authorship of <a>credential schemas</a>
                it is advised that they are packaged as secured <a>verifiable credentials</a>.
             </p>
-         </section>
          </section>
       </section>
       <section class="informative">
@@ -1098,5 +1117,34 @@
             guidance in the <a data-cite="vc-data-model/#internationalization-considerations">VC Data Model</a>.
          </p>
       </section>
+      <section class="normative">
+         <h2>IANA Considerations</h2>
+         <section class="normative" id="media-types">
+            <h3>Media Types</h3>
+            <section id="media-types-for-jsonschema">
+               <h2><code>JsonSchema</code></h2>
+               <p>
+                  This specification acknowledges the use of the <code>application/schema+json</code>
+                  and <code>application/json</code> Media Types specifically for identifying a [[JSON-SCHEMA]]
+                  with usage of the <a href="#jsonschema">JsonSchema</a> type, as registered in 
+                  <a href="#json-schema-specifications">JSON Schema specifications</a>.
+               </p>
+               <p>
+                  When using the <a href="#jsonschema">JsonSchema</a> type with a YAML
+                  representation of a JSON Schema, defined by [[OAS]], the types <code>application/openapi+yaml</code>
+                  or <code>application/yaml</code> may be used.
+               </p>
+            </section>  
+            <section class="normative" id="media-types-for-jsonschemacredential">
+               <h2><code>JsonSchemaCredential</code></h2>
+               <p>
+                  This specification acknowledges the use of the <code>application/vc+ld+json</code>,
+                  <code>application/vc+ld+json+jwt</code>, and <code>application/vc+ld+json+sd-jwt</code> Media Types
+                  specifically for identifying a [[JSON-SCHEMA]] with usage of the <a href="#jsonschemacredential">
+                  JsonSchemaCredential</a> type, as registered in the [[VC-DATA-MODEL-2]], [[VC-JOSE-COSE]], and [[SD-JWT]] specifications respectively.
+               </p>
+            </section>
+         </section>
+      </section> 
    </body>
 </html>
