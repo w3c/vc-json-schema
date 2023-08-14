@@ -88,6 +88,13 @@ var vcwg = {
       title: "JSON Schema Implementations",
       publisher: "json-schema-org"
     },
+    "SD-JWT": {
+      title:    "Selective Disclosure for JWTs (SD-JWT)",
+      href:     "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05",
+      authors:  [ "Daniel Fett" , "Kristina Yasuda" , "Brian Campbell"],
+      status:   "Internet-Draft",
+      publisher:  "IETF"
+    },
     "OAS": {
       title: "OpenAPI Specification Version 3.1.0",
       href: "https://swagger.io/specification/",
