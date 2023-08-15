@@ -195,7 +195,7 @@
                    </tr>
                    <tr>
                       <td>type</td>
-                      <td>The <code>type</code> property MUST be JsonSchema.</td>
+                      <td>The <code>type</code> property MUST be <code>JsonSchema</code>.</td>
                    </tr>
                 </tbody>
              </table>
@@ -276,11 +276,12 @@
             <p>
                The <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
                for using the <code>jsonSchema</code> property within the <code>credentialSubject</code>
-               of a verifiable credential is <code>https://www.w3.org/ns/credentials#JsonSchema</code>.
+               of a verifiable credential is <code>https://www.w3.org/ns/credentials#jsonSchema</code>.
             </p>
             <p>
-               The specification version of [[JSON-Schema]] can be any version noted in the section
-               on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
+               Any version of [[JSON-SCHEMA]] in the section on
+               <a href="#json-schema-specifications">JSON Schema Specifications</a>
+               can be used.
             </p>
             <p>
              <table class="simple">
@@ -299,7 +300,23 @@
                    </tr>
                    <tr>
                       <td>type</td>
-                      <td>The <code>type</code> property MUST be JsonSchemaCredential</td>
+                      <td>The <code>type</code> property MUST be <code>JsonSchemaCredential</code>.</td>
+                   </tr>
+                   <tr>
+                      <td>credentialSubject.id</td>
+                      <td>The <code>credentialSubject</code>'s <code>id</code> property MUST follow the guidance
+                        provided for <a data-cite="vc-data-model#identifiers">identifiers</a> in the [[VC-DATA-MODEL-2]] 
+                        specification.</td>
+                   </tr>
+                   <tr>
+                      <td>credentialSubject.type</td>
+                      <td>The <code>credentialSubject</code>'s <code>type</code> property MUST be 
+                        <a href="#jsonschema">JsonSchema.</td>
+                   </tr>
+                   <tr>
+                      <td>credentialSubject.jsonSchema</td>
+                      <td>The <code>credentialSubject</code> MUST use the <code>jsonSchema</code> property to 
+                        represent a valid [[JSON-SCHEMA]].</td>
                    </tr>
                 </tbody>
                </table>
