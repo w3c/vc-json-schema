@@ -494,8 +494,20 @@
           </section>
           <section class="normative">
             <h3>Representations of JSON Schema</h3>
-            <p class="issue" data-number="142">
-               Write section on using different representations of JSON Schema, such as YAML.
+            <p>
+               The standard representation of [[JSON-SCHEMA]] uses the [[RFC8259]] JSON data interchange
+               syntax</a> with <code>.json</code> as the file extension.
+            </p>
+            <p>
+               Implementers MAY use OpenAPI Specification's [[OAS]] [[YAML]] representation
+               of a [[JSON-SCHEMA]] with <code>.yaml</code> as the file extension. 
+
+               <p class="note">
+                  YAML representations of JSON Schemas can only be used with credential schemas whose type is <a href="#jsonschema">JsonSchema</a>.
+               </p>
+
+               An example [[JSON-SCHEMA]] using [[YAML]] is provided below.
+               <pre class="example" data-include="./example/yaml-json-schema.yaml" data-include-format="yaml"></pre>
             </p>
           </section>
       </section>

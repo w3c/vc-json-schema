@@ -28,9 +28,11 @@ var vcwg = {
       title: "Verifiable Credentials Data Model v2.0",
       href: "https://www.w3.org/TR/vc-data-model-2.0/",
       authors: [
-        "Manu Sporny", "Dave Longley", "Grant Noble", "Dan Burnett",
-        "Ted Thibodeau", "Brent Zundel", "David Chadwick",
-        "Kyle Den Hartog"
+        "Manu Sporny", 
+        "Orie Steele",
+        "Michael B. Jones",
+        "Gabe Cohen",
+        "Oliver Terbu"
       ],
       status: "Working Draft",
       publisher: "W3C Verifiable Credentials Working Group"
@@ -65,9 +67,9 @@ var vcwg = {
       title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
       publisher: "W3C"
     },
-    "VC-JWT": {
-      href: "https://www.w3.org/TR/vc-jwt/",
-      title: "Securing Verifiable Credentials using JSON Web Tokens",
+    "VC-JOSE-COSE": {
+      href: "https://www.w3.org/TR/vc-jose-cose/",
+      title: "Securing Verifiable Credentials using JOSE and COSE",
       authors: ["Orie Steele", "Michael Jones", "Michael Prorock"],
       publisher: "W3C"
     },
@@ -96,7 +98,7 @@ var vcwg = {
       publisher:  "IETF"
     },
     "OAS": {
-      title: "OpenAPI Specification",
+      title: "OpenAPI Specification Version 3.1.0",
       href: "https://swagger.io/specification/",
       authors: [
         "Darrel Miller",
@@ -107,6 +109,11 @@ var vcwg = {
         "Uri Sarid",
       ],
       publisher: "OpenAPI Initiative",
+    },
+    "YAML": {
+      href: "https://yaml.org/spec/1.2.2/",
+      title: "YAML Ain’t Markup Language (YAML™) version 1.2",
+      publisher:"YAML Language Development Team"
     }
   }
 };
