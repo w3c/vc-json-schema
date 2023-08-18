@@ -1077,15 +1077,21 @@
             </p>
          </section>
          <section class="informative">
-            <h3>Content Distribution Networks</h3>
+            <h3>Schema Resolution</h3>
             <p>
                The use of content distribution networks by <a>issuers</a> can increase the
                privacy of <a>holders</a> by reducing or eliminating requests for the
-               schemas lists from the <a>issuer</a>. Often, a request for a schema
-               list will be served by an edge device and thus be faster and reduce the load
+               schemas from the <a>issuer</a>. Often, a request for a schema
+               will be served by an edge device and thus be faster and reduce the load
                on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
                from <a>issuers</a>.
             </p>
+           <p>
+             Furthermore, the use of <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html">Oblivious HTTP</a>
+             can prevent linking schema requests made by <a>holders</a>. It is encouraged that implementers allow configuration
+             of an <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#dfn-relay">Oblivious Relay Resource</a>
+             to be used when doing <a>schema resolution</a>.
+           </p>
          </section>
       </section>
       <section class="informative">
