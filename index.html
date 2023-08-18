@@ -265,14 +265,32 @@
                <b>JsonSchemaCredential</b> is used for the validation of W3C Verifiable Credentials using
                JSON Schema, where the JSON Schema is contained with a <a>verifiable credential</a>.
                When dereferencing the <code>id</code> property associated with the
-               <code>JsonSchemaCredential</code> <code>type</code> value the result is a valid 
-               <a>verifiable credential</a>. The resulting <a>verifiable credential</a>'s  
-               <code>credentialSubject</code> property MUST contain a two properties:
-               <ul>
+               <code>credentialSchema</code> <code>type</code> value, the result is a valid
+               <a>verifiable credential</a>. For the resulting <a>verifiable credential</a>:
+            <p>
+            <ul>
+              <li>
+                The <code>credentialSubject</code> property MUST contain two properties:
+                <ul>
                   <li><code>type</code> – the value of which MUST be <code>JsonSchema</code></li>
                   <li><code>jsonSchema</code> – an object which contains a valid JSON Schema</li>
-               </ul>
-            </p>
+                </ul>
+              </li>
+              <li>
+                The value of the <code>credentialSchema</code> property MUST always be set to:
+                <pre title="Value of a JsonSchemaCredential's credentialSchema property">
+                {
+                  "id": "https://www.w3.org/2022/credentials/v2/json-schema-credential-schema.json",
+                  "type": "JsonSchema",
+                  "digestSRI": "sha384-S57yQDg1MTzF56Oi9DbSQ14u7jBy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCrW"
+                }
+                </pre>
+                <p class="note" title="The digestSRI value may change">
+                  The value of the <code>digestSRI</code> property may change until this specification becomes a recommendation.
+                </p>
+              </li>
+            </ul>
+
             <p>
                The <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
                for using the <code>jsonSchema</code> property within the <code>credentialSubject</code>
@@ -311,7 +329,7 @@
                    <tr>
                       <td>credentialSubject.type</td>
                       <td>The <code>credentialSubject</code>'s <code>type</code> property MUST be 
-                        <a href="#jsonschema">JsonSchema.</td>
+                        <a href="#jsonschema">JsonSchema</a>.</td>
                    </tr>
                    <tr>
                       <td>credentialSubject.jsonSchema</td>
