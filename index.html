@@ -1101,15 +1101,25 @@
             </p>
          </section>
          <section class="informative">
-            <h3>Content Distribution Networks</h3>
+            <h3>Schema Resolution</h3>
+           <p>
+             <a>Schema resolution</a> is the process of dereferencing a credential schema's identifier in order to fetch a
+             <a>credential schema</a>.
+           </p>
             <p>
-               The use of content distribution networks by <a>issuers</a> can increase the
-               privacy of <a>holders</a> by reducing or eliminating requests for the
-               schemas lists from the <a>issuer</a>. Often, a request for a schema
-               list will be served by an edge device and thus be faster and reduce the load
+               <a>Issuers</a> can increase the privacy of <a>holders</a> by using
+               content distribution networks to reduce or eliminate requests for the
+               schemas from the <a>issuer</a>. Often, a request for a schema
+               will be served by an edge device and thus be faster and reduce the load
                on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
                from <a>issuers</a>.
             </p>
+           <p>
+             Furthermore, the use of <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html">Oblivious HTTP</a>
+             can prevent linkage of schema requests made by <a>holders</a>. Implementers are encouraged to allow configuration
+             of an <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#dfn-relay">Oblivious Relay Resource</a>
+             for use during <a>schema resolution</a>.
+           </p>
          </section>
       </section>
       <section class="informative">
