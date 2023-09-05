@@ -5,26 +5,7 @@ var vcwg = {
   // Add as the respecConfig localBiblio variable
   // Extend or override global respec references
   localBiblio: {
-    "RFC-6596": {
-      title: "The Canonical Link Relation",
-      date:" April 2012",
-      href: "https://www.rfc-editor.org/rfc/rfc6596",
-      authors: [
-        "M. Ohye",
-        "J. Kupke"
-      ]
-    },
-    "RFC-3986": {
-      title: "Uniform Resource Identifier (URI): Generic Syntax",
-      date:" January 2005",
-      href: "https://www.rfc-editor.org/rfc/rfc3986",
-      authors: [
-        "T. Berners-Lee",
-        "R. Fielding",
-        "L. Masinter"
-      ]
-    },
-    "VC-DATA-MODEL-2": {
+    "VC-DATA-MODEL-2.0": {
       title: "Verifiable Credentials Data Model v2.0",
       href: "https://www.w3.org/TR/vc-data-model-2.0/",
       authors: [
@@ -57,38 +38,11 @@ var vcwg = {
       title: "JSON Schema Draft-07 Release Notes",
       publisher: "OpenJS Foundation"
     },
-    "DID-CORE": {
-      href: "https://w3c.github.io/did-core/",
-      title: "Decentralized Identifiers (DIDs) v1.0",
-      publisher: "W3C"
-    },
-    "JSON-LD": {
-      href: "https://w3c.github.io/json-ld-syntax/",
-      title: "JSON-LD 1.1: A JSON-based Serialization for Linked Data",
-      publisher: "W3C"
-    },
     "VC-JOSE-COSE": {
       href: "https://www.w3.org/TR/vc-jose-cose/",
       title: "Securing Verifiable Credentials using JOSE and COSE",
       authors: ["Orie Steele", "Michael Jones", "Michael Prorock"],
       publisher: "W3C"
-    },
-    "VC-DATA-INTEGRITY": {
-      title:    "Verifiable Credential Data Integrity 1.0",
-      href:     "https://www.w3.org/TR/vc-data-integrity/",
-      authors:  ["David Longley", "Manu Sporny"],
-      status:   "Working Draft",
-      publisher:  "W3C Verifiable Credentials Working Group"
-    },
-    "JOSE": {
-      href: "https://jose.readthedocs.io/en/latest/",
-      title: "Javascript Object Signing and Encryption (JOSE)",
-      publisher: "IETF"
-    },
-    "JSON-SCHEMA-IMPLMENTATIONS": {
-      href: "https://json-schema.org/implementations.html",
-      title: "JSON Schema Implementations",
-      publisher: "json-schema-org"
     },
     "SD-JWT": {
       title:    "Selective Disclosure for JWTs (SD-JWT)",
@@ -96,24 +50,6 @@ var vcwg = {
       authors:  [ "Daniel Fett" , "Kristina Yasuda" , "Brian Campbell"],
       status:   "Internet-Draft",
       publisher:  "IETF"
-    },
-    "OAS": {
-      title: "OpenAPI Specification Version 3.1.0",
-      href: "https://swagger.io/specification/",
-      authors: [
-        "Darrel Miller",
-        "Jeremy Whitlock",
-        "Marsh Gardiner ",
-        "Mike Ralphson",
-        "Ron Ratovsky",
-        "Uri Sarid",
-      ],
-      publisher: "OpenAPI Initiative",
-    },
-    "YAML": {
-      href: "https://yaml.org/spec/1.2.2/",
-      title: "YAML Ain’t Markup Language (YAML™) version 1.2",
-      publisher:"YAML Language Development Team"
     }
   }
 };

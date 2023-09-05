@@ -21,6 +21,7 @@
            previousPublishDate: "2022-04-05",
            localBiblio: vcwg.localBiblio,
            doJsonLd: true,
+           xref: true,
            github: "https://github.com/w3c/vc-json-schema/",
            includePermalinks: false,
            edDraftURI: "https://w3c.github.io/vc-json-schema/",
@@ -104,13 +105,13 @@
       <section id='abstract'>
         <h2>Abstract</h2>
         <p>
-          Among other things, the [[VC-DATA-MODEL-2]] specifies the models used for Verifiable Credentials,
+          Among other things, the [[VC-DATA-MODEL-2.0]] specifies the models used for Verifiable Credentials,
           Verifiable Presentations, and explains the relationships between three parties:
           <i>issuers</i>, <i>holders</i>, and <i>verifiers</i>. Verifiability, extensibility, and semantic
           interoperability are critical pieces of functionality referenced throughout
-          the [[VC-DATA-MODEL-2]]. This specification provides a mechanism to make use of a Credential Schema in
+          the [[VC-DATA-MODEL-2.0]]. This specification provides a mechanism to make use of a Credential Schema in
           <a>Verifiable Credential</a>, leveraging the existing
-          <a data-cite="vc-data-model/#data-schemas">Data Schemas</a> concept.
+          <a data-cite="VC-DATA-MODEL-2.0/#data-schemas">Data Schemas</a> concept.
         </p>
       </section>
       <section id='sotd'>
@@ -150,17 +151,18 @@
          <h2>Data Model</h2>
          <p>
             The following sections outline the data models for this document, of which there are two:
-            <code>JsonSchema</code> for usage of a [[JSON-Schema]] directly in a <code>credentialSchema</code>
-            property, and <code>JsonSchemaCredential</code> for usage of a [[JSON-Schema]] represented as a
+            <code>JsonSchema</code> for usage of a [[JSON-SCHEMA]] directly in a <code>credentialSchema</code>
+            property, and <code>JsonSchemaCredential</code> for usage of a [[JSON-SCHEMA]] represented as a
             <a>verifiable credential</a>.
          </p>
          <p>
             Implementers may find use in packaging a JSON Schema as a verifiable credential when they wish to
-            leverage features of the [[VC-DATA-MODEL-2]], answering questions such as:
+            leverage features of the [[VC-DATA-MODEL-2.0]], answering questions such as:
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
                <li>Is it schema still valid? (provided by the <code>validFrom</code>, <code>validUntil</code>, and <code>credentialStatus</code> properties)</li>
-               <li>Has the schema been tampered with? (provided by [[VC-DATA-INTEGRITY]] or [[VC-JOSE-COSE]])</li>
+               <li>Has the schema been tampered with? (provided by <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
+            Securing Verifiable Credentials</a>)</li>
             </ul>
          </p>
          <section class="normative">
@@ -175,7 +177,7 @@
                <code>JsonSchema</code> <code>type</code> value the result is a valid JSON
                Schema document according to its specification version.
             <p>
-               The specification version of [[JSON-Schema]] can be any version noted in the section
+               The specification version of [[JSON-SCHEMA]] can be any version noted in the section
                on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
             <p>
@@ -190,7 +192,7 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2]]. The value MUST be a URL that identifies
+                      Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
                       the schema associated with the <a>verifiable credential</a>.</td>
                    </tr>
                    <tr>
@@ -314,7 +316,7 @@
                    <tr>
                       <td>id</td>
                       <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2]]. The value MUST be a URL that identifies
+                      Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
                       the <a>verifiable credential</a> which contains a credential schema.</td>
                    </tr>
                    <tr>
@@ -324,7 +326,7 @@
                    <tr>
                       <td>credentialSubject.id</td>
                       <td>The <code>credentialSubject</code>'s <code>id</code> property MUST follow the guidance
-                        provided for <a data-cite="vc-data-model#identifiers">identifiers</a> in the [[VC-DATA-MODEL-2]] 
+                        provided for <a data-cite="VC-DATA-MODEL-2.0/#identifiers">identifiers</a> in the [[VC-DATA-MODEL-2.0]] 
                         specification.</td>
                    </tr>
                    <tr>
@@ -420,7 +422,7 @@
         <h2>JSON Schema Specifications</h2>
           <p>
              The following section describes the allowed specifications for 
-             using a [[JSON-Schema]] with a <a>credential schema</a>.
+             using a [[JSON-SCHEMA]] with a <a>credential schema</a>.
           </p>
           <p>
             To promote conformance and enable interoperability, implementers MUST
@@ -483,8 +485,8 @@
                <h4>$id</h4>
                <p>
                   Across JSON Schema specifications, the <code>$id</code> keyword identifies a schema resource
-                  with its canonical [[RFC-6596]] URI. The <code>$id</code> MUST be present and its value
-                  MUST represent a valid URI-reference [[RFC-3986]].
+                  with its canonical [[RFC6596]] URI. The <code>$id</code> MUST be present and its value
+                  MUST represent a valid URI-reference [[RFC3986]].
                </p>
                <p>
                   It is RECOMMENDED that the value of the <code>$id</code> property match the <code>id</code>
@@ -523,7 +525,7 @@
                syntax</a> with <code>.json</code> as the file extension.
             </p>
             <p>
-               Implementers MAY use OpenAPI Specification's [[OAS]] [[YAML]] representation
+               Implementers MAY use OpenAPI Specification's [[[OPENAPIS-3.1.0]]] [[YAML]] representation
                of a [[JSON-SCHEMA]] with <code>.yaml</code> as the file extension. 
 
                <p class="note">
@@ -566,7 +568,8 @@
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
             by usage of the <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
             The credential containing a <a>credential schema</a> may include a proof, either
-            embedded according to [[VC-DATA-INTEGRITY]] or packaged as a [[VC-JOSE-COSE]].
+            embedded according to <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
+            Securing Verifiable Credentials</a>.
           </p>
           <p>
             Secured credentials representing credential schemas SHOULD first be validated
@@ -574,13 +577,13 @@
             before proceeding with additional processing.
           </p>
           <p class="issue" data-number="143">
-            Provide examples for Data Integrity and VC-JOSE-COSE Credential Schemas
+            Provide examples for secured credential schemas.
           </p>
           <p>
             Credential Schemas of type <a href="#jsonschema">JsonSchema</a> MAY
             be annotated with integrity information by adding the `digestSRI` property to the `credentialSchema` value
             in the Verifiable Credential which contains the schema, using the method specified in
-            <a data-cite="sri/#integrity-metadata">Subresource Integrity</a>.
+            <a data-cite="VC-DATA-MODEL-2.0/#integrity-of-related-resources">Integrity of Related Resources</a>.
             It is RECOMMENDED that validation of the integrity of the schema be done before evaluation.
           </p>
         <p>
@@ -803,7 +806,7 @@
         <section class="informative">
           <h3>Additional Properties</h3>
           <p>
-            In using [[JSON-Schema]] it is advised that implementers avoid
+            In using [[JSON-SCHEMA]] it is advised that implementers avoid
             setting the <code>additionalProperties</code> to <i>false</i>. Doing
             so could inadvertently exclude properties in a credential from passing
             validation.
@@ -869,7 +872,8 @@
             of a <a>credential schema</a> via its digital signature.
          </p>
          <p>
-            As an alternative, the aforementioned [[SRI]] scheme may be used to provide content integrity
+            As an alternative, the aforementioned <a data-cite="VC-DATA-MODEL-2.0/#integrity-of-related-resources">
+            Integrity of Related Resources</a> scheme may be used to provide content integrity
             protection, ensuring that the underlying <a>credential schema</a> resource has not been tampered with.
          </p>
         </section>
@@ -885,7 +889,7 @@
           <h3>Multiple Schemas</h3>
           <p>
             A common use case is to include multiple schemas to validate against a single
-            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2.0]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
             An example of how to construct such a schema using the [[JSON-SCHEMA]] property
@@ -987,8 +991,8 @@
           <h3>Validity of a Verifiable Credential</h3>
           <p>
             Validation against a [[JSON-SCHEMA]] may be confused with
-            <a data-cite="vc-data-model/#dfn-credential-validation">validation</a>
-            or <a data-cite="vc-data-model/#dfn-verify">verification</a>
+            <a data-cite="VC-DATA-MODEL-2.0/#dfn-credential-validation">validation</a>
+            or <a data-cite="VC-DATA-MODEL-2.0/#dfn-verify">verification</a>
             of a Verifiable Credential. A valid credential according to a [[JSON-SCHEMA]] refers
             only to the structure of the claims comprising a Verifiable Credential. This idea of
             validity does not imply anything about the validity of the Verifiable Credential itself.
@@ -1000,11 +1004,11 @@
           <h3>Relationship to Verifiable Credential Type Property</h3>
           <p>
             It is common to define a <code>credential schema</code> that will be set for 
-            Verifiable Credentials whose <a data-cite="vc-data-model/#dfn-type">type</a>
+            Verifiable Credentials whose <a data-cite="VC-DATA-MODEL-2.0/#dfn-type">type</a>
             property contains a specific <code>type</code>. In this scenario, it is advised to use the value
             of the specific <code>type</code> in the <code>id</code> or in a <code>name</code> or
             <code>description</code> property.
-            of a [[JSON-Schema]].
+            of a [[JSON-SCHEMA]].
           </p>
           <p>
             The example below illustrates this for <code>EmailCredential</code>:
@@ -1161,7 +1165,7 @@
             JSON Schemas are designed to be a machine-readable format which provides static
             validation. As such, human readability is a secondary concern. When using a
             <a>verifiable credential</a> to represent a schema, we recommend following the
-            guidance in the <a data-cite="vc-data-model/#accessibility-considerations">VC Data Model</a>.
+            guidance in the <a data-cite="VC-DATA-MODEL-2.0/#accessibility-considerations">VC Data Model</a>.
          </p>
       </section>
       <section class="informative">
@@ -1182,7 +1186,7 @@
          </p>
          <p>
             When using a <a>verifiable credential</a> to represent a schema, we recommend following the
-            guidance in the <a data-cite="vc-data-model/#internationalization-considerations">VC Data Model</a>.
+            guidance in the <a data-cite="VC-DATA-MODEL-2.0/#internationalization-considerations">VC Data Model</a>.
          </p>
       </section>
       <section class="normative">
@@ -1198,8 +1202,8 @@
                   <a href="#json-schema-specifications">JSON Schema specifications</a>.
                </p>
                <p>
-                  When using the <a href="#jsonschema">JsonSchema</a> type with a YAML
-                  representation of a JSON Schema, defined by [[OAS]], the types <code>application/openapi+yaml</code>
+                  When using the <a href="#jsonschema">JsonSchema</a> type with a [[YAML]]
+                  representation of a [[JSON-SCHEMA]], defined by [[[OPENAPIS-3.1.0]]], the types <code>application/openapi+yaml</code>
                   or <code>application/yaml</code> may be used.
                </p>
             </section>  
@@ -1209,7 +1213,7 @@
                   This specification acknowledges the use of the <code>application/vc+ld+json</code>,
                   <code>application/vc+ld+json+jwt</code>, and <code>application/vc+ld+json+sd-jwt</code> Media Types
                   specifically for identifying a [[JSON-SCHEMA]] with usage of the <a href="#jsonschemacredential">
-                  JsonSchemaCredential</a> type, as registered in the [[VC-DATA-MODEL-2]], [[VC-JOSE-COSE]], and [[SD-JWT]] specifications respectively.
+                  JsonSchemaCredential</a> type, as registered in the [[VC-DATA-MODEL-2.0]], [[VC-JOSE-COSE]], and [[SD-JWT]] specifications respectively.
                </p>
             </section>
          </section>
