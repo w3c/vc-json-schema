@@ -5,19 +5,6 @@ var vcwg = {
   // Add as the respecConfig localBiblio variable
   // Extend or override global respec references
   localBiblio: {
-    "VC-DATA-MODEL-2.0": {
-      title: "Verifiable Credentials Data Model v2.0",
-      href: "https://www.w3.org/TR/vc-data-model-2.0/",
-      authors: [
-        "Manu Sporny", 
-        "Orie Steele",
-        "Michael B. Jones",
-        "Gabe Cohen",
-        "Oliver Terbu"
-      ],
-      status: "Working Draft",
-      publisher: "W3C Verifiable Credentials Working Group"
-    },
     "JSON-SCHEMA": {
       href: "https://json-schema.org/specification.html",
       title: "JSON Schema: A Media Type for Describing JSON Documents",
