@@ -7,6 +7,10 @@ https://w3c.github.io/vc-json-schema/
 We encourage contributions meeting the [Contribution Guidelines](CONTRIBUTING.md).  While we prefer the creation of issues
 and Pull Requests in the GitHub repository, discussions may also occur on the [public-credentials](http://lists.w3.org/Archives/Public/public-credentials/) mailing list.
 
+### Test Suite
+
+A [docker](https://www.docker.com/)-based test suite for the specification can [be found here](https://github.com/w3c/vc-json-schema-test-suite). All impelementers are encouraged to add to the test suite.
+
 ### Building
 
 To build, we use [respec](https://respec.org/).
@@ -21,3 +25,6 @@ Next open up `out.html` in a web browser and review the document.
 
 ### Other useful links
 * [Public group email archive](https://lists.w3.org/Archives/Public/public-credentials/)
+* [VC Data Model](https://www.w3.org/TR/vc-data-model/)
+* [JSON Schema](https://json-schema.org/)
+* [Test Suite](https://github.com/w3c/vc-json-schema-test-suite)

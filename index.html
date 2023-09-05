@@ -24,6 +24,7 @@
            github: "https://github.com/w3c/vc-json-schema/",
            includePermalinks: false,
            edDraftURI: "https://w3c.github.io/vc-json-schema/",
+           testSuiteURI: "https://w3c.github.io/vc-json-schema-test-suite/",
            editors: [{
              name: "Gabe Cohen",
              url: "https://github.com/decentralgabe",
@@ -273,7 +274,7 @@
                 The <code>credentialSubject</code> property MUST contain two properties:
                 <ul>
                   <li><code>type</code> – the value of which MUST be <code>JsonSchema</code></li>
-                  <li><code>jsonSchema</code> – an object which contains a valid JSON Schema</li>
+                  <li><a href="jsonschema-0"><code>jsonSchema</code></a> – an object which contains a valid JSON Schema</li>
                 </ul>
               </li>
               <li>
@@ -291,12 +292,6 @@
                 </p>
               </li>
             </ul>
-
-            <p>
-               The <a href="https://www.w3.org/TR/json-ld/#dfn-term-definition">term definition</a>
-               for using the <code>jsonSchema</code> property within the <code>credentialSubject</code>
-               of a verifiable credential is <code>https://www.w3.org/ns/credentials#jsonSchema</code>.
-            </p>
             <p>
                Any version of [[JSON-SCHEMA]] in the section on
                <a href="#json-schema-specifications">JSON Schema Specifications</a>
@@ -410,10 +405,60 @@
               }
               </pre>
             </p>
-            <p class="issue" data-number="159">
-               Add language about JsonSchemaCredential credentials having a credentialSchema property
-               and the risks of nesting.
-            </p>
+            <section class="normative">
+               <h4>jsonSchema</h4>
+               <p>
+                  This term is part of the 
+                  <a href="https://www.w3.org/2018/credentials/#JsonSchemaCredential">Verifiable Credentials Vocabulary v2.0</a>.
+               </p>
+               <p><b>jsonSchema</b> enables the use of the <code>jsonSchema</code> property
+                  within the <code>credentialSubject</code> of a verifiable credential.  The term is
+                  intended to be used with the <a href="#jsonschemacredential"></a> type. The value of
+                  the <code>jsonSchema</code> property MUST be a valid [[JSON-SCHEMA]].
+               </p>
+               <p>
+                  <pre class="example jsonschemacredential-jsonschema nohighlight" title="Example JsonSchema Credential with jsonSchema">
+                  {
+                   "@context": [
+                       "https://www.w3.org/ns/credentials/v2",
+                       "https://www.w3.org/ns/credentials/examples/v2"
+                   ],
+                   "id": "https://example.com/credentials/3734",
+                   "type": ["VerifiableCredential", "JsonSchemaCredential"],
+                   "issuer": "https://example.com/issuers/14",
+                   "issuanceDate": "2010-01-01T19:23:24Z",
+                   "credentialSchema": {
+                     "id": "https://www.w3.org/2022/credentials/v2/json-schema-credential-schema.json",
+                     "type": "JsonSchema",
+                   },
+                   "credentialSubject": {
+                     "id": "https://example.com/schemas/favorite-color-schema.json",
+                     "type": "JsonSchema",
+                     <span class="highlight"> "jsonSchema": {
+                        "$id": "https://example.com/schemas/favorite-color-schema.json",
+                        "$schema": "https://json-schema.org/draft/2020-12/schema",
+                        "name": "Favorite Color Schema",
+                        "description": "Favorite Color using JsonSchemaCredential",
+                        "type": "object",
+                        "properties": {
+                          "credentialSubject": {
+                            "type": "object",
+                            "properties": {
+                              "favoriteColor": {
+                                "type": "string"
+                                "enum": ["red", "orange", "green", "blue", "yellow", "purple"]
+                              }
+                            },
+                            "required": ["favoriteColor"]
+                          }
+                        }
+                     }
+                     </span>
+                   }
+                 }
+                 </pre>
+               </p>
+            </section>
          </section>
       </section>
       <section class="normative">
