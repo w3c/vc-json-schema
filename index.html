@@ -1068,6 +1068,11 @@
             This section details the general privacy considerations and specific privacy
             implications of deploying this specification into production environments.
          </p>
+         <p>
+            When using the <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> 
+            <code>type</code> implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#privacy-considerations">
+            Privacy Considerations</a> outlined in the [[VC-DATA-MODEL-2.0]].
+         </p>
          <section class="informative">
             <h3>Personally Identifiable Information</h3>
             <p>
@@ -1135,13 +1140,19 @@
             not understanding the implications of this section can result in
             security vulnerabilities.
          </p>
+         <p>
+            When using the <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> 
+            <code>type</code> implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#security-considerations">
+            Security Considerations</a> outlined in the [[VC-DATA-MODEL-2.0]].
+         </p>
          <section class="informative">
             <h3>Issuer Impersonation</h3>
             <p>
                It is possible for a schema to become authoritative, such as schemas
                provided by a recognized industry group like a consoritum of financial
                companies. To avoid confusion as to the authorship of <a>credential schemas</a>
-               it is advised that they are packaged as secured <a>verifiable credentials</a>.
+               it is advised that they are packaged as <a>verifiable credentials</a> using the
+               <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> <code>type</code>.
             </p>
          </section>
       </section>
