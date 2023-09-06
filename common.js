@@ -34,7 +34,7 @@ var vcwg = {
     "SD-JWT": {
       title:    "Selective Disclosure for JWTs (SD-JWT)",
       href:     "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05",
-      authors:  [ "Daniel Fett" , "Kristina Yasuda" , "Brian Campbell"],
+      authors:  ["Daniel Fett", "Kristina Yasuda", "Brian Campbell"],
       status:   "Internet-Draft",
       publisher:  "IETF"
     }
