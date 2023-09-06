@@ -1107,10 +1107,10 @@
          </section>
          <section class="informative">
             <h3>Schema Resolution</h3>
-           <p>
+            <p>
              <a>Schema resolution</a> is the process of dereferencing a credential schema's identifier in order to fetch a
              <a>credential schema</a>.
-           </p>
+            </p>
             <p>
                <a>Issuers</a> can increase the privacy of <a>holders</a> by using
                content distribution networks to reduce or eliminate requests for the
@@ -1119,17 +1119,34 @@
                on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
                from <a>issuers</a>.
             </p>
-           <p>
+            <p>
              Furthermore, the use of <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html">Oblivious HTTP</a>
              can prevent linkage of schema requests made by <a>holders</a>. Implementers are encouraged to allow configuration
              of an <a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#dfn-relay">Oblivious Relay Resource</a>
              for use during <a>schema resolution</a>.
-           </p>
-           <p>
+            </p>
+            <p>
              When using <a>credential schema</a> identifiers that are unique to the issued credential, it is possible
              to correlate <a>schema resolution</a> of a credential with an IP address. Implementers are encouraged to prevent such
              correlation by selecting identifiers which are shared among a class of credentials.
-           </p>
+            </p>
+         </section>
+         <section>
+            <h3>Data Minimization</h3>
+            <p>
+               Data minimization refers to the principle of sharing the minimum necessary data for any given data request, such
+               as a <a>verifier</a> requesting a <a>verifiable credential</a>, or set of <a>verifiable credentials</a> from
+               a <a>holder</a>.
+            </p>
+            <p>
+               When using a <a>credential schema</a> with a credential that supports <a>selective disclosure</a> it may be
+               possible for a <a>verifier</a> to determine additional attributes that would be available, but not presented
+               when verifying a <a>credential</a> from a <a>holder</a>. To mitigate <i>data leakage</i> <a>holders</a> may
+               choose to reject verification requests that disclose such additional attributes, or, if the capability is
+               available, selectively disclose properties in the associated <a>credential schema</a>. To enable this functionality
+               <a>issuers</a> can use <a>selective disclosure</a> schemes when creating <a>credential schemas</a> using
+               the <code><a href="#jsonschemacredential">JsonCredentialSchema</a></code> <code>type</code>.
+            </p>
          </section>
       </section>
       <section class="informative">
