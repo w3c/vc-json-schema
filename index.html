@@ -201,6 +201,11 @@
                 </tbody>
              </table>
             </p>
+            <p class="note" title="Restriction on the usage of the jsonSchema property">
+               Usage of the <code><a href="#jsonschema-0">jsonSchema</a></code> property is restricted to
+               situations where the <code>JsonSchema</code> class instance is the object of the <code>credentialSubject</code>
+               property within a <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> instance.
+            </p>
             <p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
@@ -506,7 +511,7 @@
           <p class="note" title="A stable JSON Schema specification is coming">
            <a href="https://json-schema.org/blog/posts/future-of-json-schema">A stable JSON Schema specification</a>
            is in the works. When it's released, we intend to update this table to require the stable version.
-         </p>
+          </p>
 
           <section class="normative">
             <h3>Reserved Keywords</h3>
