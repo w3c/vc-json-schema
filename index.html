@@ -1070,7 +1070,7 @@
          </p>
          <p>
             When using the <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> 
-            <code>type</code> implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#privacy-considerations">
+            <code>type</code>, implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#privacy-considerations">
             Privacy Considerations</a> outlined in the [[VC-DATA-MODEL-2.0]].
          </p>
          <section class="informative">
@@ -1135,15 +1135,15 @@
             <h3>Data Minimization</h3>
             <p>
                Data minimization refers to the principle of sharing the minimum necessary data for any given data request, such
-               as a <a>verifier</a> requesting a <a>verifiable credential</a>, or set of <a>verifiable credentials</a> from
+               as a <a>verifier</a> requesting one or more <a>verifiable credentials</a> from
                a <a>holder</a>.
             </p>
             <p>
-               When using a <a>credential schema</a> with a credential that supports <a>selective disclosure</a> it may be
-               possible for a <a>verifier</a> to determine additional attributes that would be available, but not presented
-               when verifying a <a>credential</a> from a <a>holder</a>. To mitigate <i>data leakage</i> <a>holders</a> may
-               choose to reject verification requests that disclose such additional attributes, or, if the capability is
-               available, selectively disclose properties in the associated <a>credential schema</a>. To enable this functionality
+               When using a <a>credential schema</a> with a credential that supports <a>selective disclosure</a>, it may be
+               possible for a <a>verifier</a> to deduce additional attributes that would be available but were not presented
+               when verifying a <a>credential</a> from a <a>holder</a>. To mitigate <i>data leakage</i>, <a>holders</a> may
+               choose to reject verification requests that could disclose such additional attributes, or, if the capability is
+               available, to selectively disclose properties in the associated <a>credential schema</a>. To enable this functionality,
                <a>issuers</a> can use <a>selective disclosure</a> schemes when creating <a>credential schemas</a> using
                the <code><a href="#jsonschemacredential">JsonCredentialSchema</a></code> <code>type</code>.
             </p>
@@ -1159,16 +1159,16 @@
          </p>
          <p>
             When using the <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> 
-            <code>type</code> implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#security-considerations">
+            <code>type</code>, implementers are advised to review the <a data-cite="VC-DATA-MODEL-2.0/#security-considerations">
             Security Considerations</a> outlined in the [[VC-DATA-MODEL-2.0]].
          </p>
          <section class="informative">
             <h3>Issuer Impersonation</h3>
             <p>
-               It is possible for a schema to become authoritative, such as schemas
-               provided by a recognized industry group like a consoritum of financial
-               companies. To avoid confusion as to the authorship of <a>credential schemas</a>
-               it is advised that they are packaged as <a>verifiable credentials</a> using the
+               It is possible for a schema to become authoritative, such as a schema
+               provided by a recognized industry group like a consortium of financial
+               companies. To avoid confusion as to the authorship of <a>credential schemas</a>,
+               it is advised that they be packaged as <a>verifiable credentials</a> using the
                <code><a href="#jsonschemacredential">JsonSchemaCredential</a></code> <code>type</code>.
             </p>
          </section>
