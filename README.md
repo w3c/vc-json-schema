@@ -9,13 +9,13 @@ and Pull Requests in the GitHub repository, discussions may also occur on the [p
 
 ### Test Suite
 
-A [docker](https://www.docker.com/)-based test suite for the specification can [be found here](https://github.com/w3c/vc-json-schema-test-suite). All impelementers are encouraged to add to the test suite.
+A [docker](https://www.docker.com/)-based test suite for the specification can [be found here](https://github.com/w3c/vc-json-schema-test-suite). All implementers are encouraged to add to the test suite.
 
 ### Building
 
-To build, we use [respec](https://respec.org/).
+To build, we use [`respec`](https://respec.org/).
 
-After installing respec, you can bulid the spec locally using the following command:
+After installing `respec`, you can build the spec locally using the following command:
 
 ```sh
 respec --localhost index.html out.html --verbose -e
