@@ -856,7 +856,7 @@
         <section class="informative">
           <h3>Additional Properties</h3>
           <p>
-            In using [[JSON-SCHEMA]] it is advised that implementers avoid
+            When using [[JSON-SCHEMA]], it is advised that implementers avoid
             setting the <code>additionalProperties</code> to <i>false</i>. Doing
             so could inadvertently exclude properties in a credential from passing
             validation.
@@ -939,7 +939,7 @@
           <h3>Multiple Schemas</h3>
           <p>
             A common use case is to include multiple schemas to validate against a single
-            <a>verifiable Credential</a>. One such use case is to utilize <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2.0]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through utilizing properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
+            <a>verifiable Credential</a>. One such use case is to use <a href="https://github.com/w3c/vc-data-model/blob/main/schema/verifiable-credential/verifiable-credential-schema.json">the JSON Schema defined by the</a> [[VC-DATA-MODEL-2.0]] in addition to a schema to validate a specific property in the credential, such as the <code>credentialSubject</code>. Multiple schemas MAY be combined using native constructs from the [[JSON-SCHEMA]] specification, through use of properties such as <code>oneOf</code>, <code>anyOf</code>, or <code>allOf</code>.
           </p>
           <p>
             An example of how to construct such a schema using the [[JSON-SCHEMA]] property
