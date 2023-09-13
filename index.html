@@ -525,7 +525,7 @@
             </p>
             <p>
                In the upcoming sections we list <i>some</i> keywords that possess unique significance in
-               [[JSON-SCHEMA]] documents and SHOULD NOT be used in conflicting ways, such as redefining,
+               [[JSON-SCHEMA]] documents and SHOULD NOT be used in conflicting ways, such as redefining
                these keywords, or using them in a manner other than as noted by [[JSON-SCHEMA]] specifications.
             </p>
             <p>
@@ -536,8 +536,8 @@
                <h4>$id</h4>
                <p>
                   Across JSON Schema specifications, the <code>$id</code> keyword identifies a schema resource 
-                  with its canonical URI. The <code>$id</code> MUST be present and its value MUST represent 
-                  a valid URI-reference, as specified by the associated [[JSON-SCHEMA]] version.
+                  with its canonical URI. The <code>$id</code> MUST be present, and its value MUST represent 
+                  a valid URI-reference as specified by the associated [[JSON-SCHEMA]] version.
                </p>
                <p>
                   It is RECOMMENDED that the value of the <code>$id</code> property match the <code>id</code>
@@ -1275,9 +1275,8 @@
             <section id="media-types-for-jsonschema">
                <h2><code>JsonSchema</code></h2>
                <p>
-                  When transmitting a [[JSON-SCHEMA]], with usage of the <a href="#jsonschema">JsonSchema</a> type,
-                  expressed as JSON over HTTP, the <code>application/schema+json</code> media type, as defined in 
-                  [[JSON-SCHEMA]], SHOULD be used. Clients receiving [[JSON-SCHEMA]] files over HTTP MAY accept content
+                  The media type <code>application/schema+json</code>, as defined in 
+                  [[JSON-SCHEMA]], SHOULD be used when transmitting a [[JSON-SCHEMA]] expressed as JSON over HTTP. Clients receiving [[JSON-SCHEMA]] files over HTTP MAY accept content
                   using either the <code>application/schema+json</code> media type or the <code>application/json</code>
                   media type as defined in [[JSON]].
                </p>
@@ -1290,10 +1289,10 @@
             <section class="normative" id="media-types-for-jsonschemacredential">
                <h2><code>JsonSchemaCredential</code></h2>
                <p>
-                  When transmitting a [[JSON-SCHEMA]] represented as a <a>verifiable credential</a> with usage of
-                  the <a href="#jsonschema">JsonSchemaCredential</a> type, the media types <code>application/vc+ld+json</code>,
-                  <code>application/vc+ld+json+jwt</code>, and <code>application/vc+ld+json+sd-jwt</code> as defined
-                  in [[VC-DATA-MODEL-2.0]], [[VC-JOSE-COSE]], and [[SD-JWT]] specifications, respectively, SHOULD be used. 
+                  The media types <code>application/vc+ld+json</code>,
+                  <code>application/vc+ld+json+jwt</code>, or <code>application/vc+ld+json+sd-jwt</code> as defined
+                  in [[VC-DATA-MODEL-2.0]], [[VC-JOSE-COSE]], or [[SD-JWT]] specifications, respectively, SHOULD be used when transmitting a [[JSON-SCHEMA]] represented as a <a>verifiable credential</a> with usage of
+                  the <a href="#jsonschema">JsonSchemaCredential</a> type.
                   Clients receiving <a>credential schemas</a> files over HTTP MAY accept content using any of these types.
                </p>
             </section>
