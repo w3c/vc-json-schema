@@ -157,7 +157,7 @@
             <a>verifiable credential</a>.
          </p>
          <p>
-            Implementers MAY find use in packaging a JSON Schema as a verifiable credential when they wish to
+            Implementers MAY package a [[JSON-SCHEMA]] as a <a>verifiable credential</a> when they wish to
             leverage features of the [[VC-DATA-MODEL-2.0]], answering questions such as:
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
@@ -524,8 +524,9 @@
                lists these reserved keywords, which can be found in the table provided above.
             </p>
             <p>
-               In the upcoming sections we list <i>some</i> keywords that possess unique significance and
-               SHOULD NOT be used in conflicting ways.
+               In the upcoming sections we list <i>some</i> keywords that possess unique significance in
+               [[JSON-SCHEMA]] documents and SHOULD NOT be used in conflicting ways, such as redefining,
+               these keywords, or using them in a manner other than as noted by [[JSON-SCHEMA]] specifications.
             </p>
             <p>
                Furthermore, we identify specific keywords, that are not explicitly defined by JSON Schema,
@@ -617,8 +618,8 @@
           <p>
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
             by usage of the <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
-            The credential containing a <a>credential schema</a> MAY include a proof, either
-            embedded according to <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
+            The credential containing a <a>credential schema</a> MAY be secured by using either an
+            embedded or external proof as defined in <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
             Securing Verifiable Credentials</a>.
           </p>
           <p>
