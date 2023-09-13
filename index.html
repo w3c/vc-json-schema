@@ -1276,9 +1276,10 @@
                <h2><code>JsonSchema</code></h2>
                <p>
                   The media type <code>application/schema+json</code>, as defined in 
-                  [[JSON-SCHEMA]], SHOULD be used when transmitting a [[JSON-SCHEMA]] expressed as JSON over HTTP. Clients receiving [[JSON-SCHEMA]] files over HTTP MAY accept content
-                  using either the <code>application/schema+json</code> media type or the <code>application/json</code>
-                  media type as defined in [[JSON]].
+                  [[JSON-SCHEMA]], SHOULD be used when transmitting a [[JSON-SCHEMA]] expressed
+                  as JSON over HTTP. Clients receiving [[JSON-SCHEMA]] files over HTTP MAY accept content
+                  using either the <code>application/schema+json</code> media type or the 
+                  <code>application/json</code> media type as defined in [[JSON]].
                </p>
                <p>
                   When using the <a href="#jsonschema">JsonSchema</a> type with a [[YAML]]
@@ -1289,11 +1290,12 @@
             <section class="normative" id="media-types-for-jsonschemacredential">
                <h2><code>JsonSchemaCredential</code></h2>
                <p>
-                  The media types <code>application/vc+ld+json</code>,
-                  <code>application/vc+ld+json+jwt</code>, or <code>application/vc+ld+json+sd-jwt</code> as defined
-                  in [[VC-DATA-MODEL-2.0]], [[VC-JOSE-COSE]], or [[SD-JWT]] specifications, respectively, SHOULD be used when transmitting a [[JSON-SCHEMA]] represented as a <a>verifiable credential</a> with usage of
-                  the <a href="#jsonschema">JsonSchemaCredential</a> type.
-                  Clients receiving <a>credential schemas</a> files over HTTP MAY accept content using any of these types.
+                  The media types <code>application/vc+ld+json</code>, <code>application/vc+ld+json+jwt</code>, or 
+                  <code>application/vc+ld+json+sd-jwt</code> as defined in [[VC-DATA-MODEL-2.0]],
+                  [[VC-JOSE-COSE]], or [[SD-JWT]] specifications, respectively, SHOULD be used when
+                  transmitting a [[JSON-SCHEMA]] represented as a <a>verifiable credential</a> with usage of
+                  the <a href="#jsonschema">JsonSchemaCredential</a> type. Clients receiving <a>credential schemas</a>
+                  files over HTTP MAY accept content using any of these types.
                </p>
             </section>
          </section>
