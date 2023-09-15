@@ -157,7 +157,7 @@
             <a>verifiable credential</a>.
          </p>
          <p>
-            Implementers may find use in packaging a JSON Schema as a verifiable credential when they wish to
+            Implementers MAY package a [[JSON-SCHEMA]] as a <a>verifiable credential</a> when they wish to
             leverage features of the [[VC-DATA-MODEL-2.0]], answering questions such as:
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
@@ -496,13 +496,13 @@
                    <td>Yes</td>
                 </tr>
                 <tr>
-                   <td>[[JSON-SCHEMA-2019-09]]</td>
+                   <td>[[?JSON-SCHEMA-2019-09]]</td>
                    <td>19 March 2020</td>
                    <td><a href="https://json-schema.org/draft/2019-09/schema">https://json-schema.org/draft/2019-09/schema</a></td>
                    <td>No</td>
                 </tr>
                 <tr>
-                   <td>[[JSON-SCHEMA-DRAFT-7]]</td>
+                   <td>[[?JSON-SCHEMA-DRAFT-7]]</td>
                    <td>20 September 2018</td>
                    <td><a href="http://json-schema.org/draft-07/schema#">http://json-schema.org/draft-07/schema#</a></td>
                    <td>No</td>
@@ -524,8 +524,9 @@
                lists these reserved keywords, which can be found in the table provided above.
             </p>
             <p>
-               In the upcoming sections we list <i>some</i> keywords that possess unique significance and
-               should not be used in conflicting ways.
+               In the upcoming sections we list <i>some</i> keywords that possess unique significance in
+               [[JSON-SCHEMA]] documents and SHOULD NOT be used in conflicting ways, such as redefining
+               these keywords, or using them in a manner other than as noted by [[JSON-SCHEMA]] specifications.
             </p>
             <p>
                Furthermore, we identify specific keywords, that are not explicitly defined by JSON Schema,
@@ -534,9 +535,9 @@
             <section class="normative">
                <h4>$id</h4>
                <p>
-                  Across JSON Schema specifications, the <code>$id</code> keyword identifies a schema resource
-                  with its canonical [[RFC6596]] URI. The <code>$id</code> MUST be present and its value
-                  MUST represent a valid URI-reference [[RFC3986]].
+                  Across JSON Schema specifications, the <code>$id</code> keyword identifies a schema resource 
+                  with its canonical URI. The <code>$id</code> MUST be present, and its value MUST represent 
+                  a valid URI-reference as specified by the associated [[JSON-SCHEMA]] version.
                </p>
                <p>
                   It is RECOMMENDED that the value of the <code>$id</code> property match the <code>id</code>
@@ -617,8 +618,8 @@
           <p>
             Credential Schemas MAY be packaged as <a>verifiable credentials</a> as defined
             by usage of the <a href="#jsonschemacredential">JsonSchemaCredential</a> type.
-            The credential containing a <a>credential schema</a> may include a proof, either
-            embedded according to <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
+            The credential containing a <a>credential schema</a> MAY be secured by using either an
+            embedded or external proof as defined in <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
             Securing Verifiable Credentials</a>.
           </p>
           <p>
@@ -760,7 +761,7 @@
          <section>
             <h4>Indeterminate Result</h4>   
             <p>
-               Assuming that the implementer does not support [[JSON-SCHEMA-2019-09]], an example of an <i>Indeterminate</i>
+               Assuming that the implementer does not support [[?JSON-SCHEMA-2019-09]], an example of an <i>Indeterminate</i>
                evaluation is provided below.
             </p>
             <p>
@@ -1274,24 +1275,27 @@
             <section id="media-types-for-jsonschema">
                <h2><code>JsonSchema</code></h2>
                <p>
-                  This specification acknowledges the use of the <code>application/schema+json</code>
-                  and <code>application/json</code> Media Types specifically for identifying a [[JSON-SCHEMA]]
-                  with usage of the <a href="#jsonschema">JsonSchema</a> type, as registered in 
-                  <a href="#json-schema-specifications">JSON Schema specifications</a>.
+                  The media type <code>application/schema+json</code>, as defined in 
+                  [[JSON-SCHEMA]], SHOULD be used when transmitting a [[JSON-SCHEMA]] expressed
+                  as JSON over HTTP. Clients receiving [[JSON-SCHEMA]] files over HTTP MAY accept content
+                  using either the <code>application/schema+json</code> media type or the 
+                  <code>application/json</code> media type as defined in [[JSON]].
                </p>
                <p>
                   When using the <a href="#jsonschema">JsonSchema</a> type with a [[YAML]]
-                  representation of a [[JSON-SCHEMA]], defined by [[[OPENAPIS-3.1.0]]], the types <code>application/openapi+yaml</code>
-                  or <code>application/yaml</code> may be used.
+                  representation of a [[JSON-SCHEMA]], defined by [[[OPENAPIS-3.1.0]]], the types 
+                  <code>application/openapi+yaml</code> or <code>application/yaml</code> MAY be used.
                </p>
             </section>  
             <section class="normative" id="media-types-for-jsonschemacredential">
                <h2><code>JsonSchemaCredential</code></h2>
                <p>
-                  This specification acknowledges the use of the <code>application/vc+ld+json</code>,
-                  <code>application/vc+ld+json+jwt</code>, and <code>application/vc+ld+json+sd-jwt</code> Media Types
-                  specifically for identifying a [[JSON-SCHEMA]] with usage of the <a href="#jsonschemacredential">
-                  JsonSchemaCredential</a> type, as registered in the [[VC-DATA-MODEL-2.0]], [[VC-JOSE-COSE]], and [[SD-JWT]] specifications respectively.
+                  The media types <code>application/vc+ld+json</code>, <code>application/vc+ld+json+jwt</code>, or 
+                  <code>application/vc+ld+json+sd-jwt</code> as defined in [[VC-DATA-MODEL-2.0]],
+                  [[VC-JOSE-COSE]], or [[SD-JWT]] specifications, respectively, SHOULD be used when
+                  transmitting a [[JSON-SCHEMA]] represented as a <a>verifiable credential</a> with usage of
+                  the <a href="#jsonschema">JsonSchemaCredential</a> type. Clients receiving <a>credential schemas</a>
+                  files over HTTP MAY accept content using any of these types.
                </p>
             </section>
          </section>
