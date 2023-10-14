@@ -177,7 +177,7 @@ dd{margin-left:0}
   "name": "Verifiable Credentials JSON Schema Specification",
   "inLanguage": "en",
   "license": "https://www.w3.org/Consortium/Legal/2023/software-license",
-  "datePublished": "2023-10-05",
+  "datePublished": "2023-11-07",
   "copyrightHolder": {
     "name": "World Wide Web Consortium",
     "url": "https://www.w3.org/"
@@ -461,6 +461,9 @@ dd{margin-left:0}
       "url": "https://www.w3.org/TR/WCAG21/",
       "creator": [
         {
+          "name": "Michael Cooper"
+        },
+        {
           "name": "Andrew Kirkpatrick"
         },
         {
@@ -468,9 +471,6 @@ dd{margin-left:0}
         },
         {
           "name": "Alastair Campbell"
-        },
-        {
-          "name": "Michael Cooper"
         }
       ],
       "publisher": {
@@ -539,7 +539,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     border-top-left-radius: .4em;
     background: #eee;
     color: #666;
-    cursor: pointer;	
+    cursor: pointer;  
     transition: all 0.3s;
   }
   .vc-tab:hover label {
@@ -600,7 +600,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     border-top-left-radius: .4em;
     background: #eee;
     color: #666;
-    cursor: pointer;	
+    cursor: pointer;  
     transition: all 0.3s;
   }
   .vp-tab:hover label {
@@ -633,7 +633,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 <script id="initialUserConfig" type="application/json">{
   "specStatus": "CR",
   "implementationReportURI": "https://w3c.github.io/vc-json-schema-test-suite/",
-  "crEnd": "2023-11-30",
+  "crEnd": "2024-01-07",
   "group": "vc",
   "shortName": "vc-json-schema",
   "subtitle": "JSON Schemas for Verifiable Credentials",
@@ -752,20 +752,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2023-10-05T00:00:00.000Z",
-  "generatedSubtitle": "W3C Candidate Recommendation Snapshot 05 October 2023"
+  "publishISODate": "2023-11-07T00:00:00.000Z",
+  "generatedSubtitle": "W3C Candidate Recommendation Snapshot 07 November 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-CR"></head>
    <body class="h-entry"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Verifiable Credentials JSON Schema Specification</h1> <h2 id="subtitle" class="subtitle">JSON Schemas for Verifiable Credentials</h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#CR">W3C Candidate Recommendation Snapshot</a> <time class="dt-published" datetime="2023-10-05">5 October 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#CR">W3C Candidate Recommendation Snapshot</a> <time class="dt-published" datetime="2023-11-07">07 November 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://www.w3.org/TR/2023/CR-vc-json-schema-20231005/">https://www.w3.org/TR/2023/CR-vc-json-schema-20231005/</a>
+                <a class="u-url" href="https://www.w3.org/TR/2023/CR-vc-json-schema-20231107/">https://www.w3.org/TR/2023/CR-vc-json-schema-20231107/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
                 <a href="https://www.w3.org/TR/vc-json-schema/">https://www.w3.org/TR/vc-json-schema/</a>
@@ -860,7 +860,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Requirements">royalty-free licensing</a>
         for implementations.</p><p>
           This Candidate Recommendation is not expected to advance to Proposed
-          Recommendation any earlier than 30 November 2023.
+          Recommendation any earlier than 07 January 2024.
         </p><p>
     
         This document was produced by a group
@@ -882,7 +882,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </p><p>
                   This document is governed by the
                   <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20230612/">12 June 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                </p></section></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#status-of-this-document">Status of This Document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#jsonschema"><bdi class="secno">2.1 </bdi>JsonSchema</a></li><li class="tocline"><a class="tocxref" href="#jsonschemacredential"><bdi class="secno">2.2 </bdi>JsonSchemaCredential</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#json-schema-specifications"><bdi class="secno">3. </bdi>JSON Schema Specifications</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#reserved-keywords"><bdi class="secno">3.1 </bdi>Reserved Keywords</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#representations-of-json-schema"><bdi class="secno">3.2 </bdi>Representations of JSON Schema</a></li></ol></li><li class="tocline"><a class="tocxref" href="#processing"><bdi class="secno">4. </bdi>Processing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#integrity-validation"><bdi class="secno">4.1 </bdi>Integrity Validation</a></li><li class="tocline"><a class="tocxref" href="#evaluation"><bdi class="secno">4.2 </bdi>Evaluation</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#implementation-considerations"><bdi class="secno">5. </bdi>Implementation Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#credential-property-validation"><bdi class="secno">5.1 </bdi>Credential Property Validation</a></li><li class="tocline"><a class="tocxref" href="#additional-properties"><bdi class="secno">5.2 </bdi>Additional Properties</a></li><li class="tocline"><a class="tocxref" href="#versioning"><bdi class="secno">5.3 </bdi>Versioning</a></li><li class="tocline"><a class="tocxref" href="#content-integrity-protection"><bdi class="secno">5.4 </bdi>Content Integrity Protection</a></li><li class="tocline"><a class="tocxref" href="#storage"><bdi class="secno">5.5 </bdi>Storage</a></li><li class="tocline"><a class="tocxref" href="#multiple-schemas"><bdi class="secno">5.6 </bdi>Multiple Schemas</a></li><li class="tocline"><a class="tocxref" href="#validity-of-a-verifiable-credential"><bdi class="secno">5.7 </bdi>Validity of a Verifiable Credential</a></li><li class="tocline"><a class="tocxref" href="#relationship-to-verifiable-credential-type-property"><bdi class="secno">5.8 </bdi>Relationship to Verifiable Credential Type Property</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#personally-identifiable-information"><bdi class="secno">6.1 </bdi>Personally Identifiable Information</a></li><li class="tocline"><a class="tocxref" href="#verifier-caching"><bdi class="secno">6.2 </bdi>Verifier Caching</a></li><li class="tocline"><a class="tocxref" href="#schema-resolution"><bdi class="secno">6.3 </bdi>Schema Resolution</a></li><li class="tocline"><a class="tocxref" href="#data-minimization"><bdi class="secno">6.4 </bdi>Data Minimization</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">7. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#issuer-impersonation"><bdi class="secno">7.1 </bdi>Issuer Impersonation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">8. </bdi>Accessibility Considerations</a></li><li class="tocline"><a class="tocxref" href="#internationalization-considerations"><bdi class="secno">9. </bdi>Internationalization Considerations</a></li><li class="tocline"><a class="tocxref" href="#iana-considerations"><bdi class="secno">10. </bdi>IANA Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#media-types"><bdi class="secno">10.1 </bdi>Media Types</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+                </p></section></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#status-of-this-document">Status of This Document</a></li></ol></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.1 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#jsonschema"><bdi class="secno">2.1 </bdi>JsonSchema</a></li><li class="tocline"><a class="tocxref" href="#jsonschemacredential"><bdi class="secno">2.2 </bdi>JsonSchemaCredential</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#json-schema-specifications"><bdi class="secno">3. </bdi>JSON Schema Specifications</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#reserved-keywords"><bdi class="secno">3.1 </bdi>Reserved Keywords</a><ol class="toc"></ol></li><li class="tocline"><a class="tocxref" href="#representations-of-json-schema"><bdi class="secno">3.2 </bdi>Representations of JSON Schema</a></li></ol></li><li class="tocline"><a class="tocxref" href="#processing"><bdi class="secno">4. </bdi>Processing</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#integrity-validation"><bdi class="secno">4.1 </bdi>Integrity Validation</a></li><li class="tocline"><a class="tocxref" href="#evaluation"><bdi class="secno">4.2 </bdi>Evaluation</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#implementation-considerations"><bdi class="secno">5. </bdi>Implementation Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#credential-property-validation"><bdi class="secno">5.1 </bdi>Credential Property Validation</a></li><li class="tocline"><a class="tocxref" href="#additional-properties"><bdi class="secno">5.2 </bdi>Additional Properties</a></li><li class="tocline"><a class="tocxref" href="#versioning"><bdi class="secno">5.3 </bdi>Versioning</a></li><li class="tocline"><a class="tocxref" href="#content-integrity-protection"><bdi class="secno">5.4 </bdi>Content Integrity Protection</a></li><li class="tocline"><a class="tocxref" href="#storage"><bdi class="secno">5.5 </bdi>Storage</a></li><li class="tocline"><a class="tocxref" href="#multiple-schemas"><bdi class="secno">5.6 </bdi>Multiple Schemas</a></li><li class="tocline"><a class="tocxref" href="#validity-of-a-verifiable-credential"><bdi class="secno">5.7 </bdi>Validity of a Verifiable Credential</a></li><li class="tocline"><a class="tocxref" href="#relationship-to-verifiable-credential-type-property"><bdi class="secno">5.8 </bdi>Relationship to Verifiable Credential Type Property</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#personally-identifiable-information"><bdi class="secno">6.1 </bdi>Personally Identifiable Information</a></li><li class="tocline"><a class="tocxref" href="#verifier-caching"><bdi class="secno">6.2 </bdi>Verifier Caching</a></li><li class="tocline"><a class="tocxref" href="#schema-resolution"><bdi class="secno">6.3 </bdi>Schema Resolution</a></li><li class="tocline"><a class="tocxref" href="#data-minimization"><bdi class="secno">6.4 </bdi>Data Minimization</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">7. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#issuer-impersonation"><bdi class="secno">7.1 </bdi>Issuer Impersonation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">8. </bdi>Accessibility Considerations</a></li><li class="tocline"><a class="tocxref" href="#internationalization-considerations"><bdi class="secno">9. </bdi>Internationalization Considerations</a></li><li class="tocline"><a class="tocxref" href="#iana-considerations"><bdi class="secno">10. </bdi>IANA Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#media-types"><bdi class="secno">10.1 </bdi>Media Types</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#revision-history"><bdi class="secno">11. </bdi>Revision History</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#changes-since-the-first-public-working-draft"><bdi class="secno">11.1 </bdi>
+              Changes since the
+              <span class="formerLink">
+              First Public Working Draft</span>:
+           </a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
       <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
          
          <p>
@@ -1221,7 +1225,7 @@ The process that takes as its input a <a href="#dfn-url" class="internalDFN" dat
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.8ENnnJ79dEathIC8nZ1BOZ3_KT8ZiWZP8rJvpVhPc2G1crvYkr_oJyBslJawaX5oM0QZNU5wplPlrdi0HmYO8j0aYFiFE-hMcX3Rcyj7x4NbY_scrVqO2eJeqlQr3cRI</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.80KveQxwQB31OcYVQb6V_mutOjnt9HCYXfqZmIrF1XpYB3vq2hF8NpOkgxCv9ACxvSR4pyjip6Y8S2a7emeH6bC2EkjZrhfEKDoeGUovA4BSLWJY2uLIzww2Su2VMxcO</pre></div></div></div>
             <p></p>
             <p>
               </p><p>
@@ -1422,7 +1426,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRXhhbXBsZUVtYWlsQ3JlZGVudGlhbCJdLCJpc3N1ZXIiOiJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlcnMvMTQiLCJpc3N1YW5jZURhdGUiOiIyMDEwLTAxLTAxVDE5OjIzOjI0WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiZGlkOmV4YW1wbGU6ZWJmZWIxZjcxMmViYzZmMWMyNzZlMTJlYzIxIiwiZW1haWxBZGRyZXNzIjoic3ViamVjdEBleGFtcGxlLmNvbSJ9LCJjcmVkZW50aWFsU2NoZW1hIjp7ImlkIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy8zNzM0IiwidHlwZSI6Ikpzb25TY2hlbWFDcmVkZW50aWFsIn19.o4wR2JLlYErljucIMCKFp_kEI9QUGh4VBR1j0TsK3f7S5LaTOpwyyBKUKE8L1J2cqyyuLfs6uhwTN0XJ-UgBAY6rIBOFAOpwdo44L1atu0pCgrnvnGMt8DK_cJ-jWS_4</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRXhhbXBsZUVtYWlsQ3JlZGVudGlhbCJdLCJpc3N1ZXIiOiJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlcnMvMTQiLCJpc3N1YW5jZURhdGUiOiIyMDEwLTAxLTAxVDE5OjIzOjI0WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiZGlkOmV4YW1wbGU6ZWJmZWIxZjcxMmViYzZmMWMyNzZlMTJlYzIxIiwiZW1haWxBZGRyZXNzIjoic3ViamVjdEBleGFtcGxlLmNvbSJ9LCJjcmVkZW50aWFsU2NoZW1hIjp7ImlkIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy8zNzM0IiwidHlwZSI6Ikpzb25TY2hlbWFDcmVkZW50aWFsIn19.w4c8dFPhn8NMdvl32HmXGPJsdUU8bEaOVv9lfox8QOF3fwV_aXsP4ITJgPmFon8qTcyMCIlvO50o-9GbkZRMfEWxW9tjEf1tg9sK9m9aSeXa4fPB93Vth4r-MAeR3A_J</pre></div></div></div>
             <p></p>
             <p>
               </p><p>
@@ -1609,7 +1613,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiSnNvblNjaGVtYUNyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXJzLzE0IiwiaXNzdWFuY2VEYXRlIjoiMjAxMC0wMS0wMVQxOToyMzoyNFoiLCJjcmVkZW50aWFsU2NoZW1hIjp7ImlkIjoiaHR0cHM6Ly93d3cudzMub3JnLzIwMjIvY3JlZGVudGlhbHMvdjIvanNvbi1zY2hlbWEtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwiZGlnZXN0U1JJIjoic2hhMzg0LVM1N3lRRGcxTVR6RjU2T2k5RGJTUTE0dTdqQnkwUkRkeDBZYmVWN3Nod2hDUzg4RzhTQ1hlRnE4MlBhZmhDclcifSwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwianNvblNjaGVtYSI6eyIkaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsIiRzY2hlbWEiOiJodHRwczovL2pzb24tc2NoZW1hLm9yZy9kcmFmdC8yMDIwLTEyL3NjaGVtYSIsIm5hbWUiOiJFbWFpbENyZWRlbnRpYWwiLCJkZXNjcmlwdGlvbiI6IkVtYWlsQ3JlZGVudGlhbCB1c2luZyBKc29uU2NoZW1hQ3JlZGVudGlhbCIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImNyZWRlbnRpYWxTdWJqZWN0Ijp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImVtYWlsQWRkcmVzcyI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZW1haWwifX0sInJlcXVpcmVkIjpbImVtYWlsQWRkcmVzcyJdfX19fX0.0SfAoHXmiE2v7s1KOrOgeuc48CA_rCqzqJKYosDXNWFkyvoV7NhWKF3g23Luaj6eA0SQCZnhnEXHE9a5w2YQXpWxvNwd0axBTptERQjvfI4Ll9KQHOVv6VrswzlfgQv-</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiSnNvblNjaGVtYUNyZWRlbnRpYWwiXSwiaXNzdWVyIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXJzLzE0IiwiaXNzdWFuY2VEYXRlIjoiMjAxMC0wMS0wMVQxOToyMzoyNFoiLCJjcmVkZW50aWFsU2NoZW1hIjp7ImlkIjoiaHR0cHM6Ly93d3cudzMub3JnLzIwMjIvY3JlZGVudGlhbHMvdjIvanNvbi1zY2hlbWEtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwiZGlnZXN0U1JJIjoic2hhMzg0LVM1N3lRRGcxTVR6RjU2T2k5RGJTUTE0dTdqQnkwUkRkeDBZYmVWN3Nod2hDUzg4RzhTQ1hlRnE4MlBhZmhDclcifSwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwianNvblNjaGVtYSI6eyIkaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwtY3JlZGVudGlhbC1zY2hlbWEuanNvbiIsIiRzY2hlbWEiOiJodHRwczovL2pzb24tc2NoZW1hLm9yZy9kcmFmdC8yMDIwLTEyL3NjaGVtYSIsIm5hbWUiOiJFbWFpbENyZWRlbnRpYWwiLCJkZXNjcmlwdGlvbiI6IkVtYWlsQ3JlZGVudGlhbCB1c2luZyBKc29uU2NoZW1hQ3JlZGVudGlhbCIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImNyZWRlbnRpYWxTdWJqZWN0Ijp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImVtYWlsQWRkcmVzcyI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZW1haWwifX0sInJlcXVpcmVkIjpbImVtYWlsQWRkcmVzcyJdfX19fX0.hC_DHrR9nY9OzIdxFBYV0I0De5C6KsTQFCHlcCY1612VCbj2cGnUAPfwWXs0zKExRbaUv2uFV0NdAmFYJe50Bjim8SyJePOgPNYpvs_nZKFSM07bWk5FOo8TbODxDbP1</pre></div></div></div>
             <p></p>
             <section class="normative" id="jsonschema-0"><div class="header-wrapper"><h4 id="x2-2-1-jsonschema"><bdi class="secno">2.2.1 </bdi>jsonSchema</h4><a class="self-link" href="#jsonschema-0" aria-label="Permalink for Section 2.2.1"></a></div>
                
@@ -1972,7 +1976,7 @@ name: Email Credential Schema
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwiZGlnZXN0U1JJIjoic2hhMzg0LWROd3l5L1pzL1lqUG9yOGFvT2duYUNxYitQSDI0UWNORnhieE0xWG9CT3hkYmducFFjVmFHWUg4UXVuWHd3MlUifX0.glSfqc40skuyReRagXQW6mq2YblgFrIFeCBynBjWcekjZg56pza-XKuqkJZ2F2mgc5-LHqCPDoH5He6MfxvUHYOVOyRG5jgLlcCiZN68VKbZIRvM3HZXEIrnBIZysoDY</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzMiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIiwiZGlnZXN0U1JJIjoic2hhMzg0LWROd3l5L1pzL1lqUG9yOGFvT2duYUNxYitQSDI0UWNORnhieE0xWG9CT3hkYmducFFjVmFHWUg4UXVuWHd3MlUifX0.c54JM6KF38UoZmsumkuZI-Spuabhfz8E07lGhe0zE1iVlZdYkjL3Jc36M5raiK5_CPclHrGSqirsnrGn1pY2yfyY7tzdfjWiKsMeTsA4bBMKZVGElyZIItbM4JKSjaza</pre></div></div></div>
         </section>
         <section class="normative" id="evaluation"><div class="header-wrapper"><h3 id="x4-2-evaluation"><bdi class="secno">4.2 </bdi>Evaluation</h3><a class="self-link" href="#evaluation" aria-label="Permalink for Section 4.2"></a></div>
           
@@ -2108,7 +2112,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.UJpRkDkecVk32-w4Si6qH4HtsBp_lDho6wKIz-2mef08BlZgtJpkYB8ShaoqjKuY3NmFBBRmfW3hxMfMCeIFJfIOX7M-420ebXpyOymplWtXtOq2j3T9PaTbgijSIr8-</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJzdWJqZWN0QGV4YW1wbGUuY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL3NjaGVtYXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.kPt97MuiRmWvQHzmCwoTfvnI3NH1jLATQwT4bHQFpLTQU72ZwciAmSDft6vXwCg_ubWiLNum4MqgNDMFVnH6Ubyb4rJoIr4yMgH0Hikb-_rduhezQ_VkPthEdMHcYUHG</pre></div></div></div>
             <p></p>
          </section>
          <section id="failure-result"><div class="header-wrapper"><h4 id="x4-2-2-failure-result"><bdi class="secno">4.2.2 </bdi>Failure Result</h4><a class="self-link" href="#failure-result" aria-label="Permalink for Section 4.2.2"></a></div>
@@ -2205,7 +2209,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJub3QgYW4gZW1haWwifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc2NoZW1hcy9lbWFpbC5qc29uIiwidHlwZSI6Ikpzb25TY2hlbWEifX0.PUqB8Hif8LIkTJnuDE3Z2EtXtASF6YooVHSdkYiiXs2JqWhmHnAssA9mxxqzw3LyyW9kfUDIr-mtfiPwQStXZGqMkmpKx6ws_03w-t1jF4ghrALgw-P1atuOv2whaTTv</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJub3QgYW4gZW1haWwifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc2NoZW1hcy9lbWFpbC5qc29uIiwidHlwZSI6Ikpzb25TY2hlbWEifX0.J0VhyKZkXQiZa-TnLrEnvJYa-Gnu5Bu6bLQGl7qzNpohVLe9n2m5u9-ijGMfSbRqAgjZQDHqivAmTx9MvaI804o_hkFuEQDIRMWxae2nIYViKc6nTZmt6KK5P7dy-LPY</pre></div></div></div>
             <p></p>
          </section>
          <section id="indeterminate-result"><div class="header-wrapper"><h4 id="x4-2-3-indeterminate-result"><bdi class="secno">4.2.3 </bdi>Indeterminate Result</h4><a class="self-link" href="#indeterminate-result" aria-label="Permalink for Section 4.2.3"></a></div>
@@ -2329,7 +2333,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJub3QgYW4gZW1haWwifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc2NoZW1hcy9lbWFpbC5qc29uIiwidHlwZSI6Ikpzb25TY2hlbWEifX0.OCe0-NUar16fFxzDVlQMCstXtG79GRPeUQQ7vnfFamm6DoAsZ9C356bpa9cmBzNmveIVQx3CORXON7NaH4dUoY2S1W3G5ZoPwO_TxHNyQCRlyh5SXiMEpVpPqET8UX0Z</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzM3MzIiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJub3QgYW4gZW1haWwifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc2NoZW1hcy9lbWFpbC5qc29uIiwidHlwZSI6Ikpzb25TY2hlbWEifX0.ja8Sd_fXhsiXh65drROU8ccTmvSF4UeaJhqmys1SREUYk6ekDx7M8mu-CnApWQdEbfhrwGO82xv3UKKyRTtzNUmsgU0fA8ijQV4Noc91yVQ5JDnL3MfgdbavUCNZ5Gq2</pre></div></div></div>
           <p></p>
          </section>
         </section>
@@ -2625,7 +2629,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiI0OTk1Yzg2Yy04NTFmLTQzYTYtOWRkMi0wM2RjODkxMDkxZmQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQiLCJ2YWxpZEZyb20iOiIyMDIzLTAxLTAxVDA1OjA1OjA1WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImZpcnN0TmFtZSI6IkFsaWNlIiwibGFzdE5hbWUiOiJCb2JlcnRzb24iLCJlbWFpbEFkZHJlc3MiOiJhbGljZUBib2JlcnRzb24uY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJtdWx0aXBsZS1jcmVkZW50aWFsLXNjaGVtYS10ZXN0IiwidHlwZSI6Ikpzb25TY2hlbWFDcmVkZW50aWFsIn19.QJ66hx8sLrFLrCJEFfuOIHJC2QRvXJQbvb-kblT2jeSPVd-Rsz9cAyxZZ3uGdmxHK3Ogc2MKFYnfmkVKuCByGRLgjAmSWe7KB4d0cirQyjaDaHU6VfIHxS1cioTbmeGo</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiXSwiaWQiOiI0OTk1Yzg2Yy04NTFmLTQzYTYtOWRkMi0wM2RjODkxMDkxZmQiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQiLCJ2YWxpZEZyb20iOiIyMDIzLTAxLTAxVDA1OjA1OjA1WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImZpcnN0TmFtZSI6IkFsaWNlIiwibGFzdE5hbWUiOiJCb2JlcnRzb24iLCJlbWFpbEFkZHJlc3MiOiJhbGljZUBib2JlcnRzb24uY29tIn0sImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJtdWx0aXBsZS1jcmVkZW50aWFsLXNjaGVtYS10ZXN0IiwidHlwZSI6Ikpzb25TY2hlbWFDcmVkZW50aWFsIn19.OUZjeZbWIszEcdQjajUV9H7G1A5DmQk6sj1bpF7FLT-rvfTnohB58-OQ8T3T1U24hwHJRa-TTwWgmyViE0LgQ9nTmHI8yIz1IP7oGLa7NG9ZxSBy6wb2_QwxH97mkddu</pre></div></div></div>
           <p></p>
           <p>
             Using <code>allOf</code> when composing a JSON Schema can easily result in a schema for which all JSON documents will fail to validate. Such a situation may happen when multiple schemas reference the same property. Implementers are advised to test their schemas against a set of sample input documents before introducing any real world usage. Including sample input that suceeds and fails is considered a good practice.
@@ -2743,7 +2747,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
   }
 }
 ---------------- Compact Encoded JSON Web Token ----------------
-eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL2VtYWlsLWNyZWRlbnRpYWwiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJ0ZXN0ZXJAZXhhbXBsZS5jb20ifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5vcmcvZXhhbXBsZXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.zQdgouidW9j2ay8X9TeDT-qVmSsisy5BndkZSDoAaJj9g49JzDAm3u2bwPHSmBtYW8yzwcstRc0xwrX3X1d-QgGCwAFZVezt9Q6OsI7fBdE4qDhblAKe6UNxL3iMY4uA</pre></div></div></div>
+eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL2VtYWlsLWNyZWRlbnRpYWwiLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiRW1haWxDcmVkZW50aWFsIl0sImlzc3VlciI6Imh0dHBzOi8vZXhhbXBsZS5jb20vaXNzdWVycy8xNCIsImlzc3VhbmNlRGF0ZSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsiaWQiOiJkaWQ6ZXhhbXBsZTplYmZlYjFmNzEyZWJjNmYxYzI3NmUxMmVjMjEiLCJlbWFpbEFkZHJlc3MiOiJ0ZXN0ZXJAZXhhbXBsZS5jb20ifSwiY3JlZGVudGlhbFNjaGVtYSI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5vcmcvZXhhbXBsZXMvZW1haWwuanNvbiIsInR5cGUiOiJKc29uU2NoZW1hIn19.SnosyiOEAupExlNVWWiR4cBTEvBhYl1dUZC9YrSEMKVBVNAwP3s8vHgMY7aKRY3jYkk795nn7hg_osutNRbeRKQz1QG7R4x6jflvt7DkKT1JKIq3Wy8MTqpIKTiULEpA</pre></div></div></div>
           <p></p>
           <p>
             </p><div class="example" id="example-schema-with-matching-type-name">
@@ -2962,7 +2966,36 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
                </p>
             </section>
          </section>
-      </section> 
+      </section>
+      <section class="informative" id="revision-history"><div class="header-wrapper"><h2 id="x11-revision-history"><bdi class="secno">11. </bdi>Revision History</h2><a class="self-link" href="#revision-history" aria-label="Permalink for Section 11."></a></div><p><em>This section is non-normative.</em></p>
+         
+         <p>
+            This section contains the substantive changes that have been made to
+            this specification over time.
+         </p>
+         <section id="changes-since-the-first-public-working-draft"><div class="header-wrapper"><h3 id="x11-1-changes-since-the-first-public-working-draft"><bdi class="secno">11.1 </bdi>
+              Changes since the
+              <a href="https://www.w3.org/TR/2023/WD-vc-json-schema-20230915/">
+              First Public Working Draft</a>:
+           </h3><a class="self-link" href="#changes-since-the-first-public-working-draft" aria-label="Permalink for Section 11.1"></a></div>
+           
+           <ul>
+              <li>Renamed <code>JsonSchema2023</code> to <code>JsonSchema</code></li>
+              <li>Renamed <code>CredentialSchema2023</code> to <code>JsonSchemaCredential</code></li>
+              <li>Added the <code>jsonSchema</code> type for usage within a <code>credentialSubject</code></li>
+              <li>Provided guidance on which media types should be used</li>
+              <li>Added section on addressing PII in schemas</li>
+              <li>Added section on using Content Integrity Protection</li>
+              <li>Added text on accessibility and internationalization</li>
+              <li>Added guidance on processing JSON Schemas</li>
+              <li>Required the use of [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-schema-2020-12" title="JSON Schema 2020-12 Release Notes">JSON-SCHEMA-2020-12</a></cite>]</li>
+              <li>Aligned term and vocabulary definitions with the [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2.0" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2.0</a></cite>]</li>
+              <li>Added support for YAML representations of JSON Schemas</li>
+              <li>Addressed privacy review concerns, such as advocating for the usage of OHTTP, and encouraging data minimization</li>
+              <li>Remove superfluous normative references</li>
+           </ul>
+         </section>
+      </section>
    
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
@@ -2982,7 +3015,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
     </dd><dt id="bib-sd-jwt">[SD-JWT]</dt><dd>
       <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05"><cite>Selective Disclosure for JWTs (SD-JWT)</cite></a>. Daniel Fett; Kristina Yasuda; Brian Campbell.  IETF. Internet-Draft. URL: <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05</a>
     </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Orie Steele; Michael Jones; Gabe Cohen; Oliver Terbu.  W3C. 14 September 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Orie Steele; Michael Jones; Gabe Cohen; Oliver Terbu.  W3C. 13 October 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-vc-jose-cose">[VC-JOSE-COSE]</dt><dd>
       <a href="https://www.w3.org/TR/vc-jose-cose/"><cite>Securing Verifiable Credentials using JOSE and COSE</cite></a>. Orie Steele; Michael Jones; Michael Prorock.  W3C. URL: <a href="https://www.w3.org/TR/vc-jose-cose/">https://www.w3.org/TR/vc-jose-cose/</a>
     </dd><dt id="bib-yaml">[YAML]</dt><dd>
@@ -2997,7 +3030,7 @@ eyJhbGciOiJFUzM4NCJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGl
     </dd><dt id="bib-url">[URL]</dt><dd>
       <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
     </dd><dt id="bib-wcag21">[WCAG21]</dt><dd>
-      <a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O'Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
+      <a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Michael Cooper; Andrew Kirkpatrick; Joshue O'Connor; Alastair Campbell.  W3C. 21 September 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
