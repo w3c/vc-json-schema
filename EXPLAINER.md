@@ -44,7 +44,7 @@ Before constructing or issuing a verifiable credential, there must first be a JS
 {
   "$id": "https://example.com/schemas/email.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "name": "EmailCredential",
+  "title": "EmailCredential",
   "description": "EmailCredential using JsonSchema2023",
   "type": "object",
   "properties": {
@@ -104,7 +104,7 @@ Before constructing or issuing a verifiable credential, there must first be a JS
   "credentialSubject": {
     "$id": "https://example.com/schemas/email-credential-schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "name": "EmailCredential",
+    "title": "EmailCredential",
     "description": "EmailCredential using CredentialSchema2023",
     "type": "object",
     "properties": {

@@ -247,7 +247,7 @@
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "name": "EmailCredential",
+                "title": "EmailCredential",
                 "description": "EmailCredential using JsonSchema",
                 "type": "object",
                 "properties": {
@@ -397,7 +397,7 @@
                   "jsonSchema": {
                      "$id": "https://example.com/schemas/email-credential-schema.json",
                      "$schema": "https://json-schema.org/draft/2020-12/schema",
-                     "name": "EmailCredential",
+                     "title": "EmailCredential",
                      "description": "EmailCredential using JsonSchemaCredential",
                      "type": "object",
                      "properties": {
@@ -449,7 +449,7 @@
                      <span class="highlight"> "jsonSchema": {
                         "$id": "https://example.com/schemas/favorite-color-schema.json",
                         "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "name": "Favorite Color Schema",
+                        "title": "Favorite Color Schema",
                         "description": "Favorite Color using JsonSchemaCredential",
                         "type": "object",
                         "properties": {
@@ -560,17 +560,27 @@
                </p>
             </section>
             <section class="normative">
-               <h4>name</h4>
+               <h4>title</h4>
                <p>
-                  It is RECOMMENDED that all JSON Schemas include a <code>name</code> property which provides
-                  a human-readable name that describes the schema.
+                  It is RECOMMENDED that all JSON Schemas include the optional <code>title</code> property as defined in
+                  [[JSON-SCHEMA]].
                </p>
             </section>
             <section class="normative">
                <h4>description</h4>
                <p>
-                  JSON Schemas MAY choose to include an optional <code>description</code> property which provides
-                  a human-readable sentence describing the schema.
+                  It is RECOMMENDED that all JSON Schemas include the optional <code>description</code> property as
+                  defined in [[JSON-SCHEMA]].
+               </p>
+            </section>
+            <section class="normative">
+               <h4>locale</h4>
+               <p>
+                  JSON Schemas MAY choose to include an optional <code>locale</code> property to indicate the locale
+                  for the <a href="#title-0">title</a> and <a href="#description">description</a> properties defined in
+                  the JSON Schema. The value of this field MUST be a
+                  <a data-cite="ltli/#dfn-canonical-unicode-locale-identifier">canonical unicode locale identifier</a>.
+                  When absent, implementers MUST assume that the value of this property is `en-US`.
                </p>
             </section>
           </section>
@@ -689,7 +699,7 @@
                {
                  "$id": "https://example.com/schemas/email.json",
                  "$schema": "https://json-schema.org/draft/2020-12/schema",
-                 "name": "EmailCredential",
+                 "title": "EmailCredential",
                  "description": "EmailCredential using JsonSchema",
                  "type": "object",
                  "properties": {
@@ -774,7 +784,7 @@
                 {
                   "$id": "https://example.com/schemas/email.json",
                   "$schema": "https://json-schema.org/draft/2019-09/schema",
-                  "name": "EmailCredential",
+                  "title": "EmailCredential",
                   "description": "EmailCredential using JsonSchema",
                   "type": "object",
                   "properties": {
@@ -843,7 +853,7 @@
             {
               "$id": "validuntil-and-evidence-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "name": "Example validUntil and evidence schema",
+              "title": "Example validUntil and evidence schema",
               "description": "Schema requiring validUntil and evidence properties",
               "type": "object",
               "properties": {
@@ -880,7 +890,7 @@
             {
               "$id": "name-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "name": "Name schema",
+              "title": "Name schema",
               "description": "A schema capturing a human name",
               "type": "object",
               "properties": {
@@ -961,7 +971,7 @@
                 {
                   "$id": "name-schema",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "name": "Name schema",
+                  "title": "Name schema",
                   "description": "A schema capturing a human name",
                   "type": "object",
                   "properties": {
@@ -991,7 +1001,7 @@
                 {
                   "$id": "email-schema-1.0",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "name": "Email schema",
+                  "title": "Email schema",
                   "description": "A schema requiring an email address.",
                   "type": "object",
                   "properties": {
@@ -1094,7 +1104,7 @@
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "name": "Email Credential",
+                "title": "Email Credential",
                 "description": "Email Credential Schema for usage in JsonSchema",
                 "type": "object",
                 "properties": {
