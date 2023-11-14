@@ -574,6 +574,48 @@
                </p>
             </section>
             <section class="normative">
+               <h4>dir</h4>
+               <p>
+                  JSON Schemas MAY choose to include an optional <code>dir</code> property that indicates the
+                  base direction for the values of the [=title=] and [=description=] properties defined in
+                  the JSON Schema. The value of this property MUST be a <a>text-direction</a>. When absent, implementers
+                  MUST assume that the value of this property is "[=text-direction/auto=]".
+               </p>
+              <p>
+                The <dfn>text-directions</dfn> are the following:
+              </p>
+              <dl>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">ltr</dfn>"
+                </dt>
+                <dd>
+                  Left-to-right text.
+                </dd>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">rtl</dfn>"
+                </dt>
+                <dd>
+                  Right-to-left text.
+                </dd>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">auto</dfn>" (default)
+                </dt>
+                <dd>
+                  No explicit directionality.
+                </dd>
+              </dl>
+            </section>
+            <section class="normative">
+               <h4>lang</h4>
+               <p>
+                 JSON Schemas MAY choose to include an optional <code>lang</code> property that indicates the
+                 <a data-cite="ltli/#dfn-language-tag">language tag</a> for the values of the [=title=] and
+                 [=description=] properties defined in the JSON Schema. The value of this field MUST be a
+                  <a data-cite="ltli/#dfn-canonical-unicode-locale-identifier">canonical unicode locale identifier</a>.
+                  When absent, implementers MUST assume that the value of this property is `en-US`.
+               </p>
+            </section>
+            <section class="normative">
               <h4>lang</h4>
               <p>
                 JSON Schemas SHOULD choose to include an optional <code>lang</code> property that indicates the
