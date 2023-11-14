@@ -247,7 +247,7 @@
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "name": "EmailCredential",
+                "title": "EmailCredential",
                 "description": "EmailCredential using JsonSchema",
                 "type": "object",
                 "properties": {
@@ -397,7 +397,7 @@
                   "jsonSchema": {
                      "$id": "https://example.com/schemas/email-credential-schema.json",
                      "$schema": "https://json-schema.org/draft/2020-12/schema",
-                     "name": "EmailCredential",
+                     "title": "EmailCredential",
                      "description": "EmailCredential using JsonSchemaCredential",
                      "type": "object",
                      "properties": {
@@ -449,7 +449,7 @@
                      <span class="highlight"> "jsonSchema": {
                         "$id": "https://example.com/schemas/favorite-color-schema.json",
                         "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "name": "Favorite Color Schema",
+                        "title": "Favorite Color Schema",
                         "description": "Favorite Color using JsonSchemaCredential",
                         "type": "object",
                         "properties": {
@@ -560,17 +560,59 @@
                </p>
             </section>
             <section class="normative">
-               <h4>name</h4>
+               <h4><dfn>title</dfn></h4>
                <p>
-                  It is RECOMMENDED that all JSON Schemas include a <code>name</code> property which provides
-                  a human-readable name that describes the schema.
+                  It is RECOMMENDED that all JSON Schemas include the optional <code>title</code> property as defined in
+                  [[JSON-SCHEMA]].
                </p>
             </section>
             <section class="normative">
-               <h4>description</h4>
+               <h4><dfn>description</dfn></h4>
                <p>
-                  JSON Schemas MAY choose to include an optional <code>description</code> property which provides
-                  a human-readable sentence describing the schema.
+                  It is RECOMMENDED that all JSON Schemas include the optional <code>description</code> property as
+                  defined in [[JSON-SCHEMA]].
+               </p>
+            </section>
+            <section class="normative">
+               <h4>dir</h4>
+               <p>
+                  JSON Schemas MAY choose to include an optional <code>dir</code> property that indicates the
+                  base direction for the values of the [=title=] and [=description=] properties defined in
+                  the JSON Schema. The value of this property MUST be a <a>text-direction</a>. When absent, implementers
+                  MUST assume that the value of this property is "[=text-direction/auto=]".
+               </p>
+              <p>
+                The <dfn>text-directions</dfn> are the following:
+              </p>
+              <dl>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">ltr</dfn>"
+                </dt>
+                <dd>
+                  Left-to-right text.
+                </dd>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">rtl</dfn>"
+                </dt>
+                <dd>
+                  Right-to-left text.
+                </dd>
+                <dt>
+                  "<dfn data-dfn-for="text-direction">auto</dfn>" (default)
+                </dt>
+                <dd>
+                  No explicit directionality.
+                </dd>
+              </dl>
+            </section>
+            <section class="normative">
+               <h4>lang</h4>
+               <p>
+                 JSON Schemas MAY choose to include an optional <code>lang</code> property that indicates the
+                 <a data-cite="ltli/#dfn-language-tag">language tag</a> for the values of the [=title=] and
+                 [=description=] properties defined in the JSON Schema. The value of this field MUST be a
+                  <a data-cite="ltli/#dfn-canonical-unicode-locale-identifier">canonical unicode locale identifier</a>.
+                  When absent, implementers MUST assume that the value of this property is `en-US`.
                </p>
             </section>
           </section>
@@ -689,7 +731,7 @@
                {
                  "$id": "https://example.com/schemas/email.json",
                  "$schema": "https://json-schema.org/draft/2020-12/schema",
-                 "name": "EmailCredential",
+                 "title": "EmailCredential",
                  "description": "EmailCredential using JsonSchema",
                  "type": "object",
                  "properties": {
@@ -774,7 +816,7 @@
                 {
                   "$id": "https://example.com/schemas/email.json",
                   "$schema": "https://json-schema.org/draft/2019-09/schema",
-                  "name": "EmailCredential",
+                  "title": "EmailCredential",
                   "description": "EmailCredential using JsonSchema",
                   "type": "object",
                   "properties": {
@@ -843,7 +885,7 @@
             {
               "$id": "validuntil-and-evidence-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "name": "Example validUntil and evidence schema",
+              "title": "Example validUntil and evidence schema",
               "description": "Schema requiring validUntil and evidence properties",
               "type": "object",
               "properties": {
@@ -880,7 +922,7 @@
             {
               "$id": "name-schema",
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "name": "Name schema",
+              "title": "Name schema",
               "description": "A schema capturing a human name",
               "type": "object",
               "properties": {
@@ -961,7 +1003,7 @@
                 {
                   "$id": "name-schema",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "name": "Name schema",
+                  "title": "Name schema",
                   "description": "A schema capturing a human name",
                   "type": "object",
                   "properties": {
@@ -991,7 +1033,7 @@
                 {
                   "$id": "email-schema-1.0",
                   "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "name": "Email schema",
+                  "title": "Email schema",
                   "description": "A schema requiring an email address.",
                   "type": "object",
                   "properties": {
@@ -1094,7 +1136,7 @@
               {
                 "$id": "https://example.com/schemas/email.json",
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "name": "Email Credential",
+                "title": "Email Credential",
                 "description": "Email Credential Schema for usage in JsonSchema",
                 "type": "object",
                 "properties": {
