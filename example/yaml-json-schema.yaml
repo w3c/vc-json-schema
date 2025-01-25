@@ -12,11 +12,11 @@ properties:
         type: string
         format: email
     required:
-    - emailAddress
+      - emailAddress
 example: |-
   {
     "$id": "https://example.com/schemas/email.json",
-    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "EmailCredential",
     "description": "Email Credential JSON Schema",
     "type": "object",
