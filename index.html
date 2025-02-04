@@ -162,15 +162,15 @@
             <a>verifiable credential</a>.
          </p>
          <p>
-            Implementers MAY package a [[JSON-SCHEMA]] as a <a>verifiable credential</a> when they wish to
-            leverage features of the [[VC-DATA-MODEL-2.0]], answering questions such as:
+           Implementers MAY package a [[JSON-SCHEMA]] as a <a>verifiable credential</a> when they wish to
+           leverage features of the [[VC-DATA-MODEL-2.0]], answering questions such as:
+          </p>
             <ul>
                <li>Who is the author of this schema? (provided by the <code>issuer</code> property)</li>
                <li>Is it schema still valid? (provided by the <code>validFrom</code>, <code>validUntil</code>, and <code>credentialStatus</code> properties)</li>
                <li>Has the schema been tampered with? (provided by <a data-cite="VC-DATA-MODEL-2.0/#securing-verifiable-credentials">
             Securing Verifiable Credentials</a>)</li>
             </ul>
-         </p>
          <section class="normative">
             <h3>JsonSchema</h3>
             <p>
@@ -186,28 +186,26 @@
                The specification version of [[JSON-SCHEMA]] can be any version noted in the section
                on <a href="#json-schema-specifications">JSON Schema Specifications</a>.
             </p>
-            <p>
-             <table class="simple">
-                <thead>
-                   <tr>
-                      <th>Property</th>
-                      <th>Description</th>
-                   </tr>
-                </thead>
-                <tbody>
-                   <tr>
-                      <td>id</td>
-                      <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
-                      the schema associated with the <a>verifiable credential</a>.</td>
-                   </tr>
-                   <tr>
-                      <td>type</td>
-                      <td>The <code>type</code> property MUST be <code>JsonSchema</code>.</td>
-                   </tr>
-                </tbody>
-             </table>
-            </p>
+            <table class="simple">
+              <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>id</td>
+                    <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
+                    Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
+                    the schema associated with the <a>verifiable credential</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>type</td>
+                    <td>The <code>type</code> property MUST be <code>JsonSchema</code>.</td>
+                  </tr>
+              </tbody>
+            </table>
             <p class="note" title="Restriction on the use of the jsonSchema property">
                The <code><a href="#jsonschema-0">jsonSchema</a></code> property is only to be used
                when the <code>JsonSchema</code> class instance is the object of the <code>credentialSubject</code>
@@ -216,57 +214,55 @@
             <p>
                An example of utilizing the VC Data Model's <code>credentialSchema</code>
                is provided below:
-               <pre class="example vc-jose-cose-vc-example" title="Example JsonSchema">
-               {
-                 "@context": [
-                   "https://www.w3.org/ns/credentials/v2",
-                   "https://www.w3.org/ns/credentials/examples/v2"
-                 ],
-                 "id": "https://example.com/credentials/3732",
-                 "type": ["VerifiableCredential", "EmailCredential"],
-                 "issuer": "https://example.com/issuers/14",
-                 "issuanceDate": "2010-01-01T19:23:24Z",
-                 "credentialSubject": {
-                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                   "emailAddress": "subject@example.com"
-                 },
-                 "credentialSchema": {
-                   "id": "https://example.com/schemas/email.json",
-                   "type": "JsonSchema"
-                 }
-               }
-              </pre>
             </p>
-            <p>
-              <p>
-               Upon dereferencing the value of the <code>id</code> <code>https://example.com/schemas/email.json</code>,
-               a process also be referred to as <a>schema resolution</a>, the following JSON Schema 
-               document is returned:
-              </p>
-              <pre class="example" title="Example Email JSON Schema">
+            <pre class="example vc-jose-cose-vc-example" title="Example JsonSchema">
               {
-                "$id": "https://example.com/schemas/email.json",
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "title": "EmailCredential",
-                "description": "EmailCredential using JsonSchema",
-                "type": "object",
-                "properties": {
-                  "credentialSubject": {
-                    "type": "object",
-                    "properties": {
-                      "emailAddress": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "required": [
-                      "emailAddress"
-                    ]
-                  }
+                "@context": [
+                  "https://www.w3.org/ns/credentials/v2",
+                  "https://www.w3.org/ns/credentials/examples/v2"
+                ],
+                "id": "https://example.com/credentials/3732",
+                "type": ["VerifiableCredential", "EmailCredential"],
+                "issuer": "https://example.com/issuers/14",
+                "issuanceDate": "2010-01-01T19:23:24Z",
+                "credentialSubject": {
+                  "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                  "emailAddress": "subject@example.com"
+                },
+                "credentialSchema": {
+                  "id": "https://example.com/schemas/email.json",
+                  "type": "JsonSchema"
                 }
               }
-              </pre>
+            </pre>
+            <p>
+              Upon dereferencing the value of the <code>id</code> <code>https://example.com/schemas/email.json</code>,
+              a process also be referred to as <a>schema resolution</a>, the following JSON Schema 
+              document is returned:
             </p>
+            <pre class="example" title="Example Email JSON Schema">
+            {
+              "$id": "https://example.com/schemas/email.json",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "title": "EmailCredential",
+              "description": "EmailCredential using JsonSchema",
+              "type": "object",
+              "properties": {
+                "credentialSubject": {
+                  "type": "object",
+                  "properties": {
+                    "emailAddress": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  },
+                  "required": [
+                    "emailAddress"
+                  ]
+                }
+              }
+            }
+            </pre>
          </section>
          <section class="normative">
             <h3>JsonSchemaCredential</h3>
@@ -309,114 +305,111 @@
                <a href="#json-schema-specifications">JSON Schema Specifications</a>
                can be used.
             </p>
-            <p>
-             <table class="simple">
-                <thead>
-                   <tr>
-                      <th>Property</th>
-                      <th>Description</th>
-                   </tr>
-                </thead>
-                <tbody>
-                   <tr>
-                      <td>id</td>
-                      <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
-                      Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
-                      the <a>verifiable credential</a> which contains a credential schema.</td>
-                   </tr>
-                   <tr>
-                      <td>type</td>
-                      <td>The <code>type</code> property MUST be <code>JsonSchemaCredential</code>.</td>
-                   </tr>
-                   <tr>
-                      <td>credentialSubject.id</td>
-                      <td>The <code>credentialSubject</code>'s <code>id</code> property MUST follow the guidance
-                        provided for <a data-cite="VC-DATA-MODEL-2.0/#identifiers">identifiers</a> in the [[VC-DATA-MODEL-2.0]] 
-                        specification.</td>
-                   </tr>
-                   <tr>
-                      <td>credentialSubject.type</td>
-                      <td>The <code>credentialSubject</code>'s <code>type</code> property MUST be 
-                        <a href="#jsonschema">JsonSchema</a>.</td>
-                   </tr>
-                   <tr>
-                      <td>credentialSubject.jsonSchema</td>
-                      <td>The <code>credentialSubject</code> MUST use the <code>jsonSchema</code> property to 
-                        represent a valid [[JSON-SCHEMA]].</td>
-                   </tr>
-                </tbody>
-               </table>
-            </p>
-               An example of utilizing the VC Data Model's <code>credentialSchema</code>
-               is provided below:
-               <pre class="example vc-jose-cose-vc-example" title="Example JsonSchemaCredential">
-               {
-                 "@context": [
-                   "https://www.w3.org/ns/credentials/v2",
-                   "https://www.w3.org/ns/credentials/examples/v2"
-                 ],
-                 "id": "https://example.com/credentials/3733",
-                 "type": ["VerifiableCredential", "ExampleEmailCredential"],
-                 "issuer": "https://example.com/issuers/14",
-                 "issuanceDate": "2010-01-01T19:23:24Z",
-                 "credentialSubject": {
-                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                   "emailAddress": "subject@example.com"
-                 },
-                 "credentialSchema": {
-                   "id": "https://example.com/credentials/3734",
-                   "type": "JsonSchemaCredential"
-                 }
-               }
-              </pre>
-            </p>
-            <p>
+            <table class="simple">
+              <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>id</td>
+                    <td>The constraints on the <code>id</code> property are listed in the Verifiable Credentials
+                    Data Model specification [[VC-DATA-MODEL-2.0]]. The value MUST be a URL that identifies
+                    the <a>verifiable credential</a> which contains a credential schema.</td>
+                  </tr>
+                  <tr>
+                    <td>type</td>
+                    <td>The <code>type</code> property MUST be <code>JsonSchemaCredential</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>credentialSubject.id</td>
+                    <td>The <code>credentialSubject</code>'s <code>id</code> property MUST follow the guidance
+                      provided for <a data-cite="VC-DATA-MODEL-2.0/#identifiers">identifiers</a> in the [[VC-DATA-MODEL-2.0]] 
+                      specification.</td>
+                  </tr>
+                  <tr>
+                    <td>credentialSubject.type</td>
+                    <td>The <code>credentialSubject</code>'s <code>type</code> property MUST be 
+                      <a href="#jsonschema">JsonSchema</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>credentialSubject.jsonSchema</td>
+                    <td>The <code>credentialSubject</code> MUST use the <code>jsonSchema</code> property to 
+                      represent a valid [[JSON-SCHEMA]].</td>
+                  </tr>
+              </tbody>
+              </table>
               <p>
-               Upon dereferencing the value of the <code>id</code> <code>https://example.com/credentials/3734</code>,
-               a process also be referred to as <a>schema resolution</a>, the following verifiable credential,
-               representing a JSON Schema, is returned:
+                An example of utilizing the VC Data Model's <code>credentialSchema</code>
+                is provided below:
               </p>
-              <pre class="example vc-jose-cose-vc-example" title="Example Email Credential Schema">
+              <pre class="example vc-jose-cose-vc-example" title="Example JsonSchemaCredential">
               {
                 "@context": [
-                    "https://www.w3.org/ns/credentials/v2",
-                    "https://www.w3.org/ns/credentials/examples/v2"
+                  "https://www.w3.org/ns/credentials/v2",
+                  "https://www.w3.org/ns/credentials/examples/v2"
                 ],
-                "id": "https://example.com/credentials/3734",
-                "type": ["VerifiableCredential", "JsonSchemaCredential"],
+                "id": "https://example.com/credentials/3733",
+                "type": ["VerifiableCredential", "ExampleEmailCredential"],
                 "issuer": "https://example.com/issuers/14",
                 "issuanceDate": "2010-01-01T19:23:24Z",
-                "credentialSchema": {
-                  "id": "https://www.w3.org/ns/credentials/json-schema/v2.json",
-                  "type": "JsonSchema",
-                  "digestSRI": "sha384-S57yQDg1MTzF56Oi9DbSQ14u7jBy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCrW"
-                },
                 "credentialSubject": {
-                  "id": "https://example.com/schemas/email-credential-schema.json",
-                  "type": "JsonSchema",
-                  "jsonSchema": {
-                     "$id": "https://example.com/schemas/email-credential-schema.json",
-                     "$schema": "https://json-schema.org/draft/2020-12/schema",
-                     "title": "EmailCredential",
-                     "description": "EmailCredential using JsonSchemaCredential",
-                     "type": "object",
-                     "properties": {
-                       "credentialSubject": {
-                         "type": "object",
-                         "properties": {
-                           "emailAddress": {
-                             "type": "string",
-                             "format": "email"
-                           }
-                         },
-                         "required": ["emailAddress"]
-                       }
-                     }
-                  }
+                  "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                  "emailAddress": "subject@example.com"
+                },
+                "credentialSchema": {
+                  "id": "https://example.com/credentials/3734",
+                  "type": "JsonSchemaCredential"
                 }
               }
-              </pre>
+            </pre>
+            <p>
+              Upon dereferencing the value of the <code>id</code> <code>https://example.com/credentials/3734</code>,
+              a process also be referred to as <a>schema resolution</a>, the following verifiable credential,
+              representing a JSON Schema, is returned:
             </p>
+            <pre class="example vc-jose-cose-vc-example" title="Example Email Credential Schema">
+            {
+              "@context": [
+                  "https://www.w3.org/ns/credentials/v2",
+                  "https://www.w3.org/ns/credentials/examples/v2"
+              ],
+              "id": "https://example.com/credentials/3734",
+              "type": ["VerifiableCredential", "JsonSchemaCredential"],
+              "issuer": "https://example.com/issuers/14",
+              "issuanceDate": "2010-01-01T19:23:24Z",
+              "credentialSchema": {
+                "id": "https://www.w3.org/ns/credentials/json-schema/v2.json",
+                "type": "JsonSchema",
+                "digestSRI": "sha384-S57yQDg1MTzF56Oi9DbSQ14u7jBy0RDdx0YbeV7shwhCS88G8SCXeFq82PafhCrW"
+              },
+              "credentialSubject": {
+                "id": "https://example.com/schemas/email-credential-schema.json",
+                "type": "JsonSchema",
+                "jsonSchema": {
+                    "$id": "https://example.com/schemas/email-credential-schema.json",
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "title": "EmailCredential",
+                    "description": "EmailCredential using JsonSchemaCredential",
+                    "type": "object",
+                    "properties": {
+                      "credentialSubject": {
+                        "type": "object",
+                        "properties": {
+                          "emailAddress": {
+                            "type": "string",
+                            "format": "email"
+                          }
+                        },
+                        "required": ["emailAddress"]
+                      }
+                    }
+                }
+              }
+            }
+            </pre>
             <section class="normative">
                <h4>jsonSchema</h4>
                <p>
@@ -428,48 +421,73 @@
                   intended to be used with the <a href="#jsonschemacredential"></a> type only. The value of
                   the <code>jsonSchema</code> property MUST be a valid [[JSON-SCHEMA]].
                </p>
-               <p>
-                  <pre class="example jsonschemacredential-jsonschema nohighlight" title="Example JsonSchema Credential with jsonSchema">
-                  {
-                   "@context": [
-                       "https://www.w3.org/ns/credentials/v2",
-                       "https://www.w3.org/ns/credentials/examples/v2"
-                   ],
-                   "id": "https://example.com/credentials/3734",
-                   "type": ["VerifiableCredential", "JsonSchemaCredential"],
-                   "issuer": "https://example.com/issuers/14",
-                   "issuanceDate": "2010-01-01T19:23:24Z",
-                   "credentialSchema": {
-                     "id": "https://www.w3.org/ns/credentials/json-schema/v2.json",
-                     "type": "JsonSchema",
-                   },
-                   "credentialSubject": {
-                     "id": "https://example.com/schemas/favorite-color-schema.json",
-                     "type": "JsonSchema",
-                     <span class="highlight"> "jsonSchema": {
-                        "$id": "https://example.com/schemas/favorite-color-schema.json",
-                        "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "title": "Favorite Color Schema",
-                        "description": "Favorite Color using JsonSchemaCredential",
-                        "type": "object",
-                        "properties": {
-                          "credentialSubject": {
-                            "type": "object",
-                            "properties": {
-                              "favoriteColor": {
-                                "type": "string"
-                                "enum": ["red", "orange", "green", "blue", "yellow", "purple"]
-                              }
-                            },
-                            "required": ["favoriteColor"]
-                          }
+               <pre class="example jsonschemacredential-jsonschema nohighlight" title="Example JsonSchema Credential with jsonSchema">
+                {
+                  "@context": [
+                      "https://www.w3.org/ns/credentials/v2",
+                      "https://www.w3.org/ns/credentials/examples/v2"
+                  ],
+                  "id": "https://example.com/credentials/3734",
+                  "type": ["VerifiableCredential", "JsonSchemaCredential"],
+                  "issuer": "https://example.com/issuers/14",
+                  "issuanceDate": "2010-01-01T19:23:24Z",
+                  "credentialSchema": {
+                    "id": "https://www.w3.org/ns/credentials/json-schema/v2.json",
+                    "type": "JsonSchema",
+                  },
+                  "credentialSubject": {
+                    "id": "https://example.com/schemas/favorite-color-schema.json",
+                    "type": "JsonSchema",
+                    <span class="highlight"> "jsonSchema": {
+                      "$id": "https://example.com/schemas/favorite-color-schema.json",
+                      "$schema": "https://json-schema.org/draft/2020-12/schema",
+                      "title": "Favorite Color Schema",
+                      "description": "Favorite Color using JsonSchemaCredential",
+                      "type": "object",
+                      "properties": {
+                        "credentialSubject": {
+                          "type": "object",
+                          "properties": {
+                            "favoriteColor": {
+                              "type": "string"
+                              "enum": ["red", "orange", "green", "blue", "yellow", "purple"]
+                            }
+                          },
+                          "required": ["favoriteColor"]
                         }
-                     }
-                     </span>
-                   }
-                 }
-                 </pre>
+                      }
+                    }
+                    </span>
+                  }
+                }
+               </pre>
+               <p>
+                The <code>$ref</code> property can be used to reference another jsonSchema without redefining the JSON structure.
                </p>
+               <pre class="example jsonschemacredential-jsonschema-ref nohighlight" title="Example JsonSchema Credential with ref">
+                {
+                  "@context": [
+                      "https://www.w3.org/ns/credentials/v2",
+                      "https://www.w3.org/ns/credentials/examples/v2"
+                  ],
+                  "id": "https://example.com/credentials/3734",
+                  "type": ["VerifiableCredential", "JsonSchemaCredential"],
+                  "issuer": "https://example.com/issuers/14",
+                  "issuanceDate": "2010-01-01T19:23:24Z",
+                  "credentialSchema": {
+                    "id": "https://www.w3.org/ns/credentials/json-schema/v2.json",
+                    "type": "JsonSchema",
+                  },
+                  "credentialSubject": {
+                    "id": "https://example.com/schemas/favorite-color-schema.json",
+                    "type": "JsonSchema",
+                    <span class="highlight"> "jsonSchema": {
+                      "$ref": "https://example.com/schemas/favorite-color-schema.json"
+                    }
+                    </span>
+                  }
+                }
+               </pre>
             </section>
          </section>
       </section>
@@ -620,19 +638,18 @@
             <h3>Representations of JSON Schema</h3>
             <p>
                The standard representation of [[JSON-SCHEMA]] uses the [[RFC8259]] JSON data interchange
-               syntax</a> with <code>.json</code> as the file extension.
+               syntax with <code>.json</code> as the file extension.
             </p>
             <p>
                Implementers MAY use OpenAPI Specification's [[[OPENAPIS-3.1.0]]] [[YAML]] representation
                of a [[JSON-SCHEMA]] with <code>.yaml</code> as the file extension. 
-
-               <p class="note">
-                  YAML representations of JSON Schemas can only be used with credential schemas whose type is <a href="#jsonschema">JsonSchema</a>.
-               </p>
-
-               An example [[JSON-SCHEMA]] using [[YAML]] is provided below.
-               <pre class="example" data-include="./example/yaml-json-schema.yaml" data-include-format="yaml"></pre>
+            </p>  
+            <p class="note">
+              YAML representations of JSON Schemas can only be used with credential schemas whose type is <a href="#jsonschema">JsonSchema</a>.
             </p>
+
+            An example [[JSON-SCHEMA]] using [[YAML]] is provided below.
+            <pre class="example" data-include="./example/yaml-json-schema.yaml" data-include-format="yaml"></pre>
           </section>
       </section>
       <section class="normative">
@@ -715,66 +732,62 @@
             Validation of a given credential against a schema is to be performed according
             to its associated [[JSON-SCHEMA]] specification. Validation MUST result in one of the following three possible
             outcomes:
-            <ul>
-             <li><b>Success</b> – The credential is considered to be valid against the given <a>credential schema</a>.</li>
-             <li><b>Failure</b> – The credential is not considedred to be valid against the given <a>credential schema</a>.</li>
-             <li><b>Indeterminate</b> – The credential could not be validated. Implementers MUST return this outcome when they encounter a schema whose version they do not support.</li>
-            </ul>
           </p>
+          <ul>
+            <li><b>Success</b> – The credential is considered to be valid against the given <a>credential schema</a>.</li>
+            <li><b>Failure</b> – The credential is not considedred to be valid against the given <a>credential schema</a>.</li>
+            <li><b>Indeterminate</b> – The credential could not be validated. Implementers MUST return this outcome when they encounter a schema whose version they do not support.</li>
+          </ul>
           <p>
             Examples for the Success and Failure possible outcomes are provided below.
           </p>
           <section class="normative">
             <h4>Success Result</h4>
-            <p>
-               <pre class="example" title="Example Email JSON Schema">
-               {
-                 "$id": "https://example.com/schemas/email.json",
-                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                 "title": "EmailCredential",
-                 "description": "EmailCredential using JsonSchema",
-                 "type": "object",
-                 "properties": {
-                   "credentialSubject": {
-                     "type": "object",
-                     "properties": {
-                       "emailAddress": {
-                         "type": "string",
-                         "format": "email"
-                       }
-                     },
-                     "required": ["emailAddress"]
+            <pre class="example" title="Example Email JSON Schema">
+            {
+              "$id": "https://example.com/schemas/email.json",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "title": "EmailCredential",
+              "description": "EmailCredential using JsonSchema",
+              "type": "object",
+              "properties": {
+                "credentialSubject": {
+                  "type": "object",
+                  "properties": {
+                    "emailAddress": {
+                      "type": "string",
+                      "format": "email"
                     }
-                  }
-               }
-               </pre>
-            </p>
+                  },
+                  "required": ["emailAddress"]
+                }
+              }
+            }
+            </pre>
             <p>
               Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Success</i> result
               when applying it to the VC below.
             </p>
-            <p>
-               <pre class="example vc-jose-cose-vc-example" title="Example Verifiable Credential - validation Success">
-               {
-                 "@context": [
-                   "https://www.w3.org/ns/credentials/v2",
-                   "https://www.w3.org/ns/credentials/examples/v2"
-                 ],
-                 "id": "https://example.com/credentials/3732",
-                 "type": ["VerifiableCredential", "EmailCredential"],
-                 "issuer": "https://example.com/issuers/14",
-                 "issuanceDate": "2010-01-01T19:23:24Z",
-                 "credentialSubject": {
-                   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                   "emailAddress": "subject@example.com"
-                 },
-                 "credentialSchema": {
-                   "id": "https://example.com/schemas/email.json",
-                   "type": "JsonSchema"
-                 }
-               }
-               </pre>
-            </p>
+            <pre class="example vc-jose-cose-vc-example" title="Example Verifiable Credential - validation Success">
+            {
+              "@context": [
+                "https://www.w3.org/ns/credentials/v2",
+                "https://www.w3.org/ns/credentials/examples/v2"
+              ],
+              "id": "https://example.com/credentials/3732",
+              "type": ["VerifiableCredential", "EmailCredential"],
+              "issuer": "https://example.com/issuers/14",
+              "issuanceDate": "2010-01-01T19:23:24Z",
+              "credentialSubject": {
+                "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                "emailAddress": "subject@example.com"
+              },
+              "credentialSchema": {
+                "id": "https://example.com/schemas/email.json",
+                "type": "JsonSchema"
+              }
+            }
+            </pre>
          </section>
          <section>
             <h4>Failure Result</h4>
@@ -782,28 +795,26 @@
                Validation according to the spec [[JSON-SCHEMA-2020-12]] yields a <i>Failure</i> result when 
                applying it to the VC below.
             </p>
-            <p>
-               <pre class="illegal-example vc-jose-cose-vc-example" title="Example Verifiable Credential - validation Failure">
-                {
-                  "@context": [
-                    "https://www.w3.org/ns/credentials/v2",
-                    "https://www.w3.org/ns/credentials/examples/v2"
-                  ],
-                  "id": "https://example.com/credentials/3732",
-                  "type": ["VerifiableCredential", "EmailCredential"],
-                  "issuer": "https://example.com/issuers/14",
-                  "issuanceDate": "2010-01-01T19:23:24Z",
-                  "credentialSubject": {
-                    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                    "emailAddress": "not an email"
-                  },
-                  "credentialSchema": {
-                    "id": "https://example.com/schemas/email.json",
-                    "type": "JsonSchema"
-                  }
-                }
-               </pre>
-            </p>
+            <pre class="illegal-example vc-jose-cose-vc-example" title="Example Verifiable Credential - validation Failure">
+            {
+              "@context": [
+                "https://www.w3.org/ns/credentials/v2",
+                "https://www.w3.org/ns/credentials/examples/v2"
+              ],
+              "id": "https://example.com/credentials/3732",
+              "type": ["VerifiableCredential", "EmailCredential"],
+              "issuer": "https://example.com/issuers/14",
+              "issuanceDate": "2010-01-01T19:23:24Z",
+              "credentialSubject": {
+                "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                "emailAddress": "not an email"
+              },
+              "credentialSchema": {
+                "id": "https://example.com/schemas/email.json",
+                "type": "JsonSchema"
+              }
+            }
+            </pre>
          </section>
          <section>
             <h4>Indeterminate Result</h4>   
@@ -811,32 +822,29 @@
                Assuming that the implementer does not support [[?JSON-SCHEMA-2019-09]], an example of an <i>Indeterminate</i>
                evaluation is provided below.
             </p>
-            <p>
-               <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
-                {
-                  "$id": "https://example.com/schemas/email.json",
-                  "$schema": "https://json-schema.org/draft/2019-09/schema",
-                  "title": "EmailCredential",
-                  "description": "EmailCredential using JsonSchema",
+            <pre class="example" title="Example Email JSON Schema using unsupported JSON Schema version">
+            {
+              "$id": "https://example.com/schemas/email.json",
+              "$schema": "https://json-schema.org/draft/2019-09/schema",
+              "title": "EmailCredential",
+              "description": "EmailCredential using JsonSchema",
+              "type": "object",
+              "properties": {
+                "credentialSubject": {
                   "type": "object",
                   "properties": {
-                    "credentialSubject": {
-                      "type": "object",
-                      "properties": {
-                        "emailAddress": {
-                          "type": "string",
-                          "format": "email"
-                        }
-                      },
-                      "required": [
-                        "emailAddress"
-                      ]
+                    "emailAddress": {
+                      "type": "string",
+                      "format": "email"
                     }
-                  }
+                  },
+                  "required": [
+                    "emailAddress"
+                  ]
                 }
-               </pre>
-            </p>
-            <p>
+              }
+            }
+            </pre>
              <pre class="example vc-jose-cose-vc-example" title="Example Verifiable Credential - validation Indeterminate">
              {
                "@context": [
@@ -857,7 +865,6 @@
                }
              }
              </pre>
-          </p>
          </section>
         </section>
       </section>
@@ -880,26 +887,24 @@
             demonstrates a schema which enforces that a credential issued against it
             has an <code>validUntil</code> property and includes <code>evidence</code>.
           </p>
-          <p>
-            <pre class="example" title="ValidUntil and Evidence Credential Schema">
-            {
-              "$id": "validuntil-and-evidence-schema",
-              "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "title": "Example validUntil and evidence schema",
-              "description": "Schema requiring validUntil and evidence properties",
-              "type": "object",
-              "properties": {
-                "validUntil": {
-                  "type": "object"
-                },
-                "evidence": {
-                  "type": "object"
-                }
+          <pre class="example" title="ValidUntil and Evidence Credential Schema">
+          {
+            "$id": "validuntil-and-evidence-schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Example validUntil and evidence schema",
+            "description": "Schema requiring validUntil and evidence properties",
+            "type": "object",
+            "properties": {
+              "validUntil": {
+                "type": "object"
               },
-              "required": ["validUntil", "evidence"]
-            }
-            </pre>
-          </p>
+              "evidence": {
+                "type": "object"
+              }
+            },
+            "required": ["validUntil", "evidence"]
+          }
+          </pre>
         </section>
         <section class="informative">
           <h3>Additional Properties</h3>
@@ -917,40 +922,38 @@
             in a given schema would result in validation failure. The simple alternative
             is to avoid setting <code>additionalProperties</code> to <i>false</i>.
           </p>
-          <p>
-            <pre class="example" title="Example Name Credential Schema">
-            {
-              "$id": "name-schema",
-              "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "title": "Name schema",
-              "description": "A schema capturing a human name",
-              "type": "object",
-              "properties": {
-                "credentialSubject": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "object",
-                      "properties": {
-                        "firstName": {
-                          "type": "string"
-                        },
-                        "lastName": {
-                          "type": "string"
-                        },
-                        "additionalProperties": false
+          <pre class="example" title="Example Name Credential Schema">
+          {
+            "$id": "name-schema",
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Name schema",
+            "description": "A schema capturing a human name",
+            "type": "object",
+            "properties": {
+              "credentialSubject": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string"
                       },
-                      "required": [
-                        "firstName",
-                        "lastName"
-                      ]
-                    }
+                      "lastName": {
+                        "type": "string"
+                      },
+                      "additionalProperties": false
+                    },
+                    "required": [
+                      "firstName",
+                      "lastName"
+                    ]
                   }
                 }
               }
             }
-            </pre>
-          </p>
+          }
+          </pre>
         </section>
         <section class="informative">
           <h3>Versioning</h3>
@@ -993,94 +996,92 @@
             An example of how to construct such a schema using the [[JSON-SCHEMA]] property
             <code>allOf</code> is provided below, combining schemas for a <a>verifiable credential</a>,
             name, and email address:
-            
-            <pre class="example" title="Multiple Schema Credential Schema Example">
-            {
-              "allOf": [
-                {
-                  "$ref": "https://raw.githubusercontent.com/w3c/vc-data-model/main/schema/verifiable-credential/verifiable-credential-schema.json"
-                },
-                {
-                  "$id": "name-schema",
-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "title": "Name schema",
-                  "description": "A schema capturing a human name",
-                  "type": "object",
-                  "properties": {
-                    "credentialSubject": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "object",
-                          "properties": {
-                            "firstName": {
-                              "type": "string"
-                            },
-                            "lastName": {
-                              "type": "string"
-                            },
-                            "additionalProperties": false
+          </p>
+          <pre class="example" title="Multiple Schema Credential Schema Example">
+          {
+            "allOf": [
+              {
+                "$ref": "https://raw.githubusercontent.com/w3c/vc-data-model/main/schema/verifiable-credential/verifiable-credential-schema.json"
+              },
+              {
+                "$id": "name-schema",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "Name schema",
+                "description": "A schema capturing a human name",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "object",
+                        "properties": {
+                          "firstName": {
+                            "type": "string"
                           },
-                          "required": [
-                            "firstName",
-                            "lastName"
-                          ]
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "$id": "email-schema-1.0",
-                  "$schema": "https://json-schema.org/draft/2020-12/schema",
-                  "title": "Email schema",
-                  "description": "A schema requiring an email address.",
-                  "type": "object",
-                  "properties": {
-                    "credentialSubject": {
-                      "type": "object",
-                      "properties": {
-                        "email": {
-                          "type": "object",
-                          "properties": {
-                            "emailAddress": {
-                              "type": "string",
-                              "format": "email"
-                            }
+                          "lastName": {
+                            "type": "string"
                           },
-                          "required": ["emailAddress"]
-                        }
+                          "additionalProperties": false
+                        },
+                        "required": [
+                          "firstName",
+                          "lastName"
+                        ]
                       }
                     }
                   }
                 }
-              ]
-            }
-            </pre>
-          </p>
+              },
+              {
+                "$id": "email-schema-1.0",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "title": "Email schema",
+                "description": "A schema requiring an email address.",
+                "type": "object",
+                "properties": {
+                  "credentialSubject": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "object",
+                        "properties": {
+                          "emailAddress": {
+                            "type": "string",
+                            "format": "email"
+                          }
+                        },
+                        "required": ["emailAddress"]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+          </pre>
           <p>
             The example above is used to validate every property in the following 
             <a>verifiable credential</a>:
-
-            <pre class="example vc-jose-cose-vc-example" title="Multiple Schema Verifiable Credential Example">
-            {
-                "@context": ["https://www.w3.org/ns/credentials/v2"],
-                "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
-                "type": ["VerifiableCredential"],
-                "issuer": "did:example:1234",
-                "validFrom": "2023-01-01T05:05:05Z",
-                "credentialSubject": {
-                    "firstName": "Alice",
-                    "lastName": "Bobertson",
-                    "emailAddress": "alice@bobertson.com"
-                },
-                "credentialSchema": {
-                    "id": "multiple-credential-schema-test",
-                    "type": "JsonSchemaCredential"
-                }
-            }
-            </pre>
           </p>
+          <pre class="example vc-jose-cose-vc-example" title="Multiple Schema Verifiable Credential Example">
+          {
+              "@context": ["https://www.w3.org/ns/credentials/v2"],
+              "id": "4995c86c-851f-43a6-9dd2-03dc891091fd",
+              "type": ["VerifiableCredential"],
+              "issuer": "did:example:1234",
+              "validFrom": "2023-01-01T05:05:05Z",
+              "credentialSubject": {
+                  "firstName": "Alice",
+                  "lastName": "Bobertson",
+                  "emailAddress": "alice@bobertson.com"
+              },
+              "credentialSchema": {
+                  "id": "multiple-credential-schema-test",
+                  "type": "JsonSchemaCredential"
+              }
+          }
+          </pre>
           <p>
             Using `allOf` when composing a JSON Schema can easily result in a schema for which all JSON documents will fail to validate. Such a situation may happen when multiple schemas reference the same property. Implementers are advised to test their schemas against a set of sample input documents before introducing any real world usage. Including sample input that suceeds and fails is considered a good practice.
           </p>
@@ -1110,52 +1111,50 @@
           </p>
           <p>
             The example below illustrates this for <code>EmailCredential</code>:
-            <pre class="example vc-jose-cose-vc-example" title="Verifiable Credential with Schema Type">
-              {
-                "@context": [
-                  "https://www.w3.org/ns/credentials/v2",
-                  "https://www.w3.org/ns/credentials/examples/v2"
-                ],
-                "id": "https://example.com/credentials/email-credential",
-                "type": ["VerifiableCredential", "EmailCredential"],
-                "issuer": "https://example.com/issuers/14",
-                "issuanceDate": "2010-01-01T19:23:24Z",
+          </p>
+          <pre class="example vc-jose-cose-vc-example" title="Verifiable Credential with Schema Type">
+            {
+              "@context": [
+                "https://www.w3.org/ns/credentials/v2",
+                "https://www.w3.org/ns/credentials/examples/v2"
+              ],
+              "id": "https://example.com/credentials/email-credential",
+              "type": ["VerifiableCredential", "EmailCredential"],
+              "issuer": "https://example.com/issuers/14",
+              "issuanceDate": "2010-01-01T19:23:24Z",
+              "credentialSubject": {
+                "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+                "emailAddress": "tester@example.com"
+              },
+              "credentialSchema": {
+                "id": "https://example.org/examples/email.json",
+                "type": "JsonSchema"
+              }
+            }
+          </pre>
+          <pre class="example" title="Schema with Matching Type Name">
+            {
+              "$id": "https://example.com/schemas/email.json",
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "title": "Email Credential",
+              "description": "Email Credential Schema for usage in JsonSchema",
+              "type": "object",
+              "properties": {
                 "credentialSubject": {
-                  "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-                  "emailAddress": "tester@example.com"
-                },
-                "credentialSchema": {
-                  "id": "https://example.org/examples/email.json",
-                  "type": "JsonSchema"
+                  "type": "object",
+                  "properties": {
+                    "emailAddress": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  },
+                  "required": [
+                    "emailAddress"
+                  ]
                 }
               }
-            </pre>
-          </p>
-          <p>
-            <pre class="example" title="Schema with Matching Type Name">
-              {
-                "$id": "https://example.com/schemas/email.json",
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "title": "Email Credential",
-                "description": "Email Credential Schema for usage in JsonSchema",
-                "type": "object",
-                "properties": {
-                  "credentialSubject": {
-                    "type": "object",
-                    "properties": {
-                      "emailAddress": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "required": [
-                      "emailAddress"
-                    ]
-                  }
-                }
-              }
-            </pre>
-          </p>
+            }
+          </pre>
           <p>
             It is important to note that a <a>credential schema</a> enables issuers to communicate how to process
             the structure of data inside a verifiable credential, whereas the <code>type</code> property of a <a>verifiable credential</a>
